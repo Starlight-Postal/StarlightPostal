@@ -8,6 +8,7 @@ public class wind : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         windStructs = GameObject.FindObjectsOfType<wind_structure>();
     }
 

@@ -7,17 +7,19 @@ public class snow : MonoBehaviour
     public wind wind;
     public Transform focus;
     public float speed = 2;
+    public int n = 100;
     public List<Transform> flakes;
     public List<float> flakeLife;
+    public List<float> flakeWeight;
 
     public Vector2 range;
     // Start is called before the first frame update
     void Start()
     {
-        wind = GameObject.Find("wind").GetComponent<wind>();
+        //wind = GameObject.Find("wind").GetComponent<wind>();
         focus = GameObject.Find("Main Camera").GetComponent<Transform>();
 
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < n; i++)
         {
             spawnFlake(focus.position.x + range.x * Random.Range(-0.5f, 0.5f), focus.position.y + range.y * Random.Range(-0.5f, 0.5f));
         }
@@ -29,7 +31,7 @@ public class snow : MonoBehaviour
         for(int i = 0;i < flakes.Count;i++)
         {
             Vector2 w = (wind.getWind(flakes[i].position.x, flakes[i].position.y))*1f;
-            flakes[i].position += new Vector3(w.x, w.y,0)*speed;
+            flakes[i].position += new Vector3(w.x, w.y,0)*speed*flakeWeight[i];
             if (flakes[i].position.x >= focus.position.x + range.x * 0.5f)
             {
                 flakes[i].position = new Vector3(focus.position.x - range.x * 0.5f, focus.position.y + range.y * Random.Range(-0.5f, 0.5f), flakes[i].position.z);
@@ -65,5 +67,6 @@ public class snow : MonoBehaviour
         flakePos.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
         flakes.Add(flakePos.transform);
         flakeLife.Add(Random.Range(0f,1f));
+        flakeWeight.Add(Random.Range(0.9f, 1.1f));
     }
 }
