@@ -1,0 +1,69 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class snow : MonoBehaviour
+{
+    public wind wind;
+    public Transform focus;
+    public float speed = 2;
+    public List<Transform> flakes;
+    public List<float> flakeLife;
+
+    public Vector2 range;
+    // Start is called before the first frame update
+    void Start()
+    {
+        wind = GameObject.Find("wind").GetComponent<wind>();
+        focus = GameObject.Find("Main Camera").GetComponent<Transform>();
+
+        for (int i = 0; i < 100; i++)
+        {
+            spawnFlake(focus.position.x + range.x * Random.Range(-0.5f, 0.5f), focus.position.y + range.y * Random.Range(-0.5f, 0.5f));
+        }
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        for(int i = 0;i < flakes.Count;i++)
+        {
+            Vector2 w = (wind.getWind(flakes[i].position.x, flakes[i].position.y))*1f;
+            flakes[i].position += new Vector3(w.x, w.y,0)*speed;
+            if (flakes[i].position.x >= focus.position.x + range.x * 0.5f)
+            {
+                flakes[i].position = new Vector3(focus.position.x - range.x * 0.5f, focus.position.y + range.y * Random.Range(-0.5f, 0.5f), flakes[i].position.z);
+            } else if (flakes[i].position.x <= focus.position.x - range.x * 0.5f)
+            {
+                flakes[i].position = new Vector3(focus.position.x + range.x * 0.5f, focus.position.y + range.y * Random.Range(-0.5f, 0.5f), flakes[i].position.z);
+            }
+            if (flakes[i].position.y >= focus.position.y + range.y * 0.5f)
+            {
+                flakes[i].position = new Vector3(focus.position.x + range.x * Random.Range(-0.5f, 0.5f), focus.position.y - range.y * 0.5f, flakes[i].position.z);
+            } else if (flakes[i].position.y <= focus.position.y +- range.y * 0.5f)
+            {
+                flakes[i].position = new Vector3(focus.position.x + range.x * Random.Range(-0.5f, 0.5f), focus.position.y + range.y * 0.5f, flakes[i].position.z);
+            }
+            flakeLife[i] -= 0.0025f;
+            if (flakeLife[i] <= 0)
+            {
+                flakeLife[i] = 1;
+                flakes[i].position = new Vector2(focus.position.x + range.x * Random.Range(-0.5f, 0.5f), focus.position.y + range.y * Random.Range(-0.5f, 0.5f));
+            }
+            float s = Mathf.Pow((Mathf.Pow(1 / (1 + Mathf.Pow((flakeLife[i] *2) - 1, 2)), 2) - 0.25f) * (4f / 3f),0.5f);
+            flakes[i].localScale = new Vector3(1, 1, 1) * 0.05f * s;
+
+
+        }
+    }
+
+    void spawnFlake(float x,float y)
+    {
+        GameObject flakePos = GameObject.CreatePrimitive(PrimitiveType.Plane);
+        flakePos.transform.position = new Vector2(x, y);
+        flakePos.transform.eulerAngles = new Vector3(-90, 0, 0);
+        flakePos.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
+        flakes.Add(flakePos.transform);
+        flakeLife.Add(Random.Range(0f,1f));
+    }
+}
