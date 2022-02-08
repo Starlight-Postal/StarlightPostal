@@ -29,7 +29,7 @@ public class balloon : MonoBehaviour
 
         lean = 0;
 
-        wind = GameObject.Find("wind").GetComponent<wind>();
+        //wind = GameObject.Find("wind").GetComponent<wind>();
 
         anchor = GameObject.Find("anchor");
         anchor.SetActive(false);
