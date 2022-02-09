@@ -19,6 +19,10 @@ public class SoftBodyifier : MonoBehaviour
                 var joint = bone.AddComponent(typeof(SpringJoint2D)) as SpringJoint2D;
                 var otherBone = boneContainer.transform.GetChild(j).gameObject;
                 joint.connectedBody = otherBone.GetComponent(typeof(Rigidbody2D)) as Rigidbody2D;
+
+                joint.autoConfigureConnectedAnchor = true;
+                joint.frequency = 2F;
+                joint.dampingRatio = 0.5F;
             }
         }
 
