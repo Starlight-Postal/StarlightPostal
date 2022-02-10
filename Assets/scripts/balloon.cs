@@ -17,7 +17,7 @@ public class balloon : MonoBehaviour
 
     public wind wind;
     public GameObject anchor;
-    bool anchored;
+    public bool anchored;
     public float anchorD = 10;
 
     public player player;
@@ -36,8 +36,8 @@ public class balloon : MonoBehaviour
         //wind = GameObject.Find("wind").GetComponent<wind>();
 
         anchor = GameObject.Find("anchor");
-        anchor.SetActive(false);
-        anchored = false;
+        anchor.SetActive(true);
+        anchored = true;
     }
 
     // Update is called once per frame
@@ -63,7 +63,7 @@ public class balloon : MonoBehaviour
             {
                 float a = Mathf.Atan2(trans.position.x - aTrans.position.x, trans.position.y - aTrans.position.y);
                 rb.velocity += new Vector2(Mathf.Sin(a) * (d - anchorD) * -0.2f, Mathf.Cos(a) * (d - anchorD)*-0.2f);
-                anchorRB.velocity += new Vector2(Mathf.Sin(a) * (d - anchorD)*0.1f, Mathf.Cos(a) * (d - anchorD)*0.1f);
+                anchorRB.velocity += new Vector2(Mathf.Sin(a) * (d - anchorD)*0.05f, Mathf.Cos(a) * (d - anchorD)*0.05f);
             }
 
             if (player.inBalloon)
@@ -74,6 +74,14 @@ public class balloon : MonoBehaviour
                     anchored = false;
                     anchor.SetActive(false);
                 }
+
+                /*
+                if (Input.GetKey("space"))
+                {
+                    player.inBalloon = false;
+                    Debug.Log("disembark");
+                }
+                */
             }
         } else
         {

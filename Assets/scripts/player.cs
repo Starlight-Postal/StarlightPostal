@@ -12,7 +12,11 @@ public class player : MonoBehaviour
 
     public float runSpeed = 0.5f;
     public float gravity = 0.25f;
-    public Transform balloon;
+    public Transform balloonTrans;
+    public Transform anchorTrans;
+    public balloon balloon;
+
+    bool swap = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +24,9 @@ public class player : MonoBehaviour
         sprite = gameObject.GetComponent<SpriteRenderer>();
         collider = gameObject.GetComponent<Collider2D>();
         trans = gameObject.GetComponent<Transform>();
-        balloon = GameObject.Find("balloon").GetComponent<Transform>();
+        balloonTrans = GameObject.Find("balloon").GetComponent<Transform>();
+        balloon = GameObject.Find("balloon").GetComponent<balloon>();
+        anchorTrans = GameObject.Find("anchor").GetComponent<Transform>();
     }
 
     // Update is called once per frame
@@ -30,7 +36,23 @@ public class player : MonoBehaviour
         {
             sprite.enabled = false;
             collider.enabled = false;
-            trans.position = balloon.position;
+            trans.position = balloonTrans.position+new Vector3(0,-2.5f,0);
+            rb.velocity = new Vector2(0, 0);
+            if (Input.GetKey("space"))
+            {
+                if (swap)
+                {
+                    if (balloon.anchored)
+                    {
+                        inBalloon = false;
+                        //Debug.Log("disembark");
+                        swap = false;
+                    }
+                }
+            } else
+            {
+                swap = true;
+            }
         } else
         {
             sprite.enabled = true;
@@ -45,15 +67,24 @@ public class player : MonoBehaviour
             {
                 rb.velocity += new Vector2(-runSpeed, 0);
             }
-
-            if (Vector3.Distance(trans.position, balloon.position) < 3f)
+            //Debug.Log("balloon range!");
+            if (Input.GetKey("space"))
             {
-                Debug.Log("balloon range!");
-                if (Input.GetKey("space"))
+                if (swap)
                 {
-                    inBalloon = true;
+                    if (Vector3.Distance(trans.position, balloonTrans.position) < 3f || Vector3.Distance(trans.position, anchorTrans.position) < 1f)
+                    {
+                        //Debug.Log("embark");
+                        inBalloon = true;
+                        swap = false;
+                    }
                 }
+            } else
+            {
+                swap = true;
             }
+            
         }
+        //Debug.Log(swap);
     }
 }
