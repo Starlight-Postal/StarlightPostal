@@ -50,7 +50,7 @@ public class snow : MonoBehaviour
             if (flakeLife[i] <= 0)
             {
                 flakeLife[i] = 1;
-                flakes[i].position = new Vector2(focus.position.x + range.x * Random.Range(-0.5f, 0.5f), focus.position.y + range.y * Random.Range(-0.5f, 0.5f));
+                flakes[i].position = new Vector3(focus.position.x + range.x * Random.Range(-0.5f, 0.5f), focus.position.y + range.y * Random.Range(-0.5f, 0.5f),3);
             }
             float s = Mathf.Pow((Mathf.Pow(1 / (1 + Mathf.Pow((flakeLife[i] *2) - 1, 2)), 2) - 0.25f) * (4f / 3f),0.5f);
             flakes[i].localScale = new Vector3(1, 1, 1) * 0.05f * s;
@@ -62,7 +62,7 @@ public class snow : MonoBehaviour
     void spawnFlake(float x,float y)
     {
         GameObject flakePos = GameObject.CreatePrimitive(PrimitiveType.Plane);
-        flakePos.transform.position = new Vector2(x, y);
+        flakePos.transform.position = new Vector3(x, y,3);
         flakePos.transform.eulerAngles = new Vector3(-90, 0, 0);
         flakePos.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
         flakes.Add(flakePos.transform);

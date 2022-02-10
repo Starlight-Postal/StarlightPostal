@@ -19,6 +19,8 @@ public class balloon : MonoBehaviour
     public GameObject anchor;
     bool anchored;
     public float anchorD = 10;
+
+    public player player;
     
     // Start is called before the first frame update
     void Start()
@@ -28,6 +30,8 @@ public class balloon : MonoBehaviour
         sprite = gameObject.GetComponent<SpriteRenderer>();
 
         lean = 0;
+
+        player = GameObject.Find("player").GetComponent<player>();
 
         //wind = GameObject.Find("wind").GetComponent<wind>();
 
@@ -62,22 +66,27 @@ public class balloon : MonoBehaviour
                 anchorRB.velocity += new Vector2(Mathf.Sin(a) * (d - anchorD)*0.1f, Mathf.Cos(a) * (d - anchorD)*0.1f);
             }
 
-
-            if (Input.GetMouseButton(1))
+            if (player.inBalloon)
             {
-                //Debug.Log("retract");
-                anchored = false;
-                anchor.SetActive(false);
+                if (Input.GetKey("q"))
+                {
+                    //Debug.Log("retract");
+                    anchored = false;
+                    anchor.SetActive(false);
+                }
             }
         } else
         {
-            if (Input.GetMouseButton(0))
+            if (player.inBalloon)
             {
-                //Debug.Log("throw");
-                anchored = true;
-                anchor.GetComponent<Transform>().position = trans.position + new Vector3(0, -3,0);
-                anchor.SetActive(true);
-                //anchor.GetComponent<SpringJoint2D>().distance = 10;
+                if (Input.GetKey("e"))
+                {
+                    //Debug.Log("throw");
+                    anchored = true;
+                    anchor.GetComponent<Transform>().position = trans.position + new Vector3(0, -3, 0);
+                    anchor.SetActive(true);
+                    //anchor.GetComponent<SpringJoint2D>().distance = 10;
+                }
             }
         }
 
@@ -86,25 +95,28 @@ public class balloon : MonoBehaviour
     void BuoyantControl()
     {
         sprite.color = new Color(1, 0.3f, 0.3f);
-        if (Input.GetKey("up"))
+        if (player.inBalloon)
         {
-            volume += (1 - volume) * 0.0075f;
-            sprite.color = new Color(1, 0.5f, 0.5f);
+            if (Input.GetKey("up") || Input.GetKey("w"))
+            {
+                volume += (1 - volume) * 0.0075f;
+                sprite.color = new Color(1, 0.5f, 0.5f);
 
-        }
-        if (Input.GetKey("down"))
-        {
-            volume += (0 - volume) * 0.0075f;
-            sprite.color = new Color(1, 0f, 0f);
-        }
-        lean *= 0.75f;
-        if (Input.GetKey("right"))
-        {
-            lean += 0.0075f; ;
-        }
-        if (Input.GetKey("left"))
-        {
-            lean -= 0.0075f;
+            }
+            if (Input.GetKey("down") || Input.GetKey("s"))
+            {
+                volume += (0 - volume) * 0.0075f;
+                sprite.color = new Color(1, 0f, 0f);
+            }
+            lean *= 0.75f;
+            if (Input.GetKey("right") || Input.GetKey("d"))
+            {
+                lean += 0.0075f; ;
+            }
+            if (Input.GetKey("left") || Input.GetKey("a"))
+            {
+                lean -= 0.0075f;
+            }
         }
         bouyancy = getBouyancy(trans.position.y);
 
@@ -117,25 +129,28 @@ public class balloon : MonoBehaviour
     {
         sprite.color = new Color(1, 0.3f, 0.3f);
         rb.velocity += new Vector2(0, -0.025f);
-        if (Input.GetKey("up"))
+        if (player.inBalloon)
         {
-            rb.velocity += new Vector2(0, 0.1f);
-            sprite.color = new Color(1, 0.5f, 0.5f);
+            if (Input.GetKey("up"))
+            {
+                rb.velocity += new Vector2(0, 0.1f);
+                sprite.color = new Color(1, 0.5f, 0.5f);
 
-        }
-        if (Input.GetKey("down"))
-        {
-            rb.velocity += new Vector2(0, -0.1f);
-            sprite.color = new Color(1, 0f, 0f);
-        }
-        lean *= 0.75f;
-        if (Input.GetKey("right"))
-        {
-            lean += 0.0075f; ;
-        }
-        if (Input.GetKey("left"))
-        {
-            lean -= 0.0075f;
+            }
+            if (Input.GetKey("down"))
+            {
+                rb.velocity += new Vector2(0, -0.1f);
+                sprite.color = new Color(1, 0f, 0f);
+            }
+            lean *= 0.75f;
+            if (Input.GetKey("right"))
+            {
+                lean += 0.0075f; ;
+            }
+            if (Input.GetKey("left"))
+            {
+                lean -= 0.0075f;
+            }
         }
         rb.velocity += new Vector2(lean, 0);
     }
