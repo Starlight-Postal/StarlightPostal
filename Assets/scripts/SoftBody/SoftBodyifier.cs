@@ -23,7 +23,7 @@ public class SoftBodyifier : MonoBehaviour {
      * Connects every bone to every other bone using spring joints
      * This can be done manually but it is absolutely painful :)
      */
-    void Start() {
+    protected void Start() {
         GameObject boneContainer = transform.Find("Bones").gameObject;
 
         int numberOfBones = boneContainer.transform.childCount;
@@ -46,4 +46,6 @@ public class SoftBodyifier : MonoBehaviour {
             }
         }
     }
+
+    protected void Update() {}
 }
