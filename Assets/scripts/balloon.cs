@@ -6,14 +6,20 @@ public class balloon : MonoBehaviour
 {
     float bouyancy;
     float lean;
+    public bool capped = true;
     public float volume = 1;
     public float weight = 1;
     public float airFric = 0.975f;
     public float gravity = 0.1f;
     public float atmPressure = 1;
+
+    public float fillRate = 0.025f;
+    public float volCap = 1;
+
     public Rigidbody2D rb;
     public Transform trans;
     public SpriteRenderer sprite;
+
 
     public wind wind;
     public GameObject anchor;
@@ -21,7 +27,7 @@ public class balloon : MonoBehaviour
     public float anchorD = 10;
 
     public player player;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +51,7 @@ public class balloon : MonoBehaviour
     {
         rb.velocity *= airFric;
 
-        BuoyantControl();
+        BuoyantControl(capped);
         //ThrustControl();
 
         rb.velocity += wind.getWind(trans.position.x, trans.position.y);
@@ -59,11 +65,11 @@ public class balloon : MonoBehaviour
             Transform aTrans = anchor.GetComponent<Transform>();
             Rigidbody2D anchorRB = anchor.GetComponent<Rigidbody2D>();
             float d = Vector3.Distance(aTrans.position, trans.position);
-            if (d>anchorD)
+            if (d > anchorD)
             {
                 float a = Mathf.Atan2(trans.position.x - aTrans.position.x, trans.position.y - aTrans.position.y);
-                rb.velocity += new Vector2(Mathf.Sin(a) * (d - anchorD) * -0.2f, Mathf.Cos(a) * (d - anchorD)*-0.2f);
-                anchorRB.velocity += new Vector2(Mathf.Sin(a) * (d - anchorD)*0.05f, Mathf.Cos(a) * (d - anchorD)*0.05f);
+                rb.velocity += new Vector2(Mathf.Sin(a) * (d - anchorD) * -0.2f, Mathf.Cos(a) * (d - anchorD) * -0.2f);
+                anchorRB.velocity += new Vector2(Mathf.Sin(a) * (d - anchorD) * 0.05f, Mathf.Cos(a) * (d - anchorD) * 0.05f);
             }
 
             if (player.inBalloon)
@@ -83,7 +89,8 @@ public class balloon : MonoBehaviour
                 }
                 */
             }
-        } else
+        }
+        else
         {
             if (player.inBalloon)
             {
@@ -100,21 +107,32 @@ public class balloon : MonoBehaviour
 
     }
 
-    void BuoyantControl()
+    void BuoyantControl(bool capped)
     {
         sprite.color = new Color(1, 0.3f, 0.3f);
         if (player.inBalloon)
         {
             if (Input.GetKey("up") || Input.GetKey("w"))
             {
-                volume += (1 - volume) * 0.0075f;
+                volume += fillRate;
                 sprite.color = new Color(1, 0.5f, 0.5f);
 
             }
             if (Input.GetKey("down") || Input.GetKey("s"))
             {
-                volume += (0 - volume) * 0.0075f;
+                volume -= fillRate;
                 sprite.color = new Color(1, 0f, 0f);
+            }
+            if (capped)
+            {
+                if (volume > volCap)
+                {
+                    volume += (volCap - volume) * 0.1f;
+                }
+                if (volume < 0)
+                {
+                    volume *= 0.9f;
+                }
             }
             lean *= 0.75f;
             if (Input.GetKey("right") || Input.GetKey("d"))
