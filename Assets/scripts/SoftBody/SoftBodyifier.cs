@@ -41,6 +41,7 @@ public class SoftBodyifier : MonoBehaviour {
 
                 // Apply options from editor
                 joint.autoConfigureConnectedAnchor = true;
+                joint.autoConfigureDistance = true;
                 joint.frequency = frequency;
                 joint.dampingRatio = dampingRatio;
             }
