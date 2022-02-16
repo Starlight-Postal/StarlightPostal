@@ -48,5 +48,12 @@ public class SoftBodyifier : MonoBehaviour {
         }
     }
 
-    protected void Update() {}
+    protected void Update() {
+        var springjoints = GetComponentsInChildren<SpringJoint2D>(); // works recursivly :)
+
+        foreach (var joint in springjoints) {
+            joint.frequency = frequency;
+            joint.dampingRatio = dampingRatio;
+        }
+    }
 }
