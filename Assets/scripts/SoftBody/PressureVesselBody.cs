@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PressureVesselBody : SoftBodyifier {
 
-    public float pressure = 1.0F;
+    [Range(0.0F, 1.0F)]
+    public float pressure = 0.5F;
 
     private GameObject boneContainer;
     private int numberOfBones;
@@ -25,7 +26,9 @@ public class PressureVesselBody : SoftBodyifier {
         var springjoints = GetComponentsInChildren<SpringJoint2D>(); // works recursivly :)
 
         foreach (var joint in springjoints) {
-            joint.anchor = (new Vector2() - joint.connectedAnchor) * pressure;
+            var scaledPressure = pressure * (/*out max*/-0.3F - /*out min*/0.0F);
+
+            joint.anchor = (new Vector2() - joint.connectedAnchor) * scaledPressure;
         }
     }
 }
