@@ -15,6 +15,7 @@ public class PressureVesselBody : SoftBodyifier {
 
         foreach (var joint in springjoints) {
             joint.autoConfigureDistance = false;
+                joint.autoConfigureConnectedAnchor = false;
         }
     }
 
@@ -25,7 +26,8 @@ public class PressureVesselBody : SoftBodyifier {
 
         foreach (var joint in springjoints) {
             joint.distance = (0.005F * pressure) / 100;
-            //joint.distance = 1.0F;
+            joint.anchor = (new Vector2() - joint.connectedAnchor) * pressure;
         }
     }
 }
+
