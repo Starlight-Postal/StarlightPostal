@@ -25,7 +25,6 @@ public class PressureVesselBody : SoftBodyifier {
         var springjoints = GetComponentsInChildren<SpringJoint2D>(); // works recursivly :)
 
         foreach (var joint in springjoints) {
-            joint.distance = (0.005F * pressure) / 100;
             joint.anchor = (new Vector2() - joint.connectedAnchor) * pressure;
         }
     }
