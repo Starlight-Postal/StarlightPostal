@@ -27,8 +27,13 @@ public class balloon : MonoBehaviour
     public GameObject anchor;
     public bool anchored;
     public float anchorD = 10;
+    public float anchorRange = 10;
+
 
     public player player;
+
+    int kiLMOUSE;
+    int kiRMOUSE;
 
     // Start is called before the first frame update
     void Start()
@@ -46,11 +51,13 @@ public class balloon : MonoBehaviour
         anchor = GameObject.Find("anchor");
         anchor.SetActive(true);
         anchored = true;
+
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        UIUpdate();
         rb.velocity *= airFric;
 
         BuoyantControl(capped);
@@ -73,30 +80,27 @@ public class balloon : MonoBehaviour
 
             if (player.inBalloon)
             {
-                if (Input.GetKey("q"))
+                if (kiRMOUSE>0)
+                {
+                    anchorD *= 0.99f;
+                }
+                if (kiLMOUSE==1)
                 {
                     //Debug.Log("retract");
                     anchored = false;
                     anchor.SetActive(false);
                 }
-
-                /*
-                if (Input.GetKey("space"))
-                {
-                    player.inBalloon = false;
-                    Debug.Log("disembark");
-                }
-                */
             }
         }
         else
         {
             if (player.inBalloon)
             {
-                if (Input.GetKey("e"))
+                if (kiLMOUSE==1)
                 {
                     //Debug.Log("throw");
                     anchored = true;
+                    anchorD = anchorRange;
                     anchor.GetComponent<Transform>().position = trans.position + new Vector3(0, -3, 0);
                     anchor.SetActive(true);
                     //anchor.GetComponent<SpringJoint2D>().distance = 10;
@@ -185,5 +189,38 @@ public class balloon : MonoBehaviour
     {
         //return atmPressure / (y + 1);
         return (40 - y) * atmPressure;
+    }
+    void UIUpdate()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            if (kiLMOUSE == 0)
+            {
+                kiLMOUSE = 1;
+            }
+            else
+            {
+                kiLMOUSE = 2;
+            }
+        }
+        else
+        {
+            kiLMOUSE = 0;
+        }
+        if (Input.GetMouseButton(1))
+        {
+            if (kiRMOUSE == 0)
+            {
+                kiRMOUSE = 1;
+            }
+            else
+            {
+                kiRMOUSE = 2;
+            }
+        }
+        else
+        {
+            kiRMOUSE = 0;
+        }
     }
 }

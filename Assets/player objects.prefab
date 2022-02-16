@@ -98,9 +98,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.05
   trans: {fileID: 3393330288123780321}
-  balloon: {fileID: 3393330288144668550}
-  player: {fileID: 5649912349369794293}
+  cam: {fileID: 0}
+  balloonTrans: {fileID: 0}
+  playerTrans: {fileID: 0}
   target: {fileID: 0}
+  player: {fileID: 0}
+  balloonSize: 20
+  playerSize: 10
 --- !u!1 &3393330288144668547
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,10 +114,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3393330288144668550}
+  - component: {fileID: 3393330288144668546}
   - component: {fileID: 3393330288144668551}
   - component: {fileID: 3393330288144668548}
   - component: {fileID: 3393330288144668549}
-  - component: {fileID: 3393330288144668546}
   m_Layer: 0
   m_Name: balloon
   m_TagString: Untagged
@@ -135,6 +139,36 @@ Transform:
   m_Father: {fileID: 3393330289244997170}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3393330288144668546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3393330288144668547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87e9846dfb806394a900416b4e8ca3e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  capped: 1
+  volume: 0
+  weight: 1
+  airFric: 0.99
+  gravity: 0.3
+  atmPressure: 0.05
+  leanPower: 0.0075
+  fillRate: 0.025
+  volCap: 1
+  windPower: 1.25
+  rb: {fileID: 0}
+  trans: {fileID: 0}
+  sprite: {fileID: 0}
+  wind: {fileID: 0}
+  anchor: {fileID: 0}
+  anchored: 0
+  anchorD: 10
+  player: {fileID: 0}
 --- !u!212 &3393330288144668551
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -223,30 +257,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &3393330288144668546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3393330288144668547}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87e9846dfb806394a900416b4e8ca3e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  volume: 0
-  weight: 1
-  airFric: 0.99
-  gravity: 0.3
-  atmPressure: 0.05
-  rb: {fileID: 0}
-  trans: {fileID: 0}
-  sprite: {fileID: 0}
-  wind: {fileID: 0}
-  anchor: {fileID: 0}
-  anchorD: 10
-  player: {fileID: 0}
 --- !u!1 &3393330289244997171
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,3 +561,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inBalloon: 0
   rb: {fileID: 0}
+  trans: {fileID: 0}
+  sprite: {fileID: 0}
+  collider: {fileID: 0}
+  runSpeed: 0.5
+  gravity: 0.25
+  balloonTrans: {fileID: 0}
+  anchorTrans: {fileID: 0}
+  balloon: {fileID: 0}
