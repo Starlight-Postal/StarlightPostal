@@ -5617,6 +5617,10 @@ PrefabInstance:
       propertyPath: ratio.y
       value: 2.25
       objectReference: {fileID: 0}
+    - target: {fileID: 6375599264441225762, guid: 7d2047d1da9024f479c33fbd279619aa, type: 3}
+      propertyPath: windParticle
+      value: 
+      objectReference: {fileID: 5636101775489333355, guid: 42698a22f113b5f4191e971c0e489136, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d2047d1da9024f479c33fbd279619aa, type: 3}
 --- !u!1 &1001970558
@@ -10885,6 +10889,30 @@ PrefabInstance:
     - target: {fileID: 3393330288144668546, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
       propertyPath: volume
       value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3393330288144668546, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
+      propertyPath: airFric
+      value: 0.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 3393330288144668546, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
+      propertyPath: gravity
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3393330288144668546, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
+      propertyPath: fillRate
+      value: 0.0025
+      objectReference: {fileID: 0}
+    - target: {fileID: 3393330288144668546, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
+      propertyPath: leanPower
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 3393330288144668546, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
+      propertyPath: windPower
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3393330288144668546, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
+      propertyPath: atmPressure
+      value: 0.075
       objectReference: {fileID: 0}
     - target: {fileID: 3393330288144668547, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
       propertyPath: m_Layer

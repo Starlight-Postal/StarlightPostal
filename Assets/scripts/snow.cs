@@ -12,6 +12,7 @@ public class snow : MonoBehaviour
     public List<Transform> flakes;
     public List<float> flakeLife;
     public List<float> flakeWeight;
+    public GameObject windParticle;
 
     public Vector2 ratio;
     public Vector2 range;
@@ -26,7 +27,7 @@ public class snow : MonoBehaviour
 
         for (int i = 0; i < n; i++)
         {
-            spawnFlake(focus.position.x + range.x * Random.Range(-0.5f, 0.5f), focus.position.y + range.y * Random.Range(-0.5f, 0.5f));
+            spawnFlake(focus.position.x + range.x * Random.Range(-0.5f, 0.5f), focus.position.y + range.y * Random.Range(-0.5f, 0.5f),windParticle);
         }
     }
 
@@ -59,19 +60,20 @@ public class snow : MonoBehaviour
                 flakes[i].position = new Vector3(focus.position.x + range.x * Random.Range(-0.5f, 0.5f), focus.position.y + range.y * Random.Range(-0.5f, 0.5f),3);
             }
             float s = Mathf.Pow((Mathf.Pow(1 / (1 + Mathf.Pow((flakeLife[i] *2) - 1, 2)), 2) - 0.25f) * (4f / 3f),0.5f);
-            flakes[i].localScale = new Vector3(1, 1, 1) * 0.05f * s * cam.orthographicSize/20f;
+            flakes[i].localScale = new Vector3(1, 1, 1) * 0.5f * s * cam.orthographicSize/20f;
 
 
         }
     }
 
-    void spawnFlake(float x,float y)
+    void spawnFlake(float x,float y, GameObject pf)
     {
-        GameObject flakePos = GameObject.CreatePrimitive(PrimitiveType.Plane);
-        flakePos.transform.position = new Vector3(x, y,3);
-        flakePos.transform.eulerAngles = new Vector3(-90, 0, 0);
-        flakePos.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
-        flakes.Add(flakePos.transform);
+        //GameObject flakePos = GameObject.CreatePrimitive(PrimitiveType.Plane);
+        GameObject flakeObj = Instantiate(pf, new Vector3(x,y,3), Quaternion.identity);
+        //flakePos.transform.position = new Vector3(x, y,3);
+        //flakePos.transform.eulerAngles = new Vector3(-90, 0, 0);
+        //flakePos.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
+        flakes.Add(flakeObj.transform);
         flakeLife.Add(Random.Range(0f,1f));
         flakeWeight.Add(Random.Range(0.9f, 1.1f));
     }

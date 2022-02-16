@@ -12,9 +12,11 @@ public class balloon : MonoBehaviour
     public float airFric = 0.975f;
     public float gravity = 0.1f;
     public float atmPressure = 1;
-
+    public float leanPower = 0.0075f;
     public float fillRate = 0.025f;
     public float volCap = 1;
+
+    public float windPower = 1.25f;
 
     public Rigidbody2D rb;
     public Transform trans;
@@ -54,11 +56,8 @@ public class balloon : MonoBehaviour
         BuoyantControl(capped);
         //ThrustControl();
 
-        rb.velocity += wind.getWind(trans.position.x, trans.position.y);
+        rb.velocity += wind.getWind(trans.position.x, trans.position.y)*windPower;
 
-
-        //Debug.Log(bouyancy+" - "+gravity*weight);
-        //Debug.Log(wind.getWind(trans.position.x, trans.position.y));
 
         if (anchored)
         {
@@ -137,11 +136,11 @@ public class balloon : MonoBehaviour
             lean *= 0.75f;
             if (Input.GetKey("right") || Input.GetKey("d"))
             {
-                lean += 0.0075f; ;
+                lean += leanPower;
             }
             if (Input.GetKey("left") || Input.GetKey("a"))
             {
-                lean -= 0.0075f;
+                lean -= leanPower;
             }
         }
         bouyancy = getBouyancy(trans.position.y);
@@ -171,11 +170,11 @@ public class balloon : MonoBehaviour
             lean *= 0.75f;
             if (Input.GetKey("right"))
             {
-                lean += 0.0075f; ;
+                lean += leanPower; ;
             }
             if (Input.GetKey("left"))
             {
-                lean -= 0.0075f;
+                lean -= leanPower;
             }
         }
         rb.velocity += new Vector2(lean, 0);
