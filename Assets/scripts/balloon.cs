@@ -52,6 +52,7 @@ public class balloon : MonoBehaviour
         anchor.SetActive(true);
         anchored = true;
 
+        Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), anchor.GetComponent<Collider2D>(), true);
     }
 
     // Update is called once per frame

@@ -27,6 +27,8 @@ public class player : MonoBehaviour
         balloonTrans = GameObject.Find("balloon").GetComponent<Transform>();
         balloon = GameObject.Find("balloon").GetComponent<balloon>();
         anchorTrans = GameObject.Find("anchor").GetComponent<Transform>();
+
+        
     }
 
     // Update is called once per frame
@@ -42,7 +44,7 @@ public class player : MonoBehaviour
             {
                 if (swap)
                 {
-                    if (balloon.anchored)
+                    if (balloon.anchored&&balloon.anchorD<0.25f)
                     {
                         inBalloon = false;
                         //Debug.Log("disembark");
