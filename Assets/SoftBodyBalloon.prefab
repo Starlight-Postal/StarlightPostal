@@ -1380,6 +1380,9 @@ GameObject:
   - component: {fileID: 8325809426465418110}
   - component: {fileID: 1169932521542151487}
   - component: {fileID: 6324884603630902420}
+  - component: {fileID: 7216034340628130332}
+  - component: {fileID: 2354600491253466409}
+  - component: {fileID: 8824975588158290021}
   m_Layer: 0
   m_Name: bone_1
   m_TagString: Untagged
@@ -1448,6 +1451,65 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.32771283, y: 0.51002574}
   m_EdgeRadius: 0
+--- !u!231 &7216034340628130332
+SpringJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3697613549195471368}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 5741149673744363114}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_AutoConfigureDistance: 1
+  m_Distance: 1.0114565
+  m_DampingRatio: 0
+  m_Frequency: 1
+--- !u!231 &2354600491253466409
+SpringJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3697613549195471368}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 3478821325082759961}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_AutoConfigureDistance: 1
+  m_Distance: 0.9415406
+  m_DampingRatio: 0
+  m_Frequency: 1
+--- !u!254 &8824975588158290021
+RelativeJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3697613549195471368}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 2809925705148867861}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_MaxForce: 10000
+  m_MaxTorque: 10000
+  m_CorrectionScale: 0.3
+  m_AutoConfigureOffset: 1
+  m_LinearOffset: {x: 0.5303993, y: -0.00000025797635}
+  m_AngularOffset: 0.01651895
 --- !u!1 &3761616759643043143
 GameObject:
   m_ObjectHideFlags: 0
