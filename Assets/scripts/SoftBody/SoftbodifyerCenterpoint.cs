@@ -48,6 +48,7 @@ public class SoftbodifyerCenterpoint : MonoBehaviour {
             Debug.Log(bone + " " + nodesToConnect[0] + " " + nodesToConnect[1] + " " + nodesToConnect[2]);
 
             for (int j = 0; j < 3; j++) {
+                if (nodesToConnect[j].GetComponent(typeof(Rigidbody2D)) == null) { continue; } // skip any joints that would be created without a connected body
                 var joint = bone.AddComponent(typeof(SpringJoint2D)) as SpringJoint2D;
                 joint.connectedBody = nodesToConnect[j].GetComponent(typeof(Rigidbody2D)) as Rigidbody2D;
                 
