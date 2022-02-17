@@ -6,10 +6,7 @@ public class balloon : MonoBehaviour
 {
     
     float lean;
-<<<<<<< Updated upstream
     public float leanPower = 0.0075f;
-=======
->>>>>>> Stashed changes
     /*float bouyancy;
     public bool capped = true;
     public float volume = 1;
@@ -23,18 +20,11 @@ public class balloon : MonoBehaviour
 
     public float targetHeight;
     public float th;
-<<<<<<< Updated upstream
     public float heightCap = 30;
     public float buoyancy = 0.0005f;
     public float weight = 1;
     public float fillRate = 0.1f;
     public float airFric = 0.975f;
-=======
-    float heightCap = 30;
-    float buoyancy = 0.0005;
-    float weight = 1;
-    float fillRate = 0.1f;
->>>>>>> Stashed changes
 
     public float windPower = 1.25f;
 
