@@ -43,7 +43,8 @@ public class snow : MonoBehaviour
             //flakes[i].position += new Vector3(w.x, w.y,0)*speed*flakeWeight[i];
             flakeV[i] *= 0.95f;
             flakeV[i] += new Vector2(w.x, w.y) * speed * flakeWeight[i];
-            flakes[i].position += new Vector3(flakeV[i].x, flakeV[i].y-gravity*flakeWeight[i],0);
+            flakes[i].position += new Vector3(flakeV[i].x, flakeV[i].y,0);
+            flakes[i].position += new Vector3(0, (-gravity * flakeWeight[i])/(w.magnitude+1), 0);
             if (flakes[i].position.x >= focus.position.x + range.x * 0.5f)
             {
                 flakes[i].position = new Vector3(focus.position.x - range.x * 0.5f, focus.position.y + range.y * Random.Range(-0.5f, 0.5f), flakes[i].position.z);

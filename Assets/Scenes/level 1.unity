@@ -2775,7 +2775,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 120858111712195846, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
       propertyPath: inBalloon
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 582854148932369490, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
+      propertyPath: m_Color.b
+      value: 0.97524524
+      objectReference: {fileID: 0}
+    - target: {fileID: 582854148932369490, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
+      propertyPath: m_Color.g
+      value: 0.53459114
+      objectReference: {fileID: 0}
+    - target: {fileID: 582854148932369490, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2301179235607096016, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
       propertyPath: m_Mass
