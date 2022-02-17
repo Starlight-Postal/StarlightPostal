@@ -151,24 +151,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87e9846dfb806394a900416b4e8ca3e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  capped: 1
-  volume: 0
+  leanPower: 0.01
+  targetHeight: 0
+  th: 0
+  heightCap: 30
+  buoyancy: 0.2
   weight: 1
-  airFric: 0.99
-  gravity: 0.3
-  atmPressure: 0.05
-  leanPower: 0.0075
-  fillRate: 0.025
-  volCap: 1
-  windPower: 1.25
+  fillRate: 0.15
+  airFric: 0.98
+  windPower: 2
   rb: {fileID: 0}
   trans: {fileID: 0}
   sprite: {fileID: 0}
   wind: {fileID: 0}
-  anchor: {fileID: 0}
+  anchor: {fileID: 3393330289518055293}
   anchored: 0
   anchorD: 10
-  player: {fileID: 0}
+  anchorRange: 10
+  player: {fileID: 120858111712195846}
 --- !u!212 &3393330288144668551
 SpriteRenderer:
   m_ObjectHideFlags: 0

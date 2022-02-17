@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class balloon : MonoBehaviour
 {
-    float bouyancy;
+    
     float lean;
+    public float leanPower = 0.0075f;
+    /*float bouyancy;
     public bool capped = true;
     public float volume = 1;
     public float weight = 1;
@@ -14,7 +16,15 @@ public class balloon : MonoBehaviour
     public float atmPressure = 1;
     public float leanPower = 0.0075f;
     public float fillRate = 0.025f;
-    public float volCap = 1;
+    public float volCap = 1;*/
+
+    public float targetHeight;
+    public float th;
+    public float heightCap = 30;
+    public float buoyancy = 0.0005f;
+    public float weight = 1;
+    public float fillRate = 0.1f;
+    public float airFric = 0.975f;
 
     public float windPower = 1.25f;
 
@@ -61,8 +71,9 @@ public class balloon : MonoBehaviour
         UIUpdate();
         rb.velocity *= airFric;
 
-        BuoyantControl(capped);
+        //BuoyantControl(capped);
         //ThrustControl();
+        TargetControl();
 
         rb.velocity += wind.getWind(trans.position.x, trans.position.y)*windPower;
 
@@ -94,7 +105,7 @@ public class balloon : MonoBehaviour
             } else
             {
                 anchorD += (2.5f - anchorD) * 0.01f;
-                volume *= 0.999f;
+                //volume *= 0.999f;
             }
         }
         else
@@ -115,7 +126,7 @@ public class balloon : MonoBehaviour
 
     }
 
-    void BuoyantControl(bool capped)
+    /*void BuoyantControl(bool capped)
     {
         sprite.color = new Color(1, 0.3f, 0.3f);
         if (player.inBalloon)
@@ -187,14 +198,55 @@ public class balloon : MonoBehaviour
             }
         }
         rb.velocity += new Vector2(lean, 0);
+    }*/
+
+    void TargetControl()
+    {
+        if (player.inBalloon)
+        {
+            if (Input.GetKey("up") || Input.GetKey("w"))
+            {
+                th += fillRate;
+                sprite.color = new Color(1, 0.5f, 0.5f);
+            }
+            if (Input.GetKey("down") || Input.GetKey("s"))
+            {
+                th -= fillRate;
+                sprite.color = new Color(1, 0f, 0f);
+            }
+            lean *= 0.75f;
+            if (Input.GetKey("right") || Input.GetKey("d"))
+            {
+                lean += leanPower;
+            }
+            if (Input.GetKey("left") || Input.GetKey("a"))
+            {
+                lean -= leanPower;
+            }
+        }
+
+        if (th < 0)
+        {
+            th += (0 - th) * 0.1f;
+        }
+        if (th > heightCap)
+        {
+            th += (heightCap - th) * 0.1f;
+        }
+
+        targetHeight = th / weight;
+
+        float hd = targetHeight - trans.position.y;
+        rb.velocity += new Vector2(lean,hd * buoyancy);
+
+        Debug.Log(targetHeight);
     }
 
-
-    float getBouyancy(float y)
+    /*float getBouyancy(float y)
     {
         //return atmPressure / (y + 1);
         return (40 - y) * atmPressure;
-    }
+    }*/
     void UIUpdate()
     {
         if (Input.GetMouseButton(0))

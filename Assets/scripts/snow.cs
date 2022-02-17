@@ -9,6 +9,7 @@ public class snow : MonoBehaviour
     public Camera cam;
     public float speed = 2;
     public float gravity = 0.05f;
+    public float size = 0.25f;
     public int n = 100;
     public List<Transform> flakes;
     public List<float> flakeLife;
@@ -73,7 +74,7 @@ public class snow : MonoBehaviour
                 flakeV[i] = new Vector2(0, 0);
             }
             float s = Mathf.Pow((Mathf.Pow(1 / (1 + Mathf.Pow((flakeLife[i] *2) - 1, 2)), 2) - 0.25f) * (4f / 3f),0.5f);
-            flakes[i].localScale = new Vector3(1, 1, 1) * 0.5f * s * cam.orthographicSize/20f;
+            flakes[i].localScale = new Vector3(1, 1, 1) * size * s * cam.orthographicSize/20f;
 
 
         }

@@ -2753,7 +2753,7 @@ Transform:
   m_Father: {fileID: 1707805787}
   m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -30}
---- !u!114 &509796491 stripped
+--- !u!114 &508892987 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5532795894237530025, guid: 7d2047d1da9024f479c33fbd279619aa, type: 3}
   m_PrefabInstance: {fileID: 995753814}
@@ -5602,6 +5602,14 @@ PrefabInstance:
       value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 6375599264441225762, guid: 7d2047d1da9024f479c33fbd279619aa, type: 3}
+      propertyPath: size
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375599264441225762, guid: 7d2047d1da9024f479c33fbd279619aa, type: 3}
+      propertyPath: speed
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375599264441225762, guid: 7d2047d1da9024f479c33fbd279619aa, type: 3}
       propertyPath: range.x
       value: 4
       objectReference: {fileID: 0}
@@ -6039,6 +6047,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1064724114 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 120858111712195846, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
+  m_PrefabInstance: {fileID: 3393330287697241185}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d3f72d3e9277e548bb5579882f878bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1078516685
 GameObject:
   m_ObjectHideFlags: 0
@@ -7781,6 +7800,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1482231712 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3393330289518055293, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
+  m_PrefabInstance: {fileID: 3393330287697241185}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1496569812
 GameObject:
   m_ObjectHideFlags: 0
@@ -10885,7 +10909,15 @@ PrefabInstance:
     - target: {fileID: 3393330288144668546, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
       propertyPath: wind
       value: 
-      objectReference: {fileID: 509796491}
+      objectReference: {fileID: 508892987}
+    - target: {fileID: 3393330288144668546, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
+      propertyPath: anchor
+      value: 
+      objectReference: {fileID: 1482231712}
+    - target: {fileID: 3393330288144668546, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1064724114}
     - target: {fileID: 3393330288144668546, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
       propertyPath: volume
       value: 0.15
@@ -10899,8 +10931,12 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3393330288144668546, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
+      propertyPath: buoyancy
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3393330288144668546, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
       propertyPath: fillRate
-      value: 0.0025
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 3393330288144668546, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
       propertyPath: leanPower
@@ -10908,7 +10944,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3393330288144668546, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
       propertyPath: windPower
-      value: 1.25
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3393330288144668546, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
       propertyPath: atmPressure
