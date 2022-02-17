@@ -91,6 +91,10 @@ public class balloon : MonoBehaviour
                     anchored = false;
                     anchor.SetActive(false);
                 }
+            } else
+            {
+                anchorD += (2.5f - anchorD) * 0.01f;
+                volume *= 0.999f;
             }
         }
         else

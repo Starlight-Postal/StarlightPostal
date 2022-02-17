@@ -44,7 +44,8 @@ public class player : MonoBehaviour
             {
                 if (swap)
                 {
-                    if (balloon.anchored&&balloon.anchorD<0.25f)
+                    //if (balloon.anchored&&balloon.anchorD<1f)
+                    if(balloon.anchored)
                     {
                         inBalloon = false;
                         //Debug.Log("disembark");
