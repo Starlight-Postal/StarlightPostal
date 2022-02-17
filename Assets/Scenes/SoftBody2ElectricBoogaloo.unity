@@ -243,6 +243,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoftBodyBalloon
       objectReference: {fileID: 0}
+    - target: {fileID: 2385888926160378130, guid: 54a712e7a9229584ba0fd10f3ecac611, type: 3}
+      propertyPath: frequency
+      value: 1.19
+      objectReference: {fileID: 0}
     - target: {fileID: 4792089110193317810, guid: 54a712e7a9229584ba0fd10f3ecac611, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -372,6 +376,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &509180041 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3697613549195471368, guid: 54a712e7a9229584ba0fd10f3ecac611, type: 3}
+  m_PrefabInstance: {fileID: 30225012}
+  m_PrefabAsset: {fileID: 0}
+--- !u!254 &509180047
+RelativeJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509180041}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 1293862802}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_MaxForce: 10000
+  m_MaxTorque: 10000
+  m_CorrectionScale: 0.3
+  m_AutoConfigureOffset: 1
+  m_LinearOffset: {x: 0.5303993, y: -0.00000025797635}
+  m_AngularOffset: 0.01651895
 --- !u!1 &831998202
 GameObject:
   m_ObjectHideFlags: 0
