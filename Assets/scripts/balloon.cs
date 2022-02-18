@@ -202,6 +202,7 @@ public class balloon : MonoBehaviour
 
     void TargetControl()
     {
+        sprite.color = new Color(1, 0.3f, 0.3f);
         if (player.inBalloon)
         {
             if (Input.GetKey("up") || Input.GetKey("w"))
