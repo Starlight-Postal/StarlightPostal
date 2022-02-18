@@ -239,7 +239,7 @@ public class balloon : MonoBehaviour
         float hd = targetHeight - trans.position.y;
         rb.velocity += new Vector2(lean,hd * buoyancy);
 
-        Debug.Log(targetHeight);
+        //Debug.Log(targetHeight);
     }
 
     /*float getBouyancy(float y)
