@@ -20,7 +20,10 @@ Shader "Unlit/worldspace"
     }
         SubShader
     {
-        Tags { "RenderType" = "Opaque" }
+        Tags {"Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent"}
+        ZWrite Off
+        Blend SrcAlpha OneMinusSrcAlpha
+        Cull back
         LOD 100
 
         Pass
@@ -98,10 +101,7 @@ Shader "Unlit/worldspace"
                     base = _ColorD;
                 }
                 fixed4 col = base;
-                col*=((tex2D(_MainTex, (abs(i.worldPos.xy) * 0.1) % 1)*texPower)+(1-texPower));//i.worldPos.xy
-                // apply fog
-                //UNITY_APPLY_FOG(i.fogCoord, col);
-
+                col *= ((tex2D(_MainTex, i.uv) * texPower) + (1 - texPower));
                 return col;
             }
             ENDCG

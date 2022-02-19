@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: world
-  m_Shader: {fileID: 4800000, guid: e6fd6eb6e3c2e9a42ad7143401c57407, type: 3}
+  m_Name: tree-world
+  m_Shader: {fileID: 4800000, guid: ff1cc254e36ea52499e2b0503d3197f5, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 10305, guid: 0000000000000000f000000000000000, type: 0}
+        m_Texture: {fileID: 2800000, guid: e0d27f83339c3ca469881119ce140a0f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -78,9 +78,9 @@ Material:
     - texPower: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorA: {r: 0.30588236, g: 0.33948794, b: 0.59607846, a: 0}
-    - _ColorB: {r: 0.050027482, g: 0.047058824, b: 0.20784314, a: 0}
-    - _ColorC: {r: 0, g: 0.2924528, b: 0.2743213, a: 0}
-    - _ColorD: {r: 0.36133853, g: 0.8088217, b: 0.8207547, a: 0}
+    - _ColorA: {r: 0.30588236, g: 0.33948794, b: 0.59607846, a: 1}
+    - _ColorB: {r: 0.050027482, g: 0.047058824, b: 0.20784314, a: 1}
+    - _ColorC: {r: 0, g: 0.2924528, b: 0.2743213, a: 1}
+    - _ColorD: {r: 0.36133853, g: 0.8088217, b: 0.8207547, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
