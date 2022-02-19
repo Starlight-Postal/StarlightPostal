@@ -10,6 +10,7 @@ public class snow : MonoBehaviour
     public float speed = 2;
     public float gravity = 0.05f;
     public float size = 0.25f;
+    public float decayRate = 0.025f;
     public int n = 100;
     public List<Transform> flakes;
     public List<float> flakeLife;
@@ -65,7 +66,7 @@ public class snow : MonoBehaviour
                 flakes[i].position = new Vector3(focus.position.x + range.x * Random.Range(-0.5f, 0.5f), focus.position.y + range.y * 0.5f, flakes[i].position.z);
                 flakeV[i] = new Vector2(0, 0);
             }
-            float decay = 0.025f/ (flakeV[i].magnitude+1);
+            float decay = decayRate/ (flakeV[i].magnitude+1);
             
             flakeLife[i] -= decay;
             if (flakeLife[i] <= 0)
