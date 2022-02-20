@@ -83,7 +83,7 @@ public class player : MonoBehaviour
                 if (hit!=null) {
                     Collider2D platform = hit.collider;
                     //EdgeCollider2D platform = targetPlatform;
-                    Debug.Log(platform.GetType());
+                    //Debug.Log(platform.GetType());
                     if (platform.GetType() == typeof(EdgeCollider2D))
                     {
                         if (platform.gameObject.GetComponent<PlatformEffector2D>() != null)

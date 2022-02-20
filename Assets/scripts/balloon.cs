@@ -202,18 +202,18 @@ public class balloon : MonoBehaviour
 
     void TargetControl()
     {
-        sprite.color = new Color(1, 0.3f, 0.3f);
+        sprite.color = new Color(1,0.9f,0.9f);
         if (player.inBalloon)
         {
             if (Input.GetKey("up") || Input.GetKey("w"))
             {
                 th += fillRate;
-                sprite.color = new Color(1, 0.5f, 0.5f);
+                sprite.color = new Color(1,1,1);
             }
             if (Input.GetKey("down") || Input.GetKey("s"))
             {
                 th -= fillRate;
-                sprite.color = new Color(1, 0f, 0f);
+                sprite.color = new Color(1, 0.8f,0.8f);
             }
             lean *= 0.75f;
             if (Input.GetKey("right") || Input.GetKey("d"))
