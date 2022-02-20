@@ -17,6 +17,9 @@ public class player : MonoBehaviour
     public balloon balloon;
 
     bool swap = false;
+
+    int kiDOWN = 0;
+    public EdgeCollider2D platform;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,12 +31,13 @@ public class player : MonoBehaviour
         balloon = GameObject.Find("balloon").GetComponent<balloon>();
         anchorTrans = GameObject.Find("anchor").GetComponent<Transform>();
 
-        
+        kiDOWN = 0;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        UIUpdate();
         if (inBalloon)
         {
             sprite.enabled = false;
@@ -70,6 +74,38 @@ public class player : MonoBehaviour
             {
                 rb.velocity += new Vector2(-runSpeed, 0);
             }
+
+            if (kiDOWN == 1)
+            {
+                //fall through semisolid platform
+                Physics2D.IgnoreCollision(collider, platform, true);
+                //Transform platShape = platform.gameObject.GetComponent<Transform>();
+                //Vector2 pA = (new Vector2(platShape.position.x, platShape.position.y) + (platform.points[0] * new Vector2(platShape.localScale.x, platShape.localScale.y)));
+                //Vector2 pB = (new Vector2(platShape.position.x, platShape.position.y) + (platform.points[1] * new Vector2(platShape.localScale.x, platShape.localScale.y)));
+                //Debug.Log(pA+" , "+ pB);
+                Debug.Log("through");
+            } else
+            {
+                Transform platShape = platform.gameObject.GetComponent<Transform>();
+                Vector2 pA = (new Vector2(platShape.position.x, platShape.position.y) + (platform.points[0] * new Vector2(platShape.localScale.x, platShape.localScale.y)));
+                Vector2 pB = (new Vector2(platShape.position.x, platShape.position.y) + (platform.points[1] * new Vector2(platShape.localScale.x, platShape.localScale.y)));
+                if (Mathf.Abs(trans.position.x - (pA.x + pB.x) / 2f) > Mathf.Abs(pA.x - pB.x) / 2f)
+                {
+                    Physics2D.IgnoreCollision(collider, platform, false);
+                    Debug.Log("out");
+                }
+                else
+                {
+                    float m = (pA.y - pB.y) / (pA.x - pB.x);
+                    float b = pA.y - (m * pA.x);
+                    if (trans.position.y - ((trans.position.x * m) + b) <-0.5f)
+                    {
+                        Physics2D.IgnoreCollision(collider, platform, false);
+                        Debug.Log("under");
+                    }
+                }
+            }
+
             //Debug.Log("balloon range!");
             if (Input.GetKey("space"))
             {
@@ -89,5 +125,23 @@ public class player : MonoBehaviour
             
         }
         //Debug.Log(swap);
+        
+    }
+
+    void UIUpdate()
+    {
+        if (Input.GetKey("down") || Input.GetKey("s"))
+        {
+            if (kiDOWN == 0)
+            {
+                kiDOWN = 1;
+            } else
+            {
+                kiDOWN = 2;
+            }
+        } else
+        {
+            kiDOWN = 0;
+        }
     }
 }
