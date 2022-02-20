@@ -19,7 +19,9 @@ public class player : MonoBehaviour
     bool swap = false;
 
     int kiDOWN = 0;
-    public EdgeCollider2D platform;
+    //public EdgeCollider2D targetPlatform;
+
+    public List<EdgeCollider2D> platformQueueu;
     // Start is called before the first frame update
     void Start()
     {
@@ -77,33 +79,54 @@ public class player : MonoBehaviour
 
             if (kiDOWN == 1)
             {
-                //fall through semisolid platform
-                Physics2D.IgnoreCollision(collider, platform, true);
-                //Transform platShape = platform.gameObject.GetComponent<Transform>();
-                //Vector2 pA = (new Vector2(platShape.position.x, platShape.position.y) + (platform.points[0] * new Vector2(platShape.localScale.x, platShape.localScale.y)));
-                //Vector2 pB = (new Vector2(platShape.position.x, platShape.position.y) + (platform.points[1] * new Vector2(platShape.localScale.x, platShape.localScale.y)));
-                //Debug.Log(pA+" , "+ pB);
-                Debug.Log("through");
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(0, -1), 0.6f,LayerMask.GetMask("Default"));
+                if (hit!=null) {
+                    Collider2D platform = hit.collider;
+                    //EdgeCollider2D platform = targetPlatform;
+                    Debug.Log(platform.GetType());
+                    if (platform.GetType() == typeof(EdgeCollider2D))
+                    {
+                        if (platform.gameObject.GetComponent<PlatformEffector2D>() != null)
+                        {
+                            Physics2D.IgnoreCollision(collider, platform, true);
+                            platformQueueu.Add((EdgeCollider2D)platform);
+                            //Debug.Log("through");
+                        }
+                    }
+                    
+                } else
+                {
+                    //Debug.Log("none");
+                }
             } else
             {
-                Transform platShape = platform.gameObject.GetComponent<Transform>();
-                Vector2 pA = (new Vector2(platShape.position.x, platShape.position.y) + (platform.points[0] * new Vector2(platShape.localScale.x, platShape.localScale.y)));
-                Vector2 pB = (new Vector2(platShape.position.x, platShape.position.y) + (platform.points[1] * new Vector2(platShape.localScale.x, platShape.localScale.y)));
-                if (Mathf.Abs(trans.position.x - (pA.x + pB.x) / 2f) > Mathf.Abs(pA.x - pB.x) / 2f)
+                for(int i = 0;i < platformQueueu.Count;i++)
                 {
-                    Physics2D.IgnoreCollision(collider, platform, false);
-                    Debug.Log("out");
-                }
-                else
-                {
-                    float m = (pA.y - pB.y) / (pA.x - pB.x);
-                    float b = pA.y - (m * pA.x);
-                    if (trans.position.y - ((trans.position.x * m) + b) <-0.5f)
+                    EdgeCollider2D platform = platformQueueu[i];
+                    Transform platShape = platform.gameObject.GetComponent<Transform>();
+                    Vector2 pA = (new Vector2(platShape.position.x, platShape.position.y) + (platform.points[0] * new Vector2(platShape.localScale.x, platShape.localScale.y)));
+                    Vector2 pB = (new Vector2(platShape.position.x, platShape.position.y) + (platform.points[1] * new Vector2(platShape.localScale.x, platShape.localScale.y)));
+                    if (Mathf.Abs(trans.position.x - (pA.x + pB.x) / 2f) > Mathf.Abs(pA.x - pB.x) / 2f)
                     {
                         Physics2D.IgnoreCollision(collider, platform, false);
-                        Debug.Log("under");
+                        //Debug.Log("out");
+                        platformQueueu.RemoveAt(i);
+                        i--;
+                    }
+                    else
+                    {
+                        float m = (pA.y - pB.y) / (pA.x - pB.x);
+                        float b = pA.y - (m * pA.x);
+                        if (trans.position.y - ((trans.position.x * m) + b) < -0.5f)
+                        {
+                            Physics2D.IgnoreCollision(collider, platform, false);
+                            //Debug.Log("under");
+                            platformQueueu.RemoveAt(i);
+                            i--;
+                        }
                     }
                 }
+                
             }
 
             //Debug.Log("balloon range!");
