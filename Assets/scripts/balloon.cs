@@ -48,8 +48,8 @@ public class balloon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = gameObject.GetComponent<Rigidbody2D>();
-        trans = gameObject.GetComponent<Transform>();
+        //rb = gameObject.GetComponent<Rigidbody2D>();
+        //trans = gameObject.GetComponent<Transform>();
         sprite = gameObject.GetComponent<SpriteRenderer>();
 
         lean = 0;
