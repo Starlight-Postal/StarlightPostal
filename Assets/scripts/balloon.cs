@@ -24,7 +24,7 @@ public class balloon : MonoBehaviour
     public float buoyancy = 0.0005f;
     public float weight = 1;
     public float fillRate = 0.1f;
-    public float airFric = 0.975f;
+    public Vector2 airFric;
 
     public float windPower = 1.25f;
 
@@ -58,9 +58,10 @@ public class balloon : MonoBehaviour
 
         //wind = GameObject.Find("wind").GetComponent<wind>();
 
+
         anchor = GameObject.Find("anchor");
-        anchor.SetActive(true);
-        anchored = true;
+        anchor.SetActive(anchored);
+        //anchored = true;
 
         Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), anchor.GetComponent<Collider2D>(), true);
     }

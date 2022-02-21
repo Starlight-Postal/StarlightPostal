@@ -48,7 +48,7 @@ public class Softbodier : MonoBehaviour {
 
             GameObject[] nodesToConnect = {closestOtherBone, secondClosestOtherBone, transform.Find("Center").gameObject};
 
-            Debug.Log(bone + " " + nodesToConnect[0] + " " + nodesToConnect[1] + " " + nodesToConnect[2]);
+            //Debug.Log(bone + " " + nodesToConnect[0] + " " + nodesToConnect[1] + " " + nodesToConnect[2]);
 
             for (int j = 0; j < 3; j++) {
                 if (nodesToConnect[j].GetComponent(typeof(Rigidbody2D)) == null) { continue; } // skip any joints that would be created without a connected body

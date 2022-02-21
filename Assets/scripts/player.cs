@@ -134,7 +134,7 @@ public class player : MonoBehaviour
             {
                 if (swap)
                 {
-                    if (Vector3.Distance(trans.position, balloonTrans.position) < 3f || Vector3.Distance(trans.position, anchorTrans.position) < 1f)
+                    if (Vector3.Distance(trans.position, balloonTrans.position) < 3.5f || Vector3.Distance(trans.position, anchorTrans.position) < 1f)
                     {
                         //Debug.Log("embark");
                         inBalloon = true;

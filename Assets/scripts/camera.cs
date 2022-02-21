@@ -54,7 +54,7 @@ public class camera : MonoBehaviour
 
         if (range != null)
         {
-            Debug.Log(trans.position.x+" , "+ (range.position.x - (range.localScale.x / 2f - camRange.x)));
+            //Debug.Log(trans.position.x+" , "+ (range.position.x - (range.localScale.x / 2f - camRange.x)));
             if (trans.position.x < range.position.x - (range.localScale.x / 2f - camRange.x))
             {
                 trans.position = new Vector3(range.position.x - (range.localScale.x / 2f - camRange.x), trans.position.y, trans.position.z);
