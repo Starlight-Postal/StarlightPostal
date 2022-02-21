@@ -16,6 +16,10 @@ public class camera : MonoBehaviour
     public float balloonSize = 20;
     public float playerSize = 10;
 
+    public Vector3 balloonOff;
+    public Vector3 playerOff;
+    Vector3 offset;
+
     public Vector2 ratio;
     public Vector2 camRange;
 
@@ -38,11 +42,13 @@ public class camera : MonoBehaviour
         if (player.inBalloon)
         {
             target = balloonTrans;
+            offset = balloonOff;
         } else
         {
             target = playerTrans;
+            offset = playerOff;
         }
-        trans.position += (new Vector3(target.position.x,target.position.y,trans.position.z) - trans.position) * speed;
+        trans.position += ((new Vector3(target.position.x,target.position.y,trans.position.z)+offset) - trans.position) * speed;
         if (target == balloonTrans)
         {
             cam.orthographicSize += (balloonSize - cam.orthographicSize) * 0.01f;
