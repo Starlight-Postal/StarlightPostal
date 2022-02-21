@@ -5109,6 +5109,10 @@ PrefabInstance:
       value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 6375599264441225762, guid: 7d2047d1da9024f479c33fbd279619aa, type: 3}
+      propertyPath: gravity
+      value: 0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375599264441225762, guid: 7d2047d1da9024f479c33fbd279619aa, type: 3}
       propertyPath: range.x
       value: 4
       objectReference: {fileID: 0}
@@ -5126,7 +5130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6375599264441225762, guid: 7d2047d1da9024f479c33fbd279619aa, type: 3}
       propertyPath: decayRate
-      value: 0.01
+      value: 0.005
       objectReference: {fileID: 0}
     - target: {fileID: 6375599264441225762, guid: 7d2047d1da9024f479c33fbd279619aa, type: 3}
       propertyPath: windParticle
@@ -10384,6 +10388,10 @@ PrefabInstance:
       propertyPath: inBalloon
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 120858111712195846, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
+      propertyPath: balloonTrans
+      value: 
+      objectReference: {fileID: 806744708}
     - target: {fileID: 120858111712195846, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
       propertyPath: targetPlatform
       value: 

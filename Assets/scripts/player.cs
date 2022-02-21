@@ -29,7 +29,7 @@ public class player : MonoBehaviour
         sprite = gameObject.GetComponent<SpriteRenderer>();
         collider = gameObject.GetComponent<Collider2D>();
         trans = gameObject.GetComponent<Transform>();
-        balloonTrans = GameObject.Find("balloon").GetComponent<Transform>();
+        //balloonTrans = GameObject.Find("balloon").GetComponent<Transform>();
         balloon = GameObject.Find("balloon").GetComponent<balloon>();
         anchorTrans = GameObject.Find("anchor").GetComponent<Transform>();
 
