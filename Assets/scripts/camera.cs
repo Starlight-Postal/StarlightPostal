@@ -20,7 +20,7 @@ public class camera : MonoBehaviour
     {
         trans = gameObject.GetComponent<Transform>();
         cam = gameObject.GetComponent<Camera>();
-        balloonTrans = GameObject.Find("balloon").GetComponent<Transform>();
+        //balloonTrans = GameObject.Find("balloon").GetComponent<Transform>();
         playerTrans = GameObject.Find("player").GetComponent<Transform>();
         target = playerTrans;
         player = GameObject.Find("player").GetComponent<player>();
