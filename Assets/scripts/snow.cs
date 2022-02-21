@@ -20,6 +20,7 @@ public class snow : MonoBehaviour
 
     public Vector2 ratio;
     public Vector2 range;
+    public float buffer = 1.1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,22 +49,22 @@ public class snow : MonoBehaviour
             flakes[i].position += new Vector3(flakeV[i].x, flakeV[i].y,0);
             flakes[i].position += new Vector3(0, (-gravity * flakeWeight[i])/(w.magnitude+1), 0);
             flakes[i].eulerAngles += new Vector3(0, 0, (flakeWeight[i] - 1) * 10);
-            if (flakes[i].position.x >= focus.position.x + range.x * 0.5f)
+            if (flakes[i].position.x >= focus.position.x + range.x * buffer)
             {
-                flakes[i].position = new Vector3(focus.position.x - range.x * 0.5f, focus.position.y + range.y * Random.Range(-0.5f, 0.5f), flakes[i].position.z);
+                flakes[i].position = new Vector3(focus.position.x - range.x * buffer, focus.position.y + range.y * Random.Range(-buffer,buffer), flakes[i].position.z);
                 flakeV[i] = new Vector2(0, 0);
-            } else if (flakes[i].position.x <= focus.position.x - range.x * 0.5f)
+            } else if (flakes[i].position.x <= focus.position.x - range.x * buffer)
             {
-                flakes[i].position = new Vector3(focus.position.x + range.x * 0.5f, focus.position.y + range.y * Random.Range(-0.5f, 0.5f), flakes[i].position.z);
+                flakes[i].position = new Vector3(focus.position.x + range.x * buffer, focus.position.y + range.y * Random.Range(-buffer,buffer), flakes[i].position.z);
                 flakeV[i] = new Vector2(0, 0);
             }
-            if (flakes[i].position.y >= focus.position.y + range.y * 0.5f)
+            if (flakes[i].position.y >= focus.position.y + range.y * buffer)
             {
-                flakes[i].position = new Vector3(focus.position.x + range.x * Random.Range(-0.5f, 0.5f), focus.position.y - range.y * 0.5f, flakes[i].position.z);
+                flakes[i].position = new Vector3(focus.position.x + range.x * Random.Range(-buffer, buffer), focus.position.y - range.y * buffer, flakes[i].position.z);
                 flakeV[i] = new Vector2(0, 0);
-            } else if (flakes[i].position.y <= focus.position.y +- range.y * 0.5f)
+            } else if (flakes[i].position.y <= focus.position.y +- range.y * buffer)
             {
-                flakes[i].position = new Vector3(focus.position.x + range.x * Random.Range(-0.5f, 0.5f), focus.position.y + range.y * 0.5f, flakes[i].position.z);
+                flakes[i].position = new Vector3(focus.position.x + range.x * Random.Range(-buffer, buffer), focus.position.y + range.y * buffer, flakes[i].position.z);
                 flakeV[i] = new Vector2(0, 0);
             }
             float decay = decayRate/ (flakeV[i].magnitude+1);
@@ -72,7 +73,7 @@ public class snow : MonoBehaviour
             if (flakeLife[i] <= 0)
             {
                 flakeLife[i] = 1;
-                flakes[i].position = new Vector3(focus.position.x + range.x * Random.Range(-0.5f, 0.5f), focus.position.y + range.y * Random.Range(-0.5f, 0.5f),3);
+                flakes[i].position = new Vector3(focus.position.x + range.x * Random.Range(-buffer, buffer), focus.position.y + range.y * Random.Range(-buffer, buffer),3);
                 flakeV[i] = new Vector2(0, 0);
             }
             float s = Mathf.Pow((Mathf.Pow(1 / (1 + Mathf.Pow((flakeLife[i] *2) - 1, 2)), 2) - 0.25f) * (4f / 3f),0.5f);

@@ -15,6 +15,11 @@ public class camera : MonoBehaviour
 
     public float balloonSize = 20;
     public float playerSize = 10;
+
+    public Vector2 ratio;
+    public Vector2 camRange;
+
+    public Transform range;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +34,7 @@ public class camera : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        camRange = ratio * cam.orthographicSize;
         if (player.inBalloon)
         {
             target = balloonTrans;
@@ -44,6 +50,27 @@ public class camera : MonoBehaviour
         if(target == playerTrans)
         {
             cam.orthographicSize += (playerSize - cam.orthographicSize) * 0.01f;
+        }
+
+        if (range != null)
+        {
+            Debug.Log(trans.position.x+" , "+ (range.position.x - (range.localScale.x / 2f - camRange.x)));
+            if (trans.position.x < range.position.x - (range.localScale.x / 2f - camRange.x))
+            {
+                trans.position = new Vector3(range.position.x - (range.localScale.x / 2f - camRange.x), trans.position.y, trans.position.z);
+            }
+            if (trans.position.x > range.position.x + (range.localScale.x / 2f - camRange.x))
+            {
+                trans.position = new Vector3(range.position.x + (range.localScale.x / 2f - camRange.x), trans.position.y, trans.position.z);
+            }
+            if (trans.position.y < range.position.y - (range.localScale.y / 2f - camRange.y))
+            {
+                trans.position = new Vector3( trans.position.x, range.position.y - (range.localScale.y / 2f - camRange.y), trans.position.z);
+            }
+            if (trans.position.y > range.position.y + (range.localScale.y / 2f - camRange.y))
+            {
+                trans.position = new Vector3(trans.position.x, range.position.y + (range.localScale.y / 2f - camRange.y), trans.position.z);
+            }
         }
     }
 }
