@@ -51,11 +51,11 @@ public class camera : MonoBehaviour
         trans.position += ((new Vector3(target.position.x,target.position.y,trans.position.z)+offset) - trans.position) * speed;
         if (target == balloonTrans)
         {
-            cam.orthographicSize += (balloonSize - cam.orthographicSize) * 0.01f;
+            cam.orthographicSize += (balloonSize - cam.orthographicSize) * 0.001f;
         }
         if(target == playerTrans)
         {
-            cam.orthographicSize += (playerSize - cam.orthographicSize) * 0.01f;
+            cam.orthographicSize += (playerSize - cam.orthographicSize) * 0.0025f;
         }
 
         if (range != null)
