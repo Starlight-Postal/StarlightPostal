@@ -12,5 +12,9 @@ public class SceneLoadButton : MonoBehaviour {
             Debug.Log("Button Clicked");
             SceneManager.LoadScene(firstLevelScene);
         }
+
+        if (GUI.Button(new Rect(Screen.width / 2 - 50, Screen.height / 2 + 30, 100, 50), "Exit")) {
+            Application.Quit();
+        }
     }
 }
