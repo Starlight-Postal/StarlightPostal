@@ -104,8 +104,8 @@ public class player : MonoBehaviour
                 {
                     EdgeCollider2D platform = platformQueueu[i];
                     Transform platShape = platform.gameObject.GetComponent<Transform>();
-                    Vector2 pA = (new Vector2(platShape.position.x, platShape.position.y) + (platform.points[0] * new Vector2(platShape.localScale.x, platShape.localScale.y)));
-                    Vector2 pB = (new Vector2(platShape.position.x, platShape.position.y) + (platform.points[1] * new Vector2(platShape.localScale.x, platShape.localScale.y)));
+                    Vector2 pA = (new Vector2(platShape.position.x, platShape.position.y) + (platform.points[0] * new Vector2(platShape.lossyScale.x, platShape.lossyScale.y)));
+                    Vector2 pB = (new Vector2(platShape.position.x, platShape.position.y) + (platform.points[1] * new Vector2(platShape.lossyScale.x, platShape.lossyScale.y)));
                     if (Mathf.Abs(trans.position.x - (pA.x + pB.x) / 2f) > Mathf.Abs(pA.x - pB.x) / 2f)
                     {
                         Physics2D.IgnoreCollision(collider, platform, false);
