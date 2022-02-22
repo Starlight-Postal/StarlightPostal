@@ -25,10 +25,10 @@ public class building : MonoBehaviour
         inside = (Mathf.Abs(player.position.x - trans.position.x) <= trans.localScale.x/2f && Mathf.Abs(player.position.y - (trans.position.y+trans.localScale.y/2f)) <= trans.localScale.y/2f);
         if (inside)
         {
-            extAlpha += (0 - extAlpha) * 0.1f;
+            extAlpha += (0 - extAlpha) * 0.05f;
         } else
         {
-            extAlpha += (1 - extAlpha) * 0.1f;
+            extAlpha += (1 - extAlpha) * 0.05f;
         }
         for(int i = 0;i < sprites.Length;i++)
         {
