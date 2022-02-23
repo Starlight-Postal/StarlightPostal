@@ -28,6 +28,7 @@ public class GlobalMenu : MonoBehaviour {
 
             if (GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2, 200, 50), "Quit to menu")) {
                 SceneManager.LoadScene("Main Menu");
+                inMenu = false;
             }
             
             if (GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2 + 60, 200, 50), "Quit to desktop")) {
