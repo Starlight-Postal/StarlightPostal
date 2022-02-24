@@ -27,6 +27,8 @@ public class player : MonoBehaviour
     public Sprite[] aniIdle;
     public float aniFrame = 0;
 
+    public bool facingRight;
+
     public List<EdgeCollider2D> platformQueueu;
     // Start is called before the first frame update
     void Start()
@@ -85,10 +87,12 @@ public class player : MonoBehaviour
             if (Input.GetKey("right") || Input.GetKey("d"))
             {
                 rb.velocity += new Vector2(runSpeed, 0);
+                facingRight = true;
             }
             if (Input.GetKey("left") || Input.GetKey("a"))
             {
                 rb.velocity += new Vector2(-runSpeed, 0);
+                facingRight = false;
             }
 
             if (kiDOWN == 1)
@@ -161,12 +165,10 @@ public class player : MonoBehaviour
             }
             
         }
-        //Debug.Log(swap);
-        //Debug.Log(Random.Range(0f,1f));
+
         aniFrame = (aniFrame + aniSpeed) % aniIdle.Length;
         sprite.sprite = aniIdle[(int)aniFrame];
-        //Debug.Log(aniFrame);
-        
+        sprite.flipX = !facingRight;
     }
 
     void UIUpdate()
