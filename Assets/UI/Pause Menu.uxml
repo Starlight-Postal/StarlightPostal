@@ -1,0 +1,14 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="width: 100%; height: 100%; align-items: center; justify-content: center; background-color: rgba(0, 0, 0, 0.06);">
+        <ui:VisualElement style="align-items: center; padding-left: 35px; padding-right: 35px; padding-top: 35px; padding-bottom: 35px; background-color: rgba(0, 0, 0, 0.39);">
+            <ui:Label text="Game Paused" display-tooltip-when-elided="true" />
+            <ui:VisualElement style="height: 25px;" />
+            <ui:VisualElement>
+                <ui:Button text="Resume Game" display-tooltip-when-elided="true" />
+                <ui:VisualElement style="height: 10px;" />
+                <ui:Button text="Quit to Menu" display-tooltip-when-elided="true" />
+                <ui:Button text="Quit to Desktop" display-tooltip-when-elided="true" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
