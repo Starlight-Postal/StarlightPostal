@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
-public class NewMenuUi : MonoBehaviour {
+public class MainMenuBehaviour : MonoBehaviour {
 
     private Button continueButton;
     private Button newGameButton;
