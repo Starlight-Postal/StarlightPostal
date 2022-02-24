@@ -4,10 +4,10 @@
             <ui:Label text="Game Paused" display-tooltip-when-elided="true" />
             <ui:VisualElement style="height: 25px;" />
             <ui:VisualElement>
-                <ui:Button text="Resume Game" display-tooltip-when-elided="true" />
+                <ui:Button text="Resume Game" display-tooltip-when-elided="true" name="resume-button" />
                 <ui:VisualElement style="height: 10px;" />
-                <ui:Button text="Quit to Menu" display-tooltip-when-elided="true" />
-                <ui:Button text="Quit to Desktop" display-tooltip-when-elided="true" />
+                <ui:Button text="Quit to Menu" display-tooltip-when-elided="true" name="quit-menu-button" />
+                <ui:Button text="Quit to Desktop" display-tooltip-when-elided="true" name="quit-desktop-button" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
