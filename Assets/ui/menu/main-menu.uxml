@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement style="align-items: center; justify-content: center; height: 673px;">
+        <ui:Button text="Continue Game" display-tooltip-when-elided="true" />
+        <ui:Button text="New Game" display-tooltip-when-elided="true" />
+        <ui:Button text="Options" display-tooltip-when-elided="true" />
+        <ui:Button text="Quit" display-tooltip-when-elided="true" />
+    </ui:VisualElement>
+</ui:UXML>
