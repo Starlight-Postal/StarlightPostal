@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 public class PauseMenuBehaviour : MonoBehaviour {
 
-    private bool inMenu = false;
+    public bool inMenu = false;
 
     private Button resumeButton;
     private Button quitMenuButton;
