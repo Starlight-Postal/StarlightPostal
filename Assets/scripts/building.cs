@@ -20,15 +20,15 @@ public class building : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         inside = (Mathf.Abs(player.position.x - trans.position.x) <= trans.localScale.x/2f && Mathf.Abs(player.position.y - (trans.position.y+trans.localScale.y/2f)) <= trans.localScale.y/2f);
         if (inside)
         {
-            extAlpha += (0 - extAlpha) * 0.05f;
+            extAlpha += (0 - extAlpha) * 0.1f;
         } else
         {
-            extAlpha += (1 - extAlpha) * 0.05f;
+            extAlpha += (1 - extAlpha) * 0.1f;
         }
         for(int i = 0;i < sprites.Length;i++)
         {
