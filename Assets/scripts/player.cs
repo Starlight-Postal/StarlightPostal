@@ -18,6 +18,10 @@ public class player : MonoBehaviour
 
     bool swap = false;
 
+    //Grappling variable
+    GrappleHook gh;
+    float speed = 5f;
+
     int kiDOWN = 0;
     //public EdgeCollider2D targetPlatform;
 
@@ -32,6 +36,8 @@ public class player : MonoBehaviour
         //balloonTrans = GameObject.Find("balloon").GetComponent<Transform>();
         balloon = GameObject.Find("balloon").GetComponent<balloon>();
         anchorTrans = GameObject.Find("anchor").GetComponent<Transform>();
+
+        gh = GetComponent<GrappleHook>();
 
         kiDOWN = 0;
     }
@@ -126,7 +132,18 @@ public class player : MonoBehaviour
                         }
                     }
                 }
-                
+
+             //Grappling checks
+                 if (!gh.retracting)
+                {
+                    rb.velocity = new Vector2(balloonTrans.gameObject.GetComponent<Rigidbody2D>().velocity.x, balloonTrans.gameObject.GetComponent<Rigidbody2D>().velocity.y).normalized * speed;
+                }
+                else
+                {
+                    balloonTrans.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                }
+
+
             }
 
             //Debug.Log("balloon range!");
