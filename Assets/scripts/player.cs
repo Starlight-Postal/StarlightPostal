@@ -21,6 +21,12 @@ public class player : MonoBehaviour
     int kiDOWN = 0;
     //public EdgeCollider2D targetPlatform;
 
+
+    //string aniMode = "idle";
+    //public float aniSpeed = 0.25f;
+    //public Sprite[] aniIdle;
+    //int aniFrame = 0;
+
     public List<EdgeCollider2D> platformQueueu;
     // Start is called before the first frame update
     void Start()
@@ -34,6 +40,9 @@ public class player : MonoBehaviour
         anchorTrans = GameObject.Find("anchor").GetComponent<Transform>();
 
         kiDOWN = 0;
+
+        //aniMode = "idle";
+        //aniFrame = 0;
     }
 
     // Update is called once per frame
@@ -148,6 +157,9 @@ public class player : MonoBehaviour
             
         }
         //Debug.Log(swap);
+
+        //aniFrame = (int)Mathf.Floor(aniFrame + (aniSpeed)) % aniIdle.Length;
+        //sprite = aniIdle[aniFrame];
         
     }
 
