@@ -266,7 +266,8 @@ public class player : MonoBehaviour
             default:
                 break;
         }
-        
+
+        aniFrame = aniFrame % ani.Length;
         sprite.sprite = ani[(int)aniFrame];
         aniFrame = (aniFrame + aniSpeed) % ani.Length;
         //sprite.flipX = !facingRight;
