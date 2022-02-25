@@ -22,12 +22,16 @@ public class player : MonoBehaviour
     //public EdgeCollider2D targetPlatform;
 
 
-    string aniMode = "idle";
+    public string aniMode = "idle";
     public float aniSpeed = 0.25f;
     public Sprite[] aniIdle;
+    public Sprite[] aniWait;
     public float aniFrame = 0;
 
     public bool facingRight;
+    public float camHeight = 0;
+    public float camRange = 1f;
+    public float camCenter = 0.5f;
 
     public List<EdgeCollider2D> platformQueueu;
     // Start is called before the first frame update
@@ -50,6 +54,12 @@ public class player : MonoBehaviour
         {
             aniIdle[i] = Resources.Load<Sprite>("textures/player_idle/player_idle_" + i);
         }
+        aniWait = new Sprite[20];
+        for (int i = 0; i < 20; i++)
+        {
+            aniWait[i] = Resources.Load<Sprite>("textures/player_idle/player_idle_" + i);
+        }
+        camHeight = 0;
     }
 
     // Update is called once per frame
@@ -80,6 +90,10 @@ public class player : MonoBehaviour
             }
         } else
         {
+            if (aniMode != "wait")
+            {
+                aniMode = "idle";
+            }
             sprite.enabled = true;
             collider.enabled = true;
             rb.velocity = new Vector2(rb.velocity.x * 0.8f, rb.velocity.y); ;
@@ -88,11 +102,56 @@ public class player : MonoBehaviour
             {
                 rb.velocity += new Vector2(runSpeed, 0);
                 facingRight = true;
+                aniMode = "walk";
             }
             if (Input.GetKey("left") || Input.GetKey("a"))
             {
                 rb.velocity += new Vector2(-runSpeed, 0);
                 facingRight = false;
+                aniMode = "walk";
+            }
+            if (Input.GetKey("up") || Input.GetKey("w"))
+            {
+                if (aniMode != "walk")
+                {
+                    aniMode = "lookUp";
+                }
+                camHeight += ((camCenter + camRange) - camHeight) * 0.25f;
+            }
+            else if (Input.GetKey("down") || Input.GetKey("s"))
+            {
+                if (aniMode != "walk")
+                {
+                    aniMode = "lookDown";
+                }
+                camHeight += ((camCenter - camRange) - camHeight) * 0.25f;
+            }
+            else
+            {
+                camHeight += ((camCenter) - camHeight) * 0.25f;
+            }
+
+            if (aniMode == "idle")
+            {
+                if(aniFrame == aniIdle.Length - aniSpeed)
+                {
+                    if (Random.Range(0f, 1f) < 0.2f)
+                    {
+                        aniMode = "wait";
+                        //Debug.Log("?");
+                    }
+                    
+                }
+            } else
+            {
+                if (aniMode == "wait")
+                {
+                    if (aniFrame == aniWait.Length - aniSpeed)
+                    {
+                        aniMode = "idle";
+                        //Debug.Log("!");
+                    }
+                }
             }
 
             if (kiDOWN == 1)

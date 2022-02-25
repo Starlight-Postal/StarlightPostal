@@ -47,6 +47,7 @@ public class camera : MonoBehaviour
         {
             target = playerTrans;
             offset = playerOff;
+            playerOff = new Vector2(0, player.camHeight);
         }
         trans.position += ((new Vector3(target.position.x,target.position.y,trans.position.z)+offset) - trans.position) * speed;
         if (target == balloonTrans)
