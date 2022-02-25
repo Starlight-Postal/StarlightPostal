@@ -168,7 +168,14 @@ public class player : MonoBehaviour
 
         aniFrame = (aniFrame + aniSpeed) % aniIdle.Length;
         sprite.sprite = aniIdle[(int)aniFrame];
-        sprite.flipX = !facingRight;
+        //sprite.flipX = !facingRight;
+        if (facingRight)
+        {
+            trans.localScale += new Vector3((0.25f - trans.localScale.x) * 0.2f, 0, 0);
+        } else
+        {
+            trans.localScale += new Vector3((-0.25f - trans.localScale.x) * 0.2f, 0, 0);
+        }
     }
 
     void UIUpdate()
