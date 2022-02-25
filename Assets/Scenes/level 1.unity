@@ -2024,8 +2024,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 123420032}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.33161, y: 0.25829, z: 2.5}
-  m_LocalScale: {x: 0.3828716, y: 0.51476586, z: 1}
+  m_LocalPosition: {x: 0.33792, y: 0.2546, z: 2.5}
+  m_LocalScale: {x: 0.3702478, y: 0.5092186, z: 1}
   m_Children: []
   m_Father: {fileID: 657150207}
   m_RootOrder: 1
@@ -25917,12 +25917,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 120858111712195846, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
+      propertyPath: camRange
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 120858111712195846, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
       propertyPath: platform
       value: 
       objectReference: {fileID: 1925651225}
     - target: {fileID: 120858111712195846, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
       propertyPath: inBalloon
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 120858111712195846, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
+      propertyPath: facingRight
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 120858111712195846, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
       propertyPath: balloonTrans
@@ -26138,7 +26146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5649912349369794293, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8
+      value: 8.5
       objectReference: {fileID: 0}
     - target: {fileID: 5649912349369794293, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
       propertyPath: m_LocalPosition.y
