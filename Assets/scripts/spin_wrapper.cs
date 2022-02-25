@@ -13,7 +13,7 @@ public class spin_wrapper : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         trans.eulerAngles += new Vector3(0, 0, speed);
     }
