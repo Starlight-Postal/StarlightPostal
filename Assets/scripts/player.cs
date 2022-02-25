@@ -26,6 +26,9 @@ public class player : MonoBehaviour
     public float aniSpeed = 0.25f;
     public Sprite[] aniIdle;
     public Sprite[] aniWait;
+    public Sprite[] aniWalk;
+    public Sprite[] aniLookUp;
+    public Sprite[] aniLookDown;
     public float aniFrame = 0;
 
     public bool facingRight;
@@ -49,15 +52,31 @@ public class player : MonoBehaviour
 
         aniMode = "idle";
         aniFrame = 0;
-        aniIdle = new Sprite[20];
-        for (int i = 0; i < 20; i++)
+        aniIdle = new Sprite[8];
+        
+        for (int i = 0; i < 8; i++)
         {
             aniIdle[i] = Resources.Load<Sprite>("textures/player_idle/player_idle_" + i);
         }
         aniWait = new Sprite[20];
         for (int i = 0; i < 20; i++)
         {
-            aniWait[i] = Resources.Load<Sprite>("textures/player_idle/player_idle_" + i);
+            aniWait[i] = Resources.Load<Sprite>("textures/player_wait/player_wait_" + i);
+        }
+        aniWalk = new Sprite[8];
+        for (int i = 0; i < 8; i++)
+        {
+            aniWalk[i] = Resources.Load<Sprite>("textures/player_idle/player_idle_" + i);
+        }
+        aniLookUp = new Sprite[8];
+        for (int i = 0; i < 8; i++)
+        {
+            aniLookUp[i] = Resources.Load<Sprite>("textures/player_idle/player_idle_" + i);
+        }
+        aniLookDown = new Sprite[8];
+        for (int i = 0; i < 8; i++)
+        {
+            aniLookDown[i] = Resources.Load<Sprite>("textures/player_idle/player_idle_" + i);
         }
         camHeight = 0;
     }
@@ -133,9 +152,9 @@ public class player : MonoBehaviour
 
             if (aniMode == "idle")
             {
-                if(aniFrame == aniIdle.Length - aniSpeed)
+                if(aniFrame == 0)
                 {
-                    if (Random.Range(0f, 1f) < 0.2f)
+                    if (Random.Range(0.0f, 1.0f) < 0.1f)
                     {
                         aniMode = "wait";
                         //Debug.Log("?");
@@ -146,7 +165,7 @@ public class player : MonoBehaviour
             {
                 if (aniMode == "wait")
                 {
-                    if (aniFrame == aniWait.Length - aniSpeed)
+                    if (aniFrame == 0)
                     {
                         aniMode = "idle";
                         //Debug.Log("!");
@@ -225,8 +244,31 @@ public class player : MonoBehaviour
             
         }
 
-        aniFrame = (aniFrame + aniSpeed) % aniIdle.Length;
-        sprite.sprite = aniIdle[(int)aniFrame];
+        
+        Sprite[] ani = aniIdle;
+        switch (aniMode)
+        {
+            case "idle":
+                ani = aniIdle;
+                break;
+            case "wait":
+                ani = aniWait;
+                break;
+            case "walk":
+                ani = aniWalk;
+                break;
+            case "lookUp":
+                ani = aniLookUp;
+                break;
+            case "lookDown":
+                ani = aniLookDown;
+                break;
+            default:
+                break;
+        }
+        
+        sprite.sprite = ani[(int)aniFrame];
+        aniFrame = (aniFrame + aniSpeed) % ani.Length;
         //sprite.flipX = !facingRight;
         if (facingRight)
         {

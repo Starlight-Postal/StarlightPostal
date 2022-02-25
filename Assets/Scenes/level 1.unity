@@ -25929,6 +25929,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 120858111712195846, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
+      propertyPath: facingRight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 120858111712195846, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
       propertyPath: balloonTrans
       value: 
       objectReference: {fileID: 806744708}
@@ -26142,7 +26146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5649912349369794293, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8
+      value: 8.5
       objectReference: {fileID: 0}
     - target: {fileID: 5649912349369794293, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
       propertyPath: m_LocalPosition.y
