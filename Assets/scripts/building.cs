@@ -20,7 +20,7 @@ public class building : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         inside = (Mathf.Abs(player.position.x - trans.position.x) <= trans.localScale.x/2f && Mathf.Abs(player.position.y - (trans.position.y+trans.localScale.y/2f)) <= trans.localScale.y/2f);
         if (inside)

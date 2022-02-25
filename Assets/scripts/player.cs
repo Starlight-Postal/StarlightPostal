@@ -21,6 +21,14 @@ public class player : MonoBehaviour
     int kiDOWN = 0;
     //public EdgeCollider2D targetPlatform;
 
+
+    string aniMode = "idle";
+    public float aniSpeed = 0.25f;
+    public Sprite[] aniIdle;
+    public float aniFrame = 0;
+
+    public bool facingRight;
+
     public List<EdgeCollider2D> platformQueueu;
     // Start is called before the first frame update
     void Start()
@@ -34,6 +42,14 @@ public class player : MonoBehaviour
         anchorTrans = GameObject.Find("anchor").GetComponent<Transform>();
 
         kiDOWN = 0;
+
+        aniMode = "idle";
+        aniFrame = 0;
+        aniIdle = new Sprite[20];
+        for (int i = 0; i < 20; i++)
+        {
+            aniIdle[i] = Resources.Load<Sprite>("textures/player_idle/player_idle_" + i);
+        }
     }
 
     // Update is called once per frame
@@ -71,10 +87,12 @@ public class player : MonoBehaviour
             if (Input.GetKey("right") || Input.GetKey("d"))
             {
                 rb.velocity += new Vector2(runSpeed, 0);
+                facingRight = true;
             }
             if (Input.GetKey("left") || Input.GetKey("a"))
             {
                 rb.velocity += new Vector2(-runSpeed, 0);
+                facingRight = false;
             }
 
             if (kiDOWN == 1)
@@ -147,8 +165,10 @@ public class player : MonoBehaviour
             }
             
         }
-        //Debug.Log(swap);
-        
+
+        aniFrame = (aniFrame + aniSpeed) % aniIdle.Length;
+        sprite.sprite = aniIdle[(int)aniFrame];
+        sprite.flipX = !facingRight;
     }
 
     void UIUpdate()
