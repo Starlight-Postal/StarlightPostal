@@ -24,8 +24,8 @@ public class DialogueTrigger : MonoBehaviour
 
     private void Awake()
     {
-        dialogueIsPlaying = false;
-        dialoguePanel.SetActive(false);
+        //dialogueIsPlaying = false;
+        //dialoguePanel.SetActive(false);
         playerInRange = false;
         visualCue.SetActive(false);
     }
