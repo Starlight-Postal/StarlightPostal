@@ -2,11 +2,11 @@
     <Style src="Main Menu Styles.uss" />
     <ui:VisualElement style="align-items: center; justify-content: flex-start; height: 100%; flex-grow: initial; flex-direction: column; width: auto; cursor: initial;">
         <ui:VisualElement class="sp-main-menu-logo" style="background-image: resource(&apos;textures/starlightpostal-logo&apos;); width: 50%; height: 20%; min-width: auto; min-height: auto; max-width: none; -unity-background-scale-mode: scale-to-fit; flex-direction: column-reverse; flex-grow: 0; -unity-text-align: middle-left; display: flex; visibility: visible; position: absolute; top: 10%;" />
-        <ui:VisualElement style="width: auto; align-items: stretch; justify-content: center; margin-top: 7.5%; position: absolute; bottom: 25%; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;">
-            <ui:Button text="Continue Game" display-tooltip-when-elided="true" name="continue-button" class="sp-main-menu-button" />
-            <ui:Button text="New Game" display-tooltip-when-elided="true" name="new-game-button" class="sp-main-menu-button" style="height: auto;" />
-            <ui:Button text="Options" display-tooltip-when-elided="true" name="options-button" class="sp-main-menu-button" />
-            <ui:Button text="Quit" display-tooltip-when-elided="true" name="quit-button" class="sp-main-menu-button" />
+        <ui:VisualElement style="width: 100%; align-items: stretch; justify-content: center; margin-top: 7.5%; position: absolute; bottom: 25%; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;">
+            <ui:Button display-tooltip-when-elided="true" name="continue-button" class="sp-main-menu-button" style="-unity-background-scale-mode: scale-to-fit" />
+            <ui:Button display-tooltip-when-elided="true" name="new-game-button" class="sp-main-menu-button" style="-unity-background-scale-mode: scale-to-fit;" />
+            <ui:Button display-tooltip-when-elided="true" name="options-button" class="sp-main-menu-button" style="-unity-background-scale-mode: scale-to-fit;" />
+            <ui:Button display-tooltip-when-elided="true" name="quit-button" class="sp-main-menu-button" style="-unity-background-scale-mode: scale-to-fit;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
