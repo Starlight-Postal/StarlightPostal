@@ -39,6 +39,8 @@ public class balloon : MonoBehaviour
     public float anchorD = 10;
     public float anchorRange = 10;
 
+    public Rigidbody2D basket;
+    public Transform basketTrans;
 
     public player player;
 
@@ -63,7 +65,12 @@ public class balloon : MonoBehaviour
         anchor.SetActive(anchored);
         //anchored = true;
 
-        Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), anchor.GetComponent<Collider2D>(), true);
+        basket = GameObject.Find("Basket").GetComponent<Rigidbody2D>();
+        basketTrans = GameObject.Find("Basket").GetComponent<Transform>();
+
+        //Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), anchor.GetComponent<Collider2D>(), true);
+
+        basket.centerOfMass = new Vector2(0, -1f);
     }
 
     // Update is called once per frame
@@ -124,6 +131,9 @@ public class balloon : MonoBehaviour
                 }
             }
         }
+
+        //basketTrans.eulerAngles *= 0.95f;
+        //basketTrans.eulerAngles = new Vector3(0, 0, toAngle(basketTrans.eulerAngles.z*(Mathf.PI/180f), 0, 0.1f));
 
     }
 
@@ -281,5 +291,16 @@ public class balloon : MonoBehaviour
         {
             kiRMOUSE = 0;
         }
+    }
+
+    float toAngle(float a,float b,float amt)
+    {
+        float xa = Mathf.Sin(a);
+        float xb = Mathf.Sin(b);
+        float ya = Mathf.Cos(a);
+        float yb = Mathf.Cos(b);
+        float x = xa * (1 - amt) + xb * amt;
+        float y = ya * (1 - amt) + yb * amt;
+        return Mathf.Atan2(y,x);
     }
 }
