@@ -39455,9 +39455,9 @@ DistanceJoint2D:
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0, y: 0.5}
   m_ConnectedAnchor: {x: 0, y: 0}
-  m_AutoConfigureDistance: 1
+  m_AutoConfigureDistance: 0
   m_Distance: 2.5
-  m_MaxDistanceOnly: 0
+  m_MaxDistanceOnly: 1
 --- !u!232 &2129511782
 DistanceJoint2D:
   m_ObjectHideFlags: 0
@@ -39472,11 +39472,11 @@ DistanceJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: -0.125, y: 0.5}
+  m_Anchor: {x: -0.25, y: 0.5}
   m_ConnectedAnchor: {x: 0, y: 0}
-  m_AutoConfigureDistance: 1
-  m_Distance: 0.08257606
-  m_MaxDistanceOnly: 0
+  m_AutoConfigureDistance: 0
+  m_Distance: 0.05
+  m_MaxDistanceOnly: 1
 --- !u!232 &2129511783
 DistanceJoint2D:
   m_ObjectHideFlags: 0
@@ -39491,11 +39491,11 @@ DistanceJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: 0.125, y: 0.5}
+  m_Anchor: {x: 0.25, y: 0.5}
   m_ConnectedAnchor: {x: 0, y: 0}
-  m_AutoConfigureDistance: 1
-  m_Distance: 0.07666035
-  m_MaxDistanceOnly: 0
+  m_AutoConfigureDistance: 0
+  m_Distance: 0.05
+  m_MaxDistanceOnly: 1
 --- !u!1 &2129771024
 GameObject:
   m_ObjectHideFlags: 0
