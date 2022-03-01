@@ -133,14 +133,10 @@ public class player : MonoBehaviour
                     }
                 }
 
-             //Grappling checks
-                 if (!gh.retracting)
+                //Grappling checks
+                if (swap == false)
                 {
                     rb.velocity = new Vector2(balloonTrans.gameObject.GetComponent<Rigidbody2D>().velocity.x, balloonTrans.gameObject.GetComponent<Rigidbody2D>().velocity.y).normalized * speed;
-                }
-                else
-                {
-                    balloonTrans.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 }
 
 

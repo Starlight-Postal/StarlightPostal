@@ -17,17 +17,19 @@ public class GrappleHook : MonoBehaviour {
     [HideInInspector] public bool retracting = false;
 
     Vector2 target;
+    public player player;
     //player inBalloon;
 
     private void Start() {
         line = GetComponent<LineRenderer>();
+        player = GameObject.Find("player").GetComponent<player>();
     }
 
     private void Update() {
-        if (Input.GetMouseButtonDown(1) && !isGrappling) {
+        if (Input.GetMouseButtonDown(1) && !isGrappling && player.inBalloon) {
             StartGrapple();
         }
-        else if (Input.GetMouseButtonDown(1) && isGrappling)
+        else if (Input.GetMouseButtonDown(1) && isGrappling || !player.inBalloon)
         {
             retracting = false;
             isGrappling = false;
