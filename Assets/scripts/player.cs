@@ -22,12 +22,19 @@ public class player : MonoBehaviour
     //public EdgeCollider2D targetPlatform;
 
 
-    string aniMode = "idle";
+    public string aniMode = "idle";
     public float aniSpeed = 0.25f;
     public Sprite[] aniIdle;
+    public Sprite[] aniWait;
+    public Sprite[] aniWalk;
+    public Sprite[] aniLookUp;
+    public Sprite[] aniLookDown;
     public float aniFrame = 0;
 
     public bool facingRight;
+    public float camHeight = 0;
+    public float camRange = 1f;
+    public float camCenter = 0.5f;
 
     public List<EdgeCollider2D> platformQueueu;
     // Start is called before the first frame update
@@ -45,11 +52,33 @@ public class player : MonoBehaviour
 
         aniMode = "idle";
         aniFrame = 0;
-        aniIdle = new Sprite[20];
-        for (int i = 0; i < 20; i++)
+        aniIdle = new Sprite[8];
+        
+        for (int i = 0; i < 8; i++)
         {
             aniIdle[i] = Resources.Load<Sprite>("textures/player_idle/player_idle_" + i);
         }
+        aniWait = new Sprite[20];
+        for (int i = 0; i < 20; i++)
+        {
+            aniWait[i] = Resources.Load<Sprite>("textures/player_wait/player_wait_" + i);
+        }
+        aniWalk = new Sprite[8];
+        for (int i = 0; i < 8; i++)
+        {
+            aniWalk[i] = Resources.Load<Sprite>("textures/player_idle/player_idle_" + i);
+        }
+        aniLookUp = new Sprite[8];
+        for (int i = 0; i < 8; i++)
+        {
+            aniLookUp[i] = Resources.Load<Sprite>("textures/player_idle/player_idle_" + i);
+        }
+        aniLookDown = new Sprite[8];
+        for (int i = 0; i < 8; i++)
+        {
+            aniLookDown[i] = Resources.Load<Sprite>("textures/player_idle/player_idle_" + i);
+        }
+        camHeight = 0;
     }
 
     // Update is called once per frame
@@ -80,6 +109,10 @@ public class player : MonoBehaviour
             }
         } else
         {
+            if (aniMode != "wait")
+            {
+                aniMode = "idle";
+            }
             sprite.enabled = true;
             collider.enabled = true;
             rb.velocity = new Vector2(rb.velocity.x * 0.8f, rb.velocity.y); ;
@@ -88,11 +121,56 @@ public class player : MonoBehaviour
             {
                 rb.velocity += new Vector2(runSpeed, 0);
                 facingRight = true;
+                aniMode = "walk";
             }
             if (Input.GetKey("left") || Input.GetKey("a"))
             {
                 rb.velocity += new Vector2(-runSpeed, 0);
                 facingRight = false;
+                aniMode = "walk";
+            }
+            if (Input.GetKey("up") || Input.GetKey("w"))
+            {
+                if (aniMode != "walk")
+                {
+                    aniMode = "lookUp";
+                }
+                camHeight += ((camCenter + camRange) - camHeight) * 0.25f;
+            }
+            else if (Input.GetKey("down") || Input.GetKey("s"))
+            {
+                if (aniMode != "walk")
+                {
+                    aniMode = "lookDown";
+                }
+                camHeight += ((camCenter - camRange) - camHeight) * 0.25f;
+            }
+            else
+            {
+                camHeight += ((camCenter) - camHeight) * 0.25f;
+            }
+
+            if (aniMode == "idle")
+            {
+                if(aniFrame == 0)
+                {
+                    if (Random.Range(0.0f, 1.0f) < 0.1f)
+                    {
+                        aniMode = "wait";
+                        //Debug.Log("?");
+                    }
+                    
+                }
+            } else
+            {
+                if (aniMode == "wait")
+                {
+                    if (aniFrame == 0)
+                    {
+                        aniMode = "idle";
+                        //Debug.Log("!");
+                    }
+                }
             }
 
             if (kiDOWN == 1)
@@ -166,9 +244,40 @@ public class player : MonoBehaviour
             
         }
 
-        aniFrame = (aniFrame + aniSpeed) % aniIdle.Length;
-        sprite.sprite = aniIdle[(int)aniFrame];
-        sprite.flipX = !facingRight;
+        
+        Sprite[] ani = aniIdle;
+        switch (aniMode)
+        {
+            case "idle":
+                ani = aniIdle;
+                break;
+            case "wait":
+                ani = aniWait;
+                break;
+            case "walk":
+                ani = aniWalk;
+                break;
+            case "lookUp":
+                ani = aniLookUp;
+                break;
+            case "lookDown":
+                ani = aniLookDown;
+                break;
+            default:
+                break;
+        }
+
+        aniFrame = aniFrame % ani.Length;
+        sprite.sprite = ani[(int)aniFrame];
+        aniFrame = (aniFrame + aniSpeed) % ani.Length;
+        //sprite.flipX = !facingRight;
+        if (facingRight)
+        {
+            trans.localScale += new Vector3((0.25f - trans.localScale.x) * 0.2f, 0, 0);
+        } else
+        {
+            trans.localScale += new Vector3((-0.25f - trans.localScale.x) * 0.2f, 0, 0);
+        }
     }
 
     void UIUpdate()
