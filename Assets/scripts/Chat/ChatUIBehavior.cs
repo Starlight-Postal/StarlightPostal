@@ -14,6 +14,9 @@ public class ChatUIBehavior : MonoBehaviour
 
     private VisualElement rve;
 
+    [Header("Visual Cue")]
+    [SerializeField] private GameObject visualCue;
+    private bool playerInRange;
 
 
     void Update()
@@ -22,9 +25,25 @@ public class ChatUIBehavior : MonoBehaviour
         {
              inMenu = !inMenu;
         }
+
+        if (playerInRange)
+        {
+            // dialoguePanel.SetActive(true);
+            visualCue.SetActive(true);
+        }
+        else
+        {
+            visualCue.SetActive(false);
+            if (rve.visible == true && visualCue == false)
+            {
+                inMenu = !inMenu;
+            }
+        }
+
         rve.visible = inMenu;
+
     }
-        private void OnEnable()
+    private void OnEnable()
     {
         rve = GetComponent<UIDocument>().rootVisualElement;
         ChatButton = rve.Q<Button>("ChatButton");
@@ -32,12 +51,29 @@ public class ChatUIBehavior : MonoBehaviour
 
         ChatButton.RegisterCallback<ClickEvent>(ev=> { nextLine(); });
         rve.visible = false;
-
-
+        playerInRange = false;
+        visualCue.SetActive(false);
     }
 
     private void nextLine()
     {
         Script.text = "change";
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag == "Player")
+        {
+            playerInRange = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag == "Player")
+        {
+            playerInRange = false;
+        }
     }
 }
