@@ -10,6 +10,12 @@
 .sp-main-menu-button:active {
 }
 
+.sp-pause-menu-button {
+    height: 40%;
+    background-color: rgba(0,0,0,0);
+    border-width: 0px;
+}
+
 #continue-button {    
     background-image: resource('textures/UI Text/ContinueNormal');
 }
@@ -46,14 +52,22 @@
     background-image: resource('textures/UI Text/OptionsClick');
 }
 
-#quit-button {    
+#quit-button, #quit-desktop-button {    
     background-image: resource('textures/UI Text/ExDesktopNormal');
 }
 
-#quit-button:hover {    
+#quit-button:hover, #quit-desktop-button:hover {    
     background-image: resource('textures/UI Text/ExDesktopHover');
 }
 
-#quit-button:active {
+#quit-button:active, #quit-desktop-button:active {
     background-image: resource('textures/UI Text/ExDesktopClick');
+}
+
+#resume-button {
+    background-image: resource('textures/UI Text/ContinueNormal');
+}
+
+#quit-menu-button {
+    background-image: resource('textures/UI Text/ExMenuNormal');
 }
