@@ -18,36 +18,40 @@ public class GrappleHook : MonoBehaviour {
 
     Vector2 target;
     public player player;
+    anchor var;
+
     //player inBalloon;
 
     private void Start() {
         line = GetComponent<LineRenderer>();
         player = GameObject.Find("player").GetComponent<player>();
+        var = GetComponent<anchor>();
+
     }
 
     private void Update() {
         if (Input.GetMouseButtonDown(1) && !isGrappling && player.inBalloon) {
             StartGrapple();
         }
-        else if (Input.GetMouseButtonDown(1) && isGrappling || !player.inBalloon)
+        else if (Input.GetMouseButtonDown(1) && isGrappling || !player.inBalloon && !var.isAnchoredd)
         {
             retracting = false;
             isGrappling = false;
             line.enabled = false;
         }
 
-        if (retracting) {
+        if (retracting && Vector2.Distance(transform.position, target) > realInDistance) {
             Vector2 grapplePos = Vector2.Lerp(transform.position, target, grappleSpeed * Time.deltaTime);
 
             transform.position = grapplePos;
 
             line.SetPosition(0, transform.position);
 
-            if (Vector2.Distance(transform.position, target) < realInDistance) {
-   //            retracting = false;
+    //        if (Vector2.Distance(transform.position, target) < realInDistance) {
+    //            retracting = false;
     //            isGrappling = false;
     //            line.enabled = false;
-            }
+    //        }
         }
     }
 

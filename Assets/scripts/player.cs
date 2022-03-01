@@ -20,6 +20,7 @@ public class player : MonoBehaviour
 
     //Grappling variable
     GrappleHook gh;
+    anchor var;
     float speed = 5f;
 
     int kiDOWN = 0;
@@ -38,6 +39,7 @@ public class player : MonoBehaviour
         anchorTrans = GameObject.Find("anchor").GetComponent<Transform>();
 
         gh = GetComponent<GrappleHook>();
+        var = GetComponent<anchor>();
 
         kiDOWN = 0;
     }
@@ -137,6 +139,8 @@ public class player : MonoBehaviour
                 if (swap == false)
                 {
                     rb.velocity = new Vector2(balloonTrans.gameObject.GetComponent<Rigidbody2D>().velocity.x, balloonTrans.gameObject.GetComponent<Rigidbody2D>().velocity.y).normalized * speed;
+ //                   var.velocity = new Vector2(balloonTrans.gameObject.GetComponent<Rigidbody2D>().velocity.x, balloonTrans.gameObject.GetComponent<Rigidbody2D>().velocity.y).normalized * speed;
+
                 }
 
 

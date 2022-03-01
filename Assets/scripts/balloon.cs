@@ -42,6 +42,8 @@ public class balloon : MonoBehaviour
 
     public player player;
 
+    anchor var;
+
     int kiLMOUSE;
     int kiRMOUSE;
 
@@ -64,6 +66,8 @@ public class balloon : MonoBehaviour
         //anchored = true;
 
         Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), anchor.GetComponent<Collider2D>(), true);
+        var = GetComponent<anchor>();
+
     }
 
     // Update is called once per frame
