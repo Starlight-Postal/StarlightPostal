@@ -16,15 +16,15 @@
     border-width: 0px;
 }
 
-#continue-button {    
+#continue-button, #resume-button {    
     background-image: resource('textures/UI Text/ContinueNormal');
 }
 
-#continue-button:hover {    
+#continue-button:hover, #resume-button:hover {    
     background-image: resource('textures/UI Text/ContinueHover');
 }
 
-#continue-button:active {
+#continue-button:active, #resume-button:active {
     background-image: resource('textures/UI Text/ContinueClick');
 }
 
@@ -64,10 +64,14 @@
     background-image: resource('textures/UI Text/ExDesktopClick');
 }
 
-#resume-button {
-    background-image: resource('textures/UI Text/ContinueNormal');
-}
-
 #quit-menu-button {
     background-image: resource('textures/UI Text/ExMenuNormal');
+}
+
+#quit-menu-button:hover {
+    background-image: resource('textures/UI Text/ExMenuHover');
+}
+
+#quit-menu-button:active {
+    background-image: resource('textures/UI Text/ExMenuClick');
 }
