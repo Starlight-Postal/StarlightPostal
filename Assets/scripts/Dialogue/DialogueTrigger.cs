@@ -17,15 +17,15 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TextMeshProUGUI dialogueText;
 
-    private Story currentStory;
+   // private Story currentStory;
     public bool dialogueIsPlaying;
 
     private bool playerInRange;
 
     private void Awake()
     {
-        //dialogueIsPlaying = false;
-        //dialoguePanel.SetActive(false);
+        dialogueIsPlaying = false;
+        dialoguePanel.SetActive(false);
         playerInRange = false;
         visualCue.SetActive(false);
     }
@@ -34,15 +34,20 @@ public class DialogueTrigger : MonoBehaviour
     {
         if (playerInRange)
         {
+           // dialoguePanel.SetActive(true);
             visualCue.SetActive(true);
             if (Input.GetKey("j"))
             {
                 Debug.Log(inkJSON.text);
+                dialogueIsPlaying = true;
+                dialoguePanel.SetActive(true);
             }
         }
         else
         {
             visualCue.SetActive(false);
+            dialogueIsPlaying = false;
+            dialoguePanel.SetActive(false);
         }
     }
     private void OnTriggerEnter2D(Collider2D collider)

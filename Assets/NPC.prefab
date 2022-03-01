@@ -84,7 +84,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2286051085710289973}
-  - component: {fileID: 2286051085710289972}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -109,23 +108,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2286051085710289972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2286051085710289962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e63b64f4ae16d1419add020304afb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  visualCue: {fileID: 2286051085771024229}
-  inkJSON: {fileID: 4900000, guid: 2c15cfa079180c247a8832fb8de0afe1, type: 3}
-  dialoguePanel: {fileID: 0}
-  dialogueText: {fileID: 0}
-  dialogueIsPlaying: 0
 --- !u!1 &2286051085771024229
 GameObject:
   m_ObjectHideFlags: 0
