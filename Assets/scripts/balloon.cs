@@ -48,6 +48,8 @@ public class balloon : MonoBehaviour
     int kiLMOUSE;
     int kiRMOUSE;
 
+    public Transform[] altExZones;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -82,8 +84,6 @@ public class balloon : MonoBehaviour
         UIUpdate();
         rb.velocity *= airFric;
 
-        //BuoyantControl(capped);
-        //ThrustControl();
         TargetControl();
 
         rb.velocity += wind.getWind(trans.position.x, trans.position.y)*windPower;
@@ -135,84 +135,9 @@ public class balloon : MonoBehaviour
             }
         }
 
-        //basketTrans.eulerAngles *= 0.95f;
-        //basketTrans.eulerAngles = new Vector3(0, 0, toAngle(basketTrans.eulerAngles.z*(Mathf.PI/180f), 0, 0.1f));
 
     }
 
-    /*void BuoyantControl(bool capped)
-    {
-        sprite.color = new Color(1, 0.3f, 0.3f);
-        if (player.inBalloon)
-        {
-            if (Input.GetKey("up") || Input.GetKey("w"))
-            {
-                volume += fillRate;
-                sprite.color = new Color(1, 0.5f, 0.5f);
-
-            }
-            if (Input.GetKey("down") || Input.GetKey("s"))
-            {
-                volume -= fillRate;
-                sprite.color = new Color(1, 0f, 0f);
-            }
-            if (capped)
-            {
-                if (volume > volCap)
-                {
-                    volume += (volCap - volume) * 0.1f;
-                }
-                if (volume < 0)
-                {
-                    volume *= 0.9f;
-                }
-            }
-            lean *= 0.75f;
-            if (Input.GetKey("right") || Input.GetKey("d"))
-            {
-                lean += leanPower;
-            }
-            if (Input.GetKey("left") || Input.GetKey("a"))
-            {
-                lean -= leanPower;
-            }
-        }
-        bouyancy = getBouyancy(trans.position.y);
-
-        rb.velocity += new Vector2(0, bouyancy * volume);
-        rb.velocity += new Vector2(0, -gravity * weight);
-        rb.velocity += new Vector2(lean, 0);
-    }
-
-    void ThrustControl()
-    {
-        sprite.color = new Color(1, 0.3f, 0.3f);
-        rb.velocity += new Vector2(0, -0.025f);
-        if (player.inBalloon)
-        {
-            if (Input.GetKey("up"))
-            {
-                rb.velocity += new Vector2(0, 0.1f);
-                sprite.color = new Color(1, 0.5f, 0.5f);
-
-            }
-            if (Input.GetKey("down"))
-            {
-                rb.velocity += new Vector2(0, -0.1f);
-                sprite.color = new Color(1, 0f, 0f);
-            }
-            lean *= 0.75f;
-            if (Input.GetKey("right"))
-            {
-                lean += leanPower; ;
-            }
-            if (Input.GetKey("left"))
-            {
-                lean -= leanPower;
-            }
-        }
-        rb.velocity += new Vector2(lean, 0);
-    }*/
 
     void TargetControl()
     {
@@ -246,7 +171,19 @@ public class balloon : MonoBehaviour
         }
         if (th > heightCap)
         {
-            th += (heightCap - th) * 0.1f;
+            bool ex = false;
+            for(int i = 0;i < altExZones.Length;i++)
+            {
+                if(Mathf.Abs(trans.position.x-altExZones[i].position.x)<=altExZones[i].localScale.x/2f&& Mathf.Abs(trans.position.y - altExZones[i].position.y) <= altExZones[i].localScale.y / 2f)
+                {
+                    ex = true;
+                    break;
+                }
+            }
+            if (!ex)
+            {
+                th += (heightCap - th) * 0.1f;
+            }
         }
 
         targetHeight = th / weight;
@@ -257,11 +194,6 @@ public class balloon : MonoBehaviour
         //Debug.Log(targetHeight);
     }
 
-    /*float getBouyancy(float y)
-    {
-        //return atmPressure / (y + 1);
-        return (40 - y) * atmPressure;
-    }*/
     void UIUpdate()
     {
         if (Input.GetMouseButton(0))
