@@ -3,14 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PopHazard : MonoBehaviour {
-    
-    // Start is called before the first frame update
-    void Start() {
-        
+
+    void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.CompareTag("BalloonHazard")) {
+            Debug.Log("Balloon has hit a hazard!");
+        }
     }
 
-    // Update is called once per frame
-    void Update() {
-        
-    }
 }
