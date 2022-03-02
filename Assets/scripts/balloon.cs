@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using IngameDebugConsole;
 
 public class balloon : MonoBehaviour
 {
@@ -280,6 +281,17 @@ public class balloon : MonoBehaviour
         else
         {
             kiRMOUSE = 0;
+        }
+    }
+
+    [ConsoleMethod("balloon.skin", "change the balloon skin")]
+    public static void ChangeBalloonSkin(string name) {
+        try {
+            var spriteRender = GameObject.Find("balloon").GetComponent<SpriteRenderer>();
+            spriteRender.sprite = Resources.Load<Sprite>("textures/Balloons/" + name);
+            Debug.Log("Changed balloon skin to " + name);
+        } catch {
+            Debug.LogError("Could not set balloon skin by name: " + name);
         }
     }
 }
