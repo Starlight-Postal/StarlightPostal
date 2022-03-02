@@ -89,7 +89,7 @@ public class player : MonoBehaviour
         {
             sprite.enabled = false;
             collider.enabled = false;
-            trans.position = balloonTrans.position+new Vector3(0,-2.5f,0);
+            trans.position = new Vector3(balloonTrans.position.x, balloonTrans.position.y - 2.5f,0);
             rb.velocity = new Vector2(0, 0);
             if (Input.GetKey("space"))
             {
@@ -101,6 +101,7 @@ public class player : MonoBehaviour
                         inBalloon = false;
                         //Debug.Log("disembark");
                         swap = false;
+                        
                     }
                 }
             } else

@@ -41,6 +41,7 @@ public class balloon : MonoBehaviour
 
     public Rigidbody2D basket;
     public Transform basketTrans;
+    public Collider2D basketCollider;
 
     public player player;
 
@@ -66,9 +67,11 @@ public class balloon : MonoBehaviour
         //anchored = true;
 
         basket = GameObject.Find("Basket").GetComponent<Rigidbody2D>();
+        basketCollider = GameObject.Find("Basket").GetComponent<Collider2D>();
         basketTrans = GameObject.Find("Basket").GetComponent<Transform>();
 
         //Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), anchor.GetComponent<Collider2D>(), true);
+        Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), basketCollider, true);
 
         basket.centerOfMass = new Vector2(0, -1f);
     }
