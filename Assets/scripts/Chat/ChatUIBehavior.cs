@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class ChatUIBehavior : MonoBehaviour
@@ -11,33 +12,16 @@ public class ChatUIBehavior : MonoBehaviour
     // Start is called before the first frame update
     private Button ChatButton;
     private Label Script;
+    private int counter;
 
     private VisualElement rve;
 
-    [Header("Visual Cue")]
-    [SerializeField] private GameObject visualCue;
-    private bool playerInRange;
-
-
     void Update()
     {
-       if (Input.GetKeyDown("i"))
-        {
-             inMenu = !inMenu;
-        }
 
-        if (playerInRange)
+        if (Input.GetKeyDown("i"))
         {
-            // dialoguePanel.SetActive(true);
-            visualCue.SetActive(true);
-        }
-        else
-        {
-            visualCue.SetActive(false);
-            if (rve.visible == true && visualCue == false)
-            {
-                inMenu = !inMenu;
-            }
+            inMenu = !inMenu;
         }
 
         rve.visible = inMenu;
@@ -49,31 +33,14 @@ public class ChatUIBehavior : MonoBehaviour
         ChatButton = rve.Q<Button>("ChatButton");
         Script = rve.Q<Label>("Script");
 
-        ChatButton.RegisterCallback<ClickEvent>(ev=> { nextLine(); });
+        ChatButton.RegisterCallback<ClickEvent>(ev=> { nextLine(); counter++; });
         rve.visible = false;
-        playerInRange = false;
-        visualCue.SetActive(false);
+
     }
 
     private void nextLine()
     {
-        Script.text = "change";
-    }
-
-
-    private void OnTriggerEnter2D(Collider2D collider)
-    {
-        if (collider.gameObject.tag == "Player")
-        {
-            playerInRange = true;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collider)
-    {
-        if (collider.gameObject.tag == "Player")
-        {
-            playerInRange = false;
-        }
+        if (counter == 1) { Script.text = "We are behind with they mail. You need to get to work right away"; }
+        if (counter == 2) { Script.text = "Hurry, up and fly up to the first town with the mail"; }
     }
 }

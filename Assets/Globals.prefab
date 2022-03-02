@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7044715800131093064}
   - component: {fileID: 7269904287821846267}
-  - component: {fileID: 749748198193192385}
+  - component: {fileID: 7361894051343924446}
   m_Layer: 0
   m_Name: ChatMenu
   m_TagString: Untagged
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: 88fcd175209499e408b8c68dba0d652f, type: 3}
   m_SortingOrder: 0
---- !u!114 &749748198193192385
+--- !u!114 &7361894051343924446
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c13301901c3fa0409f498ac9d36c4aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inMenu: 0
+  inMenu: 1
 --- !u!1 &4112832888523045489
 GameObject:
   m_ObjectHideFlags: 0
