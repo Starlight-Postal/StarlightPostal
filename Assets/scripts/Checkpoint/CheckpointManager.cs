@@ -1,0 +1,66 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using IngameDebugConsole;
+
+public class CheckpointManager : MonoBehaviour {
+
+    public static CheckpointManager instance;
+
+    private int lastCheckpointId;
+    private string lastCheckpointScene;
+
+    void Start() {
+        instance = this;
+        DontDestroyOnLoad(this.gameObject);
+    }
+
+    void Update() {
+        
+    }
+
+    public void UpdateCheckpoint(LandingPad pad) {
+        Debug.Log("event has bubbled up from pad #" + pad.padId);
+
+        lastCheckpointId = pad.padId;
+        lastCheckpointScene = pad.scene;
+    }
+
+    public Vector3 GetRespawnPoint() {
+        var pads = GameObject.FindObjectsOfType<LandingPad>();
+        LandingPad spawnPad = null;
+
+        foreach (var pad in pads) {
+            if (pad.padId == lastCheckpointId && pad.scene == lastCheckpointScene) {
+                spawnPad = pad;
+                break;
+            }
+        }
+
+        var pos = spawnPad.transform.position + new Vector3(0, 3, 0);
+        return pos;
+    }
+
+    [ConsoleMethod("respawn", "teleports balloon to last checkpoint")]
+    public static void Respawn() {
+        Debug.Log("teleporting...");
+        var balloon = GameObject.Find("balloon");
+        var center = GameObject.Find("Center");
+        var rigidbodies = balloon.GetComponentsInChildren<Rigidbody2D>();
+
+        var respawnPosition = instance.GetRespawnPoint();
+        respawnPosition.z = balloon.transform.position.z;
+
+        var prevCenterPos = center.transform.position;
+        var move = respawnPosition - center.transform.position;
+
+        balloon.transform.position += move;
+    }
+
+    [ConsoleMethod("checkpoint.id", "set new checkpoint id")]
+    public static void SetNewCheckpointId(int id) {
+        instance.lastCheckpointId = id;
+        Debug.Log("Checkpoint ID set.");
+    }
+
+}
