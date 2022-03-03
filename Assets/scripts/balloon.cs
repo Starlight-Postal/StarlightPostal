@@ -137,11 +137,20 @@ public class balloon : MonoBehaviour
 
             line.enabled = true;
             line.SetPosition(0, trans.position + anchorOrg);
-            line.SetPosition(1, anchorTrans.position);
+            line.SetPosition(1, anchorTrans.position+new Vector3(0,0.25f,0));
 
-            if (anchor.landed&& basketTrans.position.y>anchor.targetTrans.position.y&&basketTrans.position.y-anchor.targetTrans.position.y<1.5f)
+            if (anchor.landed)
             {
-                landed = true;
+                if (basketTrans.position.y > anchor.targetTrans.position.y && basketTrans.position.y - anchor.targetTrans.position.y < 1.5f)
+                {
+                    landed = true;
+                } else
+                {
+                    landed = false;
+                }
+                
+                th += ((anchor.targetTrans.position.y+3.5f) - th) * 0.005f;
+                //anchorD += (1 - anchorD) * 0.01f;
             } else
             {
                 landed = false;
