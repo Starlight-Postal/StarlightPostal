@@ -95,13 +95,11 @@ public class player : MonoBehaviour
             {
                 if (swap)
                 {
-                    //if (balloon.anchored&&balloon.anchorD<1f)
-                    if(balloon.anchored)
+                    if(balloon.landed)
                     {
                         inBalloon = false;
                         //Debug.Log("disembark");
                         swap = false;
-                        
                     }
                 }
             } else

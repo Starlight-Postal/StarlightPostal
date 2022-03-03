@@ -43,6 +43,7 @@ public class balloon : MonoBehaviour
     public float anchorRange = 10;
     public Vector2 anchorStrength;
     public Vector3 anchorOrg;
+    public bool landed = false;
 
     public Rigidbody2D basket;
     public Transform basketTrans;
@@ -126,6 +127,7 @@ public class balloon : MonoBehaviour
                     anchored = false;
                     anchorObj.SetActive(false);
                     anchor.stuck = false;
+                    anchor.landed = false;
                 }
             } else
             {
@@ -136,6 +138,14 @@ public class balloon : MonoBehaviour
             line.enabled = true;
             line.SetPosition(0, trans.position + anchorOrg);
             line.SetPosition(1, anchorTrans.position);
+
+            if (anchor.landed&& basketTrans.position.y>anchor.targetTrans.position.y&&basketTrans.position.y-anchor.targetTrans.position.y<1.5f)
+            {
+                landed = true;
+            } else
+            {
+                landed = false;
+            }
         }
         else
         {
@@ -149,10 +159,12 @@ public class balloon : MonoBehaviour
                     anchorObj.GetComponent<Transform>().position = trans.position + new Vector3(0, -3, 0);
                     anchorObj.SetActive(true);
                     anchor.stuck = false;
+                    anchor.landed = false;
                     //anchor.GetComponent<SpringJoint2D>().distance = 10;
                 }
             }
             line.enabled = false;
+            landed = false;
         }
 
 
