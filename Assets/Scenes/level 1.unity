@@ -31343,6 +31343,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3393330288123780126, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
+      propertyPath: m_AllowMSAA
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3393330288123780126, guid: 0ce3953fa2ab50a46b133bfcc65b36b6, type: 3}
       propertyPath: orthographic size
       value: 2
       objectReference: {fileID: 0}
@@ -39522,7 +39526,8 @@ GameObject:
   - component: {fileID: 2129511781}
   - component: {fileID: 2129511783}
   - component: {fileID: 2129511782}
-  m_Layer: 3
+  - component: {fileID: 2129511784}
+  m_Layer: 7
   m_Name: Basket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39648,7 +39653,7 @@ DistanceJoint2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2129511776}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 806744709}
@@ -39698,6 +39703,26 @@ DistanceJoint2D:
   m_AutoConfigureDistance: 0
   m_Distance: 0.05
   m_MaxDistanceOnly: 1
+--- !u!231 &2129511784
+SpringJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2129511776}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 806744709}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_AutoConfigureDistance: 1
+  m_Distance: 3
+  m_DampingRatio: 0
+  m_Frequency: 1
 --- !u!1 &2129771024
 GameObject:
   m_ObjectHideFlags: 0
