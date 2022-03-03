@@ -75,13 +75,13 @@ public class CheckpointManager : MonoBehaviour {
         return instance.lastCheckpointId;
     }
 
-    [ConsoleMethod("checkpoint.scene", "set new checkpoint id")]
+    [ConsoleMethod("checkpoint.scene", "set new checkpoint scene")]
     public static void SetNewCheckpointScene(string scene) {
         instance.lastCheckpointScene = scene;
         Debug.Log("Checkpoint scene set.");
     }
 
-    [ConsoleMethod("checkpoint.scene", "get current checkpoint id")]
+    [ConsoleMethod("checkpoint.scene", "get current checkpoint scene")]
     public static string GetCheckpointScene() {
         return instance.lastCheckpointScene;
     }    
