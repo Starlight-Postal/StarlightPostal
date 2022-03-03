@@ -43,10 +43,9 @@ public class CheckpointManager : MonoBehaviour {
 
     [ConsoleMethod("respawn", "teleports balloon to last checkpoint")]
     public static void Respawn() {
-        Debug.Log("teleporting...");
+        Debug.Log("Teleporting...");
         var balloon = GameObject.Find("balloon");
         var center = GameObject.Find("Center");
-        var rigidbodies = balloon.GetComponentsInChildren<Rigidbody2D>();
 
         var respawnPosition = instance.GetRespawnPoint();
         respawnPosition.z = balloon.transform.position.z;
