@@ -23,6 +23,16 @@ public class CheckpointManager : MonoBehaviour {
     public void UpdateCheckpoint(LandingPad pad) {
         Debug.Log("event has bubbled up from pad #" + pad.padId);
 
+        if (!pad.overrides) {
+            if (pad.scene == lastCheckpointScene) {
+                if (pad.padId <= lastCheckpointId) {
+                    // Only continue if this pad has a higher id, not in the same scene, or is marked to override
+                    Debug.LogWarning("Refusing to set new checkpoint! Lower ID than previous for non-overriding checkpoint.");
+                    return;
+                }
+            }
+        }        
+
         lastCheckpointId = pad.padId;
         lastCheckpointScene = pad.scene;
     }
