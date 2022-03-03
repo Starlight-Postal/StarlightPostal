@@ -55,6 +55,8 @@ public class CheckpointManager : MonoBehaviour {
         var move = respawnPosition - center.transform.position;
 
         balloon.transform.position += move;
+
+        balloon.GetComponent<balloon>().th = balloon.transform.position.y;
     }
 
     [ConsoleMethod("checkpoint.id", "set new checkpoint id")]
