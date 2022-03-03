@@ -16,7 +16,7 @@ public class CheckpointTrigger : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.transform.parent.gameObject.name == "balloon") {
-            Debug.Log("The balloon has triggered a checkpoint");
+            //Debug.Log("The balloon has triggered a checkpoint");
             pad.Trigger();
         }
     }

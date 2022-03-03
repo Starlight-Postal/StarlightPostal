@@ -21,7 +21,7 @@ public class CheckpointManager : MonoBehaviour {
     }
 
     public bool UpdateCheckpoint(LandingPad pad) {
-        Debug.Log("event has bubbled up from pad #" + pad.padId);
+        //Debug.Log("event has bubbled up from pad #" + pad.padId);
 
         if (!pad.overrides) {
             if (pad.scene == lastCheckpointScene) {
