@@ -9,15 +9,14 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] private GameObject visualCue;
 
     // private Story currentStory;
-    public bool dialogueIsPlaying;
-
-    private bool playerInRange;
+    public bool playerInRange;
 
     private void Awake()
     {
         playerInRange = false;
         visualCue.SetActive(false);
     }
+
 
     private void Update()
     {
@@ -46,4 +45,9 @@ public class DialogueTrigger : MonoBehaviour
             playerInRange = false;
         }
     }
+    public bool getPlayerInRange()
+    {
+        return playerInRange;
+    }
+
 }

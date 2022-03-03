@@ -26713,7 +26713,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1481096471}
   - component: {fileID: 1481096472}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35804,7 +35804,7 @@ GameObject:
   - component: {fileID: 1947200768}
   - component: {fileID: 1947200770}
   - component: {fileID: 1947200769}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35838,7 +35838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualCue: {fileID: 1709416643}
-  dialogueIsPlaying: 0
+  playerInRange: 0
 --- !u!61 &1947200770
 BoxCollider2D:
   m_ObjectHideFlags: 0
