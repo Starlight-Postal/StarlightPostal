@@ -301,4 +301,19 @@ public class balloon : MonoBehaviour
         var spriteRender = GameObject.Find("balloon").GetComponent<SpriteRenderer>();
         return spriteRender.sprite.name;
     }
+
+    [ConsoleMethod("balloon.skins", "get a list of valid balloon skins")]
+    public static void FetchValidBalloonSkins() {
+        var sprites = Resources.LoadAll<Sprite>("textures/Balloons/") as Sprite[];
+        string output = "Valid balloon skins:\n";
+        bool first = true;
+        foreach (var sprite in sprites) {
+            if (!first) {
+                output += ",";
+            }
+            output += " " + sprite.name;
+            first = false;
+        }
+        Debug.Log(output);
+    }
 }
