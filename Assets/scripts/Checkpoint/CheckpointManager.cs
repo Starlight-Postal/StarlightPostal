@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using IngameDebugConsole;
 
 public class CheckpointManager : MonoBehaviour {
@@ -44,6 +45,11 @@ public class CheckpointManager : MonoBehaviour {
     [ConsoleMethod("respawn", "teleports balloon to last checkpoint")]
     public static void Respawn() {
         Debug.Log("Teleporting...");
+        if (SceneManager.GetActiveScene().name != instance.lastCheckpointScene) {
+            Debug.LogWarning("Checkpoint is not from this scene!");
+            SceneManager.LoadScene(instance.lastCheckpointScene);
+        }
+
         var balloon = GameObject.Find("balloon");
         var center = GameObject.Find("Center");
 
