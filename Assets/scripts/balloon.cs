@@ -286,12 +286,19 @@ public class balloon : MonoBehaviour
 
     [ConsoleMethod("balloon.skin", "change the balloon skin")]
     public static void ChangeBalloonSkin(string name) {
-        try {
-            var spriteRender = GameObject.Find("balloon").GetComponent<SpriteRenderer>();
-            spriteRender.sprite = Resources.Load<Sprite>("textures/Balloons/" + name);
+        var spriteRender = GameObject.Find("balloon").GetComponent<SpriteRenderer>();
+        var sprite = Resources.Load<Sprite>("textures/Balloons/" + name);
+        if (sprite != null) {
+            spriteRender.sprite = sprite;
             Debug.Log("Changed balloon skin to " + name);
-        } catch {
-            Debug.LogError("Could not set balloon skin by name: " + name);
+        } else {
+            Debug.LogError("Could not load balloon skin '" + name + "'. Does it exist?");
         }
+    }
+
+    [ConsoleMethod("balloon.skin", "get the current balloon skin")]
+    public static string FetchBalloonSkin() {
+        var spriteRender = GameObject.Find("balloon").GetComponent<SpriteRenderer>();
+        return spriteRender.sprite.name;
     }
 }
