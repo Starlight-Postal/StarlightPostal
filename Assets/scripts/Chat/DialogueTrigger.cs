@@ -10,6 +10,7 @@ public class DialogueTrigger : MonoBehaviour
 
     // private Story currentStory;
     public bool playerInRange;
+    public int playerId = 0;
 
     private void Awake()
     {
@@ -17,17 +18,20 @@ public class DialogueTrigger : MonoBehaviour
         visualCue.SetActive(false);
     }
 
-
     private void Update()
     {
         if (playerInRange)
         {
             // dialoguePanel.SetActive(true);
+            playerInRange = true;
             visualCue.SetActive(true);
+            playerId = 0;
         }
         else
         {
+            playerInRange = false;
             visualCue.SetActive(false);
+            playerId = 5;
         }
     }
     private void OnTriggerEnter2D(Collider2D collider)
