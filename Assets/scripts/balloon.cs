@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using IngameDebugConsole;
 
 public class balloon : MonoBehaviour
 {
@@ -281,5 +282,38 @@ public class balloon : MonoBehaviour
         {
             kiRMOUSE = 0;
         }
+    }
+
+    [ConsoleMethod("balloon.skin", "change the balloon skin")]
+    public static void ChangeBalloonSkin(string name) {
+        var spriteRender = GameObject.Find("balloon").GetComponent<SpriteRenderer>();
+        var sprite = Resources.Load<Sprite>("textures/Balloons/" + name);
+        if (sprite != null) {
+            spriteRender.sprite = sprite;
+            Debug.Log("Changed balloon skin to " + name);
+        } else {
+            Debug.LogError("Could not load balloon skin '" + name + "'. Does it exist?");
+        }
+    }
+
+    [ConsoleMethod("balloon.skin", "get the current balloon skin")]
+    public static string FetchBalloonSkin() {
+        var spriteRender = GameObject.Find("balloon").GetComponent<SpriteRenderer>();
+        return spriteRender.sprite.name;
+    }
+
+    [ConsoleMethod("balloon.skins", "get a list of valid balloon skins")]
+    public static void FetchValidBalloonSkins() {
+        var sprites = Resources.LoadAll<Sprite>("textures/Balloons/") as Sprite[];
+        string output = "Valid balloon skins:";
+        bool first = true;
+        foreach (var sprite in sprites) {
+            if (!first) {
+                output += ",";
+            }
+            output += " " + sprite.name;
+            first = false;
+        }
+        Debug.Log(output);
     }
 }
