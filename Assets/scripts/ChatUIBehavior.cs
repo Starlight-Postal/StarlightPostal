@@ -6,7 +6,8 @@ using UnityEngine.UIElements;
 
 public class ChatUIBehavior : MonoBehaviour
 {
-
+    /*
+    public player player;
     public bool inMenu = false;
 
     // Start is called before the first frame update
@@ -17,14 +18,18 @@ public class ChatUIBehavior : MonoBehaviour
     private VisualElement rve;
     public bool playerInRange;
 
+    void Start()
+    {
+        player = GameObject.Find("player").GetComponent<player>();
+    }
 
     void Update()
     {
-        if (Input.GetKeyDown("i"))
-        {
-            inMenu = !inMenu;
-            counter = 0;
-        }
+        if (Input.GetKeyDown("i") && !player.inBalloon)
+                {
+                    inMenu = !inMenu;
+                    counter = 0;
+                }
         rve.visible = inMenu;
     }
     private void OnEnable()
@@ -46,4 +51,5 @@ public class ChatUIBehavior : MonoBehaviour
         else if (counter == 3) { Script.text = "Hurry, up and fly up to the first town with the mail"; }
         else { rve.visible = false; counter = 0; }
     }
+    */
 }

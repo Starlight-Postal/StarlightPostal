@@ -10520,7 +10520,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 597264469}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6, y: 0.5, z: 1}
+  m_LocalPosition: {x: 4.5, y: 0.5, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1481096471}
@@ -26775,7 +26775,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0.74729484, g: 0.764151, b: 0.111018136, a: 1}
+  m_Color: {r: 0.02093269, g: 0.25575358, b: 0.9245283, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -31131,6 +31131,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Globals
       objectReference: {fileID: 0}
+    - target: {fileID: 7269904287821846267, guid: eb646bb755b2c3a26b42ab86a0f6be35, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7361894051343924446, guid: eb646bb755b2c3a26b42ab86a0f6be35, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb646bb755b2c3a26b42ab86a0f6be35, type: 3}
 --- !u!1001 &1700401093
@@ -31549,6 +31557,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1709416644}
   - component: {fileID: 1709416645}
+  - component: {fileID: 1709416646}
   m_Layer: 0
   m_Name: VisualCue
   m_TagString: Untagged
@@ -31621,6 +31630,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1709416646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709416643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c13301901c3fa0409f498ac9d36c4aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1718066952
 GameObject:
   m_ObjectHideFlags: 0
@@ -35804,6 +35825,7 @@ GameObject:
   - component: {fileID: 1947200768}
   - component: {fileID: 1947200770}
   - component: {fileID: 1947200769}
+  - component: {fileID: 1947200771}
   m_Layer: 6
   m_Name: Trigger
   m_TagString: Untagged
@@ -35839,6 +35861,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visualCue: {fileID: 1709416643}
   playerInRange: 0
+  player: {fileID: 0}
+  inMenu: 1
 --- !u!61 &1947200770
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -35865,6 +35889,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &1947200771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1947200767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f21c074d86024caca2a0034ce4f53f73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: 89af5b241d1f90d4881bb31682a98c24, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 88fcd175209499e408b8c68dba0d652f, type: 3}
+  m_SortingOrder: 0
 --- !u!1 &1948805429
 GameObject:
   m_ObjectHideFlags: 0
