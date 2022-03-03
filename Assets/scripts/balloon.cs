@@ -305,7 +305,7 @@ public class balloon : MonoBehaviour
     [ConsoleMethod("balloon.skins", "get a list of valid balloon skins")]
     public static void FetchValidBalloonSkins() {
         var sprites = Resources.LoadAll<Sprite>("textures/Balloons/") as Sprite[];
-        string output = "Valid balloon skins:\n";
+        string output = "Valid balloon skins:";
         bool first = true;
         foreach (var sprite in sprites) {
             if (!first) {
