@@ -21,18 +21,8 @@ public class LandingPad : MonoBehaviour {
         scene = SceneManager.GetActiveScene().name;        
     }
 
-    void Update() {
-        var sprite = GetComponentInChildren<SpriteRenderer>();
-        if (reached) {
-            sprite.color = new Color(1,0.9f,0.9f);
-        } else {
-            sprite.color = new Color(0,0,0);
-        }
-    }
-
     public void Trigger() {
-        reached = true;
-        CheckpointManager.instance.UpdateCheckpoint(this);
+        reached = CheckpointManager.instance.UpdateCheckpoint(this);
     }
 
 }

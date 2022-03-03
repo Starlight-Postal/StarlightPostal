@@ -20,7 +20,7 @@ public class CheckpointManager : MonoBehaviour {
         
     }
 
-    public void UpdateCheckpoint(LandingPad pad) {
+    public bool UpdateCheckpoint(LandingPad pad) {
         Debug.Log("event has bubbled up from pad #" + pad.padId);
 
         if (!pad.overrides) {
@@ -28,13 +28,14 @@ public class CheckpointManager : MonoBehaviour {
                 if (pad.padId <= lastCheckpointId) {
                     // Only continue if this pad has a higher id, not in the same scene, or is marked to override
                     Debug.LogWarning("Refusing to set new checkpoint! Lower ID than previous for non-overriding checkpoint.");
-                    return;
+                    return false;
                 }
             }
         }        
 
         lastCheckpointId = pad.padId;
         lastCheckpointScene = pad.scene;
+        return true;
     }
 
     public Vector3 GetRespawnPoint() {
