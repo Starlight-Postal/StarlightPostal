@@ -25,8 +25,11 @@ public class player : MonoBehaviour
     public string aniMode = "idle";
     public float aniSpeed = 0.25f;
     public Sprite[] aniIdle;
+    public float aniIdleSpeed = 0.25f;
     public Sprite[] aniWait;
+    public float aniWaitSpeed = 0.25f;
     public Sprite[] aniWalk;
+    public float aniWalkSpeed = 1f;
     public Sprite[] aniLookUp;
     public Sprite[] aniLookDown;
     public float aniFrame = 0;
@@ -63,10 +66,10 @@ public class player : MonoBehaviour
         {
             aniWait[i] = Resources.Load<Sprite>("textures/player_wait/player_wait_" + i);
         }
-        aniWalk = new Sprite[8];
-        for (int i = 0; i < 8; i++)
+        aniWalk = new Sprite[18];
+        for (int i = 0; i < 18; i++)
         {
-            aniWalk[i] = Resources.Load<Sprite>("textures/player_idle/player_idle_" + i);
+            aniWalk[i] = Resources.Load<Sprite>("textures/player_walk/player_walk_" + i);
         }
         aniLookUp = new Sprite[8];
         for (int i = 0; i < 8; i++)
@@ -249,18 +252,23 @@ public class player : MonoBehaviour
         {
             case "idle":
                 ani = aniIdle;
+                aniSpeed = aniIdleSpeed;
                 break;
             case "wait":
                 ani = aniWait;
+                aniSpeed = aniWaitSpeed;
                 break;
             case "walk":
                 ani = aniWalk;
+                aniSpeed = aniWalkSpeed;
                 break;
             case "lookUp":
                 ani = aniLookUp;
+                aniSpeed = 1;
                 break;
             case "lookDown":
                 ani = aniLookDown;
+                aniSpeed = 1;
                 break;
             default:
                 break;
