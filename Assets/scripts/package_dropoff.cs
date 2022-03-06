@@ -35,10 +35,10 @@ public class package_dropoff : MonoBehaviour
                         Debug.Log("dropoff");
                         balloon.heightCap = newHeight;
                     }
-                    sprite.color = new Color(1.25f, 1.25f, 1.25f);
+                    sprite.color = new Color(1,1,1);
                 } else
                 {
-                    sprite.color = new Color(1, 1, 1);
+                    sprite.color = new Color(1, 0.9f,0.9f);
                 }
             }
         }
