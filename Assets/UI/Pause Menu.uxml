@@ -2,7 +2,7 @@
     <Style src="Main Menu Styles.uss" />
     <ui:VisualElement style="width: 100%; height: 100%; align-items: center; justify-content: center; background-color: rgba(0, 0, 0, 0.06);">
         <ui:VisualElement style="align-items: center; padding-left: 35px; padding-right: 35px; padding-top: 35px; padding-bottom: 35px; background-color: rgba(0, 0, 0, 0.39);">
-            <ui:Label text="Game Paused" display-tooltip-when-elided="true" style="color: rgb(255, 255, 255);" />
+            <ui:Label display-tooltip-when-elided="true" style="color: rgb(255, 255, 255); background-image: resource(&apos;textures/UI Text/GamePausedNormal&apos;); -unity-background-scale-mode: scale-to-fit; width: 100px; height: 30%;" />
             <ui:VisualElement style="height: 25px;" />
             <ui:VisualElement style="width: 100%;">
                 <ui:Button display-tooltip-when-elided="true" name="resume-button" class="sp-pause-menu-button" style="flex-shrink: 0; width: 100%; -unity-background-scale-mode: scale-to-fit;" />
