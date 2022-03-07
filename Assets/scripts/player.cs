@@ -89,14 +89,13 @@ public class player : MonoBehaviour
         {
             sprite.enabled = false;
             collider.enabled = false;
-            trans.position = balloonTrans.position+new Vector3(0,-2.5f,0);
+            trans.position = new Vector3(balloonTrans.position.x, balloonTrans.position.y - 2.5f,0);
             rb.velocity = new Vector2(0, 0);
             if (Input.GetKey("space"))
             {
                 if (swap)
                 {
-                    //if (balloon.anchored&&balloon.anchorD<1f)
-                    if(balloon.anchored)
+                    if(balloon.landed)
                     {
                         inBalloon = false;
                         //Debug.Log("disembark");
@@ -230,7 +229,7 @@ public class player : MonoBehaviour
             {
                 if (swap)
                 {
-                    if (Vector3.Distance(trans.position, balloonTrans.position) < 3.5f || Vector3.Distance(trans.position, anchorTrans.position) < 1f)
+                    if (Vector3.Distance(trans.position, balloonTrans.position+new Vector3(0,0,(trans.position.z-balloonTrans.position.z))) < 3.5f || Vector3.Distance(trans.position, anchorTrans.position + new Vector3(0, 0, (trans.position.z - anchorTrans.position.z))) < 1f)
                     {
                         //Debug.Log("embark");
                         inBalloon = true;

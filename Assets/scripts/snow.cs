@@ -51,7 +51,7 @@ public class snow : MonoBehaviour
             flakeV[i] *= 0.95f;
             flakeV[i] += new Vector2(w.x, w.y) * speed * flakeWeight[i];
             flakes[i].position += new Vector3(flakeV[i].x, flakeV[i].y,0);
-            flakes[i].position += new Vector3(0, (-grav * flakeWeight[i])/(w.magnitude+1), 0);
+            flakes[i].position += new Vector3(0, (-grav * flakeWeight[i])/((w.magnitude*2.5f)+1), 0);
             flakes[i].eulerAngles += new Vector3(0, 0, (flakeWeight[i] - 1) * 10);
             if (flakes[i].position.x >= focus.position.x + range.x * buffer)
             {
