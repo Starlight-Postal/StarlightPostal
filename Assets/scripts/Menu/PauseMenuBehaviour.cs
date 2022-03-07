@@ -44,6 +44,7 @@ public class PauseMenuBehaviour : MonoBehaviour {
         if (Input.GetKey(KeyCode.LeftShift)) {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         } else {
+            CheckpointManager.Respawn();
         }
     }
 
