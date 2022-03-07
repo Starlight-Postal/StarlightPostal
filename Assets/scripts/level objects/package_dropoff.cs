@@ -24,7 +24,7 @@ public class package_dropoff : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        sprite.color = new Color(1, 0.9f, 0.9f);
+        sprite.color = new Color(0.9f, 0.8f, 0.8f);
         if (!player.inBalloon)
         {
             if(Vector2.Distance(new Vector2(trans.position.x,trans.position.y),new Vector2(playerTrans.position.x, playerTrans.position.y)) <= range)
