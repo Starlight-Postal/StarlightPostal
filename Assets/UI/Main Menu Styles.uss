@@ -75,3 +75,15 @@
 #quit-menu-button:active {
     background-image: resource('textures/UI Text/ExMenuClick');
 }
+
+#reset-button {
+    background-image: resource('textures/UI Text/ResetNormal');
+}
+
+#reset-button:hover {
+    background-image: resource('textures/UI Text/ResetHover');
+}
+
+#reset-button:active {
+    background-image: resource('textures/UI Text/ResetClick');
+}
