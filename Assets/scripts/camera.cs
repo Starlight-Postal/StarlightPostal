@@ -12,6 +12,7 @@ public class camera : MonoBehaviour
     public Transform target;
 
     public player player;
+    public balloon balloon;
 
     public float balloonSize = 20;
     public float playerSize = 10;
@@ -33,6 +34,7 @@ public class camera : MonoBehaviour
         playerTrans = GameObject.Find("player").GetComponent<Transform>();
         target = playerTrans;
         player = GameObject.Find("player").GetComponent<player>();
+        balloon = GameObject.Find("balloon").GetComponent<balloon>();
     }
 
     // Update is called once per frame
@@ -52,7 +54,14 @@ public class camera : MonoBehaviour
         trans.position += ((new Vector3(target.position.x,target.position.y,trans.position.z)+offset) - trans.position) * speed;
         if (target == balloonTrans)
         {
-            cam.orthographicSize += (balloonSize - cam.orthographicSize) * 0.0025f;
+            if (balloon.anchored)
+            {
+                cam.orthographicSize += (balloonSize*0.5f - cam.orthographicSize) * 0.0025f;
+            }
+            else
+            {
+                cam.orthographicSize += (balloonSize - cam.orthographicSize) * 0.0025f;
+            }
         }
         if(target == playerTrans)
         {
