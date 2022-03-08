@@ -49,7 +49,7 @@ public class CheckpointManager : MonoBehaviour {
             }
         }
 
-        var pos = spawnPad.transform.position + new Vector3(0, 3, 0);
+        var pos = spawnPad.transform.position + new Vector3(0, 4, 0);
         return pos;
     }
 
@@ -72,7 +72,7 @@ public class CheckpointManager : MonoBehaviour {
 
         balloon.transform.position += move;
 
-        balloon.GetComponent<balloon>().th = balloon.transform.position.y;
+        balloon.GetComponent<balloon>().th = respawnPosition.y;
     }
 
     [ConsoleMethod("checkpoint.id", "set new checkpoint id")]
