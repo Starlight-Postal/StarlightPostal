@@ -18,7 +18,7 @@ public class bg_train : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         float xv = (x2 - x) * speed;
         if (xv <= vel)
