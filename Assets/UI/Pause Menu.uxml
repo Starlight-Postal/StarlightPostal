@@ -1,13 +1,13 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement style="width: 100%; height: 100%; align-items: center; justify-content: center; background-color: rgba(0, 0, 0, 0.06);">
-        <ui:VisualElement style="align-items: center; padding-left: 35px; padding-right: 35px; padding-top: 35px; padding-bottom: 35px; background-color: rgba(0, 0, 0, 0.39);">
-            <ui:Label text="Game Paused" display-tooltip-when-elided="true" style="color: rgba(255, 255, 255, 255);" />
-            <ui:VisualElement style="height: 25px;" />
-            <ui:VisualElement>
-                <ui:Button text="Resume Game" display-tooltip-when-elided="true" name="resume-button" />
-                <ui:VisualElement style="height: 10px;" />
-                <ui:Button text="Quit to Menu" display-tooltip-when-elided="true" name="quit-menu-button" />
-                <ui:Button text="Quit to Desktop" display-tooltip-when-elided="true" name="quit-desktop-button" />
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="Main Menu Styles.uss" />
+    <ui:VisualElement style="width: 100%; height: 100%; align-items: center; justify-content: center;">
+        <ui:VisualElement style="flex-grow: 1; flex-shrink: 0; align-items: center; justify-content: center; background-color: rgba(0, 0, 0, 0.47); border-top-left-radius: 15px; border-bottom-left-radius: 15px; border-top-right-radius: 15px; border-bottom-right-radius: 15px; height: auto; max-height: 325px; max-width: 50px; min-width: 250px; width: auto; min-height: auto;">
+            <ui:VisualElement style="width: 100%; height: 100px; background-image: resource(&apos;textures/UI Text/GamePausedNormal&apos;); -unity-background-scale-mode: scale-to-fit;" />
+            <ui:VisualElement style="width: 50%;">
+                <ui:Button display-tooltip-when-elided="true" name="resume-button" class="sp-pause-menu-button" style="-unity-background-scale-mode: scale-to-fit; height: 60px; margin-bottom: 1px;" />
+                <ui:Button display-tooltip-when-elided="true" name="reset-button" class="sp-pause-menu-button" style="-unity-background-scale-mode: scale-to-fit; height: 40px;" />
+                <ui:Button display-tooltip-when-elided="true" name="quit-menu-button" class="sp-pause-menu-button" style="-unity-background-scale-mode: scale-to-fit; height: 40px;" />
+                <ui:Button display-tooltip-when-elided="true" name="quit-desktop-button" class="sp-pause-menu-button" style="height: 40px; -unity-background-scale-mode: scale-to-fit;" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
