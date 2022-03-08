@@ -1,6 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement name="textBox" style="position: absolute; height: 68px; width: 514px; left: 382px; top: 524px; -unity-background-image-tint-color: rgb(255, 255, 255); background-color: rgb(154, 154, 154);">
-        <ui:Label text="Hello,____ glad to see you getting here nice and safly." display-tooltip-when-elided="true" name="chatLabel" focusable="true" style="height: 109px; -unity-background-image-tint-color: rgb(255, 255, 255); background-color: rgba(154, 154, 154, 0); color: rgb(0, 0, 0); width: 513px; position: absolute; top: 7px; left: 4px;" />
+        <ui:Label display-tooltip-when-elided="true" name="chatLabel" focusable="true" style="height: 109px; -unity-background-image-tint-color: rgb(255, 255, 255); background-color: rgba(154, 154, 154, 0); color: rgb(0, 0, 0); width: 513px; position: absolute; top: 7px; left: 4px;" />
         <ui:Button text="Next" display-tooltip-when-elided="true" name="ChatButton" style="padding-left: 6px; opacity: 1; position: absolute; top: 41px; left: 431px; height: 22px; width: 76px;" />
     </ui:VisualElement>
 </ui:UXML>
