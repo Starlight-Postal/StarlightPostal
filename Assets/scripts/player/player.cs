@@ -59,27 +59,27 @@ public class player : MonoBehaviour
         
         for (int i = 0; i < 8; i++)
         {
-            aniIdle[i] = Resources.Load<Sprite>("textures/player_idle/player_idle_" + i);
+            aniIdle[i] = Resources.Load<Sprite>("textures/Player/player_idle/player_idle_" + i);
         }
         aniWait = new Sprite[20];
         for (int i = 0; i < 20; i++)
         {
-            aniWait[i] = Resources.Load<Sprite>("textures/player_wait/player_wait_" + i);
+            aniWait[i] = Resources.Load<Sprite>("textures/Player/player_wait/player_wait_" + i);
         }
         aniWalk = new Sprite[18];
         for (int i = 0; i < 18; i++)
         {
-            aniWalk[i] = Resources.Load<Sprite>("textures/player_walk/player_walk_" + i);
+            aniWalk[i] = Resources.Load<Sprite>("textures/Player/player_walk/player_walk_" + i);
         }
         aniLookUp = new Sprite[8];
         for (int i = 0; i < 8; i++)
         {
-            aniLookUp[i] = Resources.Load<Sprite>("textures/player_idle/player_idle_" + i);
+            aniLookUp[i] = Resources.Load<Sprite>("textures/Player/player_idle/player_idle_" + i);
         }
         aniLookDown = new Sprite[8];
         for (int i = 0; i < 8; i++)
         {
-            aniLookDown[i] = Resources.Load<Sprite>("textures/player_idle/player_idle_" + i);
+            aniLookDown[i] = Resources.Load<Sprite>("textures/Player/player_idle/player_idle_" + i);
         }
         camHeight = 0;
     }
