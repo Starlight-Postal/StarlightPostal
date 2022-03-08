@@ -10,6 +10,8 @@ public class coin : MonoBehaviour
     public float pullRange;
     public float collectRange;
     public float speed = 0.25f;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +31,7 @@ public class coin : MonoBehaviour
             trans.position += new Vector3(Mathf.Cos(a) * -s, Mathf.Sin(a) * -s, 0);
             if (d < collectRange)
             {
+                CoinSoundEffect.CoinCollect();
                 Destroy(gameObject);
             }
         }
