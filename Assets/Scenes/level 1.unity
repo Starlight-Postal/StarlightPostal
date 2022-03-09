@@ -7658,92 +7658,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5427152673521319999, guid: 8eddecf1ad5a5c743835e86b41dc3ca1, type: 3}
   m_PrefabInstance: {fileID: 412957314}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &420625771
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4768351908478419731, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: script.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4768351908478419731, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: script.Array.data[0]
-      value: Welcome to starlight mountain
-      objectReference: {fileID: 0}
-    - target: {fileID: 4768351908478419731, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: script.Array.data[1]
-      value: Press either "a" or "d" to move left and right
-      objectReference: {fileID: 0}
-    - target: {fileID: 4768351908478419731, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: script.Array.data[2]
-      value: Press down arrow to go through the floor
-      objectReference: {fileID: 0}
-    - target: {fileID: 4768351908478419731, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: script.Array.data[3]
-      value: walk to the left to find the balloon. Then press space to enter the
-        balloon
-      objectReference: {fileID: 0}
-    - target: {fileID: 4768351908478419731, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: script.Array.data[4]
-      value: Now that your in the balloon press "W" to increase the balloon density
-      objectReference: {fileID: 0}
-    - target: {fileID: 4768351908478419731, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: script.Array.data[5]
-      value: Press "S" to decrease your balloon density
-      objectReference: {fileID: 0}
-    - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: m_RootOrder
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4768351909796898375, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: m_Name
-      value: NPC (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
 --- !u!1 &421026270
 GameObject:
   m_ObjectHideFlags: 0
@@ -39833,13 +39747,138 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4768351908478419731, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: script.Array.size
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351908478419731, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: script.Array.data[0]
+      value: Well hey there kiddo, you must be my transfer.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351908478419731, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: script.Array.data[1]
+      value: "Welcome to Autumn Outpost, I\u2019m Captain."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351908478419731, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: script.Array.data[2]
+      value: It might not look like much, but this is kind of the central hub for
+        all of \nStarlight Mountain! Only way in or out is through this station.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351908478419731, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: script.Array.data[3]
+      value: "Well I\u2019m sure you know, but you\u2019ll be our new mail carrier
+        for the season. \\n\u2018Whole mountain is serviced by this postal service,
+        so it\u2019s a big responsibility!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351908478419731, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: script.Array.data[4]
+      value: "I won\u2019t bore you with the details, we\u2019ve got a big night
+        ahead of us. This \\nweek\u2019s mail just came in, we gotta get going."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351908478419731, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: script.Array.data[5]
+      value: "I hope you got some shut-eye on the train because your first shift
+        starts \\nright now! I\u2019ll give you a minute to get settled but when
+        you\u2019re ready to go, \\nmeet me out back."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351908478419731, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: script.Array.data[6]
+      value: Hey kiddo, all set?
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351908478419731, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: script.Array.data[7]
+      value: "This is it, the Starlight Express! She\u2019s a real beauty."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351908478419731, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: script.Array.data[8]
+      value: "What\u2019s the matter, never flown a hot air balloon before? How else
+        did you \\nthink all those packages made it to the summit?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351908478419731, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: script.Array.data[9]
+      value: "Well, I\u2019m a big believer in learning by experience. Press SPACE
+        to hop in!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351908478419731, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: script.Array.data[10]
+      value: "Now a hot air balloon is about the simplest kind of vehicle you\u2019ll
+        ever drive. \\nThere\u2019s only two directions: up and down!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351908478419731, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: script.Array.data[11]
+      value: We go up by heating up the air in the balloon, tap W to use your burner.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351908478419731, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: script.Array.data[12]
+      value: "There you go! The hotter our little air bubble gets, the higher up
+        it\u2019ll want to \\nfloat. Be careful though, she might take a minute to
+        get up as high as she \\nwants to go, so there\u2019s no need to floor the
+        burner"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351908478419731, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: script.Array.data[13]
+      value: Little taps will usually do the trick!
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351908478419731, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: script.Array.data[14]
+      value: Now to go DOWN, we need to vent some of that hot air out the top. Tap
+        S to \nopen the vent.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351908478419731, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: script.Array.data[15]
+      value: "Nice job! Little taps should do the trick, we don\u2019t want to be
+        rocketing \\nup and down."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351908478419731, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: script.Array.data[16]
+      value: Now ballooning is all about your ups and downs, side-to-side is more
+        \nof a challenge.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351908478419731, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: script.Array.data[17]
+      value: "We can always lean the balloon with A or D, but that\u2019ll only get
+        you so far. A \\nmaster balloon pilot needs to learn to follow the wind."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351908478419731, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: script.Array.data[18]
+      value: Pay attention to your surroundings! See how the leaves are blowing in
+        all \ndifferent directions?
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351908478419731, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: script.Array.data[19]
+      value: Think about the direction you want to go, and see if you can find a
+        wind \ncurrent that can take you that way. Be like the leaves!
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351908478419731, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: script.Array.data[20]
+      value: "Well here we are, this is our first stop. Let\u2019s make our way to
+        the \\nlanding platform!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351908478419731, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: script.Array.data[21]
+      value: "Easy does it now, let\u2019s make it a gentle landing"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351908478419731, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: script.Array.data[22]
+      value: Now in order to dock here we need to be tied down. Use the MOUSE to
+        \ndrop the anchor.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351908478419731, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: script.Array.data[23]
+      value: Nice job! We can press SPACE again to hop out.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351908478419731, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: script.Array.data[24]
+      value: "Great work kiddo, you survived your maiden voyage! Let\u2019s get to
+        the \\npost office- we\u2019ve got some ."
+      objectReference: {fileID: 0}
     - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
       propertyPath: m_LocalPosition.y

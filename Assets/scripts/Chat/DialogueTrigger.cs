@@ -50,9 +50,6 @@ public class DialogueTrigger : MonoBehaviour
                 inMenu = true;
                 rve.visible = inMenu;
                 Script.text = script[counter];
-
-                //gets rid of the button for the tutorial NPC
-                if (canLeave == true) { ChatButton.visible = false; }
             }
         }
 
@@ -72,37 +69,33 @@ public class DialogueTrigger : MonoBehaviour
         if (counter >= script.Length)
         {
             inMenu = false;
+            ChatButton.visible = false;
             rve.visible = inMenu;
             counter = 0;
             Script.text = script[counter];
         }
 
-
+        if(canLeave)
+        {
+            if (counter == 9 || counter == 11 || counter == 14 || counter == 17)
+            {
+                ChatButton.visible = false;
+            }
+        }
         //for tutorial NPC makes it so the script can move on it player has done the command
-        if ((Input.GetKeyDown("a") || Input.GetKeyDown("d")) && canLeave && counter == 0)
+        if (canLeave && player.inBalloon)
         {
-            counter++;
-            Script.text = script[counter];
-        }
-        else if (Input.GetKeyDown("s") && canLeave && counter == 1)
-        {
-            counter++;
-            Script.text = script[counter];
-        }
-        else if (player.inBalloon && canLeave && counter == 2)
-        {
-            counter++;
-            Script.text = script[counter];
-        }
-        else if (Input.GetKeyDown("w") && player.inBalloon && canLeave && counter == 3)
-        {
-            counter++;
-            Script.text = script[counter];
-        }
-        else if (Input.GetKeyDown("s") && player.inBalloon && canLeave && counter == 4)
-        {
-            counter++;
-            firstNPC == true;
+            if (
+            (counter == 9) ||
+            (Input.GetKeyDown("w") && counter == 11) ||
+            (Input.GetKeyDown("s") && counter == 14) ||
+            ((Input.GetKeyDown("a") || (Input.GetKeyDown("d"))) && counter == 17)
+            )
+            {
+                ChatButton.visible = true;
+                counter++;
+                Script.text = script[counter];
+            }
         }
         rve.visible = inMenu;
     
