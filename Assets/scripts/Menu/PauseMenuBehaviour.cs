@@ -9,6 +9,7 @@ public class PauseMenuBehaviour : MonoBehaviour {
     public bool inMenu = false;
 
     private Button resumeButton;
+    private Button resetButton;
     private Button quitMenuButton;
     private Button quitDesktopButton;
     private VisualElement rve;
@@ -17,7 +18,6 @@ public class PauseMenuBehaviour : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Escape)) {
             inMenu = !inMenu;
         }
-
         
         Time.timeScale = inMenu ? 0 : 1;
         rve.visible = inMenu;
@@ -27,14 +27,25 @@ public class PauseMenuBehaviour : MonoBehaviour {
         rve = GetComponent<UIDocument>().rootVisualElement;
 
         resumeButton = rve.Q<Button>("resume-button");
+        resetButton = rve.Q<Button>("reset-button");
         quitMenuButton = rve.Q<Button>("quit-menu-button");
         quitDesktopButton = rve.Q<Button>("quit-desktop-button");
 
         resumeButton.RegisterCallback<ClickEvent>(ev => { inMenu = false; });
+        resetButton.RegisterCallback<ClickEvent>(ev => { Reset(); });
         quitMenuButton.RegisterCallback<ClickEvent>(ev => { LoadMainMenu(); });
         quitDesktopButton.RegisterCallback<ClickEvent>(ev => { Application.Quit(); });
 
         rve.visible = false;
+    }
+
+    private void Reset() {
+        inMenu = false;
+        if (Input.GetKey(KeyCode.LeftShift)) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        } else {
+            CheckpointManager.Respawn();
+        }
     }
 
     private void LoadMainMenu() {

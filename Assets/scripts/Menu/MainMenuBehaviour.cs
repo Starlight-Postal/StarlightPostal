@@ -21,7 +21,7 @@ public class MainMenuBehaviour : MonoBehaviour {
 
         continueButton.RegisterCallback<ClickEvent>(ev => { ContinueGame(); });
         newGameButton.RegisterCallback<ClickEvent>(ev => { StartNewGame(); });
-        optionsButton.RegisterCallback<ClickEvent>(ev => { });
+        optionsButton.RegisterCallback<ClickEvent>(ev => { Application.OpenURL("https://www.youtube.com/watch?v=dQw4w9WgXcQ"); });
         quitButton.RegisterCallback<ClickEvent>(ev => { QuitGame(); });
     }
 

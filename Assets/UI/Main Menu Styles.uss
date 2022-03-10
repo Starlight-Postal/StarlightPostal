@@ -1,0 +1,89 @@
+.sp-main-menu-button {
+    height: 40%;
+    background-color: rgba(0,0,0,0);
+    border-width: 0px;
+}
+
+.sp-main-menu-button:hover {
+}
+
+.sp-main-menu-button:active {
+}
+
+.sp-pause-menu-button {
+    height: 40%;
+    background-color: rgba(0,0,0,0);
+    border-width: 0px;
+}
+
+#continue-button, #resume-button {    
+    background-image: resource('textures/UI Text/ContinueNormal');
+}
+
+#continue-button:hover, #resume-button:hover {    
+    background-image: resource('textures/UI Text/ContinueHover');
+}
+
+#continue-button:active, #resume-button:active {
+    background-image: resource('textures/UI Text/ContinueClick');
+}
+
+#new-game-button {    
+    background-image: resource('textures/UI Text/NewGameNormal');
+}
+
+#new-game-button:hover {    
+    background-image: resource('textures/UI Text/NewGameHover');
+}
+
+#new-game-button:active {
+    background-image: resource('textures/UI Text/NewGameClick');
+}
+
+#options-button {    
+    background-image: resource('textures/UI Text/OptionsNormal');
+}
+
+#options-button:hover {    
+    background-image: resource('textures/UI Text/OptionsHover');
+}
+
+#options-button:active {
+    background-image: resource('textures/UI Text/OptionsClick');
+}
+
+#quit-button, #quit-desktop-button {    
+    background-image: resource('textures/UI Text/ExDesktopNormal');
+}
+
+#quit-button:hover, #quit-desktop-button:hover {    
+    background-image: resource('textures/UI Text/ExDesktopHover');
+}
+
+#quit-button:active, #quit-desktop-button:active {
+    background-image: resource('textures/UI Text/ExDesktopClick');
+}
+
+#quit-menu-button {
+    background-image: resource('textures/UI Text/ExMenuNormal');
+}
+
+#quit-menu-button:hover {
+    background-image: resource('textures/UI Text/ExMenuHover');
+}
+
+#quit-menu-button:active {
+    background-image: resource('textures/UI Text/ExMenuClick');
+}
+
+#reset-button {
+    background-image: resource('textures/UI Text/ResetNormal');
+}
+
+#reset-button:hover {
+    background-image: resource('textures/UI Text/ResetHover');
+}
+
+#reset-button:active {
+    background-image: resource('textures/UI Text/ResetClick');
+}
