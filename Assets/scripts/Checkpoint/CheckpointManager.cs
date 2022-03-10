@@ -6,14 +6,18 @@ using IngameDebugConsole;
 
 public class CheckpointManager : MonoBehaviour {
 
-    public static CheckpointManager instance;
+    public static CheckpointManager instance = null;
 
     private int lastCheckpointId;
     private string lastCheckpointScene;
 
     void Start() {
-        instance = this;
-        DontDestroyOnLoad(this.gameObject);
+        if (instance == null) {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        } else {
+            Destroy(this.gameObject);
+        }
     }
 
     void Update() {
