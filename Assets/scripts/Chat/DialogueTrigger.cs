@@ -67,7 +67,6 @@ public class DialogueTrigger : MonoBehaviour
                 counter = 0;
                 Script.text = script[counter];
                 inMenu = false;
-
             }
         }
 
