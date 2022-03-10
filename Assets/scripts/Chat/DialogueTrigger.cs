@@ -107,12 +107,15 @@ public class DialogueTrigger : MonoBehaviour
         ChatButton = rve.Q<Button>("ChatButton");
         Script = rve.Q<Label>("chatLabel");
 
-        ChatButton.RegisterCallback<ClickEvent>(ev => 
+        ChatButton.RegisterCallback<ClickEvent>(ev =>
         {
-            counter++;
-            Script.text = script[counter];
-            if (counter == script.Length - 1) { ChatButton.text = "End"; }
-            else { ChatButton.text = "Next"; }
+            if (ChatButton.visible == true)
+            {
+                counter++;
+                Script.text = script[counter];
+                if (counter == script.Length - 1) { ChatButton.text = "End"; }
+                else { ChatButton.text = "Next"; }
+            }
         }
         );
         rve.visible = false;

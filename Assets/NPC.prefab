@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4768351908478419730}
   - component: {fileID: 4768351908478419728}
-  - component: {fileID: 4768351908478419731}
   - component: {fileID: 4768351908478419729}
+  - component: {fileID: 572952633873306423}
   m_Layer: 6
   m_Name: Trigger
   m_TagString: Untagged
@@ -59,29 +59,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
---- !u!114 &4768351908478419731
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4768351908478419693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a21a63c654f42c46b667c57d828058f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  visualCue: {fileID: 4768351908748709585}
-  playerInRange: 0
-  player: {fileID: 0}
-  inMenu: 0
-  script:
-  - Press either "a" or "d" to move left and right
-  - Press down arrow to go through the floor
-  - walk to the left to find the balloon. Then press space to enter the balloon
-  - Now that your in the balloon press "W" to increase the balloon density
-  - Press "S" to decrease your balloon density
-  canLeave: 1
 --- !u!114 &4768351908478419729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,6 +75,24 @@ MonoBehaviour:
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: 88fcd175209499e408b8c68dba0d652f, type: 3}
   m_SortingOrder: 0
+--- !u!114 &572952633873306423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4768351908478419693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a21a63c654f42c46b667c57d828058f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visualCue: {fileID: 4768351908748709585}
+  playerInRange: 0
+  player: {fileID: 0}
+  inMenu: 0
+  script: []
+  canLeave: 0
 --- !u!1 &4768351908748709585
 GameObject:
   m_ObjectHideFlags: 0
