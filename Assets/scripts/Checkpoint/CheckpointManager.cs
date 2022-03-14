@@ -80,6 +80,8 @@ public class CheckpointManager : MonoBehaviour {
         balloon.transform.position += move;
 
         balloon.GetComponent<balloon>().th = respawnPosition.y;
+        GameObject.Find("player").GetComponent<player>().inBalloon = true;
+        lastCheckpointScene = SceneManager.GetActiveScene().name;
     }
 
     [ConsoleMethod("respawn", "teleports balloon to last checkpoint")]
