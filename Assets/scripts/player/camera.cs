@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class camera : MonoBehaviour
 {
+    public bool follow = true;
+
     public float speed = 0.05f;
     public Transform trans;
     public Camera cam;
@@ -40,52 +42,56 @@ public class camera : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        camRange = ratio * cam.orthographicSize;
-        if (player.inBalloon)
+        if (follow)
         {
-            target = balloonTrans;
-            offset = balloonOff;
-        } else
-        {
-            target = playerTrans;
-            offset = playerOff;
-            playerOff = new Vector2(0, player.camHeight);
-        }
-        trans.position += ((new Vector3(target.position.x,target.position.y,trans.position.z)+offset) - trans.position) * speed;
-        if (target == balloonTrans)
-        {
-            if (balloon.anchored)
+            camRange = ratio * cam.orthographicSize;
+            if (player.inBalloon)
             {
-                cam.orthographicSize += (balloonSize*0.5f - cam.orthographicSize) * 0.0025f;
+                target = balloonTrans;
+                offset = balloonOff;
             }
             else
             {
-                cam.orthographicSize += (balloonSize - cam.orthographicSize) * 0.0025f;
+                target = playerTrans;
+                offset = playerOff;
+                playerOff = new Vector2(0, player.camHeight);
             }
-        }
-        if(target == playerTrans)
-        {
-            cam.orthographicSize += (playerSize - cam.orthographicSize) * 0.01f;
-        }
+            trans.position += ((new Vector3(target.position.x, target.position.y, trans.position.z) + offset) - trans.position) * speed;
+            if (target == balloonTrans)
+            {
+                if (balloon.anchored)
+                {
+                    cam.orthographicSize += (balloonSize * 0.5f - cam.orthographicSize) * 0.0025f;
+                }
+                else
+                {
+                    cam.orthographicSize += (balloonSize - cam.orthographicSize) * 0.0025f;
+                }
+            }
+            if (target == playerTrans)
+            {
+                cam.orthographicSize += (playerSize - cam.orthographicSize) * 0.01f;
+            }
 
-        if (range != null)
-        {
-            //Debug.Log(trans.position.x+" , "+ (range.position.x - (range.localScale.x / 2f - camRange.x)));
-            if (trans.position.x < range.position.x - (range.localScale.x / 2f - camRange.x))
+            if (range != null)
             {
-                trans.position = new Vector3(range.position.x - (range.localScale.x / 2f - camRange.x), trans.position.y, trans.position.z);
-            }
-            if (trans.position.x > range.position.x + (range.localScale.x / 2f - camRange.x))
-            {
-                trans.position = new Vector3(range.position.x + (range.localScale.x / 2f - camRange.x), trans.position.y, trans.position.z);
-            }
-            if (trans.position.y < range.position.y - (range.localScale.y / 2f - camRange.y))
-            {
-                trans.position = new Vector3( trans.position.x, range.position.y - (range.localScale.y / 2f - camRange.y), trans.position.z);
-            }
-            if (trans.position.y > range.position.y + (range.localScale.y / 2f - camRange.y))
-            {
-                trans.position = new Vector3(trans.position.x, range.position.y + (range.localScale.y / 2f - camRange.y), trans.position.z);
+                //Debug.Log(trans.position.x+" , "+ (range.position.x - (range.localScale.x / 2f - camRange.x)));
+                if (trans.position.x < range.position.x - (range.localScale.x / 2f - camRange.x))
+                {
+                    trans.position = new Vector3(range.position.x - (range.localScale.x / 2f - camRange.x), trans.position.y, trans.position.z);
+                }
+                if (trans.position.x > range.position.x + (range.localScale.x / 2f - camRange.x))
+                {
+                    trans.position = new Vector3(range.position.x + (range.localScale.x / 2f - camRange.x), trans.position.y, trans.position.z);
+                }
+                if (trans.position.y < range.position.y - (range.localScale.y / 2f - camRange.y))
+                {
+                    trans.position = new Vector3(trans.position.x, range.position.y - (range.localScale.y / 2f - camRange.y), trans.position.z);
+                }
+                if (trans.position.y > range.position.y + (range.localScale.y / 2f - camRange.y))
+                {
+                    trans.position = new Vector3(trans.position.x, range.position.y + (range.localScale.y / 2f - camRange.y), trans.position.z);
+                }
             }
         }
     }

@@ -24267,6 +24267,9 @@ MonoBehaviour:
   x2: -6.35
   speed: 0.025
   vel: 0.1
+  player: {fileID: 0}
+  cam: {fileID: 0}
+  camTrans: {fileID: 0}
 --- !u!1 &1329664031
 GameObject:
   m_ObjectHideFlags: 0
@@ -41738,10 +41741,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3968976079628149774, guid: 77a048e6e88068b419a0f270c755df7a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968976079676043113, guid: 77a048e6e88068b419a0f270c755df7a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968976079676043117, guid: 77a048e6e88068b419a0f270c755df7a, type: 3}
+      propertyPath: th
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3968976079676043117, guid: 77a048e6e88068b419a0f270c755df7a, type: 3}
       propertyPath: wind
       value: 
       objectReference: {fileID: 842157448}
+    - target: {fileID: 3968976079676043117, guid: 77a048e6e88068b419a0f270c755df7a, type: 3}
+      propertyPath: targetHeight
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3968976079676043117, guid: 77a048e6e88068b419a0f270c755df7a, type: 3}
       propertyPath: altExZones.Array.data[0]
       value: 
@@ -43267,6 +43286,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 61.30057
       objectReference: {fileID: 0}
+    - target: {fileID: 6444352938574417063, guid: e42837ce529b48646ae4b18297aff8eb, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8258316343278912384, guid: e42837ce529b48646ae4b18297aff8eb, type: 3}
       propertyPath: m_Name
       value: landing_area
@@ -43329,6 +43352,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8732758919596412775, guid: e42837ce529b48646ae4b18297aff8eb, type: 3}
       propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164439917316141890, guid: e42837ce529b48646ae4b18297aff8eb, type: 3}
+      propertyPath: reached
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
