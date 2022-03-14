@@ -63,7 +63,7 @@ public class CheckpointManager : MonoBehaviour {
             }
         }
 
-        var pos = spawnPad.transform.position + new Vector3(0, 4, 0);
+        var pos = spawnPad.transform.Find("Spawn Point").transform.position;
         return pos;
     }
 
