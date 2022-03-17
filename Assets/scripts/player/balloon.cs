@@ -21,7 +21,7 @@ public class balloon : MonoBehaviour
 
     public float targetHeight;
     public float th;
-    public float heightCap = 30;
+    public GameVar<float> heightCap = GameVariableManager.Inst().GetOrCreate("balloon.height", new GameVar<float>(30));
     public float heightFloor = 0;
     public float buoyancy = 0.0005f;
     public float weight = 1;
@@ -212,7 +212,7 @@ public class balloon : MonoBehaviour
         {
             th += (heightFloor - th) * 0.1f;
         }
-        if (th > heightCap)
+        if (th > heightCap.read())
         {
             bool ex = false;
             for(int i = 0;i < altExZones.Length;i++)
@@ -225,7 +225,7 @@ public class balloon : MonoBehaviour
             }
             if (!ex)
             {
-                th += (heightCap - th) * 0.1f;
+                th += (heightCap.read() - th) * 0.1f;
             }
         }
 
