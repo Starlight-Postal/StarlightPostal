@@ -50,6 +50,11 @@ public class balloon : MonoBehaviour
     public Transform basketTrans;
     public Collider2D basketCollider;
 
+    public SpriteRenderer basketSprite;
+    public Sprite basketTex_0;
+    public Sprite basketTex_1;
+    public Sprite basketTex_2;
+
     public player player;
 
     int kiLMOUSE;
@@ -175,6 +180,14 @@ public class balloon : MonoBehaviour
             }
             line.enabled = false;
             landed = false;
+        }
+
+        if (player.inBalloon)
+        {
+            basketSprite.sprite = basketTex_1;
+        } else
+        {
+            basketSprite.sprite = basketTex_0;
         }
 
 
