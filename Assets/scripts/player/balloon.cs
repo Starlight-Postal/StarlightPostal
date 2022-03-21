@@ -142,7 +142,7 @@ public class balloon : MonoBehaviour
             }
 
             line.enabled = true;
-            line.SetPosition(0, trans.position + anchorOrg);
+            line.SetPosition(0, basketTrans.position + anchorOrg);
             line.SetPosition(1, anchorTrans.position+new Vector3(0,0.25f,0));
 
             if (anchor.landed)
@@ -171,7 +171,7 @@ public class balloon : MonoBehaviour
                     //Debug.Log("throw");
                     anchored = true;
                     anchorD = anchorRange;
-                    anchorObj.GetComponent<Transform>().position = trans.position + new Vector3(0, -3, 0);
+                    anchorObj.GetComponent<Transform>().position = basketTrans.position + anchorOrg;
                     anchorObj.SetActive(true);
                     anchor.stuck = false;
                     anchor.landed = false;
