@@ -6,7 +6,7 @@ public class GameVariableManager {
 
     private static GameVariableManager inst;
 
-    public static Instance() {
+    public static Inst() {
         if (inst == null) {
             inst = new GameVariableManager();
         }
@@ -16,35 +16,19 @@ public class GameVariableManager {
 
     private IDictionary<string, GameVar> vars = new Dictionary();
 
-    public GameVariableManager() {
-        
-    }
-
-    public GameVar GetVar(string name) {
+    public GameVar getVar(string name) {
         return vars.TryGetValue(name);
     }
 
-    public void SetNewVar(string name, GameVar var) {
+    public void setNewVar(string name, GameVar var) {
         vars.Add(name, var);
-    }
-
-    public void GetOrCreate(string name, GameVar fallback) {
-        if (!vars.ContainsKey(name)) {
-            SetNewVar(name, fallback);
-        }
-        
-        return GetVar(name);
     }
 
 }
 
 public class GameVar<T> {
     
-    private T data;
-
-    public GameVar(T initData) {
-        data = initData;
-    }
+    T data;
 
     public T read() {
         return data;
