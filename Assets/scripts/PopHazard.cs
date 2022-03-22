@@ -5,7 +5,7 @@ using UnityEngine;
 public class PopHazard : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.CompareTag("BalloonHazard")) {
+        if (other.gameObject.CompareTag("hazard")) {
             Debug.Log("Balloon has hit a hazard!");
             CheckpointManager.Respawn();
         }
