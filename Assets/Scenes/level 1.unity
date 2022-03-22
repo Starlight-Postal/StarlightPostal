@@ -20222,7 +20222,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc1551ba4be5185479b6bdea46a9d411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadLevel: demo end
+  loadLevel: level 2
+  upDoor: 1
+  balloonObj: {fileID: 0}
+  balloon: {fileID: 0}
+  trans: {fileID: 0}
 --- !u!68 &1094043595
 EdgeCollider2D:
   m_ObjectHideFlags: 0
