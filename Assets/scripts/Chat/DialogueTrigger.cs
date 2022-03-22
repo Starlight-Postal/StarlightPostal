@@ -14,6 +14,11 @@ public class DialogueTrigger : MonoBehaviour
     public bool playerInRange;
 
     public player player;
+    public balloon balloon;
+    public GameObject anchorObj;
+    public anchor anchor;
+    public bool anchored;
+
     public bool inMenu = false;
 
     // Start is called before the first frame update
@@ -30,11 +35,21 @@ public class DialogueTrigger : MonoBehaviour
     public string[] script;
     public bool canLeave;
 
+    //public Transform trans;
+
     private void Start()
     {
         playerInRange = false;
         visualCue.SetActive(false);
         player = GameObject.Find("player").GetComponent<player>();
+        balloon = GameObject.Find("balloon").GetComponent<balloon>();
+        anchorObj = GameObject.Find("anchor");
+        anchor = anchorObj.GetComponent<anchor>();
+        anchorObj.SetActive(anchored);
+
+        //anchor = anchor.GetComponent<anchor>();
+
+        //  trans = gameObject.GetComponent<Transform>();
 
     }
 
@@ -136,7 +151,7 @@ public class DialogueTrigger : MonoBehaviour
     private void playerCanLeave()
     {
         
-        if (counter == 10 || ((counter < 26) && (counter > 11)))
+        if (counter == 9 || ((counter < 25) && (counter > 10)))
         {
             chatButton.visible = false;
         }
@@ -145,8 +160,8 @@ public class DialogueTrigger : MonoBehaviour
         if (player.inBalloon)
         {
             if (
-            (counter == 10) ||
-            (Input.GetKeyDown("w") && counter == 12) //||
+            (counter == 9) ||
+            (Input.GetKeyDown("w") && counter == 11) //||
            // (Input.GetKeyDown("s") && counter == 14) ||
          //   ((Input.GetKeyDown("a") || (Input.GetKeyDown("d"))) && counter == 17)
             )
@@ -156,19 +171,49 @@ public class DialogueTrigger : MonoBehaviour
                 Script.text = script[counter];
             }
         }
-        if ((counter < 21 &&counter > 12) && (player.transform.position.x > checkpoint))
+        if ((counter < 19 &&counter > 11) && (player.transform.position.x > checkpoint))
         {
             chatButton.visible = false;
-            checkpoint = checkpoint + 45;
+            checkpoint = checkpoint + 53;
             counter++;
             Script.text = script[counter];
 
         }
-        else if ((21 == counter) && (player.transform.position.x > 550))
+        if ((20 == counter) && (player.transform.position.x > 550))
         {
             counter++;
             Script.text = script[counter];
         }
+        /*
+        if (counter == 2)
+        {
+            counter = 21;
+            Script.text = script[counter];
+            chatButton.visible = false;
+
+        }
+        */
+        if (counter > 20)
+        {
+
+            if (player.inBalloon)
+            {
+                if (counter == 21 && Input.GetKeyDown("s")) { counter++; Script.text = script[counter]; }
+         //       if (anchor.stuck) { counter++; Script.text = script[counter]; }
+         //       if (Input.GetKey("down") && counter == 23) { counter++; Script.text = script[counter]; }
+                //    if (anchor.landed && anchor.stuck) { counter = 25; Script.text = script[counter]; }
+            }
+
+            else if (!player.inBalloon)
+            {   
+                counter = 26;
+                Script.text = script[counter];
+                chatButton.visible = true;
+                chatButton.text = "End";
+            }
+
+        }
+        
     }
 }
 
