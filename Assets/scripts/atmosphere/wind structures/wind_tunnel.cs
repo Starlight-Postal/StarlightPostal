@@ -35,6 +35,10 @@ public class wind_tunnel : wind_structure
             float d = (weight*0.5f)-(Vector2.Distance(new Vector2(x, y), p));
             if (d >= 0)
             {
+                if (blur > 0)
+                {
+
+                }
                 Vector2 delta = path[i + 1] - path[i];
                 delta.Normalize();
                 wind += delta * power;
