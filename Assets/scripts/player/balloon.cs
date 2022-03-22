@@ -26,6 +26,7 @@ public class balloon : MonoBehaviour
     public float buoyancy = 0.0005f;
     public float weight = 1;
     public float fillRate = 0.1f;
+    float fr;
     public Vector2 airFric;
 
     public float windPower = 1.25f;
@@ -68,6 +69,7 @@ public class balloon : MonoBehaviour
         sprite = gameObject.GetComponent<SpriteRenderer>();
 
         lean = 0;
+        fr = fillRate;
 
         player = GameObject.Find("player").GetComponent<player>();
 
@@ -187,15 +189,21 @@ public class balloon : MonoBehaviour
         sprite.color = new Color(1,0.9f,0.9f);
         if (player.inBalloon)
         {
+            
             if (Input.GetKey("up") || Input.GetKey("w"))
             {
-                th += fillRate;
+                
                 sprite.color = new Color(1,1,1);
-            }
-            if (Input.GetKey("down") || Input.GetKey("s"))
+                fr += (fillRate * 3 - fr) * 0.0025f;
+                th += fr;
+            } else if (Input.GetKey("down") || Input.GetKey("s"))
             {
-                th -= fillRate;
                 sprite.color = new Color(1, 0.8f,0.8f);
+                fr += (fillRate * 3 - fr) * 0.0025f;
+                th -= fr;
+            } else
+            {
+                fr += (fillRate - fr) * 0.1f;
             }
             lean *= 0.75f;
             if (Input.GetKey("right") || Input.GetKey("d"))
@@ -207,6 +215,8 @@ public class balloon : MonoBehaviour
                 lean -= leanPower;
             }
         }
+
+        Debug.Log(fr);
 
         if (th < heightFloor)
         {
