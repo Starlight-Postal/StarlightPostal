@@ -33,6 +33,8 @@ public class balloon : MonoBehaviour
     public Transform trans;
     public SpriteRenderer sprite;
 
+    public Sprite[] skins;
+    public int skin = 0;
 
     public wind wind;
 
@@ -89,6 +91,8 @@ public class balloon : MonoBehaviour
         Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), basketCollider, true);
 
         basket.centerOfMass = new Vector2(0, -1f);
+
+        setSkin(skin);
     }
 
     // Update is called once per frame
@@ -236,6 +240,12 @@ public class balloon : MonoBehaviour
         //Debug.Log(targetHeight);
     }
 
+    void setSkin(int id)
+    {
+        skin = id % skins.Length;
+        sprite.sprite = skins[skin];
+    }
+
     void UIUpdate()
     {
         if (Input.GetMouseButton(0))
@@ -281,14 +291,26 @@ public class balloon : MonoBehaviour
         return Mathf.Atan2(y,x);
     }
 
+    [ConsoleMethod("balloon.skin.id","change the balloon skin")]
+    public static void SetBalloonSkin(int id)
+    {
+        GameObject.Find("balloon").GetComponent<balloon>().setSkin(id);
+        Debug.Log("Changed balloon skin id to " + id);
+
+    }
+
     [ConsoleMethod("balloon.skin", "change the balloon skin")]
-    public static void ChangeBalloonSkin(string name) {
+    public static void ChangeBalloonSkin(string name)
+    {
         var spriteRender = GameObject.Find("balloon").GetComponent<SpriteRenderer>();
         var sprite = Resources.Load<Sprite>("textures/Balloons/" + name);
-        if (sprite != null) {
+        if (sprite != null)
+        {
             spriteRender.sprite = sprite;
             Debug.Log("Changed balloon skin to " + name);
-        } else {
+        }
+        else
+        {
             Debug.LogError("Could not load balloon skin '" + name + "'. Does it exist?");
         }
     }
