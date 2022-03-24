@@ -8,16 +8,6 @@ public class balloon : MonoBehaviour
     
     float lean;
     public float leanPower = 0.0075f;
-    /*float bouyancy;
-    public bool capped = true;
-    public float volume = 1;
-    public float weight = 1;
-    public float airFric = 0.975f;
-    public float gravity = 0.1f;
-    public float atmPressure = 1;
-    public float leanPower = 0.0075f;
-    public float fillRate = 0.025f;
-    public float volCap = 1;*/
 
     public float targetHeight;
     public float th;
@@ -32,7 +22,8 @@ public class balloon : MonoBehaviour
     public Rigidbody2D rb;
     public Transform trans;
     public SpriteRenderer sprite;
-
+    Vector2 trackV;
+    
     public Sprite[] skins;
     public int skin = 0;
 
@@ -61,9 +52,14 @@ public class balloon : MonoBehaviour
 
     LineRenderer line;
 
+    global_data gdata;
+
+    public GameObject dropCoin;
+
     // Start is called before the first frame update
     void Start()
     {
+        gdata = GameObject.Find("Globals").GetComponent<global_data>();
         //rb = gameObject.GetComponent<Rigidbody2D>();
         //trans = gameObject.GetComponent<Transform>();
         sprite = gameObject.GetComponent<SpriteRenderer>();
@@ -73,6 +69,7 @@ public class balloon : MonoBehaviour
         player = GameObject.Find("player").GetComponent<player>();
 
         //wind = GameObject.Find("wind").GetComponent<wind>();
+        trackV = new Vector2(0, 0);
 
 
         anchorObj = GameObject.Find("anchor");
@@ -99,6 +96,8 @@ public class balloon : MonoBehaviour
     void FixedUpdate()
     {
         UIUpdate();
+
+        trackV = rb.velocity;
         rb.velocity *= airFric;
 
         TargetControl();
@@ -238,6 +237,32 @@ public class balloon : MonoBehaviour
         rb.velocity += new Vector2(lean,hd * buoyancy);
 
         //Debug.Log(targetHeight);
+    }
+
+    public void centerHit()
+    {
+        float d = (trackV-rb.velocity).magnitude;
+        //Debug.Log(d);
+        if (d >= 4)
+        {
+            //dropCoins((int)Mathf.Floor(d) - 3);
+            dropCoins((int)Mathf.Floor(Mathf.Pow((d - 4) / 15f, 0.5f) * 10));
+        }
+    }
+
+    void dropCoins(int n)
+    {
+        //Debug.Log(n);
+        if (n > gdata.coins)
+        {
+            n = gdata.coins;
+        }
+
+        gdata.coins -= n;
+        for(int i = 0;i < n;i++)
+        {
+            Instantiate(dropCoin, basketTrans.position, Quaternion.identity);
+        }
     }
 
     void setSkin(int id)
