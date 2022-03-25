@@ -1619,7 +1619,7 @@ Transform:
   - {fileID: 1924245412}
   - {fileID: 275953185}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &58929751
 GameObject:
@@ -4119,7 +4119,7 @@ Transform:
   - {fileID: 1084257110}
   - {fileID: 222945933}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &218416109
 PrefabInstance:
@@ -10636,83 +10636,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &602741196
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2503120621725518255, guid: 9300ad7337e77d5878d46f9f07191ec6, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4526783190016062404, guid: 9300ad7337e77d5878d46f9f07191ec6, type: 3}
-      propertyPath: m_Size.x
-      value: 64.16815
-      objectReference: {fileID: 0}
-    - target: {fileID: 4526783190016062404, guid: 9300ad7337e77d5878d46f9f07191ec6, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.7759094
-      objectReference: {fileID: 0}
-    - target: {fileID: 4786254805479178759, guid: 9300ad7337e77d5878d46f9f07191ec6, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4786254805479178759, guid: 9300ad7337e77d5878d46f9f07191ec6, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 637.787
-      objectReference: {fileID: 0}
-    - target: {fileID: 4786254805479178759, guid: 9300ad7337e77d5878d46f9f07191ec6, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 117.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 4786254805479178759, guid: 9300ad7337e77d5878d46f9f07191ec6, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4786254805479178759, guid: 9300ad7337e77d5878d46f9f07191ec6, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4786254805479178759, guid: 9300ad7337e77d5878d46f9f07191ec6, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4786254805479178759, guid: 9300ad7337e77d5878d46f9f07191ec6, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4786254805479178759, guid: 9300ad7337e77d5878d46f9f07191ec6, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4786254805479178759, guid: 9300ad7337e77d5878d46f9f07191ec6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4786254805479178759, guid: 9300ad7337e77d5878d46f9f07191ec6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4786254805479178759, guid: 9300ad7337e77d5878d46f9f07191ec6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5620206396813690948, guid: 9300ad7337e77d5878d46f9f07191ec6, type: 3}
-      propertyPath: padId
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5620206396813690948, guid: 9300ad7337e77d5878d46f9f07191ec6, type: 3}
-      propertyPath: targetLevel
-      value: level 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8868776634420147858, guid: 9300ad7337e77d5878d46f9f07191ec6, type: 3}
-      propertyPath: m_Name
-      value: Level Loader
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9300ad7337e77d5878d46f9f07191ec6, type: 3}
 --- !u!1001 &605818749
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11435,196 +11358,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &630681156
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 572952633873306423, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: script.Array.size
-      value: 27
-      objectReference: {fileID: 0}
-    - target: {fileID: 572952633873306423, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: script.Array.data[0]
-      value: Well hey there kiddo, you must be my transfer.
-      objectReference: {fileID: 0}
-    - target: {fileID: 572952633873306423, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: script.Array.data[1]
-      value: "Welcome to Autumn Outpost, I\u2019m Captain."
-      objectReference: {fileID: 0}
-    - target: {fileID: 572952633873306423, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: script.Array.data[2]
-      value: It might not look like much, but this is kind of the central hub for
-        all of Starlight Mountain! Only way in or out is through this station.
-      objectReference: {fileID: 0}
-    - target: {fileID: 572952633873306423, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: script.Array.data[3]
-      value: "Well I\u2019m sure you know, but you\u2019ll be our new mail carrier
-        for the season. \u2018Whole mountain is serviced by this postal service,
-        so it\u2019s a big responsibility!"
-      objectReference: {fileID: 0}
-    - target: {fileID: 572952633873306423, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: script.Array.data[4]
-      value: "I won\u2019t bore you with the details, we\u2019ve got a big night
-        ahead of us. This week\u2019s mail just came in, we gotta get going."
-      objectReference: {fileID: 0}
-    - target: {fileID: 572952633873306423, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: script.Array.data[5]
-      value: "I hope you got some shut-eye on the train because your first shift
-        starts right now! I\u2019ll give you a minute to get settled but when you\u2019re
-        ready to go, meet me out back."
-      objectReference: {fileID: 0}
-    - target: {fileID: 572952633873306423, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: script.Array.data[6]
-      value: Hey kiddo, all set?
-      objectReference: {fileID: 0}
-    - target: {fileID: 572952633873306423, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: script.Array.data[7]
-      value: "This is it, the Starlight Express! She\u2019s a real beauty."
-      objectReference: {fileID: 0}
-    - target: {fileID: 572952633873306423, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: script.Array.data[8]
-      value: "What\u2019s the matter, never flown a hot air balloon before? How else
-        did you think all those packages made it to the summit?"
-      objectReference: {fileID: 0}
-    - target: {fileID: 572952633873306423, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: script.Array.data[9]
-      value: "Well, I\u2019m a big believer in learning by experience. Press SPACE
-        to hop in!"
-      objectReference: {fileID: 0}
-    - target: {fileID: 572952633873306423, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: script.Array.data[10]
-      value: "Now a hot air balloon is about the simplest kind of vehicle you\u2019ll
-        ever drive. There\u2019s only two directions: up and down!"
-      objectReference: {fileID: 0}
-    - target: {fileID: 572952633873306423, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: script.Array.data[11]
-      value: We go up by heating up the air in the balloon, tap W to use your burner.
-      objectReference: {fileID: 0}
-    - target: {fileID: 572952633873306423, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: script.Array.data[12]
-      value: "There you go! The hotter our little air bubble gets, the higher up
-        it\u2019ll want to float. Be careful though, she might take a minute to get
-        up as high as she wants to go, so there\u2019s no need to floor the burner."
-      objectReference: {fileID: 0}
-    - target: {fileID: 572952633873306423, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: script.Array.data[13]
-      value: Little taps will usually do the trick!
-      objectReference: {fileID: 0}
-    - target: {fileID: 572952633873306423, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: script.Array.data[14]
-      value: Now to go DOWN, we need to vent some of that hot air out the top. Tap
-        S to open the vent.
-      objectReference: {fileID: 0}
-    - target: {fileID: 572952633873306423, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: script.Array.data[15]
-      value: "Nice job! Little taps should do the trick, we don\u2019t want to be
-        rocketing up and down."
-      objectReference: {fileID: 0}
-    - target: {fileID: 572952633873306423, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: script.Array.data[16]
-      value: Now ballooning is all about your ups and downs, side-to-side is more
-        of a challenge.
-      objectReference: {fileID: 0}
-    - target: {fileID: 572952633873306423, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: script.Array.data[17]
-      value: "We can always lean the balloon with A or D, but that\u2019ll only get
-        you so far. A master balloon pilot needs to learn to follow the wind."
-      objectReference: {fileID: 0}
-    - target: {fileID: 572952633873306423, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: script.Array.data[18]
-      value: Pay attention to your surroundings! See how the leaves are blowing in
-        all different directions?
-      objectReference: {fileID: 0}
-    - target: {fileID: 572952633873306423, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: script.Array.data[19]
-      value: Think about the direction you want to go, and see if you can find a
-        wind current that can take you that way. Be like the leaves!
-      objectReference: {fileID: 0}
-    - target: {fileID: 572952633873306423, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: script.Array.data[20]
-      value: "Well here we are, this is our first stop. Let\u2019s make our way to
-        the landing platform!"
-      objectReference: {fileID: 0}
-    - target: {fileID: 572952633873306423, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: script.Array.data[21]
-      value: "Easy does it now, let\u2019s make it a gentle landing."
-      objectReference: {fileID: 0}
-    - target: {fileID: 572952633873306423, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: script.Array.data[22]
-      value: Now in order to dock here we need to be tied down. Use the MOUSE to
-        drop the anchor.
-      objectReference: {fileID: 0}
-    - target: {fileID: 572952633873306423, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: script.Array.data[23]
-      value: Whoops, we need to anchor to the landing platform! Use the MOUSE again
-        to retract the anchor.
-      objectReference: {fileID: 0}
-    - target: {fileID: 572952633873306423, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: script.Array.data[24]
-      value: " Let\u2019s try again, make sure you\u2019re over the target."
-      objectReference: {fileID: 0}
-    - target: {fileID: 572952633873306423, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: script.Array.data[25]
-      value: Nice job! We can press SPACE again to hop out.
-      objectReference: {fileID: 0}
-    - target: {fileID: 572952633873306423, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: script.Array.data[26]
-      value: "Great work kiddo, you survived your maiden voyage! Let\u2019s get to
-        the post office- we\u2019ve got some."
-      objectReference: {fileID: 0}
-    - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: m_RootOrder
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4768351909796898375, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
-      propertyPath: m_Name
-      value: NPC
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
 --- !u!1 &630813413
 GameObject:
   m_ObjectHideFlags: 0
@@ -20267,7 +20000,78 @@ Transform:
   - {fileID: 305991456}
   - {fileID: 737225964}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1094043593
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1094043596}
+  - component: {fileID: 1094043595}
+  - component: {fileID: 1094043594}
+  m_Layer: 0
+  m_Name: level door
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1094043594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094043593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1551ba4be5185479b6bdea46a9d411, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadLevel: level 2
+  upDoor: 1
+  balloonObj: {fileID: 0}
+  balloon: {fileID: 0}
+  trans: {fileID: 0}
+--- !u!68 &1094043595
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094043593}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -12.705017, y: 9.108215}
+  - {x: 53.631348, y: 9.108208}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
+--- !u!4 &1094043596
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094043593}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 616.48413, y: 120.37512, z: -28.500223}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1095568062
 GameObject:
@@ -30021,7 +29825,7 @@ Transform:
   - {fileID: 328731276}
   - {fileID: 867786943}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1631450388
 PrefabInstance:
@@ -31742,10 +31546,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1170953954673257049, guid: eb646bb755b2c3a26b42ab86a0f6be35, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1458409696639708307, guid: eb646bb755b2c3a26b42ab86a0f6be35, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -32200,7 +32000,7 @@ Transform:
   - {fileID: 1455213169731060577}
   - {fileID: 947774406}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1727577417
 GameObject:
@@ -34351,7 +34151,7 @@ Transform:
   - {fileID: 1817570169}
   - {fileID: 1323917983}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1828950771
 GameObject:
@@ -38462,7 +38262,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8258316343278912387, guid: e42837ce529b48646ae4b18297aff8eb, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8258316343278912387, guid: e42837ce529b48646ae4b18297aff8eb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -43340,10 +43140,6 @@ PrefabInstance:
     - target: {fileID: 8732758919596412775, guid: e42837ce529b48646ae4b18297aff8eb, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9164439917316141890, guid: e42837ce529b48646ae4b18297aff8eb, type: 3}
-      propertyPath: reached
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e42837ce529b48646ae4b18297aff8eb, type: 3}
