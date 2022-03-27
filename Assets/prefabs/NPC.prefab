@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4768351908478419730}
   - component: {fileID: 4768351908478419728}
   - component: {fileID: 4768351908478419729}
-  - component: {fileID: 572952633873306423}
+  - component: {fileID: 2931887959683300530}
   m_Layer: 6
   m_Name: Trigger
   m_TagString: Untagged
@@ -75,7 +75,7 @@ MonoBehaviour:
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: 88fcd175209499e408b8c68dba0d652f, type: 3}
   m_SortingOrder: 0
---- !u!114 &572952633873306423
+--- !u!114 &2931887959683300530
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -84,15 +84,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 4768351908478419693}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a21a63c654f42c46b667c57d828058f, type: 3}
+  m_Script: {fileID: 11500000, guid: ed37544660f735646b7e2edaab1b5a03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   visualCue: {fileID: 4768351908748709585}
   playerInRange: 0
   player: {fileID: 0}
+  balloon: {fileID: 0}
+  anchor: {fileID: 0}
   inMenu: 0
+  checkpoint: 16
   script: []
-  canLeave: 1
+  canLeave: 0
 --- !u!1 &4768351908748709585
 GameObject:
   m_ObjectHideFlags: 0
