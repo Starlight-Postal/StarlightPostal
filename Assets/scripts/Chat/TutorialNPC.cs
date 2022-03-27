@@ -5,9 +5,8 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-public class DialogueTrigger : MonoBehaviour
+public class TutorialNPC : MonoBehaviour
 {
-    
     [Header("Visual Cue")]
     [SerializeField] private GameObject visualCue;
 
@@ -16,7 +15,9 @@ public class DialogueTrigger : MonoBehaviour
 
     public player player;
     public balloon balloon;
+    public GameObject anchorObj;
     public anchor anchor;
+    public bool anchored;
 
 
     public bool inMenu = false;
@@ -33,6 +34,7 @@ public class DialogueTrigger : MonoBehaviour
     private bool firstNPC = false;
 
     public string[] script;
+    public bool canLeave;
 
     //public Transform trans;
 
@@ -56,8 +58,9 @@ public class DialogueTrigger : MonoBehaviour
             if (Input.GetKeyDown("c"))
             {
                 counter = 0;
-                inMenu = true;
-                rve.visible = inMenu;
+                turnOnDisplay();
+                sideButton.visible = true;
+
                 Script.text = script[counter];
             }
         }
@@ -66,22 +69,22 @@ public class DialogueTrigger : MonoBehaviour
         else
         {
             visualCue.SetActive(false);
-            counter = 0;
-            Script.text = script[counter];
-            inMenu = false;
+            if (playerInRange == false && canLeave == false)
+            {
+                counter = 0;
+                Script.text = script[counter];
+                turnOffDisplay();          
+            }
         }
 
         //Gets rid of the chat if they hid next one more time
         if (counter >= script.Length)
         {
-            inMenu = false;
-            rve.visible = inMenu;
-            counter = 0;
-            Script.text = script[counter];
+            turnOffDisplay();
         }
-        if (counter == script.Length - 1) { chatButton.text = "End"; }
 
-            rve.visible = inMenu;
+        if (canLeave) { playerCanLeave(); }
+        rve.visible = inMenu;
     }
 
     private void OnEnable()
@@ -90,7 +93,6 @@ public class DialogueTrigger : MonoBehaviour
         chatButton = rve.Q<Button>("chatButton");
         Script = rve.Q<Label>("chatLabel");
         sideButton = rve.Q<Button>("sideButton");
-        sideButton.visible = false;
 
         chatButton.RegisterCallback<ClickEvent>(ev =>
         {
@@ -100,10 +102,18 @@ public class DialogueTrigger : MonoBehaviour
                 Script.text = script[counter];
                 if (counter == script.Length - 1) { chatButton.text = "End"; }
                 else { chatButton.text = "Next"; }
+                sideButton.visible = false;
             }
         }
         );
+        sideButton.RegisterCallback<ClickEvent>(ev =>
+        {
+            counter = 26;
+            turnOffDisplay();
+        }
+    );
         rve.visible = false;
+
     }
 
 
@@ -123,9 +133,72 @@ public class DialogueTrigger : MonoBehaviour
         }
     }
 
- 
-}
+    private void playerCanLeave()
+    {
 
+        if (counter == 9 || ((counter < 25) && (counter > 10)))
+        {
+            chatButton.visible = false;
+        }
+
+        //for tutorial NPC makes it so the script can move on it player has done the command
+        if (player.inBalloon)
+        {
+            if (
+            (counter == 9) ||
+            (Input.GetKeyDown("w") && counter == 11))
+            {
+                chatButton.visible = true;
+                counter++;
+                Script.text = script[counter];
+            }
+        }
+        if ((counter < 19 && counter > 11) && (player.transform.position.x > checkpoint))
+        {
+            chatButton.visible = false;
+            checkpoint = checkpoint + 50;
+            counter++;
+            Script.text = script[counter];
+
+        }
+        if ((player.transform.position.x > 550))
+        {
+            counter = 21;
+            Script.text = script[counter];
+        }
+
+        if (25 > counter && counter > 20)
+        {
+            if (player.inBalloon)
+            {
+                if (counter == 21 && Input.GetKeyDown("s")) { counter++; Script.text = script[counter]; }
+                if (!anchor.landed) { counter = 23; Script.text = script[counter]; }
+                else if (anchor.landed) { counter = 24; Script.text = script[counter]; }
+            }
+            else if (!player.inBalloon)
+            {
+                counter = 25;
+                Script.text = script[counter];
+                chatButton.visible = true;
+                chatButton.text = "End";
+            }
+        }
+    }
+
+    public void turnOffDisplay()
+    {
+        rve.visible = false;
+        inMenu = false;
+        chatButton.visible = false;
+        sideButton.visible = false;
+    }
+    public void turnOnDisplay()
+    {
+        rve.visible = true;
+        inMenu = true;
+        chatButton.visible = true;
+    }
+}
 
 
 
