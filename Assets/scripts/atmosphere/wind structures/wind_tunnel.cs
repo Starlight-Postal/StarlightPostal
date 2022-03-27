@@ -32,16 +32,25 @@ public class wind_tunnel : wind_structure
         for(int i = 0;i < path.Length-1;i++)
         {
             Vector2 p = pointToSeg(path[i], path[i + 1], new Vector2(x, y));
-            float d = (weight*0.5f)-(Vector2.Distance(new Vector2(x, y), p));
+            float d = 1-((Vector2.Distance(new Vector2(x, y), p))/ (weight * 0.5f));
             if (d >= 0)
             {
+                float b = 1;
                 if (blur > 0)
                 {
-
+                    b = d/blur;
+                    if (b > 1)
+                    {
+                        b = 1;
+                    }
+                    if (b < 0)
+                    {
+                        b = 0;
+                    }
                 }
                 Vector2 delta = path[i + 1] - path[i];
                 delta.Normalize();
-                wind += delta * power;
+                wind += delta * power*b;
             }
             
         }
