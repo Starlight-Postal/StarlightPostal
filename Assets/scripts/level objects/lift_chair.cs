@@ -34,6 +34,12 @@ public class lift_chair : MonoBehaviour
             {
                 node = 0;
                 trans.position = new Vector3(chairlift.path[node].x, chairlift.path[node].y, trans.position.z);
+                if (anchor.target == gameObject)
+                {
+                    anchor.stuck = false;
+                    anchor.target = null;
+                    anchor.targetTrans = anchorTrans;
+                }
             }
             
         }
@@ -42,7 +48,7 @@ public class lift_chair : MonoBehaviour
         {
             anchor.target = gameObject;
             anchor.targetTrans = trans;
-            anchor.tOff = anchorTrans.position - trans.position;
+            anchor.tOff = new Vector3(0, 0, anchorTrans.position.z-trans.position.z);// anchorTrans.position - trans.position;
             //anchorTrans.position = trans.position;
             Debug.Log("snatched");
         }
