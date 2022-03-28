@@ -2676,8 +2676,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 112120528}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 245.4182, y: 155.8777, z: 0}
-  m_LocalScale: {x: 64.24736, y: 48.248512, z: 1}
+  m_LocalPosition: {x: 245.7897, y: 155.8777, z: 0}
+  m_LocalScale: {x: 64.98793, y: 48.248512, z: 1}
   m_Children: []
   m_Father: {fileID: 722075704}
   m_RootOrder: 8
@@ -2900,7 +2900,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2865156935995658176, guid: 991407a2b10f37246b47de4bae3309f8, type: 3}
       propertyPath: m_Color.g
-      value: 0.7277964
+      value: 0.79843193
       objectReference: {fileID: 0}
     - target: {fileID: 2865156935995658176, guid: 991407a2b10f37246b47de4bae3309f8, type: 3}
       propertyPath: m_Color.r
@@ -10591,7 +10591,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1458409696639708307, guid: eb646bb755b2c3a26b42ab86a0f6be35, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1458409696639708307, guid: eb646bb755b2c3a26b42ab86a0f6be35, type: 3}
       propertyPath: m_LocalPosition.x
@@ -50484,7 +50484,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trans: {fileID: 0}
-  layers: []
+  layers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   depths:
   - 0.75
   - 0.5
