@@ -22,6 +22,7 @@ public class balloon : MonoBehaviour
     public float targetHeight;
     public float th;
     public float heightCap = 30;
+    public float heightFloor = 0;
     public float buoyancy = 0.0005f;
     public float weight = 1;
     public float fillRate = 0.1f;
@@ -207,9 +208,9 @@ public class balloon : MonoBehaviour
             }
         }
 
-        if (th < 0)
+        if (th < heightFloor)
         {
-            th += (0 - th) * 0.1f;
+            th += (heightFloor - th) * 0.1f;
         }
         if (th > heightCap)
         {
