@@ -216,8 +216,6 @@ public class balloon : MonoBehaviour
             }
         }
 
-        Debug.Log(fr);
-
         if (th < heightFloor)
         {
             th += (heightFloor - th) * 0.1f;
