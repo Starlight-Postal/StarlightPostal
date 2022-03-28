@@ -21,7 +21,7 @@ public class LandingPad : MonoBehaviour {
         scene = SceneManager.GetActiveScene().name;        
     }
 
-    public void Trigger() {
+    public virtual void Trigger() {
         reached = CheckpointManager.instance.UpdateCheckpoint(this);
         if (reached) {
             GetComponentInChildren<ParticleSystem>().Play();

@@ -95,4 +95,11 @@ public class camera : MonoBehaviour
             }
         }
     }
+
+    public void Teleport() {
+        target = balloonTrans;
+        trans.position = new Vector3(target.position.x,target.position.y,trans.position.z) + offset;
+        cam.orthographicSize = balloonSize;
+    }
+
 }
