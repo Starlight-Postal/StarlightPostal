@@ -290,6 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05e98a8566f63d42b958ee3eb1ea1e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mixer: {fileID: -349929039076099721, guid: 3c1affec8217990a19f91b94113e5de3, type: 2}
 --- !u!1 &1730267759180420879
 GameObject:
   m_ObjectHideFlags: 0
@@ -3467,6 +3468,7 @@ MonoBehaviour:
   targetHeight: 2.5
   th: 2.5
   heightCap: 60
+  heightFloor: 0
   buoyancy: 0.05
   weight: 1
   fillRate: 0.15
@@ -3726,6 +3728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22e0ffcec88454b5cb046b77ea15b8df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mixer: {fileID: -859361352437151580, guid: 3c1affec8217990a19f91b94113e5de3, type: 2}
   clips:
   - {fileID: 8300000, guid: 0a839f987df740e199f95c7969889485, type: 3}
   - {fileID: 8300000, guid: 4f650de3e0a5a5e8fbb79a696555da35, type: 3}
@@ -3743,6 +3746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22e0ffcec88454b5cb046b77ea15b8df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mixer: {fileID: 1356145636981113750, guid: 3c1affec8217990a19f91b94113e5de3, type: 2}
   clips:
   - {fileID: 8300000, guid: 9cc7abb3a0eaaccfc9ae0b57d3143042, type: 3}
   - {fileID: 8300000, guid: f36ce2cd8f89d4a93ab3c699f5689610, type: 3}
@@ -3760,6 +3764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a874f0fe9f486497681922032d1863d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mixer: {fileID: -8475113225244429725, guid: 3c1affec8217990a19f91b94113e5de3, type: 2}
 --- !u!1 &5689308615851303655
 GameObject:
   m_ObjectHideFlags: 0

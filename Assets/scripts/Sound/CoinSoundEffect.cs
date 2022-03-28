@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class CoinSoundEffect : MonoBehaviour {
+
+    public AudioMixerGroup mixer;
 
     private static CoinSoundEffect instance;
 
@@ -12,6 +15,7 @@ public class CoinSoundEffect : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         source = gameObject.AddComponent<AudioSource>();
+        source.outputAudioMixerGroup = mixer;
 
         clips = Resources.LoadAll<AudioClip>("audio/SFX/coin");
         instance = this;
