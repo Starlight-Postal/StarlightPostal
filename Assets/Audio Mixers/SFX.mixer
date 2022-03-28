@@ -31,6 +31,7 @@ AudioMixerGroupController:
   m_Children:
   - {fileID: -4301751619149928098}
   - {fileID: -349929039076099721}
+  - {fileID: 4932581455728860721}
   m_Volume: 9f70609243f0d50048fd69552bc89823
   m_Pitch: 5dc79ab2b32f563cca97ae02f5d887e5
   m_Send: 00000000000000000000000000000000
@@ -172,6 +173,7 @@ AudioMixerController:
     - ce15df0c4afcdacc9ba636e4f3da89e0
     - 13a2b1d08dd5122c398882b852166efd
     - b92cacc4285c6ebac830dbaeb91b958f
+    - 506afa00bae650709843a49271a5b415
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -253,6 +255,39 @@ AudioMixerGroupController:
   m_Effects:
   - {fileID: 8526481672767483949}
   m_UserColorIndex: 4
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!244 &3845468051977009240
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 15ee35daac4a13dda9dca27e4b2adb36
+  m_EffectName: Attenuation
+  m_MixLevel: 4f9eea15ff009e1058b5e10b0f7e83e3
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!243 &4932581455728860721
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Balloon Bonk
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 506afa00bae650709843a49271a5b415
+  m_Children: []
+  m_Volume: 5b149ac2db205f0069093687fa6e3f37
+  m_Pitch: d85a1351c7da97db5ab7cf9dba836d53
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 3845468051977009240}
+  m_UserColorIndex: 3
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0

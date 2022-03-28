@@ -220,6 +220,7 @@ GameObject:
   - component: {fileID: 1730267759112930735}
   - component: {fileID: 1730267759112930732}
   - component: {fileID: 750374741729352096}
+  - component: {fileID: 8336399242609167016}
   m_Layer: 3
   m_Name: Center
   m_TagString: Untagged
@@ -291,6 +292,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mixer: {fileID: -349929039076099721, guid: 3c1affec8217990a19f91b94113e5de3, type: 2}
+--- !u!114 &8336399242609167016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730267759112930729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56efc4ffec266994786add76ce55b383, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  balloon: {fileID: 3968976079676043117}
 --- !u!1 &1730267759180420879
 GameObject:
   m_ObjectHideFlags: 0
@@ -3428,6 +3442,7 @@ GameObject:
   - component: {fileID: 1730267759700492895}
   - component: {fileID: 1730267759700492882}
   - component: {fileID: 1730267759700492883}
+  - component: {fileID: 467418771238538209}
   m_Layer: 3
   m_Name: balloon
   m_TagString: Untagged
@@ -3499,6 +3514,7 @@ MonoBehaviour:
   altExZones:
   - {fileID: 0}
   dropCoin: {fileID: 8731895260476005950, guid: 6ce47b0d2b4a9b744be2a73a09fb9acc, type: 3}
+  bonk: {fileID: 467418771238538209}
 --- !u!212 &3968976079676043112
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3771,6 +3787,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mixer: {fileID: -8475113225244429725, guid: 3c1affec8217990a19f91b94113e5de3, type: 2}
+--- !u!114 &467418771238538209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3968976079676043116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b00bd498d9977891a49e740e1963466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixer: {fileID: 4932581455728860721, guid: 3c1affec8217990a19f91b94113e5de3, type: 2}
 --- !u!1 &5689308615851303655
 GameObject:
   m_ObjectHideFlags: 0

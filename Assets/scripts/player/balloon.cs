@@ -58,6 +58,8 @@ public class balloon : MonoBehaviour
 
     public GameObject dropCoin;
 
+    public BonkSoundController bonk;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -254,6 +256,7 @@ public class balloon : MonoBehaviour
     {
         float d = (trackV-rb.velocity).magnitude;
         //Debug.Log(d);
+        bonk.Bonk(d);
         if (d >= 4)
         {
             //dropCoins((int)Mathf.Floor(d) - 3);
