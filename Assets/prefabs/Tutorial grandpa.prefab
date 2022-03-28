@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4468105491938107014}
   - component: {fileID: 2552053664488312391}
   - component: {fileID: 7389766237202144772}
+  - component: {fileID: 6818180385283155373}
   m_Layer: 6
   m_Name: Trigger
   m_TagString: Untagged
@@ -145,6 +146,18 @@ MonoBehaviour:
   - "Great work kiddo, you survived your maiden voyage! Let\u2019s get to the post
     office- we\u2019ve got some packages to deliver."
   canLeave: 1
+--- !u!114 &6818180385283155373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3416446386320748779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6d48102d2e2c17c9aa43b325ad5d62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7395493958752536842
 GameObject:
   m_ObjectHideFlags: 0
