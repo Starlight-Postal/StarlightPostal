@@ -5,7 +5,7 @@ using UnityEngine;
 public class lift_chair : MonoBehaviour
 {
     public chairlift chairlift;
-    int node = 0;
+    public int node = 0;
     public float speed;
     Transform trans;
     // Start is called before the first frame update
@@ -21,11 +21,17 @@ public class lift_chair : MonoBehaviour
         Vector2 d = t - new Vector2(trans.position.x, trans.position.y);
         if (d.magnitude > speed)
         {
-            trans.position += d.Normalize() * speed;
+            trans.position += (Vector3)(d / d.magnitude * speed);
         } else
         {
             node = (node + 1) % chairlift.path.Length;
-            trans.position += d.Normalize() * d.magnitude;
+            trans.position += (Vector3)d;
+            if (node == chairlift.path.Length-1)
+            {
+                node = 0;
+                trans.position = new Vector3(chairlift.path[node].x, chairlift.path[node].y, trans.position.z);
+            }
+            
         }
     }
 }
