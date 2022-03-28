@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 
 public class DialogueTrigger : MonoBehaviour
 {
+    
     [Header("Visual Cue")]
     [SerializeField] private GameObject visualCue;
 
@@ -14,26 +15,34 @@ public class DialogueTrigger : MonoBehaviour
     public bool playerInRange;
 
     public player player;
+    public balloon balloon;
+    public anchor anchor;
+
+
     public bool inMenu = false;
 
     // Start is called before the first frame update
-    private Button ChatButton;
+    private Button chatButton;
+    private Button sideButton;
     private Label Script;
     private int counter;
+    public int checkpoint = 16;
     [SerializeField] private VisualElement rve;
 
     //bool's for players they talked too
     private bool firstNPC = false;
 
     public string[] script;
-    public bool canLeave;
+
+    //public Transform trans;
 
     private void Start()
     {
         playerInRange = false;
         visualCue.SetActive(false);
         player = GameObject.Find("player").GetComponent<player>();
-
+        balloon = GameObject.Find("balloon").GetComponent<balloon>();
+        anchor = balloon.anchor;
     }
 
 
@@ -57,69 +66,44 @@ public class DialogueTrigger : MonoBehaviour
         else
         {
             visualCue.SetActive(false);
-            if (playerInRange == false && canLeave == false)
-            {
-                counter = 0;
-                Script.text = script[counter];
-                inMenu = false;
-            }
+            counter = 0;
+            Script.text = script[counter];
+            inMenu = false;
         }
 
         //Gets rid of the chat if they hid next one more time
         if (counter >= script.Length)
         {
             inMenu = false;
-            ChatButton.visible = false;
             rve.visible = inMenu;
             counter = 0;
             Script.text = script[counter];
         }
+        if (counter == script.Length - 1) { chatButton.text = "End"; }
 
-        if(canLeave)
-        {
-            if (counter == 9 || counter == 11 || counter == 14 || counter == 17)
-            {
-                ChatButton.visible = false;
-            }
-        }
-        //for tutorial NPC makes it so the script can move on it player has done the command
-        if (canLeave && player.inBalloon)
-        {
-            if (
-            (counter == 9) ||
-            (Input.GetKeyDown("w") && counter == 11) ||
-            (Input.GetKeyDown("s") && counter == 14) ||
-            ((Input.GetKeyDown("a") || (Input.GetKeyDown("d"))) && counter == 17)
-            )
-            {
-                ChatButton.visible = true;
-                counter++;
-                Script.text = script[counter];
-            }
-        }
-        rve.visible = inMenu;
-    
+            rve.visible = inMenu;
     }
 
     private void OnEnable()
     {
         rve = GetComponent<UIDocument>().rootVisualElement;
-        ChatButton = rve.Q<Button>("ChatButton");
+        chatButton = rve.Q<Button>("chatButton");
         Script = rve.Q<Label>("chatLabel");
+        sideButton = rve.Q<Button>("sideButton");
+        sideButton.visible = false;
 
-        ChatButton.RegisterCallback<ClickEvent>(ev =>
+        chatButton.RegisterCallback<ClickEvent>(ev =>
         {
-            if (ChatButton.visible == true)
+            if (chatButton.visible == true)
             {
                 counter++;
                 Script.text = script[counter];
-                if (counter == script.Length - 1) { ChatButton.text = "End"; }
-                else { ChatButton.text = "Next"; }
+                if (counter == script.Length - 1) { chatButton.text = "End"; }
+                else { chatButton.text = "Next"; }
             }
         }
         );
         rve.visible = false;
-
     }
 
 
@@ -138,6 +122,10 @@ public class DialogueTrigger : MonoBehaviour
             playerInRange = false;
         }
     }
+
+ 
 }
+
+
 
 
