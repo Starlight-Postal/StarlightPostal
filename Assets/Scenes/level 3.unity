@@ -8192,6 +8192,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1730267760027824714, guid: 77a048e6e88068b419a0f270c755df7a, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 1850551271520947689, guid: 77a048e6e88068b419a0f270c755df7a, type: 3}
       propertyPath: inBalloon
       value: 1
@@ -22824,7 +22828,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chairlift: {fileID: 1429834988}
+  node: 0
   speed: 0.1
+  anchor: {fileID: 0}
+  anchorTrans: {fileID: 0}
 --- !u!61 &2084893939
 BoxCollider2D:
   m_ObjectHideFlags: 0
