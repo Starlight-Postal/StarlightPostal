@@ -15,6 +15,7 @@ public class TutorialNPC : MonoBehaviour
 
     public player player;
     public balloon balloon;
+    public Transform balloonTrans;
     public GameObject anchorObj;
     public anchor anchor;
     public bool anchored;
@@ -50,6 +51,7 @@ public class TutorialNPC : MonoBehaviour
         visualCue.SetActive(false);
         player = GameObject.Find("player").GetComponent<player>();
         balloon = GameObject.Find("balloon").GetComponent<balloon>();
+        balloonTrans = GameObject.Find("Center").GetComponent<Transform>();
         anchor = balloon.anchor;
         phase = 0;
         trans.position = new Vector3(2.2f,2.68f,0);
@@ -97,7 +99,7 @@ public class TutorialNPC : MonoBehaviour
             turnOffDisplay();
         }
 
-        if (canLeave) { playerCanLeave(); }
+        
         rve.visible = inMenu;
 
         if (rve.visible)
@@ -114,6 +116,7 @@ public class TutorialNPC : MonoBehaviour
                 }
             }
         }
+        if (canLeave) { playerCanLeave(); }
     }
 
     private void OnEnable()
@@ -164,6 +167,10 @@ public class TutorialNPC : MonoBehaviour
 
     private void playerCanLeave()
     {
+        if (counter == 1)
+        {
+            balloon.lockEntry = true;
+        }
         if (counter == 6)
         {
             if(phase == 0)
@@ -227,9 +234,72 @@ public class TutorialNPC : MonoBehaviour
             if (counter < 6)
             {
                 counter = 6;
+                Script.text = script[counter];
+            }
+
+            if (counter == 9)
+            {
+                balloon.lockEntry = false;
+            }
+            if (counter >9)
+            {
+                phase = 9;
             }
         }
-        if (counter == 9 || ((counter < 25) && (counter > 10)))
+        //80 170 280
+        if (phase == 9)
+        {
+            if (counter == 16)
+            {
+                Debug.Log("phase 10 " + balloonTrans.position.x);
+                phase = 10;
+                if (balloonTrans.position.x < 80)
+                {
+                    turnOffDisplay();
+                }
+            }
+        }
+        if (phase == 10)
+        {
+            if (balloonTrans.position.x >= 80)
+            {
+                turnOnDisplay();
+                if (counter == 18)
+                {
+                    Debug.Log("phase 11 " + balloonTrans.position.x);
+                    phase = 11;
+                    if (balloonTrans.position.x < 170)
+                    {
+                        turnOffDisplay();
+                    }
+                }
+            }
+        }
+        if (phase == 11)
+        {
+            if (balloonTrans.position.x >= 170)
+            {
+                turnOnDisplay();
+                if (counter == 20)
+                {
+                    Debug.Log("phase 12 "+ balloonTrans.position.x);
+                    phase = 12;
+                    if (balloonTrans.position.x < 550)
+                    {
+                        turnOffDisplay();
+                    }
+                }
+            }
+        }
+        if (phase == 12)
+        {
+            if (balloonTrans.position.x >= 550)
+            {
+                turnOnDisplay();
+            }
+        }
+
+        if (counter == 9 || counter == 11 || counter == 14 || counter == 21 || counter == 22 || counter == 23 || counter == 24)
         {
             chatButton.visible = false;
             canNext = false;
@@ -238,26 +308,38 @@ public class TutorialNPC : MonoBehaviour
         //for tutorial NPC makes it so the script can move on it player has done the command
         if (player.inBalloon)
         {
-            if ((counter == 9) || (balloon.th>=15 && counter == 11))
+            if(counter == 9)
             {
                 chatButton.visible = true;
                 canNext = true;
                 counter++;
                 Script.text = script[counter];
             }
+            if (counter == 11 && balloon.th >= 10){
+                chatButton.visible = true;
+                canNext = true;
+                counter++;
+                Script.text = script[counter];
+            }
+            if (counter == 14 && (Input.GetKey("down")||Input.GetKey("s"))){
+                chatButton.visible = true;
+                canNext = true;
+                counter++;
+                Script.text = script[counter];
+            }
         }
-        if ((counter < 19 && counter > 11) && (player.transform.position.x > checkpoint))
+        /*if ((counter < 19 && counter > 11) && (player.transform.position.x > checkpoint)&&canNext)
         {
-            chatButton.visible = false;
-            canNext = false;
+            //chatButton.visible = false;
+            //canNext = false;
             checkpoint = checkpoint + 50;
             counter++;
             Script.text = script[counter];
 
-        }
-        if ((player.transform.position.x > 550))
+        }*/
+        if (counter<20&&(player.transform.position.x > 550))
         {
-            counter = 21;
+            counter = 20;
             Script.text = script[counter];
         }
 
@@ -265,8 +347,8 @@ public class TutorialNPC : MonoBehaviour
         {
             if (player.inBalloon)
             {
-                if (counter == 21 && Input.GetKeyDown("s")) { counter++; Script.text = script[counter]; }
-                if (!anchor.landed) { counter = 23; Script.text = script[counter]; }
+                if (counter == 21 && balloon.th<=55) { counter++; Script.text = script[counter]; }
+                if (anchor.stuck&&!anchor.landed) { counter = 23; Script.text = script[counter]; }
                 else if (anchor.landed) { counter = 24; Script.text = script[counter]; }
             }
             else if (!player.inBalloon)
