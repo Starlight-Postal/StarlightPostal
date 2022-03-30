@@ -110,8 +110,8 @@ public class TutorialNPC : MonoBehaviour
                 {
                     counter++;
                     Script.text = script[counter];
-                    if (counter == script.Length - 1) { chatButton.text = "End"; }
-                    else { chatButton.text = "Next"; }
+                    if (counter == script.Length - 1) { chatButton.text = "space"; }
+                    else { chatButton.text = "space"; }
                     sideButton.visible = false;
                 }
             }
@@ -132,8 +132,8 @@ public class TutorialNPC : MonoBehaviour
             {
                 counter++;
                 Script.text = script[counter];
-                if (counter == script.Length - 1) { chatButton.text = "End"; }
-                else { chatButton.text = "Next"; }
+                if (counter == script.Length - 1) { chatButton.text = "space"; }
+                else { chatButton.text = "space"; }
                 sideButton.visible = false;
             }
         }
@@ -357,7 +357,7 @@ public class TutorialNPC : MonoBehaviour
                 Script.text = script[counter];
                 chatButton.visible = true;
                 canNext = true;
-                chatButton.text = "End";
+                chatButton.text = "space";
             }
         }
     }
