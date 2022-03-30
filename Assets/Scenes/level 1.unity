@@ -2913,6 +2913,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7389766237202144772, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
+      propertyPath: trans
+      value: 
+      objectReference: {fileID: 1336435265}
+    - target: {fileID: 7389766237202144772, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
+      propertyPath: walkSpeed
+      value: 0.025
+      objectReference: {fileID: 0}
     - target: {fileID: 7395493958752536842, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
       propertyPath: m_Name
       value: Tutorial grandpa
@@ -23368,7 +23376,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1265445942
 Transform:
   m_ObjectHideFlags: 0
@@ -24393,6 +24401,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &1336435265 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5341197870141319797, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
+  m_PrefabInstance: {fileID: 140663584}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1340143936
 GameObject:
   m_ObjectHideFlags: 0

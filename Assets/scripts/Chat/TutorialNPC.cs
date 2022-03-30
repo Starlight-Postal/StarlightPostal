@@ -28,6 +28,9 @@ public class TutorialNPC : MonoBehaviour
     private Label Script;
     private int counter;
     public int checkpoint = 16;
+
+    public bool canNext = true;
+
     [SerializeField] private VisualElement rve;
 
     //bool's for players they talked too
@@ -36,7 +39,10 @@ public class TutorialNPC : MonoBehaviour
     public string[] script;
     public bool canLeave;
 
-    //public Transform trans;
+    public Transform trans;
+
+    public int phase = 0;
+    public float walkSpeed = 0.05f;
 
     private void Start()
     {
@@ -45,23 +51,31 @@ public class TutorialNPC : MonoBehaviour
         player = GameObject.Find("player").GetComponent<player>();
         balloon = GameObject.Find("balloon").GetComponent<balloon>();
         anchor = balloon.anchor;
+        phase = 0;
+        trans.position = new Vector3(2.2f,2.68f,0);
     }
 
 
 
-    private void Update()
+    private void FixedUpdate()
     {
         //activates the text bubble if player in range
         if (playerInRange)
         {
-            visualCue.SetActive(true);
-            if (Input.GetKeyDown("c"))
+            if (phase == 0||phase==8)
             {
-                counter = 0;
-                turnOnDisplay();
-                sideButton.visible = true;
+                visualCue.SetActive(true);
+                if (player.kiSPACE==1)
+                {
+                    //counter = 0;
+                    turnOnDisplay();
+                    sideButton.visible = true;
 
-                Script.text = script[counter];
+                    Script.text = script[counter];
+                }
+            } else
+            {
+                visualCue.SetActive(false);
             }
         }
 
@@ -85,6 +99,21 @@ public class TutorialNPC : MonoBehaviour
 
         if (canLeave) { playerCanLeave(); }
         rve.visible = inMenu;
+
+        if (rve.visible)
+        {
+            if (canNext)
+            {
+                if (player.kiSPACE == 1)
+                {
+                    counter++;
+                    Script.text = script[counter];
+                    if (counter == script.Length - 1) { chatButton.text = "End"; }
+                    else { chatButton.text = "Next"; }
+                    sideButton.visible = false;
+                }
+            }
+        }
     }
 
     private void OnEnable()
@@ -135,20 +164,84 @@ public class TutorialNPC : MonoBehaviour
 
     private void playerCanLeave()
     {
+        if (counter == 6)
+        {
+            if(phase == 0)
+            {
+                phase = 1;
+                turnOffDisplay();
+            }
+        }
+        if (phase == 1)
+        {
+            if (walkTo(1.75f, 2.68f, walkSpeed))
+            {
+                phase = 2;
+            }
+        }
+        if (phase == 2)
+        {
+            if (walkTo(-0.54f, 0.58f, walkSpeed))
+            {
+                phase = 3;
+            }
+        }
+        if (phase == 3)
+        {
+            if (walkTo(-4f, 0.58f, walkSpeed))
+            {
+                phase = 4;
+            }
+        }
+        if (phase == 4)
+        {
+            if (walkTo(-4.55f, 0.44f, walkSpeed))
+            {
+                phase = 5;
+            }
+        }
+        if (phase == 5)
+        {
+            if (walkTo(-7.7f, 0.44f, walkSpeed))
+            {
+                phase = 6;
+            }
+        }
+        if (phase == 6)
+        {
+            if (walkTo(-9f, 0.75f, walkSpeed))
+            {
+                phase = 7;
+            }
+        }
+        if (phase == 7)
+        {
+            if (walkTo(-9.5f, 0.75f, walkSpeed))
+            {
+                phase = 8;
+            }
+        }
 
+        if (phase == 8)
+        {
+            if (counter < 6)
+            {
+                counter = 6;
+            }
+        }
         if (counter == 9 || ((counter < 25) && (counter > 10)))
         {
             chatButton.visible = false;
+            canNext = false;
         }
 
         //for tutorial NPC makes it so the script can move on it player has done the command
         if (player.inBalloon)
         {
-            if (
-            (counter == 9) ||
-            (Input.GetKeyDown("w") && counter == 11))
+            if ((counter == 9) || (balloon.th>=15 && counter == 11))
             {
                 chatButton.visible = true;
+                canNext = true;
                 counter++;
                 Script.text = script[counter];
             }
@@ -156,6 +249,7 @@ public class TutorialNPC : MonoBehaviour
         if ((counter < 19 && counter > 11) && (player.transform.position.x > checkpoint))
         {
             chatButton.visible = false;
+            canNext = false;
             checkpoint = checkpoint + 50;
             counter++;
             Script.text = script[counter];
@@ -180,8 +274,24 @@ public class TutorialNPC : MonoBehaviour
                 counter = 25;
                 Script.text = script[counter];
                 chatButton.visible = true;
+                canNext = true;
                 chatButton.text = "End";
             }
+        }
+    }
+
+    public bool walkTo(float x,float y,float s)
+    {
+        Vector3 d = new Vector3(x - trans.position.x, y - trans.position.y, 0);
+        if (d.magnitude > s)
+        {
+            Vector3 m = (d / d.magnitude) * s;
+            trans.position += m;
+            return false;
+        } else
+        {
+            trans.position += d;
+            return true;
         }
     }
 
@@ -191,12 +301,14 @@ public class TutorialNPC : MonoBehaviour
         inMenu = false;
         chatButton.visible = false;
         sideButton.visible = false;
+        canNext = false;
     }
     public void turnOnDisplay()
     {
         rve.visible = true;
         inMenu = true;
         chatButton.visible = true;
+        canNext = true;
     }
 }
 

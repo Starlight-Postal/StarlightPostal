@@ -18,7 +18,8 @@ public class player : MonoBehaviour
 
     bool swap = false;
 
-    int kiDOWN = 0;
+    public int kiDOWN = 0;
+    public int kiSPACE = 0;
     //public EdgeCollider2D targetPlatform;
 
 
@@ -294,13 +295,30 @@ public class player : MonoBehaviour
             if (kiDOWN == 0)
             {
                 kiDOWN = 1;
-            } else
+            }
+            else
             {
                 kiDOWN = 2;
             }
-        } else
+        }
+        else
         {
             kiDOWN = 0;
+        }
+        if (Input.GetKey("space"))
+        {
+            if (kiSPACE == 0)
+            {
+                kiSPACE = 1;
+            }
+            else
+            {
+                kiSPACE = 2;
+            }
+        }
+        else
+        {
+            kiSPACE = 0;
         }
     }
 }
