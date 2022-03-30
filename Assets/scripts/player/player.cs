@@ -229,11 +229,11 @@ public class player : MonoBehaviour
             }
 
             //Debug.Log("balloon range!");
-            if (Input.GetKey("space"))
+            if (kiSPACE==1)
             {
                 if (swap)
                 {
-                    if (Vector3.Distance(trans.position, balloonTrans.position+new Vector3(0,0,(trans.position.z-balloonTrans.position.z))) < 3.5f || Vector3.Distance(trans.position, anchorTrans.position + new Vector3(0, 0, (trans.position.z - anchorTrans.position.z))) < 1f)
+                    if (!balloon.lockEntry&&Vector3.Distance(trans.position, balloonTrans.position+new Vector3(0,0,(trans.position.z-balloonTrans.position.z))) < 3.5f || Vector3.Distance(trans.position, anchorTrans.position + new Vector3(0, 0, (trans.position.z - anchorTrans.position.z))) < 1f)
                     {
                         //Debug.Log("embark");
                         inBalloon = true;

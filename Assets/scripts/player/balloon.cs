@@ -8,16 +8,6 @@ public class balloon : MonoBehaviour
     
     float lean;
     public float leanPower = 0.0075f;
-    /*float bouyancy;
-    public bool capped = true;
-    public float volume = 1;
-    public float weight = 1;
-    public float airFric = 0.975f;
-    public float gravity = 0.1f;
-    public float atmPressure = 1;
-    public float leanPower = 0.0075f;
-    public float fillRate = 0.025f;
-    public float volCap = 1;*/
 
     public float targetHeight;
     public float th;
@@ -60,6 +50,8 @@ public class balloon : MonoBehaviour
     public Transform[] altExZones;
 
     LineRenderer line;
+
+    public bool lockEntry = false;
 
     // Start is called before the first frame update
     void Start()

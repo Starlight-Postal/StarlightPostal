@@ -4321,6 +4321,16 @@ PrefabInstance:
       propertyPath: walkSpeed
       value: 0.025
       objectReference: {fileID: 0}
+    - target: {fileID: 7389766237202144772, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
+      propertyPath: script.Array.data[15]
+      value: "Nice job! Be gentle with her, we don\u2019t want to be rocketing up
+        and down."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389766237202144772, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
+      propertyPath: script.Array.data[16]
+      value: Ballooning is all about your ups and downs, side-to-side is more of
+        a challenge.
+      objectReference: {fileID: 0}
     - target: {fileID: 7395493958752536842, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
       propertyPath: m_Name
       value: Tutorial grandpa
@@ -36711,7 +36721,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1265445942
 Transform:
   m_ObjectHideFlags: 0
