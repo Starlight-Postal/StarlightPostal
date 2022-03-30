@@ -18,7 +18,8 @@ public class player : MonoBehaviour
 
     bool swap = false;
 
-    int kiDOWN = 0;
+    public int kiDOWN = 0;
+    public int kiSPACE = 0;
     //public EdgeCollider2D targetPlatform;
 
 
@@ -38,6 +39,9 @@ public class player : MonoBehaviour
     public float camHeight = 0;
     public float camRange = 1f;
     public float camCenter = 0.5f;
+
+    public bool inChair = false;
+    public Transform chair = null;
 
     public List<EdgeCollider2D> platformQueueu;
     // Start is called before the first frame update
@@ -175,7 +179,7 @@ public class player : MonoBehaviour
                 }
             }
 
-            if (kiDOWN == 1)
+            if (kiDOWN == 1&&!inChair)
             {
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(0, -1), 0.6f,LayerMask.GetMask("Default"));
                 if (hit!=null) {
@@ -243,6 +247,30 @@ public class player : MonoBehaviour
             {
                 swap = true;
             }
+
+            if (inBalloon)
+            {
+                inChair = false;
+                chair = null;
+            } else
+            {
+                if (inChair)
+                {
+                    aniMode = "idle";
+                    rb.velocity *= 0;
+                    collider.enabled = false;
+                    trans.position = new Vector3(chair.position.x, chair.position.y-0.5f, trans.position.z);
+                    if (kiSPACE == 1 || kiDOWN == 1)
+                    {
+                        inChair = false;
+                        chair = null;
+                        Debug.Log("chair out");
+                    }
+                } else
+                {
+                    collider.enabled = true;
+                }
+            }
             
         }
 
@@ -294,13 +322,30 @@ public class player : MonoBehaviour
             if (kiDOWN == 0)
             {
                 kiDOWN = 1;
-            } else
+            }
+            else
             {
                 kiDOWN = 2;
             }
-        } else
+        }
+        else
         {
             kiDOWN = 0;
+        }
+        if (Input.GetKey("space"))
+        {
+            if (kiSPACE == 0)
+            {
+                kiSPACE = 1;
+            }
+            else
+            {
+                kiSPACE = 2;
+            }
+        }
+        else
+        {
+            kiSPACE = 0;
         }
     }
 }
