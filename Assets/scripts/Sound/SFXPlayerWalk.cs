@@ -50,6 +50,8 @@ public class SFXPlayerWalk : MonoBehaviour {
 
     void FixedUpdate() {
 
+        if (p.inBalloon) { return; }
+
         if (p.aniMode == "walk") {
             var frame = (int) p.aniFrame;
             if (frame == 17 || frame == 8) {
