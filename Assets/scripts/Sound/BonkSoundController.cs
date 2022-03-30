@@ -10,27 +10,34 @@ public class BonkSoundController : MonoBehaviour {
     private static float BONK_LIGHT_THRESHOLD = 0;
 
     public AudioMixerGroup mixer;
+    public AudioMixerGroup coinMixer;
 
     private AudioSource source;
+    private AudioSource dropSource;
     private AudioClip[] heavyClips;
     private AudioClip[] mediumClips;
     private AudioClip[] lightClips;
 
+    private AudioClip[] dropClips;
+
     void Start() {
 
         source = gameObject.AddComponent<AudioSource>();
+        dropSource = gameObject.AddComponent<AudioSource>();
         source.outputAudioMixerGroup = mixer;
+        dropSource.outputAudioMixerGroup = coinMixer;
 
         heavyClips = Resources.LoadAll<AudioClip>("audio/SFX/balloon/bonk/heavy");
         mediumClips = Resources.LoadAll<AudioClip>("audio/SFX/balloon/bonk/medium");
         lightClips = Resources.LoadAll<AudioClip>("audio/SFX/balloon/bonk/light");
 
+        dropClips = Resources.LoadAll<AudioClip>("audio/SFX/coin/drop");
+
     }
 
     private void Play(AudioClip[] clipArr) {
 
-        source.clip = clipArr[Random.Range(0,clipArr.Length - 1)];
-        source.Play();
+        source.PlayOneShot(clipArr[Random.Range(0,clipArr.Length - 1)], 1);
 
     }
 
@@ -50,6 +57,12 @@ public class BonkSoundController : MonoBehaviour {
             // Light bonkage
             Play(lightClips);
         }
+
+    }
+
+    public void CoinsDropped(int coins) {
+
+        dropSource.PlayOneShot(dropClips[Random.Range(0,dropClips.Length - 1)], 1);
 
     }
 

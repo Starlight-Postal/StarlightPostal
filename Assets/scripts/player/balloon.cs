@@ -272,6 +272,8 @@ public class balloon : MonoBehaviour
             n = gdata.coins;
         }
 
+        bonk.CoinsDropped(n);
+
         gdata.coins -= n;
         for(int i = 0;i < n;i++)
         {
