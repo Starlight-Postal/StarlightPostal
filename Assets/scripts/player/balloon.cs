@@ -61,7 +61,7 @@ public class balloon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gdata = GameObject.Find("Globals").GetComponent<global_data>();
+        gdata = GameObject.Find("Coin Global Data").GetComponent<global_data>();
         //rb = gameObject.GetComponent<Rigidbody2D>();
         //trans = gameObject.GetComponent<Transform>();
         sprite = gameObject.GetComponent<SpriteRenderer>();

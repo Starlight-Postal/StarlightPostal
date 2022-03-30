@@ -13,7 +13,7 @@ public class StarCounterHudController : MonoBehaviour {
     private void OnEnable() {
         rve = GetComponent<UIDocument>().rootVisualElement;
         label = rve.Q<Label>("star-counter-label");
-        gd = GameObject.Find("Globals").GetComponent<global_data>();
+        gd = GameObject.Find("Coin Global Data").GetComponent<global_data>();
     }
 
     private void FixedUpdate() {

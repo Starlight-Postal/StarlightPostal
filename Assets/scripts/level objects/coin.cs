@@ -18,7 +18,7 @@ public class coin : MonoBehaviour
         trans = gameObject.GetComponent<Transform>();
         balloon = GameObject.Find("Center").GetComponent<Transform>();
         get = false;
-        gdata = GameObject.Find("Globals").GetComponent<global_data>();
+        gdata = GameObject.Find("Coin Global Data").GetComponent<global_data>();
     }
 
     // Update is called once per frame
