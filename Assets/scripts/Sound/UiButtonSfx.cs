@@ -1,0 +1,39 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UIElements;
+
+public class UiButtonSfx : MonoBehaviour {
+
+    private AudioSource source;
+    private AudioClip[] clicks;
+    private AudioClip[] hovers;
+
+    private void OnEnable() {
+        var rve = GetComponent<UIDocument>().rootVisualElement;
+
+        var buttons = rve.Query<Button>();
+
+        buttons.ForEach(button => {
+            button.RegisterCallback<ClickEvent>(ev => { OnUiButtonClick(); });
+            button.RegisterCallback<MouseEnterEvent>(ev => { OnUiButtonHover(); });
+        });
+    }
+
+    private void Start() {
+        source = gameObject.AddComponent<AudioSource>();
+        clicks = Resources.LoadAll<AudioClip>("audio/SFX/menu/click");
+        hovers = Resources.LoadAll<AudioClip>("audio/SFX/menu/hover");
+    }
+
+    private void OnUiButtonClick() {
+        source.clip = clicks[Random.Range(0,clicks.Length - 1)];
+        source.Play();
+    }
+
+    private void OnUiButtonHover() {
+        source.clip = hovers[Random.Range(0,hovers.Length - 1)];
+        source.Play();
+    }
+
+}
