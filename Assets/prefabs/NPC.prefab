@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4768351908478419728}
   - component: {fileID: 4768351908478419729}
   - component: {fileID: 2931887959683300530}
+  - component: {fileID: 2416855205400676890}
   m_Layer: 6
   m_Name: Trigger
   m_TagString: Untagged
@@ -96,6 +97,18 @@ MonoBehaviour:
   checkpoint: 16
   script: []
   canLeave: 0
+--- !u!114 &2416855205400676890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4768351908478419693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6d48102d2e2c17c9aa43b325ad5d62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4768351908748709585
 GameObject:
   m_ObjectHideFlags: 0

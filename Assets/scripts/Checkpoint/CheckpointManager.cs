@@ -6,18 +6,33 @@ using IngameDebugConsole;
 
 public class CheckpointManager : MonoBehaviour {
 
-    public static CheckpointManager instance;
+    public static CheckpointManager instance = null;
 
     private int lastCheckpointId;
     private string lastCheckpointScene;
 
+    private bool needsMoveOnceSceneIsLoaded = false;
+
     void Start() {
-        instance = this;
-        DontDestroyOnLoad(this.gameObject);
+        if (instance == null) {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+            SceneManager.sceneLoaded += OnSceneLoad;
+        } else {
+            Destroy(this.gameObject);
+        }
     }
 
     void Update() {
         
+    }
+
+    void OnSceneLoad(Scene scene, LoadSceneMode mode) {
+        if (needsMoveOnceSceneIsLoaded) {
+            needsMoveOnceSceneIsLoaded = false;
+            MoveBalloon();
+            GameObject.Find("Main Camera").GetComponent<camera>().Teleport();
+        }
     }
 
     public bool UpdateCheckpoint(LandingPad pad) {
@@ -43,28 +58,21 @@ public class CheckpointManager : MonoBehaviour {
         LandingPad spawnPad = null;
 
         foreach (var pad in pads) {
-            if (pad.padId == lastCheckpointId && pad.scene == lastCheckpointScene) {
+            if (pad.padId == lastCheckpointId) {
                 spawnPad = pad;
                 break;
             }
         }
 
-        var pos = spawnPad.transform.position + new Vector3(0, 4, 0);
+        var pos = spawnPad.transform.Find("Spawn Point").transform.position;
         return pos;
     }
 
-    [ConsoleMethod("respawn", "teleports balloon to last checkpoint")]
-    public static void Respawn() {
-        Debug.Log("Teleporting...");
-        if (SceneManager.GetActiveScene().name != instance.lastCheckpointScene) {
-            Debug.LogWarning("Checkpoint is not from this scene!");
-            SceneManager.LoadScene(instance.lastCheckpointScene);
-        }
-
+    private void MoveBalloon() {
         var balloon = GameObject.Find("balloon");
         var center = GameObject.Find("Center");
 
-        var respawnPosition = instance.GetRespawnPoint();
+        var respawnPosition = GetRespawnPoint();
         respawnPosition.z = balloon.transform.position.z;
 
         var prevCenterPos = center.transform.position;
@@ -73,6 +81,22 @@ public class CheckpointManager : MonoBehaviour {
         balloon.transform.position += move;
 
         balloon.GetComponent<balloon>().th = respawnPosition.y;
+        balloon.GetComponent<balloon>().anchored = false;
+        GameObject.Find("player").GetComponent<player>().inBalloon = true;
+        lastCheckpointScene = SceneManager.GetActiveScene().name;
+    }
+
+    [ConsoleMethod("respawn", "teleports balloon to last checkpoint")]
+    public static void Respawn() {
+        Debug.Log("Teleporting...");
+        if (SceneManager.GetActiveScene().name != instance.lastCheckpointScene) {
+            Debug.LogWarning("Checkpoint is not from this scene!");
+            SceneManager.LoadScene(instance.lastCheckpointScene);
+            instance.needsMoveOnceSceneIsLoaded = true;
+            return;
+        }
+
+        instance.MoveBalloon();
     }
 
     [ConsoleMethod("checkpoint.id", "set new checkpoint id")]
