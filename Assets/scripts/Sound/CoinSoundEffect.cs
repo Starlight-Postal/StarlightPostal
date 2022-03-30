@@ -5,7 +5,8 @@ using UnityEngine.Audio;
 
 public class CoinSoundEffect : MonoBehaviour {
 
-    public AudioMixerGroup mixer;
+    public AudioMixerGroup coinMixer;
+    public AudioMixerGroup dingMixer;
 
     private static CoinSoundEffect instance;
 
@@ -18,7 +19,7 @@ public class CoinSoundEffect : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         source = gameObject.AddComponent<AudioSource>();
-        source.outputAudioMixerGroup = mixer;
+        source.outputAudioMixerGroup = coinMixer;
 
         clips = Resources.LoadAll<AudioClip>("audio/SFX/coin");
 
@@ -43,7 +44,7 @@ public class CoinSoundEffect : MonoBehaviour {
 
         var toneSource = gameObject.AddComponent<AudioSource>();
         toneSources.Add(toneSource);
-        toneSource.outputAudioMixerGroup = mixer;
+        toneSource.outputAudioMixerGroup = dingMixer;
         toneSource.clip = toneClip;
 
         //                    C  D  E  G  A
