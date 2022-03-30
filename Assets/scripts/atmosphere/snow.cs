@@ -18,7 +18,7 @@ public class snow : MonoBehaviour
     public List<Vector2> flakeV;
     public GameObject windParticle;
 
-    public Vector2 ratio;
+    private Vector2 ratio;
     public Vector2 range;
     public float buffer = 1.1f;
     // Start is called before the first frame update
@@ -27,6 +27,8 @@ public class snow : MonoBehaviour
         //wind = GameObject.Find("wind").GetComponent<wind>();
         focus = GameObject.Find("Main Camera").GetComponent<Transform>();
         cam = GameObject.Find("Main Camera").GetComponent<Camera>();
+
+        ratio = new Vector2(cam.aspect, 1);
 
         range = ratio * cam.orthographicSize;
 

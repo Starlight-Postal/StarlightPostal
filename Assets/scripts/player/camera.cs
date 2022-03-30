@@ -21,7 +21,7 @@ public class camera : MonoBehaviour
     public Vector3 playerOff;
     Vector3 offset;
 
-    public Vector2 ratio;
+    private Vector2 ratio;
     public Vector2 camRange;
 
     public Transform range;
@@ -30,6 +30,7 @@ public class camera : MonoBehaviour
     {
         trans = gameObject.GetComponent<Transform>();
         cam = gameObject.GetComponent<Camera>();
+        ratio = new Vector2(cam.aspect, 1);
         //balloonTrans = GameObject.Find("balloon").GetComponent<Transform>();
         playerTrans = GameObject.Find("player").GetComponent<Transform>();
         target = playerTrans;
