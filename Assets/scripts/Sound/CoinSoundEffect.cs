@@ -21,9 +21,9 @@ public class CoinSoundEffect : MonoBehaviour {
         source = gameObject.AddComponent<AudioSource>();
         source.outputAudioMixerGroup = coinMixer;
 
-        clips = Resources.LoadAll<AudioClip>("audio/SFX/coin");
+        clips = Resources.LoadAll<AudioClip>("audio/SFX/coin/collect/clink");
 
-        toneClip = Resources.LoadAll<AudioClip>("audio/SFX/cointone")[0];
+        toneClip = Resources.LoadAll<AudioClip>("audio/SFX/coin/collect/tone")[0];
 
         instance = this;
     }
