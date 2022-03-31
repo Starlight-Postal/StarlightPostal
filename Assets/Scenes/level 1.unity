@@ -4424,6 +4424,14 @@ PrefabInstance:
       value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: 7389766237202144772, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
+      propertyPath: aniIdleSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389766237202144772, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
+      propertyPath: aniWalkSpeed
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389766237202144772, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
       propertyPath: script.Array.data[15]
       value: "Nice job! Be gentle with her, we don\u2019t want to be rocketing up
         and down."

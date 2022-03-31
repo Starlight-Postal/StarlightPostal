@@ -48,7 +48,15 @@ public class TutorialNPC : MonoBehaviour
     public int phase = 0;
     public float walkSpeed = 0.05f;
 
+    public SpriteRenderer sprite;
     public bool facingRight = false;
+    public string aniMode = "idle";
+    public float aniSpeed = 0.25f;
+    public Sprite[] aniIdle;
+    public float aniIdleSpeed = 0.25f;
+    public Sprite[] aniWalk;
+    public float aniWalkSpeed = 1f;
+    public float aniFrame = 0;
 
     private void Start()
     {
@@ -62,6 +70,23 @@ public class TutorialNPC : MonoBehaviour
         phase = 0;
         trans.position = new Vector3(2.2f,2.68f,0);
         bodyTrans = body.GetComponent<Transform>();
+
+        aniMode = "idle";
+        aniFrame = 0;
+        aniIdle = new Sprite[7];
+
+        for (int i = 0; i < 7; i++)
+        {
+            aniIdle[i] = Resources.Load<Sprite>("textures/grandpa/grandpa_idle/grandpa_idle_" + i);
+        }
+        aniWalk = new Sprite[8];
+
+        for (int i = 0; i < 8; i++)
+        {
+            aniWalk[i] = Resources.Load<Sprite>("textures/grandpa/grandpa_walk/grandpa_walk_" + i);
+        }
+
+        sprite = body.GetComponent<SpriteRenderer>();
     }
 
 
@@ -136,6 +161,25 @@ public class TutorialNPC : MonoBehaviour
 
         if (canLeave) { playerCanLeave(); }
 
+        Sprite[] ani = aniIdle;
+        switch (aniMode)
+        {
+            case "idle":
+                ani = aniIdle;
+                aniSpeed = aniIdleSpeed;
+                break;
+            case "walk":
+                ani = aniWalk;
+                aniSpeed = aniWalkSpeed;
+                break;
+            default:
+                break;
+        }
+
+        aniFrame = aniFrame % ani.Length;
+        sprite.sprite = ani[(int)aniFrame];
+        aniFrame = (aniFrame + aniSpeed) % ani.Length;
+
         if (facingRight)
         {
             bodyTrans.localScale += new Vector3((-0.35f - bodyTrans.localScale.x), 0, 0) * 0.1f;
@@ -194,6 +238,7 @@ public class TutorialNPC : MonoBehaviour
 
     private void playerCanLeave()
     {
+        aniMode = "idle";
         if (counter == 1)
         {
             balloon.lockEntry = true;
@@ -275,6 +320,7 @@ public class TutorialNPC : MonoBehaviour
             if (counter == 9)
             {
                 balloon.lockEntry = false;
+                canNext = false;
             }
             if (counter >9)
             {
@@ -419,6 +465,7 @@ public class TutorialNPC : MonoBehaviour
 
     public bool walkTo(float x,float y,float s)
     {
+        aniMode = "walk";
         Vector3 d = new Vector3(x - trans.position.x, y - trans.position.y, 0);
         if (d.magnitude > s)
         {
