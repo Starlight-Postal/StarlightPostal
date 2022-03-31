@@ -42,6 +42,9 @@ public class player : MonoBehaviour
     public float camRange = 1f;
     public float camCenter = 0.5f;
 
+    public bool inChair = false;
+    public Transform chair = null;
+
     public List<EdgeCollider2D> platformQueueu;
     // Start is called before the first frame update
     void Start()
@@ -178,7 +181,7 @@ public class player : MonoBehaviour
                     }
                 }
 
-                if (kiDOWN == 1)
+                if (kiDOWN == 1&&!inChair)
                 {
                     RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(0, -1), 0.6f, LayerMask.GetMask("Default"));
                     if (hit != null)
@@ -256,82 +259,107 @@ public class player : MonoBehaviour
                     }
 
                 }
-
-
-                Sprite[] ani = aniIdle;
-                switch (aniMode)
-                {
-                    case "idle":
-                        ani = aniIdle;
-                        aniSpeed = aniIdleSpeed;
-                        break;
-                    case "wait":
-                        ani = aniWait;
-                        aniSpeed = aniWaitSpeed;
-                        break;
-                    case "walk":
-                        ani = aniWalk;
-                        aniSpeed = aniWalkSpeed;
-                        break;
-                    case "lookUp":
-                        ani = aniLookUp;
-                        aniSpeed = 1;
-                        break;
-                    case "lookDown":
-                        ani = aniLookDown;
-                        aniSpeed = 1;
-                        break;
-                    default:
-                        break;
-                }
-
-                aniFrame = aniFrame % ani.Length;
-                sprite.sprite = ani[(int)aniFrame];
-                aniFrame = (aniFrame + aniSpeed) % ani.Length;
-                //sprite.flipX = !facingRight;
-                if (facingRight)
-                {
-                    trans.localScale += new Vector3((0.25f - trans.localScale.x) * 0.2f, 0, 0);
-                }
-                else
-                {
-                    trans.localScale += new Vector3((-0.25f - trans.localScale.x) * 0.2f, 0, 0);
-                }
             }
         }
 
-        void UIUpdate()
+        
+
+        if (inBalloon)
         {
-            if (Input.GetKey("down") || Input.GetKey("s"))
+            inChair = false;
+            chair = null;
+        } else
+        {
+            if (inChair)
             {
-                if (kiDOWN == 0)
+                aniMode = "idle";
+                rb.velocity *= 0;
+                collider.enabled = false;
+                trans.position = new Vector3(chair.position.x, chair.position.y-0.5f, trans.position.z);
+                if (kiSPACE == 1 || kiDOWN == 1)
                 {
-                    kiDOWN = 1;
+                    inChair = false;
+                    chair = null;
+                    Debug.Log("chair out");
                 }
-                else
-                {
-                    kiDOWN = 2;
-                }
+            } else
+            {
+                collider.enabled = true;
+            }
+        }
+
+        
+        Sprite[] ani = aniIdle;
+        switch (aniMode)
+        {
+            case "idle":
+                ani = aniIdle;
+                aniSpeed = aniIdleSpeed;
+                break;
+            case "wait":
+                ani = aniWait;
+                aniSpeed = aniWaitSpeed;
+                break;
+            case "walk":
+                ani = aniWalk;
+                aniSpeed = aniWalkSpeed;
+                break;
+            case "lookUp":
+                ani = aniLookUp;
+                aniSpeed = 1;
+                break;
+            case "lookDown":
+                ani = aniLookDown;
+                aniSpeed = 1;
+                break;
+            default:
+                break;
+        }
+
+        aniFrame = aniFrame % ani.Length;
+        sprite.sprite = ani[(int)aniFrame];
+        aniFrame = (aniFrame + aniSpeed) % ani.Length;
+        //sprite.flipX = !facingRight;
+        if (facingRight)
+        {
+            trans.localScale += new Vector3((0.25f - trans.localScale.x) * 0.2f, 0, 0);
+        } else
+        {
+            trans.localScale += new Vector3((-0.25f - trans.localScale.x) * 0.2f, 0, 0);
+        }
+    }
+
+    void UIUpdate()
+    {
+        if (Input.GetKey("down") || Input.GetKey("s"))
+        {
+            if (kiDOWN == 0)
+            {
+                kiDOWN = 1;
             }
             else
             {
-                kiDOWN = 0;
+                kiDOWN = 2;
             }
-            if (Input.GetKey("space"))
+        }
+        else
+        {
+            kiDOWN = 0;
+        }
+        if (Input.GetKey("space"))
+        {
+            if (kiSPACE == 0)
             {
-                if (kiSPACE == 0)
-                {
-                    kiSPACE = 1;
-                }
-                else
-                {
-                    kiSPACE = 2;
-                }
+                kiSPACE = 1;
             }
             else
             {
-                kiSPACE = 0;
+                kiSPACE = 2;
             }
+        }
+        else
+        {
+            kiSPACE = 0;
         }
     }
 }

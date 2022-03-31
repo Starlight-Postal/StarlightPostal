@@ -37,7 +37,7 @@ public class anchor : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D c)
     {
-        if (c.gameObject.layer == 0)
+        if (c.gameObject.layer == 0|| c.gameObject.layer == 9)
         {
             //Debug.Log("stick");
             stuck = true;
