@@ -4433,6 +4433,17 @@ PrefabInstance:
       value: Ballooning is all about your ups and downs, side-to-side is more of
         a challenge.
       objectReference: {fileID: 0}
+    - target: {fileID: 7389766237202144772, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
+      propertyPath: script.Array.data[22]
+      value: Now in order to dock here we need to be tied down. Press E to drop the
+        anchor.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389766237202144772, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
+      propertyPath: script.Array.data[23]
+      value: "Whoops, we need to anchor to the landing platform! Press E again to
+        retract the anchor. Let\u2019s try again, make sure you\u2019re over the
+        target."
+      objectReference: {fileID: 0}
     - target: {fileID: 7395493958752536842, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
       propertyPath: m_Name
       value: Tutorial grandpa

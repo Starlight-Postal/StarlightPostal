@@ -54,6 +54,7 @@ public class balloon : MonoBehaviour
 
     int kiLMOUSE;
     int kiRMOUSE;
+    int kiE;
 
     public Transform[] altExZones;
 
@@ -136,11 +137,11 @@ public class balloon : MonoBehaviour
 
             if (player.inBalloon)
             {
-                if (kiRMOUSE>0)
+                if (Input.GetKey("q"))
                 {
                     anchorD *= 0.99f;
                 }
-                if (kiLMOUSE==1)
+                if (kiE==1)
                 {
                     //Debug.Log("retract");
                     anchored = false;
@@ -179,7 +180,7 @@ public class balloon : MonoBehaviour
         {
             if (player.inBalloon)
             {
-                if (kiLMOUSE==1)
+                if (kiE==1)
                 {
                     //Debug.Log("throw");
                     anchored = true;
@@ -334,6 +335,21 @@ public class balloon : MonoBehaviour
         else
         {
             kiRMOUSE = 0;
+        }
+        if (Input.GetKey("e"))
+        {
+            if (kiE == 0)
+            {
+                kiE = 1;
+            }
+            else
+            {
+                kiE = 2;
+            }
+        }
+        else
+        {
+            kiE = 0;
         }
     }
 
