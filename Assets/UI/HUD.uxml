@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1;">
+        <ui:VisualElement name="coin-counter" style="position: absolute; right: 10px; top: 10px; min-width: 10%; min-height: 10%; border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; background-color: rgba(0, 0, 0, 0.31);">
+            <ui:VisualElement style="width: 33%; height: 100%; background-image: resource(&apos;textures/Particles/Star 1&apos;); -unity-background-scale-mode: scale-to-fit; -unity-background-image-tint-color: rgb(255, 231, 175); left: 5px;" />
+            <ui:Label text="0" display-tooltip-when-elided="true" name="star-counter-label" class="hud-text" style="right: 25px; -unity-text-align: middle-right; position: absolute; top: 25%; color: rgb(255, 255, 255); font-size: 30px; -unity-font-style: bold;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

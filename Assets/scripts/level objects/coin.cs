@@ -10,7 +10,7 @@ public class coin : MonoBehaviour
     public float pullRange;
     public float collectRange;
     public float speed = 0.25f;
-
+    public global_data gdata;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +18,7 @@ public class coin : MonoBehaviour
         trans = gameObject.GetComponent<Transform>();
         balloon = GameObject.Find("Center").GetComponent<Transform>();
         get = false;
+        gdata = GameObject.Find("Coin Global Data").GetComponent<global_data>();
     }
 
     // Update is called once per frame
@@ -37,6 +38,10 @@ public class coin : MonoBehaviour
         }
         else if (d < pullRange)
         {
+            if (!get)
+            {
+                gdata.coins++;
+            }
             get = true;
         }
         trans.eulerAngles += new Vector3(0, 0, 5);
