@@ -8,23 +8,15 @@ public class balloon : MonoBehaviour
     
     float lean;
     public float leanPower = 0.0075f;
-    /*float bouyancy;
-    public bool capped = true;
-    public float volume = 1;
-    public float weight = 1;
-    public float airFric = 0.975f;
-    public float gravity = 0.1f;
-    public float atmPressure = 1;
-    public float leanPower = 0.0075f;
-    public float fillRate = 0.025f;
-    public float volCap = 1;*/
 
     public float targetHeight;
     public float th;
     public float heightCap = 30;
+    public float heightFloor = 0;
     public float buoyancy = 0.0005f;
     public float weight = 1;
     public float fillRate = 0.1f;
+    float fr;
     public Vector2 airFric;
 
     public float windPower = 1.25f;
@@ -32,7 +24,10 @@ public class balloon : MonoBehaviour
     public Rigidbody2D rb;
     public Transform trans;
     public SpriteRenderer sprite;
-
+    Vector2 trackV;
+    
+    public Sprite[] skins;
+    public int skin = 0;
 
     public wind wind;
 
@@ -50,6 +45,11 @@ public class balloon : MonoBehaviour
     public Transform basketTrans;
     public Collider2D basketCollider;
 
+    public SpriteRenderer basketSprite;
+    public Sprite basketTex_0;
+    public Sprite basketTex_1;
+    public Sprite basketTex_2;
+
     public player player;
 
     int kiLMOUSE;
@@ -59,19 +59,33 @@ public class balloon : MonoBehaviour
 
     LineRenderer line;
 
+
+    public bool lockEntry = false;
+
+    global_data gdata;
+
+    public GameObject dropCoin;
+
+    public BonkSoundController bonk;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        gdata = GameObject.Find("Coin Global Data").GetComponent<global_data>();
         //rb = gameObject.GetComponent<Rigidbody2D>();
         //trans = gameObject.GetComponent<Transform>();
         sprite = gameObject.GetComponent<SpriteRenderer>();
 
         lean = 0;
+        fr = fillRate;
 
         player = GameObject.Find("player").GetComponent<player>();
 
         //wind = GameObject.Find("wind").GetComponent<wind>();
+        trackV = new Vector2(0, 0);
 
+        bonk = gameObject.GetComponent<BonkSoundController>();
 
         anchorObj = GameObject.Find("anchor");
         anchor = anchorObj.GetComponent<anchor>();
@@ -89,12 +103,16 @@ public class balloon : MonoBehaviour
         Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), basketCollider, true);
 
         basket.centerOfMass = new Vector2(0, -1f);
+
+        setSkin(skin);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         UIUpdate();
+
+        trackV = rb.velocity;
         rb.velocity *= airFric;
 
         TargetControl();
@@ -137,7 +155,7 @@ public class balloon : MonoBehaviour
             }
 
             line.enabled = true;
-            line.SetPosition(0, trans.position + anchorOrg);
+            line.SetPosition(0, basketTrans.position + anchorOrg);
             line.SetPosition(1, anchorTrans.position+new Vector3(0,0.25f,0));
 
             if (anchor.landed)
@@ -166,7 +184,7 @@ public class balloon : MonoBehaviour
                     //Debug.Log("throw");
                     anchored = true;
                     anchorD = anchorRange;
-                    anchorObj.GetComponent<Transform>().position = trans.position + new Vector3(0, -3, 0);
+                    anchorObj.GetComponent<Transform>().position = basketTrans.position + anchorOrg;
                     anchorObj.SetActive(true);
                     anchor.stuck = false;
                     anchor.landed = false;
@@ -175,6 +193,14 @@ public class balloon : MonoBehaviour
             }
             line.enabled = false;
             landed = false;
+        }
+
+        if (player.inBalloon)
+        {
+            basketSprite.sprite = basketTex_1;
+        } else
+        {
+            basketSprite.sprite = basketTex_0;
         }
 
 
@@ -186,15 +212,21 @@ public class balloon : MonoBehaviour
         sprite.color = new Color(1,0.9f,0.9f);
         if (player.inBalloon)
         {
+            
             if (Input.GetKey("up") || Input.GetKey("w"))
             {
-                th += fillRate;
+                
                 sprite.color = new Color(1,1,1);
-            }
-            if (Input.GetKey("down") || Input.GetKey("s"))
+                fr += (fillRate * 3 - fr) * 0.0025f;
+                th += fr;
+            } else if (Input.GetKey("down") || Input.GetKey("s"))
             {
-                th -= fillRate;
                 sprite.color = new Color(1, 0.8f,0.8f);
+                fr += (fillRate * 3 - fr) * 0.0025f;
+                th -= fr;
+            } else
+            {
+                fr += (fillRate - fr) * 0.1f;
             }
             lean *= 0.75f;
             if (Input.GetKey("right") || Input.GetKey("d"))
@@ -207,9 +239,9 @@ public class balloon : MonoBehaviour
             }
         }
 
-        if (th < 0)
+        if (th < heightFloor)
         {
-            th += (0 - th) * 0.1f;
+            th += (heightFloor - th) * 0.1f;
         }
         if (th > heightCap)
         {
@@ -234,6 +266,41 @@ public class balloon : MonoBehaviour
         rb.velocity += new Vector2(lean,hd * buoyancy);
 
         //Debug.Log(targetHeight);
+    }
+
+    public void centerHit()
+    {
+        float d = (trackV-rb.velocity).magnitude;
+        //Debug.Log(d);
+        bonk.Bonk(d);
+        if (d >= 4)
+        {
+            //dropCoins((int)Mathf.Floor(d) - 3);
+            dropCoins((int)Mathf.Floor(Mathf.Pow((d - 4) / 15f, 0.5f) * 10));
+        }
+    }
+
+    void dropCoins(int n)
+    {
+        //Debug.Log(n);
+        if (n > gdata.coins)
+        {
+            n = gdata.coins;
+        }
+
+        bonk.CoinsDropped(n);
+
+        gdata.coins -= n;
+        for(int i = 0;i < n;i++)
+        {
+            Instantiate(dropCoin, basketTrans.position, Quaternion.identity);
+        }
+    }
+
+    void setSkin(int id)
+    {
+        skin = id % skins.Length;
+        sprite.sprite = skins[skin];
     }
 
     void UIUpdate()
@@ -281,14 +348,26 @@ public class balloon : MonoBehaviour
         return Mathf.Atan2(y,x);
     }
 
+    [ConsoleMethod("balloon.skin.id","change the balloon skin")]
+    public static void SetBalloonSkin(int id)
+    {
+        GameObject.Find("balloon").GetComponent<balloon>().setSkin(id);
+        Debug.Log("Changed balloon skin id to " + id);
+
+    }
+
     [ConsoleMethod("balloon.skin", "change the balloon skin")]
-    public static void ChangeBalloonSkin(string name) {
+    public static void ChangeBalloonSkin(string name)
+    {
         var spriteRender = GameObject.Find("balloon").GetComponent<SpriteRenderer>();
         var sprite = Resources.Load<Sprite>("textures/Balloons/" + name);
-        if (sprite != null) {
+        if (sprite != null)
+        {
             spriteRender.sprite = sprite;
             Debug.Log("Changed balloon skin to " + name);
-        } else {
+        }
+        else
+        {
             Debug.LogError("Could not load balloon skin '" + name + "'. Does it exist?");
         }
     }
