@@ -29,6 +29,7 @@ public class snow : MonoBehaviour
         cam = GameObject.Find("Main Camera").GetComponent<Camera>();
 
         ratio = new Vector2(cam.aspect, 1);
+        n = (int) (cam.aspect * ((float)n / 1.776f));
 
         range = ratio * cam.orthographicSize;
 
