@@ -14,6 +14,7 @@ public class TutorialNPC : MonoBehaviour
     public bool playerInRange;
 
     public player player;
+    public Transform playerTrans;
     public balloon balloon;
     public Transform balloonTrans;
     public GameObject anchorObj;
@@ -47,11 +48,14 @@ public class TutorialNPC : MonoBehaviour
     public int phase = 0;
     public float walkSpeed = 0.05f;
 
+    public bool facingRight = false;
+
     private void Start()
     {
         playerInRange = false;
         visualCue.SetActive(false);
         player = GameObject.Find("player").GetComponent<player>();
+        playerTrans = player.GetComponent<Transform>();
         balloon = GameObject.Find("balloon").GetComponent<balloon>();
         balloonTrans = GameObject.Find("Center").GetComponent<Transform>();
         anchor = balloon.anchor;
@@ -120,7 +124,26 @@ public class TutorialNPC : MonoBehaviour
                 }
             }
         }
+
+        if (playerTrans.position.x > trans.position.x)
+        {
+            facingRight = true;
+        }
+        if (playerTrans.position.x < trans.position.x)
+        {
+            facingRight = false;
+        }
+
         if (canLeave) { playerCanLeave(); }
+
+        if (facingRight)
+        {
+            bodyTrans.localScale += new Vector3((-0.35f - bodyTrans.localScale.x), 0, 0) * 0.1f;
+        } else
+        {
+            bodyTrans.localScale += new Vector3((0.35f - bodyTrans.localScale.x), 0, 0) * 0.1f;
+        }
+        
     }
 
     private void OnEnable()
@@ -182,9 +205,11 @@ public class TutorialNPC : MonoBehaviour
                 phase = 1;
                 turnOffDisplay();
             }
+            
         }
         if (phase == 1)
         {
+            facingRight = false;
             if (walkTo(1.75f, 2.68f, walkSpeed))
             {
                 phase = 2;
@@ -192,6 +217,7 @@ public class TutorialNPC : MonoBehaviour
         }
         if (phase == 2)
         {
+            facingRight = false;
             if (walkTo(-0.54f, 0.58f, walkSpeed))
             {
                 phase = 3;
@@ -199,6 +225,7 @@ public class TutorialNPC : MonoBehaviour
         }
         if (phase == 3)
         {
+            facingRight = false;
             if (walkTo(-4f, 0.58f, walkSpeed))
             {
                 phase = 4;
@@ -206,6 +233,7 @@ public class TutorialNPC : MonoBehaviour
         }
         if (phase == 4)
         {
+            facingRight = false;
             if (walkTo(-4.55f, 0.44f, walkSpeed))
             {
                 phase = 5;
@@ -213,6 +241,7 @@ public class TutorialNPC : MonoBehaviour
         }
         if (phase == 5)
         {
+            facingRight = false;
             if (walkTo(-7.7f, 0.44f, walkSpeed))
             {
                 phase = 6;
@@ -220,6 +249,7 @@ public class TutorialNPC : MonoBehaviour
         }
         if (phase == 6)
         {
+            facingRight = false;
             if (walkTo(-9f, 0.75f, walkSpeed))
             {
                 phase = 7;
@@ -227,6 +257,7 @@ public class TutorialNPC : MonoBehaviour
         }
         if (phase == 7)
         {
+            facingRight = false;
             if (walkTo(-9.5f, 0.75f, walkSpeed))
             {
                 phase = 8;
