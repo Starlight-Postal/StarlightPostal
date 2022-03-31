@@ -41,7 +41,7 @@ public class chairlift : MonoBehaviour
         for(int i = 0;i < chairs;i++)
         {
             //Debug.Log(new Vector3(pos.x, pos.y, 0));
-            GameObject c = Instantiate(chair, new Vector3(pos.x,pos.y,0), Quaternion.identity);
+            GameObject c = Instantiate(chair, new Vector3(pos.x,pos.y,1), Quaternion.identity);
             //Debug.Log("chair at "+n);
             lift_chair thisChair = c.GetComponent<lift_chair>();
             thisChair.node = n;
