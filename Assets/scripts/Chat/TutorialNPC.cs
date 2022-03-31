@@ -42,6 +42,7 @@ public class TutorialNPC : MonoBehaviour
 
     public Transform trans;
     public GameObject body;
+    public Transform bodyTrans;
 
     public int phase = 0;
     public float walkSpeed = 0.05f;
@@ -56,6 +57,7 @@ public class TutorialNPC : MonoBehaviour
         anchor = balloon.anchor;
         phase = 0;
         trans.position = new Vector3(2.2f,2.68f,0);
+        bodyTrans = body.GetComponent<Transform>();
     }
 
 
@@ -98,6 +100,7 @@ public class TutorialNPC : MonoBehaviour
         if (counter >= script.Length)
         {
             turnOffDisplay();
+            balloon.lockEntry = false;
         }
 
         
@@ -372,6 +375,14 @@ public class TutorialNPC : MonoBehaviour
         } else
         {
             body.SetActive(true);
+        }
+        if (counter == 25)
+        {
+            balloon.lockEntry = true;
+        }
+        if (counter == 26)
+        {
+            balloon.lockEntry = false;
         }
     }
 
