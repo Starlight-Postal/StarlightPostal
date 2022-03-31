@@ -16,7 +16,7 @@ public class PopHazard : MonoBehaviour {
         clips = Resources.LoadAll<AudioClip>("audio/SFX/balloon/pop");
     }
 
-    void OnTriggerEnter2D(Collider2D other) {
+    void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.CompareTag("hazard")) {
             Debug.Log("Balloon has hit a hazard!");
             CheckpointManager.Respawn();

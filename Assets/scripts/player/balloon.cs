@@ -81,6 +81,7 @@ public class balloon : MonoBehaviour
         //wind = GameObject.Find("wind").GetComponent<wind>();
         trackV = new Vector2(0, 0);
 
+        bonk = gameObject.GetComponent<BonkSoundController>();
 
         anchorObj = GameObject.Find("anchor");
         anchor = anchorObj.GetComponent<anchor>();
