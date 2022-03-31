@@ -4355,6 +4355,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4468105491938107014, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
+      propertyPath: m_Size.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4468105491938107014, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.18000007
+      objectReference: {fileID: 0}
+    - target: {fileID: 4468105491938107014, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 5341197870141319797, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -4398,6 +4410,28 @@ PrefabInstance:
     - target: {fileID: 5341197870141319797, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389766237202144772, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
+      propertyPath: body
+      value: 
+      objectReference: {fileID: 770208755}
+    - target: {fileID: 7389766237202144772, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
+      propertyPath: trans
+      value: 
+      objectReference: {fileID: 1336435265}
+    - target: {fileID: 7389766237202144772, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
+      propertyPath: walkSpeed
+      value: 0.025
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389766237202144772, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
+      propertyPath: script.Array.data[15]
+      value: "Nice job! Be gentle with her, we don\u2019t want to be rocketing up
+        and down."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389766237202144772, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
+      propertyPath: script.Array.data[16]
+      value: Ballooning is all about your ups and downs, side-to-side is more of
+        a challenge.
       objectReference: {fileID: 0}
     - target: {fileID: 7395493958752536842, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
       propertyPath: m_Name
@@ -22534,6 +22568,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &770208755 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8536038648785745908, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
+  m_PrefabInstance: {fileID: 140663584}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &777430721
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38927,6 +38966,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &1336435265 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5341197870141319797, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
+  m_PrefabInstance: {fileID: 140663584}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1340143936
 GameObject:
   m_ObjectHideFlags: 0

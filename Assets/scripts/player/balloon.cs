@@ -59,11 +59,15 @@ public class balloon : MonoBehaviour
 
     LineRenderer line;
 
+
+    public bool lockEntry = false;
+
     global_data gdata;
 
     public GameObject dropCoin;
 
     public BonkSoundController bonk;
+
 
     // Start is called before the first frame update
     void Start()
