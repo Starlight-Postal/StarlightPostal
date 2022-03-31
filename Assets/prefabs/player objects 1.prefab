@@ -3467,6 +3467,7 @@ MonoBehaviour:
   targetHeight: 2.5
   th: 2.5
   heightCap: 60
+  heightFloor: 0
   buoyancy: 0.05
   weight: 1
   fillRate: 0.15
@@ -3483,7 +3484,7 @@ MonoBehaviour:
   anchorD: 5
   anchorRange: 10
   anchorStrength: {x: 0.25, y: 0.05}
-  anchorOrg: {x: 0, y: -2.5, z: 0}
+  anchorOrg: {x: 0, y: -0.35, z: 0}
   landed: 0
   basket: {fileID: 0}
   basketTrans: {fileID: 0}
