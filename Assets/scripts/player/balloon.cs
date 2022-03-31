@@ -45,6 +45,11 @@ public class balloon : MonoBehaviour
     public Transform basketTrans;
     public Collider2D basketCollider;
 
+    public SpriteRenderer basketSprite;
+    public Sprite basketTex_0;
+    public Sprite basketTex_1;
+    public Sprite basketTex_2;
+
     public player player;
 
     int kiLMOUSE;
@@ -63,7 +68,7 @@ public class balloon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gdata = GameObject.Find("Globals").GetComponent<global_data>();
+        gdata = GameObject.Find("Coin Global Data").GetComponent<global_data>();
         //rb = gameObject.GetComponent<Rigidbody2D>();
         //trans = gameObject.GetComponent<Transform>();
         sprite = gameObject.GetComponent<SpriteRenderer>();
@@ -145,7 +150,7 @@ public class balloon : MonoBehaviour
             }
 
             line.enabled = true;
-            line.SetPosition(0, trans.position + anchorOrg);
+            line.SetPosition(0, basketTrans.position + anchorOrg);
             line.SetPosition(1, anchorTrans.position+new Vector3(0,0.25f,0));
 
             if (anchor.landed)
@@ -174,7 +179,7 @@ public class balloon : MonoBehaviour
                     //Debug.Log("throw");
                     anchored = true;
                     anchorD = anchorRange;
-                    anchorObj.GetComponent<Transform>().position = trans.position + new Vector3(0, -3, 0);
+                    anchorObj.GetComponent<Transform>().position = basketTrans.position + anchorOrg;
                     anchorObj.SetActive(true);
                     anchor.stuck = false;
                     anchor.landed = false;
@@ -183,6 +188,14 @@ public class balloon : MonoBehaviour
             }
             line.enabled = false;
             landed = false;
+        }
+
+        if (player.inBalloon)
+        {
+            basketSprite.sprite = basketTex_1;
+        } else
+        {
+            basketSprite.sprite = basketTex_0;
         }
 
 
@@ -220,8 +233,6 @@ public class balloon : MonoBehaviour
                 lean -= leanPower;
             }
         }
-
-        Debug.Log(fr);
 
         if (th < heightFloor)
         {

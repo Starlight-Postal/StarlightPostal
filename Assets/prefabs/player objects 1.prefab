@@ -220,7 +220,7 @@ GameObject:
   - component: {fileID: 1730267759112930735}
   - component: {fileID: 1730267759112930732}
   - component: {fileID: 750374741729352096}
-  - component: {fileID: 8336399242609167016}
+  - component: {fileID: 6918549419597992549}
   m_Layer: 3
   m_Name: Center
   m_TagString: Untagged
@@ -273,7 +273,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 6200000, guid: 65ba3db0bf2d9094c957184a76126649, type: 2}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -291,8 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05e98a8566f63d42b958ee3eb1ea1e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mixer: {fileID: -349929039076099721, guid: 3c1affec8217990a19f91b94113e5de3, type: 2}
---- !u!114 &8336399242609167016
+--- !u!114 &6918549419597992549
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -304,7 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56efc4ffec266994786add76ce55b383, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  balloon: {fileID: 3968976079676043117}
+  balloon: {fileID: 0}
 --- !u!1 &1730267759180420879
 GameObject:
   m_ObjectHideFlags: 0
@@ -3442,7 +3441,6 @@ GameObject:
   - component: {fileID: 1730267759700492895}
   - component: {fileID: 1730267759700492882}
   - component: {fileID: 1730267759700492883}
-  - component: {fileID: 467418771238538209}
   m_Layer: 3
   m_Name: balloon
   m_TagString: Untagged
@@ -3505,16 +3503,19 @@ MonoBehaviour:
   anchorD: 5
   anchorRange: 10
   anchorStrength: {x: 0.25, y: 0.05}
-  anchorOrg: {x: 0, y: -2.5, z: 0}
+  anchorOrg: {x: 0, y: -0.35, z: 0}
   landed: 0
   basket: {fileID: 0}
   basketTrans: {fileID: 0}
   basketCollider: {fileID: 0}
+  basketSprite: {fileID: 1730267760027824712}
+  basketTex_0: {fileID: 21300000, guid: e703dcd0d49a2a047afd9213c68331a0, type: 3}
+  basketTex_1: {fileID: 21300000, guid: 631fae4c7d15c67428c3ed98bb068510, type: 3}
+  basketTex_2: {fileID: 21300000, guid: 2f54e533f14ce334883ad6053ed6d428, type: 3}
   player: {fileID: 1850551271520947689}
   altExZones:
   - {fileID: 0}
   dropCoin: {fileID: 8731895260476005950, guid: 6ce47b0d2b4a9b744be2a73a09fb9acc, type: 3}
-  bonk: {fileID: 467418771238538209}
 --- !u!212 &3968976079676043112
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3750,7 +3751,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22e0ffcec88454b5cb046b77ea15b8df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mixer: {fileID: -859361352437151580, guid: 3c1affec8217990a19f91b94113e5de3, type: 2}
   clips:
   - {fileID: 8300000, guid: 0a839f987df740e199f95c7969889485, type: 3}
   - {fileID: 8300000, guid: 4f650de3e0a5a5e8fbb79a696555da35, type: 3}
@@ -3768,7 +3768,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22e0ffcec88454b5cb046b77ea15b8df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mixer: {fileID: 1356145636981113750, guid: 3c1affec8217990a19f91b94113e5de3, type: 2}
   clips:
   - {fileID: 8300000, guid: 9cc7abb3a0eaaccfc9ae0b57d3143042, type: 3}
   - {fileID: 8300000, guid: f36ce2cd8f89d4a93ab3c699f5689610, type: 3}
@@ -3786,22 +3785,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a874f0fe9f486497681922032d1863d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinMixer: {fileID: 4391077314298107941, guid: 3c1affec8217990a19f91b94113e5de3, type: 2}
-  dingMixer: {fileID: -4580129039934751195, guid: 3c1affec8217990a19f91b94113e5de3, type: 2}
---- !u!114 &467418771238538209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3968976079676043116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b00bd498d9977891a49e740e1963466, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mixer: {fileID: 4932581455728860721, guid: 3c1affec8217990a19f91b94113e5de3, type: 2}
-  coinMixer: {fileID: 3229204177680518563, guid: 3c1affec8217990a19f91b94113e5de3, type: 2}
 --- !u!1 &5689308615851303655
 GameObject:
   m_ObjectHideFlags: 0
@@ -3816,7 +3799,6 @@ GameObject:
   - component: {fileID: 570913779755160127}
   - component: {fileID: 1850551271520947689}
   - component: {fileID: 1730267759719722911}
-  - component: {fileID: 4092154118959306943}
   m_Layer: 6
   m_Name: player
   m_TagString: Untagged
@@ -3983,16 +3965,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4092154118959306943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5689308615851303655}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a19d72c048d89f938b190226c72f04d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mixer: {fileID: 3167522928538882896, guid: 3c1affec8217990a19f91b94113e5de3, type: 2}
