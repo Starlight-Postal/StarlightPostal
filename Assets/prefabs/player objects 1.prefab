@@ -220,6 +220,7 @@ GameObject:
   - component: {fileID: 1730267759112930735}
   - component: {fileID: 1730267759112930732}
   - component: {fileID: 750374741729352096}
+  - component: {fileID: 6918549419597992549}
   m_Layer: 3
   m_Name: Center
   m_TagString: Untagged
@@ -272,7 +273,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 6200000, guid: 65ba3db0bf2d9094c957184a76126649, type: 2}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -290,6 +291,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05e98a8566f63d42b958ee3eb1ea1e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6918549419597992549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730267759112930729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56efc4ffec266994786add76ce55b383, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  balloon: {fileID: 0}
 --- !u!1 &1730267759180420879
 GameObject:
   m_ObjectHideFlags: 0
@@ -3467,6 +3481,7 @@ MonoBehaviour:
   targetHeight: 2.5
   th: 2.5
   heightCap: 60
+  heightFloor: 0
   buoyancy: 0.05
   weight: 1
   fillRate: 0.15
