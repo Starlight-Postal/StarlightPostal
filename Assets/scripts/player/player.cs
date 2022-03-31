@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class player : MonoBehaviour
 {
+    public bool free = true;
+
     public bool inBalloon = false;
     public Rigidbody2D rb;
     public Transform trans;
@@ -72,161 +74,165 @@ public class player : MonoBehaviour
         {
             aniWalk[i] = Resources.Load<Sprite>("textures/Player/player_walk/player_walk_" + i);
         }
-        aniLookUp = new Sprite[8];
-        for (int i = 0; i < 8; i++)
-        {
-            aniLookUp[i] = Resources.Load<Sprite>("textures/Player/player_idle/player_idle_" + i);
-        }
-        aniLookDown = new Sprite[8];
-        for (int i = 0; i < 8; i++)
-        {
-            aniLookDown[i] = Resources.Load<Sprite>("textures/Player/player_idle/player_idle_" + i);
-        }
+        aniLookUp = new Sprite[1];
+        aniLookUp[0] = Resources.Load<Sprite>("textures/Player/player_up");
+
+        aniLookDown = new Sprite[1];
+        aniLookDown[0] = Resources.Load<Sprite>("textures/Player/player_down");
         camHeight = 0;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        UIUpdate();
-        if (inBalloon)
+        if (free)
         {
-            sprite.enabled = false;
-            collider.enabled = false;
-            trans.position = new Vector3(balloonTrans.position.x, balloonTrans.position.y - 2.5f,0);
-            rb.velocity = new Vector2(0, 0);
-            if (Input.GetKey("space"))
+            UIUpdate();
+            if (inBalloon)
             {
-                if (swap)
+                sprite.enabled = false;
+                collider.enabled = false;
+                trans.position = new Vector3(balloonTrans.position.x, balloonTrans.position.y - 2.5f, 0);
+                rb.velocity = new Vector2(0, 0);
+                if (Input.GetKey("space"))
                 {
-                    if(balloon.landed)
+                    if (swap)
                     {
-                        inBalloon = false;
-                        //Debug.Log("disembark");
-                        swap = false;
+                        if (balloon.landed)
+                        {
+                            inBalloon = false;
+                            //Debug.Log("disembark");
+                            swap = false;
+                        }
                     }
                 }
-            } else
-            {
-                swap = true;
-            }
-        } else
-        {
-            if (aniMode != "wait")
-            {
-                aniMode = "idle";
-            }
-            sprite.enabled = true;
-            collider.enabled = true;
-            rb.velocity = new Vector2(rb.velocity.x * 0.8f, rb.velocity.y); ;
-            rb.velocity += new Vector2(0, -gravity);
-            if (Input.GetKey("right") || Input.GetKey("d"))
-            {
-                rb.velocity += new Vector2(runSpeed, 0);
-                facingRight = true;
-                aniMode = "walk";
-            }
-            if (Input.GetKey("left") || Input.GetKey("a"))
-            {
-                rb.velocity += new Vector2(-runSpeed, 0);
-                facingRight = false;
-                aniMode = "walk";
-            }
-            if (Input.GetKey("up") || Input.GetKey("w"))
-            {
-                if (aniMode != "walk")
+                else
                 {
-                    aniMode = "lookUp";
+                    swap = true;
                 }
-                camHeight += ((camCenter + camRange) - camHeight) * 0.25f;
-            }
-            else if (Input.GetKey("down") || Input.GetKey("s"))
-            {
-                if (aniMode != "walk")
-                {
-                    aniMode = "lookDown";
-                }
-                camHeight += ((camCenter - camRange) - camHeight) * 0.25f;
             }
             else
             {
-                camHeight += ((camCenter) - camHeight) * 0.25f;
-            }
-
-            if (aniMode == "idle")
-            {
-                if(aniFrame == 0)
+                if (aniMode != "wait")
                 {
-                    if (Random.Range(0.0f, 1.0f) < 0.1f)
-                    {
-                        aniMode = "wait";
-                        //Debug.Log("?");
-                    }
-                    
+                    aniMode = "idle";
                 }
-            } else
-            {
-                if (aniMode == "wait")
+                sprite.enabled = true;
+                collider.enabled = true;
+                rb.velocity = new Vector2(rb.velocity.x * 0.8f, rb.velocity.y); ;
+                rb.velocity += new Vector2(0, -gravity);
+                if (Input.GetKey("right") || Input.GetKey("d"))
+                {
+                    rb.velocity += new Vector2(runSpeed, 0);
+                    facingRight = true;
+                    aniMode = "walk";
+                }
+                if (Input.GetKey("left") || Input.GetKey("a"))
+                {
+                    rb.velocity += new Vector2(-runSpeed, 0);
+                    facingRight = false;
+                    aniMode = "walk";
+                }
+                if (Input.GetKey("up") || Input.GetKey("w"))
+                {
+                    if (aniMode != "walk")
+                    {
+                        aniMode = "lookUp";
+                    }
+                    camHeight += ((camCenter + camRange) - camHeight) * 0.25f;
+                }
+                else if (Input.GetKey("down") || Input.GetKey("s"))
+                {
+                    if (aniMode != "walk")
+                    {
+                        aniMode = "lookDown";
+                    }
+                    camHeight += ((camCenter - camRange) - camHeight) * 0.25f;
+                }
+                else
+                {
+                    camHeight += ((camCenter) - camHeight) * 0.25f;
+                }
+
+                if (aniMode == "idle")
                 {
                     if (aniFrame == 0)
                     {
-                        aniMode = "idle";
-                        //Debug.Log("!");
+                        if (Random.Range(0.0f, 1.0f) < 0.1f)
+                        {
+                            aniMode = "wait";
+                            //Debug.Log("?");
+                        }
+
                     }
                 }
-            }
-
-            if (kiDOWN == 1)
-            {
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(0, -1), 0.6f,LayerMask.GetMask("Default"));
-                if (hit!=null) {
-                    Collider2D platform = hit.collider;
-                    //EdgeCollider2D platform = targetPlatform;
-                    //Debug.Log(platform.GetType());
-                    if (platform.GetType() == typeof(EdgeCollider2D))
+                else
+                {
+                    if (aniMode == "wait")
                     {
-                        if (platform.gameObject.GetComponent<PlatformEffector2D>() != null)
+                        if (aniFrame == 0)
                         {
-                            Physics2D.IgnoreCollision(collider, platform, true);
-                            platformQueueu.Add((EdgeCollider2D)platform);
-                            //Debug.Log("through");
+                            aniMode = "idle";
+                            //Debug.Log("!");
                         }
                     }
-                    
-                } else
-                {
-                    //Debug.Log("none");
                 }
-            } else
-            {
-                for(int i = 0;i < platformQueueu.Count;i++)
+
+                if (kiDOWN == 1)
                 {
-                    EdgeCollider2D platform = platformQueueu[i];
-                    Transform platShape = platform.gameObject.GetComponent<Transform>();
-                    Vector2 pA = (new Vector2(platShape.position.x, platShape.position.y) + (platform.points[0] * new Vector2(platShape.lossyScale.x, platShape.lossyScale.y)));
-                    Vector2 pB = (new Vector2(platShape.position.x, platShape.position.y) + (platform.points[1] * new Vector2(platShape.lossyScale.x, platShape.lossyScale.y)));
-                    if (Mathf.Abs(trans.position.x - (pA.x + pB.x) / 2f) > Mathf.Abs(pA.x - pB.x) / 2f)
+                    RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(0, -1), 0.6f, LayerMask.GetMask("Default"));
+                    if (hit != null)
                     {
-                        Physics2D.IgnoreCollision(collider, platform, false);
-                        //Debug.Log("out");
-                        platformQueueu.RemoveAt(i);
-                        i--;
+                        Collider2D platform = hit.collider;
+                        //EdgeCollider2D platform = targetPlatform;
+                        //Debug.Log(platform.GetType());
+                        if (platform.GetType() == typeof(EdgeCollider2D))
+                        {
+                            if (platform.gameObject.GetComponent<PlatformEffector2D>() != null)
+                            {
+                                Physics2D.IgnoreCollision(collider, platform, true);
+                                platformQueueu.Add((EdgeCollider2D)platform);
+                                //Debug.Log("through");
+                            }
+                        }
+
                     }
                     else
                     {
-                        float m = (pA.y - pB.y) / (pA.x - pB.x);
-                        float b = pA.y - (m * pA.x);
-                        if (trans.position.y - ((trans.position.x * m) + b) < -0.5f)
+                        //Debug.Log("none");
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < platformQueueu.Count; i++)
+                    {
+                        EdgeCollider2D platform = platformQueueu[i];
+                        Transform platShape = platform.gameObject.GetComponent<Transform>();
+                        Vector2 pA = (new Vector2(platShape.position.x, platShape.position.y) + (platform.points[0] * new Vector2(platShape.lossyScale.x, platShape.lossyScale.y)));
+                        Vector2 pB = (new Vector2(platShape.position.x, platShape.position.y) + (platform.points[1] * new Vector2(platShape.lossyScale.x, platShape.lossyScale.y)));
+                        if (Mathf.Abs(trans.position.x - (pA.x + pB.x) / 2f) > Mathf.Abs(pA.x - pB.x) / 2f)
                         {
                             Physics2D.IgnoreCollision(collider, platform, false);
-                            //Debug.Log("under");
+                            //Debug.Log("out");
                             platformQueueu.RemoveAt(i);
                             i--;
                         }
+                        else
+                        {
+                            float m = (pA.y - pB.y) / (pA.x - pB.x);
+                            float b = pA.y - (m * pA.x);
+                            if (trans.position.y - ((trans.position.x * m) + b) < -0.5f)
+                            {
+                                Physics2D.IgnoreCollision(collider, platform, false);
+                                //Debug.Log("under");
+                                platformQueueu.RemoveAt(i);
+                                i--;
+                            }
+                        }
                     }
+
                 }
-                
-            }
+
 
             //Debug.Log("balloon range!");
             if (kiSPACE==1)
@@ -234,57 +240,63 @@ public class player : MonoBehaviour
                 if (swap)
                 {
                     if (!balloon.lockEntry&&Vector3.Distance(trans.position, balloonTrans.position+new Vector3(0,0,(trans.position.z-balloonTrans.position.z))) < 3.5f || Vector3.Distance(trans.position, anchorTrans.position + new Vector3(0, 0, (trans.position.z - anchorTrans.position.z))) < 1f)
+
                     {
-                        //Debug.Log("embark");
-                        inBalloon = true;
-                        swap = false;
+                        if (Vector3.Distance(trans.position, balloonTrans.position + new Vector3(0, 0, (trans.position.z - balloonTrans.position.z))) < 3.5f || Vector3.Distance(trans.position, anchorTrans.position + new Vector3(0, 0, (trans.position.z - anchorTrans.position.z))) < 1f)
+                        {
+                            //Debug.Log("embark");
+                            inBalloon = true;
+                            swap = false;
+                        }
                     }
                 }
-            } else
-            {
-                swap = true;
+                else
+                {
+                    swap = true;
+                }
+
             }
-            
-        }
 
-        
-        Sprite[] ani = aniIdle;
-        switch (aniMode)
-        {
-            case "idle":
-                ani = aniIdle;
-                aniSpeed = aniIdleSpeed;
-                break;
-            case "wait":
-                ani = aniWait;
-                aniSpeed = aniWaitSpeed;
-                break;
-            case "walk":
-                ani = aniWalk;
-                aniSpeed = aniWalkSpeed;
-                break;
-            case "lookUp":
-                ani = aniLookUp;
-                aniSpeed = 1;
-                break;
-            case "lookDown":
-                ani = aniLookDown;
-                aniSpeed = 1;
-                break;
-            default:
-                break;
-        }
 
-        aniFrame = aniFrame % ani.Length;
-        sprite.sprite = ani[(int)aniFrame];
-        aniFrame = (aniFrame + aniSpeed) % ani.Length;
-        //sprite.flipX = !facingRight;
-        if (facingRight)
-        {
-            trans.localScale += new Vector3((0.25f - trans.localScale.x) * 0.2f, 0, 0);
-        } else
-        {
-            trans.localScale += new Vector3((-0.25f - trans.localScale.x) * 0.2f, 0, 0);
+            Sprite[] ani = aniIdle;
+            switch (aniMode)
+            {
+                case "idle":
+                    ani = aniIdle;
+                    aniSpeed = aniIdleSpeed;
+                    break;
+                case "wait":
+                    ani = aniWait;
+                    aniSpeed = aniWaitSpeed;
+                    break;
+                case "walk":
+                    ani = aniWalk;
+                    aniSpeed = aniWalkSpeed;
+                    break;
+                case "lookUp":
+                    ani = aniLookUp;
+                    aniSpeed = 1;
+                    break;
+                case "lookDown":
+                    ani = aniLookDown;
+                    aniSpeed = 1;
+                    break;
+                default:
+                    break;
+            }
+
+            aniFrame = aniFrame % ani.Length;
+            sprite.sprite = ani[(int)aniFrame];
+            aniFrame = (aniFrame + aniSpeed) % ani.Length;
+            //sprite.flipX = !facingRight;
+            if (facingRight)
+            {
+                trans.localScale += new Vector3((0.25f - trans.localScale.x) * 0.2f, 0, 0);
+            }
+            else
+            {
+                trans.localScale += new Vector3((-0.25f - trans.localScale.x) * 0.2f, 0, 0);
+            }
         }
     }
 

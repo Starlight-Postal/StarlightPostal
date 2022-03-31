@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.Audio;
 
 public class UiButtonSfx : MonoBehaviour {
+
+    public AudioMixerGroup mixer;
 
     private AudioSource source;
     private AudioClip[] clicks;
@@ -22,6 +25,7 @@ public class UiButtonSfx : MonoBehaviour {
 
     private void Start() {
         source = gameObject.AddComponent<AudioSource>();
+        source.outputAudioMixerGroup = mixer;
         clicks = Resources.LoadAll<AudioClip>("audio/SFX/menu/click");
         hovers = Resources.LoadAll<AudioClip>("audio/SFX/menu/hover");
     }
