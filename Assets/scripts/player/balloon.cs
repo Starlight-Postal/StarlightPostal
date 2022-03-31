@@ -63,6 +63,8 @@ public class balloon : MonoBehaviour
 
     public GameObject dropCoin;
 
+    public BonkSoundController bonk;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -79,6 +81,7 @@ public class balloon : MonoBehaviour
         //wind = GameObject.Find("wind").GetComponent<wind>();
         trackV = new Vector2(0, 0);
 
+        bonk = gameObject.GetComponent<BonkSoundController>();
 
         anchorObj = GameObject.Find("anchor");
         anchor = anchorObj.GetComponent<anchor>();
@@ -265,6 +268,7 @@ public class balloon : MonoBehaviour
     {
         float d = (trackV-rb.velocity).magnitude;
         //Debug.Log(d);
+        bonk.Bonk(d);
         if (d >= 4)
         {
             //dropCoins((int)Mathf.Floor(d) - 3);
@@ -279,6 +283,8 @@ public class balloon : MonoBehaviour
         {
             n = gdata.coins;
         }
+
+        bonk.CoinsDropped(n);
 
         gdata.coins -= n;
         for(int i = 0;i < n;i++)

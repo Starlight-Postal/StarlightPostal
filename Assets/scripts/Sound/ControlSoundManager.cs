@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class ControlSoundManager : MonoBehaviour {
+
+    public AudioMixerGroup mixer;
 
     public AudioClip[] clips = new AudioClip[3];
     public KeyCode[] keys = new KeyCode[1];
@@ -15,6 +18,7 @@ public class ControlSoundManager : MonoBehaviour {
         for (int i = 0; i < 3; i++) {
             sources[i] = gameObject.AddComponent<AudioSource>();
             sources[i].clip = clips[i];
+            sources[i].outputAudioMixerGroup = mixer;
         }
         sources[1].loop = true;
     }
