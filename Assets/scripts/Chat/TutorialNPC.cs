@@ -41,6 +41,7 @@ public class TutorialNPC : MonoBehaviour
     public bool canLeave;
 
     public Transform trans;
+    public GameObject body;
 
     public int phase = 0;
     public float walkSpeed = 0.05f;
@@ -358,7 +359,19 @@ public class TutorialNPC : MonoBehaviour
                 chatButton.visible = true;
                 canNext = true;
                 chatButton.text = "space";
+                if (phase < 13)
+                {
+                    phase = 13;
+                    trans.position = new Vector3(577.5f, 39.85f, 0);
+                }
             }
+        }
+        if (phase > 8 && phase < 13)
+        {
+            body.SetActive(false);
+        } else
+        {
+            body.SetActive(true);
         }
     }
 
