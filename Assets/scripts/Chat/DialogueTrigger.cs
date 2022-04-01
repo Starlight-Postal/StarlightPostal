@@ -25,6 +25,8 @@ public class DialogueTrigger : MonoBehaviour
     public Transform bodyTrans;
     public float visWidth;
 
+    public bool canLeave = true;
+
 
     public bool inMenu = false;
 
@@ -67,6 +69,16 @@ public class DialogueTrigger : MonoBehaviour
                 if (counter == script.Length - 1) { chatButton.text = "space"; }
                 else { chatButton.text = "space"; }
                 sideButton.visible = false;
+            }
+            if (!playerInRange)
+            {
+                if (canLeave)
+                {
+                    visualCue.SetActive(false);
+                    counter = 0;
+                    Script.text = script[counter];
+                    inMenu = false;
+                }
             }
         }
         else
