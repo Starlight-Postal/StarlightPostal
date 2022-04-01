@@ -94,49 +94,9 @@ public class TutorialNPC : MonoBehaviour
     private void FixedUpdate()
     {
         //activates the text bubble if player in range
-        if (playerInRange)
-        {
-            if (phase == 0||phase==8)
-            {
-                visualCue.SetActive(true);
-                if (player.kiSPACE==1)
-                {
-                    //counter = 0;
-                    turnOnDisplay();
-                    sideButton.visible = true;
-
-                    Script.text = script[counter];
-                }
-            } else
-            {
-                visualCue.SetActive(false);
-            }
-        }
-
-        //Checks to see if players are in range. If they arn't and chat should disappear it does
-        else
-        {
-            visualCue.SetActive(false);
-            if (playerInRange == false && canLeave == false)
-            {
-                counter = 0;
-                Script.text = script[counter];
-                turnOffDisplay();          
-            }
-        }
-
-        //Gets rid of the chat if they hid next one more time
-        if (counter >= script.Length)
-        {
-            turnOffDisplay();
-            balloon.lockEntry = false;
-        }
-
-        
-        rve.visible = inMenu;
-
         if (rve.visible)
         {
+            visualCue.SetActive(false);
             if (canNext)
             {
                 if (player.kiSPACE == 1)
@@ -148,7 +108,51 @@ public class TutorialNPC : MonoBehaviour
                     sideButton.visible = false;
                 }
             }
+        } else {
+            if (playerInRange)
+            {
+                if (phase == 0 || phase == 8)
+                {
+                    visualCue.SetActive(true);
+                    if (player.kiSPACE == 1)
+                    {
+                        //counter = 0;
+                        turnOnDisplay();
+                        sideButton.visible = true;
+
+                        Script.text = script[counter];
+                    }
+                } else
+                {
+                    visualCue.SetActive(false);
+                }
+            }
+            //Checks to see if players are in range. If they arn't and chat should disappear it does
+            else
+            {
+                visualCue.SetActive(false);
+                if (playerInRange == false && canLeave == false)
+                {
+                    counter = 0;
+                    Script.text = script[counter];
+                    turnOffDisplay();
+                }
+            }
         }
+
+        
+
+        //Gets rid of the chat if they hid next one more time
+        if (counter >= script.Length)
+        {
+            turnOffDisplay();
+            balloon.lockEntry = false;
+        }
+
+        
+        rve.visible = inMenu;
+
+        
 
         if (playerTrans.position.x > trans.position.x)
         {
@@ -325,6 +329,7 @@ public class TutorialNPC : MonoBehaviour
             if (counter >9)
             {
                 phase = 9;
+                player.GetComponent<player>().inBalloon = true;
             }
         }
         //80 170 280

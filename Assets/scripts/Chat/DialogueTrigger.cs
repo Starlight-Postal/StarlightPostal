@@ -14,9 +14,16 @@ public class DialogueTrigger : MonoBehaviour
     // private Story currentStory;
     public bool playerInRange;
 
+    public Transform trans;
     public player player;
+    public Transform playerTrans;
     public balloon balloon;
     public anchor anchor;
+
+    public bool facingRight;
+    public bool facePlayer = true;
+    public Transform bodyTrans;
+    public float visWidth;
 
 
     public bool inMenu = false;
@@ -43,32 +50,48 @@ public class DialogueTrigger : MonoBehaviour
         player = GameObject.Find("player").GetComponent<player>();
         balloon = GameObject.Find("balloon").GetComponent<balloon>();
         anchor = balloon.anchor;
+        playerTrans = player.GetComponent<Transform>();
+        visWidth = bodyTrans.localScale.x;
     }
 
 
 
-    private void Update()
+    private void FixedUpdate()
     {
-        //activates the text bubble if player in range
-        if (playerInRange)
+        if (rve.visible)
         {
-            visualCue.SetActive(true);
-            if (Input.GetKeyDown("c"))
+            if (player.kiSPACE == 1)
             {
-                counter = 0;
-                inMenu = true;
-                rve.visible = inMenu;
+                counter++;
                 Script.text = script[counter];
+                if (counter == script.Length - 1) { chatButton.text = "space"; }
+                else { chatButton.text = "space"; }
+                sideButton.visible = false;
             }
         }
-
-        //Checks to see if players are in range. If they arn't and chat should disappear it does
         else
         {
-            visualCue.SetActive(false);
-            counter = 0;
-            Script.text = script[counter];
-            inMenu = false;
+            //activates the text bubble if player in range
+            if (playerInRange)
+            {
+                visualCue.SetActive(true);
+                if (player.kiSPACE == 1)
+                {
+                    counter = 0;
+                    inMenu = true;
+                    rve.visible = inMenu;
+                    Script.text = script[counter];
+                }
+            }
+
+            //Checks to see if players are in range. If they arn't and chat should disappear it does
+            else
+            {
+                visualCue.SetActive(false);
+                counter = 0;
+                Script.text = script[counter];
+                inMenu = false;
+            }
         }
 
         //Gets rid of the chat if they hid next one more time
@@ -82,6 +105,29 @@ public class DialogueTrigger : MonoBehaviour
         if (counter == script.Length - 1) { chatButton.text = "End"; }
 
             rve.visible = inMenu;
+
+
+        if (facePlayer)
+        {
+            if (playerTrans.position.x > trans.position.x)
+            {
+                facingRight = true;
+            }
+            if (playerTrans.position.x < trans.position.x)
+            {
+                facingRight = false;
+            }
+        }
+
+        if (facingRight)
+        {
+            bodyTrans.localScale += new Vector3((visWidth - bodyTrans.localScale.x), 0, 0) * 0.1f;
+        }
+        else
+        {
+            bodyTrans.localScale += new Vector3((-visWidth - bodyTrans.localScale.x), 0, 0) * 0.1f;
+        }
+
     }
 
     private void OnEnable()
