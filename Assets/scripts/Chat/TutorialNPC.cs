@@ -28,7 +28,7 @@ public class TutorialNPC : MonoBehaviour
     private Button chatButton;
     private Button sideButton;
     private Label Script;
-    private int counter;
+    public int counter;
     public int checkpoint = 16;
 
     public bool canNext = true;
@@ -111,7 +111,7 @@ public class TutorialNPC : MonoBehaviour
         } else {
             if (playerInRange)
             {
-                if (phase == 0 || phase == 8)
+                if (phase == 0 || phase == 8 || phase == 15||phase==19)
                 {
                     visualCue.SetActive(true);
                     if (player.kiSPACE == 1)
@@ -465,6 +465,53 @@ public class TutorialNPC : MonoBehaviour
         if (counter == 26)
         {
             balloon.lockEntry = false;
+            if (phase == 13)
+            {
+                phase = 14;
+                turnOffDisplay();
+            }
+        }
+        if (phase == 14)
+        {
+            turnOffDisplay();
+            facingRight = true;
+            if (walkTo(585, 39.85f, walkSpeed))
+            {
+                phase = 15;
+            }
+        }
+        if(phase == 15)
+        {
+            if (counter == 29)
+            {
+                phase = 16;
+                    turnOffDisplay();
+            }
+        }
+        if (phase == 16)
+        {
+            turnOffDisplay();
+            facingRight = true;
+            if (walkTo(619, 39.85f, walkSpeed))
+            {
+                phase = 17;
+            }
+        }
+        if (phase == 17)
+        {
+            facingRight = true;
+            if (walkTo(619.7f, 40.1f, walkSpeed))
+            {
+                phase = 18;
+            }
+        }
+        if (phase == 18)
+        {
+            facingRight = true;
+            if (walkTo(622.6f, 40.1f, walkSpeed))
+            {
+                phase = 19;
+            }
         }
     }
 
