@@ -114,7 +114,7 @@ public class DialogueTrigger : MonoBehaviour
             counter = 0;
             Script.text = script[counter];
         }
-        if (counter == script.Length - 1) { chatButton.text = "End"; }
+        //if (counter == script.Length - 1) { chatButton.text = "End"; }
 
             rve.visible = inMenu;
 

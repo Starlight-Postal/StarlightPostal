@@ -475,7 +475,7 @@ public class TutorialNPC : MonoBehaviour
         {
             turnOffDisplay();
             facingRight = true;
-            if (walkTo(585, 39.85f, walkSpeed))
+            if (walkTo(583, 39.85f, walkSpeed))
             {
                 phase = 15;
             }
