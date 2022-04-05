@@ -18,7 +18,7 @@ public class PostOfficeClerk : MonoBehaviour
     public player player;
     public Transform playerTrans;
     public balloon balloon;
-    public anchor anchor;
+    //public anchor anchor;
 
     public bool facingRight;
     public bool facePlayer = true;
@@ -63,7 +63,7 @@ public class PostOfficeClerk : MonoBehaviour
         visualCue.SetActive(false);
         player = GameObject.Find("player").GetComponent<player>();
         balloon = GameObject.Find("balloon").GetComponent<balloon>();
-        anchor = balloon.anchor;
+        //anchor = balloon.anchor;
         playerTrans = player.GetComponent<Transform>();
         visWidth = bodyTrans.localScale.x;
         phase = "maildrop";
