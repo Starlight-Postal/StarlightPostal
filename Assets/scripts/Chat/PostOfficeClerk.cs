@@ -42,6 +42,7 @@ public class PostOfficeClerk : MonoBehaviour
     public bool playerDone = false;
     public bool delivered = false;
     public float newHeight;
+    public DialogueTrigger recipient;
 
     public string phase = "maildrop";
 
@@ -73,6 +74,10 @@ public class PostOfficeClerk : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (recipient.encountered == true)
+        {
+            delivered = true;
+        }
         if (rve.visible)
         {
             if (player.kiSPACE == 1)

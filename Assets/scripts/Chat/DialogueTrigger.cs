@@ -26,6 +26,7 @@ public class DialogueTrigger : MonoBehaviour
     public float visWidth;
 
     public bool canLeave = true;
+    public bool encountered = false;
 
 
     public bool inMenu = false;
@@ -54,6 +55,7 @@ public class DialogueTrigger : MonoBehaviour
         anchor = balloon.anchor;
         playerTrans = player.GetComponent<Transform>();
         visWidth = bodyTrans.localScale.x;
+        encountered = false;
     }
 
 
@@ -93,6 +95,7 @@ public class DialogueTrigger : MonoBehaviour
                     inMenu = true;
                     rve.visible = inMenu;
                     Script.text = script[counter];
+                    encountered = true;
                 }
             }
 
