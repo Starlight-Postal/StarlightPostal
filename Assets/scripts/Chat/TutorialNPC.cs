@@ -20,6 +20,7 @@ public class TutorialNPC : MonoBehaviour
     public GameObject anchorObj;
     public anchor anchor;
     public bool anchored;
+    public PostOfficeClerk clerk;
 
 
     public bool inMenu = false;
@@ -111,7 +112,7 @@ public class TutorialNPC : MonoBehaviour
         } else {
             if (playerInRange)
             {
-                if (phase == 0 || phase == 8 || phase == 15||phase==19)
+                if (phase == 0 || phase == 8 || phase == 15||phase==16||phase==20||phase==21)
                 {
                     visualCue.SetActive(true);
                     if (player.kiSPACE == 1)
@@ -475,32 +476,38 @@ public class TutorialNPC : MonoBehaviour
         {
             turnOffDisplay();
             facingRight = true;
-            if (walkTo(583, 39.85f, walkSpeed))
+            if (walkTo(583.5f, 39.85f, walkSpeed))
             {
                 phase = 15;
             }
         }
-        if(phase == 15)
+        if (phase == 15)
         {
-            if (counter == 29)
+            if (counter > 26)
+            {
+                counter = 26;
+                Script.text = script[counter];
+                turnOffDisplay();
+            }
+            if (clerk.playerDone)
             {
                 phase = 16;
-                    turnOffDisplay();
+                counter = 27;
+                Script.text = script[counter];
             }
         }
-        if (phase == 16)
-        {
-            turnOffDisplay();
-            facingRight = true;
-            if (walkTo(619, 39.85f, walkSpeed))
+        if (phase == 16) {
+            if (counter == 29)
             {
                 phase = 17;
+                    turnOffDisplay();
             }
         }
         if (phase == 17)
         {
+            turnOffDisplay();
             facingRight = true;
-            if (walkTo(619.7f, 40.1f, walkSpeed))
+            if (walkTo(619, 39.85f, walkSpeed))
             {
                 phase = 18;
             }
@@ -508,9 +515,40 @@ public class TutorialNPC : MonoBehaviour
         if (phase == 18)
         {
             facingRight = true;
-            if (walkTo(622.6f, 40.1f, walkSpeed))
+            if (walkTo(619.7f, 40.1f, walkSpeed))
             {
                 phase = 19;
+            }
+        }
+        if (phase == 19)
+        {
+            facingRight = true;
+            if (walkTo(622.6f, 40.1f, walkSpeed))
+            {
+                phase = 20;
+            }
+        }
+        if(phase == 20)
+        {
+            if (counter == 31)
+            {
+                counter = 29;
+                Script.text = script[counter];
+                turnOffDisplay();
+            }
+            if (clerk.delivered)
+            {
+                phase = 21;
+                counter = 31;
+            }
+        }
+        if(phase == 21)
+        {
+            if (counter > 31)
+            {
+                counter = 31;
+                Script.text = script[counter];
+                turnOffDisplay();
             }
         }
     }
