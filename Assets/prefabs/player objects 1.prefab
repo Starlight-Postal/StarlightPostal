@@ -3289,6 +3289,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3968976079447047901}
+  - component: {fileID: 3876854037364888820}
   m_Layer: 3
   m_Name: player objects 1
   m_TagString: Untagged
@@ -3314,6 +3315,108 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3876854037364888820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3968976079447047900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 3b4b10671634898468369382fc510c03, type: 3}
+  m_NotificationBehavior: 1
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c59aa4ba-6153-4a72-bada-fb81a46d097f
+    m_ActionName: Player/Move[/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow,/Gamepad/leftStick/x]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4ff11ef6-a752-4282-b2dd-d17f7b22b103
+    m_ActionName: Player/Look[/Keyboard/s,/Keyboard/downArrow,/Keyboard/w,/Keyboard/upArrow,/Gamepad/rightStick]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: beb7e368-bf99-4743-a5d7-565a7d6cbebe
+    m_ActionName: Player/Interract[/Keyboard/space,/Gamepad/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 98274aeb-d7fe-40b0-90a5-aa94e20bcc63
+    m_ActionName: Balloon/BurnVent[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Gamepad/leftTrigger,/Gamepad/rightTrigger]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 74381ea3-dd43-4a8d-b95f-40634b818459
+    m_ActionName: Balloon/Lean[/Keyboard/d,/Keyboard/rightArrow,/Keyboard/a,/Keyboard/leftArrow,/Gamepad/leftStick/x]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9eb7f86f-34aa-4074-a3fe-332ecf093067
+    m_ActionName: Balloon/Look[/Gamepad/rightStick]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1796113c-f8a8-4f89-a0df-7bf8ea18e89e
+    m_ActionName: Balloon/Anchor[/Keyboard/e,/Gamepad/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 011e0c26-86c7-4edc-a6a4-e910a1642ce3
+    m_ActionName: UI/Navigate[/Gamepad/leftStick/up,/Gamepad/rightStick/up,/Gamepad/leftStick/down,/Gamepad/rightStick/down,/Gamepad/leftStick/left,/Gamepad/rightStick/left,/Gamepad/leftStick/right,/Gamepad/rightStick/right,/Gamepad/dpad,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f11b27f4-27e4-4727-a1f9-99f86916a5e0
+    m_ActionName: UI/Submit[/Keyboard/enter,/Gamepad/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5f8a8d66-13e1-4b47-aae8-95c2d553ee22
+    m_ActionName: UI/Cancel[/Keyboard/escape,/Gamepad/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: eef972f0-cdae-406f-80cc-441f0ca5365d
+    m_ActionName: UI/Point[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2b4fbedf-6276-429d-a417-5fd850048ccf
+    m_ActionName: UI/Click[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 670afe41-154a-449f-889c-cea57444b7ff
+    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9fd50f03-9ed7-4163-9652-df6b6e4ec799
+    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e49a43aa-6881-43ae-a95c-7531b10b445d
+    m_ActionName: UI/RightClick[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 179376af-6439-4669-a286-ee66d13abae1
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 311cd817-d56e-4e24-af60-1c5e45ed988b
+    m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f2bfa57e-3e22-4e13-8d71-d00a0ec289b8
+    m_ActionName: UI/PauseGame[/Keyboard/escape,/Gamepad/start]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: Gamepad
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &3968976079628150002
 GameObject:
   m_ObjectHideFlags: 0
@@ -3517,6 +3620,7 @@ MonoBehaviour:
   player: {fileID: 1850551271520947689}
   altExZones:
   - {fileID: 0}
+  lockEntry: 0
   dropCoin: {fileID: 8731895260476005950, guid: 6ce47b0d2b4a9b744be2a73a09fb9acc, type: 3}
   bonk: {fileID: 0}
 --- !u!212 &3968976079676043112
@@ -3953,6 +4057,8 @@ MonoBehaviour:
   balloonTrans: {fileID: 1730267759112930734}
   anchorTrans: {fileID: 0}
   balloon: {fileID: 0}
+  kiDOWN: 0
+  kiSPACE: 0
   aniMode: idle
   aniSpeed: 0.25
   aniIdle: []
@@ -3968,6 +4074,8 @@ MonoBehaviour:
   camHeight: 0
   camRange: 1
   camCenter: 0.5
+  inChair: 0
+  chair: {fileID: 0}
   platformQueueu: []
 --- !u!95 &1730267759719722911
 Animator:

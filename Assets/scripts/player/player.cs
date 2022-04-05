@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class player : MonoBehaviour
 {
@@ -46,6 +47,9 @@ public class player : MonoBehaviour
     public Transform chair = null;
 
     public List<EdgeCollider2D> platformQueueu;
+
+    private float walkInput = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -90,7 +94,7 @@ public class player : MonoBehaviour
     {
         if (free)
         {
-            UIUpdate();
+            //UIUpdate();
             if (inBalloon)
             {
                 sprite.enabled = false;
@@ -124,38 +128,15 @@ public class player : MonoBehaviour
                 collider.enabled = true;
                 rb.velocity = new Vector2(rb.velocity.x * 0.8f, rb.velocity.y); ;
                 rb.velocity += new Vector2(0, -gravity);
-                if (Input.GetKey("right") || Input.GetKey("d"))
+
+
+                rb.velocity += new Vector2(runSpeed * walkInput, 0);
+
+                if (walkInput != 0)
                 {
-                    rb.velocity += new Vector2(runSpeed, 0);
-                    facingRight = true;
+                    facingRight = walkInput > 0;
                     aniMode = "walk";
-                }
-                if (Input.GetKey("left") || Input.GetKey("a"))
-                {
-                    rb.velocity += new Vector2(-runSpeed, 0);
-                    facingRight = false;
-                    aniMode = "walk";
-                }
-                if (Input.GetKey("up") || Input.GetKey("w"))
-                {
-                    if (aniMode != "walk")
-                    {
-                        aniMode = "lookUp";
-                    }
-                    camHeight += ((camCenter + camRange) - camHeight) * 0.25f;
-                }
-                else if (Input.GetKey("down") || Input.GetKey("s"))
-                {
-                    if (aniMode != "walk")
-                    {
-                        aniMode = "lookDown";
-                    }
-                    camHeight += ((camCenter - camRange) - camHeight) * 0.25f;
-                }
-                else
-                {
-                    camHeight += ((camCenter) - camHeight) * 0.25f;
-                }
+                }                
 
                 if (aniMode == "idle")
                 {
@@ -327,6 +308,16 @@ public class player : MonoBehaviour
         {
             trans.localScale += new Vector3((-0.25f - trans.localScale.x) * 0.2f, 0, 0);
         }
+    }
+
+    void OnMove(InputValue input)
+    {
+        walkInput = input.Get<float>();
+    }
+
+    void OnLook(InputValue input)
+    {
+
     }
 
     void UIUpdate()
