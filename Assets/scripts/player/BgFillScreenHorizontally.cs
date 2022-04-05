@@ -26,11 +26,11 @@ public class BgFillScreenHorizontally : MonoBehaviour {
         
         float x, y;
         if (cam.aspect >= (float)16/9) {
-            x = (cam.aspect / ((float)16/9)) * initScale.x;
-            y = (cam.aspect / ((float)16/9)) * initScale.y;
+            x = (cam.aspect / ((float)16/9)) * initScale.x * 0.9f;
+            y = (cam.aspect / ((float)16/9)) * initScale.y * 0.9f;
         } else {            
-            y = ((1 / cam.aspect) * ((float)16/9)) * initScale.y;
-            x = ((1 / cam.aspect) * ((float)16/9)) * initScale.x;
+            y = ((cam.aspect / ((float)16/9)) * -1 + 2) * initScale.y * 0.9f;
+            x = ((cam.aspect / ((float)16/9)) * -1 + 2) * initScale.x * 0.9f;
         }
 
         gameObject.transform.localScale = new Vector3 (x, y, initScale.z);
