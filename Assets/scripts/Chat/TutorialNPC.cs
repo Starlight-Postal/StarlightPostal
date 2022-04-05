@@ -143,7 +143,7 @@ public class TutorialNPC : MonoBehaviour
         {
             bodyTrans.localScale += new Vector3((0.35f - bodyTrans.localScale.x), 0, 0) * 0.1f;
         }
-        
+
     }
 
     private void OnEnable()
