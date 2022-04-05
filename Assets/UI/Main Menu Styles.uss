@@ -11,9 +11,10 @@
 }
 
 .sp-pause-menu-button {
-    height: 40%;
+    height: 25%;
     background-color: rgba(0,0,0,0);
     border-width: 0px;
+    -unity-background-scale-mode: scale-to-fit;
 }
 
 #continue-button, #resume-button {    
