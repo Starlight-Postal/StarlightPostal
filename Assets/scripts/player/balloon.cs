@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using IngameDebugConsole;
 
 public class balloon : MonoBehaviour
@@ -69,6 +70,8 @@ public class balloon : MonoBehaviour
 
     public BonkSoundController bonk;
 
+    private float burnVentInput = 0;
+    private float leanInput = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -111,7 +114,7 @@ public class balloon : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        UIUpdate();
+        //UIUpdate();
 
         trackV = rb.velocity;
         rb.velocity *= airFric;
@@ -213,31 +216,23 @@ public class balloon : MonoBehaviour
         sprite.color = new Color(1,0.9f,0.9f);
         if (player.inBalloon)
         {
-            
-            if (Input.GetKey("up") || Input.GetKey("w"))
+
+            if (burnVentInput != 0)
             {
-                
-                sprite.color = new Color(1,1,1);
-                fr += (fillRate * 3 - fr) * 0.0025f;
-                th += fr;
-            } else if (Input.GetKey("down") || Input.GetKey("s"))
-            {
-                sprite.color = new Color(1, 0.8f,0.8f);
-                fr += (fillRate * 3 - fr) * 0.0025f;
-                th -= fr;
+                sprite.color = new Color(1, 0.9f + (burnVentInput / 10), 0.9f + (burnVentInput / 10));
+                fr += ((fillRate * 3 - fr) * 0.0025f) * Mathf.Abs(burnVentInput);
+                th += burnVentInput > 0 ? fr : fr * -1;
             } else
             {
                 fr += (fillRate - fr) * 0.1f;
             }
+
             lean *= 0.75f;
-            if (Input.GetKey("right") || Input.GetKey("d"))
+            if (leanInput != 0)
             {
-                lean += leanPower;
+                lean += leanPower * leanInput;
             }
-            if (Input.GetKey("left") || Input.GetKey("a"))
-            {
-                lean -= leanPower;
-            }
+
         }
 
         if (th < heightFloor)
@@ -267,6 +262,16 @@ public class balloon : MonoBehaviour
         rb.velocity += new Vector2(lean,hd * buoyancy);
 
         //Debug.Log(targetHeight);
+    }
+
+    void OnBurnVent(InputValue value)
+    {
+        burnVentInput = value.Get<float>();
+    }
+
+    void OnLean(InputValue value)
+    {
+        leanInput = value.Get<float>();
     }
 
     public void centerHit()

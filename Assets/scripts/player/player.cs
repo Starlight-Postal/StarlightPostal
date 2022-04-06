@@ -49,6 +49,7 @@ public class player : MonoBehaviour
     public List<EdgeCollider2D> platformQueueu;
 
     private float walkInput = 0;
+    private float lookInput = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -136,7 +137,15 @@ public class player : MonoBehaviour
                 {
                     facingRight = walkInput > 0;
                     aniMode = "walk";
-                }                
+                }
+
+                if (aniMode != "walk")
+                {
+                    if (lookInput != 0)
+                    {
+                        aniMode = lookInput > 0 ? "lookUp" : "lookDown";
+                    }
+                }
 
                 if (aniMode == "idle")
                 {
@@ -316,6 +325,11 @@ public class player : MonoBehaviour
     }
 
     void OnLook(InputValue input)
+    {
+        lookInput = input.Get<Vector2>().y;
+    }
+
+    void OnInterract()
     {
 
     }
