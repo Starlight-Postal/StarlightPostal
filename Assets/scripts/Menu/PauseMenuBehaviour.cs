@@ -14,11 +14,7 @@ public class PauseMenuBehaviour : MonoBehaviour {
     private Button quitDesktopButton;
     private VisualElement rve;
     
-    void Update() {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            inMenu = !inMenu;
-        }
-        
+    void Update() {        
         Time.timeScale = inMenu ? 0 : 1;
         rve.visible = inMenu;
     }
@@ -51,6 +47,10 @@ public class PauseMenuBehaviour : MonoBehaviour {
     private void LoadMainMenu() {
         Time.timeScale = 1;
         SceneManager.LoadScene("Main Menu");
+    }
+
+    void OnPauseGame() {
+        inMenu = !inMenu;
     }
 
 }
