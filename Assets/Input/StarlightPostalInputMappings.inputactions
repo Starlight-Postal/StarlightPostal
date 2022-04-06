@@ -14,6 +14,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "PlatformDrop",
+                    "type": "Button",
+                    "id": "e3101511-7c35-450f-8fdd-88a7846a5183",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "Look",
                     "type": "Value",
                     "id": "4ff11ef6-a752-4282-b2dd-d17f7b22b103",
@@ -212,6 +220,39 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "PauseGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8afc33fd-0c10-4ee3-b086-c2f3b201c053",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "PlatformDrop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "79537097-d347-4cc2-b386-a197452847f2",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "PlatformDrop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1718fabe-a044-4fb4-8a5c-232e6a09cd56",
+                    "path": "<Gamepad>/leftStick/down",
+                    "interactions": "Tap",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "PlatformDrop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

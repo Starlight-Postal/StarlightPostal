@@ -97,7 +97,6 @@ public class player : MonoBehaviour
     {
         if (free)
         {
-            //UIUpdate();
             if (inBalloon)
             {
                 sprite.enabled = false;
@@ -173,61 +172,32 @@ public class player : MonoBehaviour
                     }
                 }
 
-                if (kiDOWN == 1&&!inChair)
+                for (int i = 0; i < platformQueueu.Count; i++)
                 {
-                    RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(0, -1), 0.6f, LayerMask.GetMask("Default"));
-                    if (hit != null)
+                    EdgeCollider2D platform = platformQueueu[i];
+                    Transform platShape = platform.gameObject.GetComponent<Transform>();
+                    Vector2 pA = (new Vector2(platShape.position.x, platShape.position.y) + (platform.points[0] * new Vector2(platShape.lossyScale.x, platShape.lossyScale.y)));
+                    Vector2 pB = (new Vector2(platShape.position.x, platShape.position.y) + (platform.points[1] * new Vector2(platShape.lossyScale.x, platShape.lossyScale.y)));
+                    if (Mathf.Abs(trans.position.x - (pA.x + pB.x) / 2f) > Mathf.Abs(pA.x - pB.x) / 2f)
                     {
-                        Collider2D platform = hit.collider;
-                        //EdgeCollider2D platform = targetPlatform;
-                        //Debug.Log(platform.GetType());
-                        if (platform.GetType() == typeof(EdgeCollider2D))
-                        {
-                            if (platform.gameObject.GetComponent<PlatformEffector2D>() != null)
-                            {
-                                Physics2D.IgnoreCollision(collider, platform, true);
-                                platformQueueu.Add((EdgeCollider2D)platform);
-                                //Debug.Log("through");
-                            }
-                        }
-
+                        Physics2D.IgnoreCollision(collider, platform, false);
+                        //Debug.Log("out");
+                        platformQueueu.RemoveAt(i);
+                        i--;
                     }
                     else
                     {
-                        //Debug.Log("none");
-                    }
-                }
-                else
-                {
-                    for (int i = 0; i < platformQueueu.Count; i++)
-                    {
-                        EdgeCollider2D platform = platformQueueu[i];
-                        Transform platShape = platform.gameObject.GetComponent<Transform>();
-                        Vector2 pA = (new Vector2(platShape.position.x, platShape.position.y) + (platform.points[0] * new Vector2(platShape.lossyScale.x, platShape.lossyScale.y)));
-                        Vector2 pB = (new Vector2(platShape.position.x, platShape.position.y) + (platform.points[1] * new Vector2(platShape.lossyScale.x, platShape.lossyScale.y)));
-                        if (Mathf.Abs(trans.position.x - (pA.x + pB.x) / 2f) > Mathf.Abs(pA.x - pB.x) / 2f)
+                        float m = (pA.y - pB.y) / (pA.x - pB.x);
+                        float b = pA.y - (m * pA.x);
+                        if (trans.position.y - ((trans.position.x * m) + b) < -0.5f)
                         {
                             Physics2D.IgnoreCollision(collider, platform, false);
-                            //Debug.Log("out");
+                            //Debug.Log("under");
                             platformQueueu.RemoveAt(i);
                             i--;
                         }
-                        else
-                        {
-                            float m = (pA.y - pB.y) / (pA.x - pB.x);
-                            float b = pA.y - (m * pA.x);
-                            if (trans.position.y - ((trans.position.x * m) + b) < -0.5f)
-                            {
-                                Physics2D.IgnoreCollision(collider, platform, false);
-                                //Debug.Log("under");
-                                platformQueueu.RemoveAt(i);
-                                i--;
-                            }
-                        }
                     }
-
                 }
-
 
                 //Debug.Log("balloon range!");
                 if (kiSPACE == 1)
@@ -352,37 +322,28 @@ public class player : MonoBehaviour
         }
     }
 
-    void UIUpdate()
+    void OnPlatformDrop()
     {
-        if (Input.GetKey("down") || Input.GetKey("s"))
+        if (!inChair)
         {
-            if (kiDOWN == 0)
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(0, -1), 0.6f, LayerMask.GetMask("Default"));
+            if (hit != null)
             {
-                kiDOWN = 1;
+                Collider2D platform = hit.collider;
+                //EdgeCollider2D platform = targetPlatform;
+                //Debug.Log(platform.GetType());
+                if (platform.GetType() == typeof(EdgeCollider2D))
+                {
+                    if (platform.gameObject.GetComponent<PlatformEffector2D>() != null)
+                    {
+                        Physics2D.IgnoreCollision(collider, platform, true);
+                        platformQueueu.Add((EdgeCollider2D)platform);
+                        //Debug.Log("through");
+                    }
+                }
+
             }
-            else
-            {
-                kiDOWN = 2;
-            }
-        }
-        else
-        {
-            kiDOWN = 0;
-        }
-        if (Input.GetKey("space"))
-        {
-            if (kiSPACE == 0)
-            {
-                kiSPACE = 1;
-            }
-            else
-            {
-                kiSPACE = 2;
-            }
-        }
-        else
-        {
-            kiSPACE = 0;
         }
     }
+
 }
