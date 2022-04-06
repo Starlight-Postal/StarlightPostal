@@ -53,6 +53,8 @@ public class player : MonoBehaviour
 
     private float INTERRACT_MAX_DISTANCE = 3;
 
+    private bool prevInBalloon = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -224,7 +226,10 @@ public class player : MonoBehaviour
             }
         }
 
-        
+        if (inBalloon != prevInBalloon) {
+            GameObject.Find("player objects").GetComponent<PlayerInput>().SwitchCurrentActionMap(inBalloon ? "Balloon" : "Player");
+            prevInBalloon = inBalloon;
+        }
 
         if (inBalloon)
         {

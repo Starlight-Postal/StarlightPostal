@@ -277,7 +277,6 @@ public class balloon : MonoBehaviour
         if (landed)
         {
             player.inBalloon = false;
-            GameObject.Find("player objects").GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
         }
     }
 

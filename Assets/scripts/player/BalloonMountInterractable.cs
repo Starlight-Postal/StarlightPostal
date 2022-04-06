@@ -13,7 +13,6 @@ public class BalloonMountInterractable : Interractable {
     
     public override void OnPlayerInterract() {
         if (!p.inBalloon) {
-            GameObject.Find("player objects").GetComponent<PlayerInput>().SwitchCurrentActionMap("Balloon");
             p.inBalloon = true;
         }
     }
