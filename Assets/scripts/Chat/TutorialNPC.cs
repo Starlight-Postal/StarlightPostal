@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-public class TutorialNPC : MonoBehaviour
+public class TutorialNPC : Interractable
 {
     [Header("Visual Cue")]
     [SerializeField] private GameObject visualCue;
@@ -89,7 +89,12 @@ public class TutorialNPC : MonoBehaviour
         sprite = body.GetComponent<SpriteRenderer>();
     }
 
-
+    public override void OnPlayerInterract()
+    {
+        turnOnDisplay();
+        sideButton.visible = true;
+        Script.text = script[counter];
+    }
 
     private void FixedUpdate()
     {
@@ -99,14 +104,6 @@ public class TutorialNPC : MonoBehaviour
             if (phase == 0||phase==8)
             {
                 visualCue.SetActive(true);
-                if (player.kiSPACE==1)
-                {
-                    //counter = 0;
-                    turnOnDisplay();
-                    sideButton.visible = true;
-
-                    Script.text = script[counter];
-                }
             } else
             {
                 visualCue.SetActive(false);

@@ -51,6 +51,8 @@ public class player : MonoBehaviour
     private float walkInput = 0;
     private float lookInput = 0;
 
+    private float INTERRACT_MAX_DISTANCE = 3;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -331,7 +333,23 @@ public class player : MonoBehaviour
 
     void OnInterract()
     {
-
+        // Find closest gameobject to implement the Interractable class
+        var inters = GameObject.FindObjectsOfType<Interractable>();
+        float closestDist = INTERRACT_MAX_DISTANCE;
+        Interractable closest = null;
+        for (int i = 0; i < inters.Length; i++) {
+            var inter = inters[i];
+            var go = inter.gameObject;
+            var dist = Vector2.Distance(new Vector2(go.transform.position.x, go.transform.position.y),
+                new Vector2(gameObject.transform.position.x, gameObject.transform.position.y));
+            if (dist <= closestDist) {
+                closestDist = dist;
+                closest = inter;
+            }
+        }
+        if (closest != null) {
+            closest.OnPlayerInterract();
+        }
     }
 
     void UIUpdate()
