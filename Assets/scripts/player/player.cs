@@ -105,22 +105,6 @@ public class player : MonoBehaviour
                 collider.enabled = false;
                 trans.position = new Vector3(balloonTrans.position.x, balloonTrans.position.y - 2.5f, 0);
                 rb.velocity = new Vector2(0, 0);
-                if (Input.GetKey("space"))
-                {
-                    if (swap)
-                    {
-                        if (balloon.landed)
-                        {
-                            inBalloon = false;
-                            //Debug.Log("disembark");
-                            swap = false;
-                        }
-                    }
-                }
-                else
-                {
-                    swap = true;
-                }
             }
             else
             {

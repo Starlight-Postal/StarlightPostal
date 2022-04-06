@@ -37,11 +37,11 @@ public class PauseMenuBehaviour : MonoBehaviour {
 
     private void Reset() {
         inMenu = false;
-        if (Input.GetKey(KeyCode.LeftShift)) {
+        /*if (Input.GetKey(KeyCode.LeftShift)) {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        } else {
+        } else {*/
             CheckpointManager.Respawn();
-        }
+        //}
     }
 
     private void LoadMainMenu() {

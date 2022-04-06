@@ -58,6 +58,8 @@ public class TutorialNPC : Interractable
     public float aniWalkSpeed = 1f;
     public float aniFrame = 0;
 
+    private bool pressedDown = false;
+
     private void Start()
     {
         playerInRange = false;
@@ -185,6 +187,7 @@ public class TutorialNPC : Interractable
             bodyTrans.localScale += new Vector3((0.35f - bodyTrans.localScale.x), 0, 0) * 0.1f;
         }
         
+        pressedDown = false;
     }
 
     private void OnEnable()
@@ -399,7 +402,7 @@ public class TutorialNPC : Interractable
                 counter++;
                 Script.text = script[counter];
             }
-            if (counter == 14 && (Input.GetKey("down")||Input.GetKey("s"))){
+            if (counter == 14 && pressedDown){
                 chatButton.visible = true;
                 canNext = true;
                 counter++;
@@ -490,6 +493,12 @@ public class TutorialNPC : Interractable
         inMenu = true;
         chatButton.visible = true;
         canNext = true;
+    }
+
+    void OnBurnVent(float axis) {
+        if (axis < 0) {
+            pressedDown = true;
+        }
     }
 }
 
