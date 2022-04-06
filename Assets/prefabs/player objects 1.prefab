@@ -3554,7 +3554,8 @@ MonoBehaviour:
   playerOff: {x: 0, y: 0.5, z: 0}
   camRange: {x: 0, y: 0}
   range: {fileID: 0}
-  lookRange: 1
+  playerLookRange: 1
+  balloonLookRange: 10
 --- !u!1 &3968976079676043116
 GameObject:
   m_ObjectHideFlags: 0
@@ -3569,10 +3570,10 @@ GameObject:
   - component: {fileID: 1730267759700492894}
   - component: {fileID: 1730267759700492888}
   - component: {fileID: 1730267759700492889}
-  - component: {fileID: 1730267759700492895}
-  - component: {fileID: 1730267759700492882}
   - component: {fileID: 1730267759700492883}
   - component: {fileID: 6829330969911205998}
+  - component: {fileID: 5823765340871468354}
+  - component: {fileID: 571862499689109570}
   m_Layer: 3
   m_Name: balloon
   m_TagString: Untagged
@@ -3873,42 +3874,6 @@ MonoBehaviour:
     m_Extent: {x: 0.4999533, y: 0.49993944, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
---- !u!114 &1730267759700492895
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3968976079676043116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22e0ffcec88454b5cb046b77ea15b8df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mixer: {fileID: -859361352437151580, guid: 3c1affec8217990a19f91b94113e5de3, type: 2}
-  clips:
-  - {fileID: 8300000, guid: 0a839f987df740e199f95c7969889485, type: 3}
-  - {fileID: 8300000, guid: 4f650de3e0a5a5e8fbb79a696555da35, type: 3}
-  - {fileID: 8300000, guid: 70785381119b2f521a3d07e9105f96a8, type: 3}
-  keys: 7700000011010000
---- !u!114 &1730267759700492882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3968976079676043116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22e0ffcec88454b5cb046b77ea15b8df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mixer: {fileID: 1356145636981113750, guid: 3c1affec8217990a19f91b94113e5de3, type: 2}
-  clips:
-  - {fileID: 8300000, guid: 9cc7abb3a0eaaccfc9ae0b57d3143042, type: 3}
-  - {fileID: 8300000, guid: f36ce2cd8f89d4a93ab3c699f5689610, type: 3}
-  - {fileID: 8300000, guid: 04d27bcc22074a5608292b792632689a, type: 3}
-  keys: 7300000012010000
 --- !u!114 &1730267759700492883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3937,6 +3902,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mixer: {fileID: 4932581455728860721, guid: 3c1affec8217990a19f91b94113e5de3, type: 2}
   coinMixer: {fileID: 3229204177680518563, guid: 3c1affec8217990a19f91b94113e5de3, type: 2}
+--- !u!114 &5823765340871468354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3968976079676043116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8616560bd1603fb2d93a659cb016c74c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixer: {fileID: -859361352437151580, guid: 3c1affec8217990a19f91b94113e5de3, type: 2}
+  clips:
+  - {fileID: 8300000, guid: 0a839f987df740e199f95c7969889485, type: 3}
+  - {fileID: 8300000, guid: 4f650de3e0a5a5e8fbb79a696555da35, type: 3}
+  - {fileID: 8300000, guid: 70785381119b2f521a3d07e9105f96a8, type: 3}
+  invertAxis: 0
+--- !u!114 &571862499689109570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3968976079676043116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8616560bd1603fb2d93a659cb016c74c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixer: {fileID: 1356145636981113750, guid: 3c1affec8217990a19f91b94113e5de3, type: 2}
+  clips:
+  - {fileID: 8300000, guid: 9cc7abb3a0eaaccfc9ae0b57d3143042, type: 3}
+  - {fileID: 8300000, guid: f36ce2cd8f89d4a93ab3c699f5689610, type: 3}
+  - {fileID: 8300000, guid: 04d27bcc22074a5608292b792632689a, type: 3}
+  invertAxis: 1
 --- !u!1 &5689308615851303655
 GameObject:
   m_ObjectHideFlags: 0
