@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-public class DialogueTrigger : MonoBehaviour
+public class DialogueTrigger : Interractable
 {
     
     [Header("Visual Cue")]
@@ -45,7 +45,13 @@ public class DialogueTrigger : MonoBehaviour
         anchor = balloon.anchor;
     }
 
-
+    public override void OnPlayerInterract()
+    {
+        counter = 0;
+        inMenu = true;
+        rve.visible = inMenu;
+        Script.text = script[counter];
+    }
 
     private void Update()
     {
@@ -53,13 +59,13 @@ public class DialogueTrigger : MonoBehaviour
         if (playerInRange)
         {
             visualCue.SetActive(true);
-            if (Input.GetKeyDown("c"))
+            /*if (Input.GetKeyDown("c"))
             {
                 counter = 0;
                 inMenu = true;
                 rve.visible = inMenu;
                 Script.text = script[counter];
-            }
+            }*/
         }
 
         //Checks to see if players are in range. If they arn't and chat should disappear it does
