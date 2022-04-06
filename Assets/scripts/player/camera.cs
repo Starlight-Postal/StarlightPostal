@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class camera : MonoBehaviour
 {
@@ -27,6 +28,9 @@ public class camera : MonoBehaviour
     public Vector2 camRange;
 
     public Transform range;
+    public float playerLookRange = 1.0f;
+    public float balloonLookRange = 10.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,18 +50,25 @@ public class camera : MonoBehaviour
         if (follow)
         {
             camRange = ratio * cam.orthographicSize;
+
+            Vector3 cameraMove;
+            float lookRange;
             if (player.inBalloon)
             {
                 target = balloonTrans;
-                offset = balloonOff;
+                cameraMove = balloonOff;
+                lookRange = balloonLookRange;
             }
             else
             {
                 target = playerTrans;
-                offset = playerOff;
-                playerOff = new Vector2(0, player.camHeight);
+                cameraMove = playerOff;
+                lookRange = playerLookRange;
             }
-            trans.position += ((new Vector3(target.position.x, target.position.y, trans.position.z) + offset) - trans.position) * speed;
+
+            cameraMove += offset * lookRange;
+
+            trans.position += ((new Vector3(target.position.x, target.position.y, trans.position.z) + cameraMove) - trans.position) * speed;
             if (target == balloonTrans)
             {
                 if (balloon.anchored)
@@ -101,6 +112,11 @@ public class camera : MonoBehaviour
         target = balloonTrans;
         trans.position = new Vector3(target.position.x,target.position.y,trans.position.z) + offset;
         cam.orthographicSize = balloonSize;
+    }
+
+    void OnLook(InputValue value) {
+        var input = value.Get<Vector2>();
+        offset = new Vector3(input.x, input.y, 0);
     }
 
 }
