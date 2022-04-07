@@ -3517,6 +3517,7 @@ MonoBehaviour:
   player: {fileID: 1850551271520947689}
   altExZones:
   - {fileID: 0}
+  lockEntry: 0
   dropCoin: {fileID: 8731895260476005950, guid: 6ce47b0d2b4a9b744be2a73a09fb9acc, type: 3}
   bonk: {fileID: 0}
 --- !u!212 &3968976079676043112
@@ -3823,7 +3824,7 @@ GameObject:
   - component: {fileID: 3471419465031560787}
   m_Layer: 6
   m_Name: player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3953,6 +3954,8 @@ MonoBehaviour:
   balloonTrans: {fileID: 1730267759112930734}
   anchorTrans: {fileID: 0}
   balloon: {fileID: 0}
+  kiDOWN: 0
+  kiSPACE: 0
   aniMode: idle
   aniSpeed: 0.25
   aniIdle: []
@@ -3968,6 +3971,8 @@ MonoBehaviour:
   camHeight: 0
   camRange: 1
   camCenter: 0.5
+  inChair: 0
+  chair: {fileID: 0}
   platformQueueu: []
 --- !u!95 &1730267759719722911
 Animator:

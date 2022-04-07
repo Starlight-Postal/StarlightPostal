@@ -216,8 +216,10 @@ public class PostOfficeClerk : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player")
         {
+            Debug.Log("player hit");
             playerInRange = true;
         }
+
     }
 
     private void OnTriggerExit2D(Collider2D collider)
