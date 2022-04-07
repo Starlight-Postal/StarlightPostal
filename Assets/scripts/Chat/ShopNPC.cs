@@ -44,6 +44,7 @@ public class ShopNPC : MonoBehaviour
         player = GameObject.Find("player").GetComponent<player>();
         gdata = GameObject.Find("Coin Global Data").GetComponent<global_data>();
         balloonNumber = GameObject.Find("Coin Global Data").GetComponent<global_data>();
+        updateShop();
     }
 
     private void Update()
@@ -54,7 +55,6 @@ public class ShopNPC : MonoBehaviour
             visualCue.SetActive(true);
             if (Input.GetKeyDown("space"))
             {
-                balloon.ChangeBalloonSkin("logo-1");
                 inMenu = true;
             }
         }
@@ -83,34 +83,28 @@ public class ShopNPC : MonoBehaviour
         button1 = rve.Q<Button>("Balloon1");
         button2 = rve.Q<Button>("Balloon2");
         button3 = rve.Q<Button>("Balloon3");
-        /*
-        Sonic = rve.Q<Label>("Sonic");
-        Logo = rve.Q<Label>("Logo");
-        Starting = rve.Q<Label>("Starting");
-        */
-
 
         button1.RegisterCallback<ClickEvent>(ev =>
           {
-              if (!(balloonNumber.balloon == 1))
+              if (!(gdata.balloon == 1))
               {
-                  balloonNumber.balloon = 1;
+                  gdata.balloon = 1;
                   balloon.ChangeBalloonSkin("stripes-1");
               }
           });
           button2.RegisterCallback<ClickEvent>(ev =>
           {
-              if (ownBalloon2 && !(balloonNumber.balloon == 2))
+              if (!ownBalloon2 && !(gdata.balloon == 2))
               {
-                  balloonNumber.balloon = 2;
+                  gdata.balloon = 2;
                   balloon.ChangeBalloonSkin("logo-1");
               }
           });
           button3.RegisterCallback<ClickEvent>(ev =>
           {
-              if (ownBalloon3 && !(balloonNumber.balloon == 3))
+              if (!ownBalloon3 && !(gdata.balloon == 3))
               {
-                  balloonNumber.balloon = 3;
+                  gdata.balloon = 3;
                   balloon.ChangeBalloonSkin("epic");
               }
           });
@@ -121,19 +115,19 @@ public class ShopNPC : MonoBehaviour
 
     private void updateShop()
     {
-        if (balloonNumber.balloon == 1)
+        if (gdata.balloon == 1)
         {
             button1.text = "Equipped";
             button2.text = "Select";
             button3.text = "Select";
         }
-        if (balloonNumber.balloon == 2)
+        if (gdata.balloon == 2)
         {
             button1.text = "Select";
             button2.text = "Equipped";
             button3.text = "Select";
         }
-        if (balloonNumber.balloon == 3)
+        if (gdata.balloon == 3)
         {
             button1.text = "Select";
             button2.text = "Select";
@@ -143,14 +137,14 @@ public class ShopNPC : MonoBehaviour
     }
     private void unlockShopSkins()
     {
-        if (gdata.coins > 50 && !(balloonNumber.balloon == 2))
+        if (gdata.coins > 50 && !(gdata.balloon == 2))
         {
             ownBalloon2 = true;
             button2.text = "Select";
         }
         else { button2.text = "Buy for 50 stars"; }
-        if (gdata.coins > 200 && !(balloonNumber.balloon == 3))
-        {
+        if (gdata.coins > 200 && !(gdata.balloon == 3))
+        { 
             ownBalloon3 = true;
             button3.text = "Select";
         }
@@ -190,8 +184,8 @@ public class ShopNPC : MonoBehaviour
         button2 = rve.Q<Button>("Balloon2");
         button3 = rve.Q<Button>("Balloon3");
         rve.visible = true;
-       // updateShop();
-       // unlockShopSkins();
+        updateShop();
+        //unlockShopSkins();
     }
 
 
