@@ -22,15 +22,20 @@ public class ControllerMenuNavigation : MonoBehaviour {
 
     void OnNavigate(float v) {
         Debug.Log(v);
-        if (Mathf.Abs(v) > 0.85f) {
-            var prevIndex = selectionIndex;
+        var prevIndex = selectionIndex;
+        if (usingNav) {
             selectionIndex += v < 0 ? 1 : -1;
-            usingNav = true;
             selectionIndex = selectionIndex % buttons.Count;
 
-            buttons[selectionIndex].EnableInClassList("sp-controller-selection", true);
-            buttons[prevIndex].EnableInClassList("sp-controller-selection", false);
+            if (selectionIndex < 0) {
+                selectionIndex = buttons.Count;
+            }
         }
+
+        buttons[prevIndex].EnableInClassList("sp-controller-selection", false);
+        buttons[selectionIndex].EnableInClassList("sp-controller-selection", true);
+
+        usingNav = true;
     }
 
     void OnNavigateUp() {
@@ -42,7 +47,7 @@ public class ControllerMenuNavigation : MonoBehaviour {
     }
 
     void OnSelect() {
-        buttons[selectionIndex].ExecuteDefaultAction(new ClickEvent());
+        GetComponent<NavigatableMenu>().ClickButton(selectionIndex);
     }
 
 }

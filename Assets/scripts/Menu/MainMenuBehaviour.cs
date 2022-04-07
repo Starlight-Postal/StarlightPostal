@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-public class MainMenuBehaviour : MonoBehaviour {
+public class MainMenuBehaviour : NavigatableMenu {
 
     private Button continueButton;
     private Button newGameButton;
@@ -21,8 +21,27 @@ public class MainMenuBehaviour : MonoBehaviour {
 
         continueButton.RegisterCallback<ClickEvent>(ev => { ContinueGame(); });
         newGameButton.RegisterCallback<ClickEvent>(ev => { StartNewGame(); });
-        optionsButton.RegisterCallback<ClickEvent>(ev => { Application.OpenURL("https://www.youtube.com/watch?v=dQw4w9WgXcQ"); });
+        optionsButton.RegisterCallback<ClickEvent>(ev => { OpenOptions(); });
         quitButton.RegisterCallback<ClickEvent>(ev => { QuitGame(); });
+    }
+
+    public override void ClickButton(int index) {
+        switch (index) {
+        case 0:
+            ContinueGame();
+            break;
+        case 1:
+            StartNewGame();
+            break;
+        case 2:
+            OpenOptions();
+            break;
+        case 3:
+            QuitGame();
+            break;
+        default:
+            break;
+        }
     }
 
     private void ContinueGame() {
@@ -31,6 +50,10 @@ public class MainMenuBehaviour : MonoBehaviour {
 
     private void StartNewGame() {
         SceneManager.LoadScene("level 1");
+    }
+
+    private void OpenOptions() {
+        Application.OpenURL("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
     }
 
     private void QuitGame() {

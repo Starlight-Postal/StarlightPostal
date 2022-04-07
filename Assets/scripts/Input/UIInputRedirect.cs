@@ -14,4 +14,16 @@ public class UIInputRedirect : MonoBehaviour {
         globals.BroadcastMessage("OnPauseGame");
     }
 
+    void OnNavigateUp() {
+        globals.BroadcastMessage("OnNavigateUp");
+    }
+
+    void OnNavigateDown() {
+        globals.BroadcastMessage("OnNavigateDown");
+    }
+
+    void OnSelect() {
+        globals.BroadcastMessage("OnSelect");
+    }
+
 }

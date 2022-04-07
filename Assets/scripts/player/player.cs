@@ -211,7 +211,6 @@ public class player : MonoBehaviour
         }
 
         if (inBalloon != prevInBalloon) {
-            GameObject.Find("player objects").GetComponent<PlayerInput>().SwitchCurrentActionMap(inBalloon ? "Balloon" : "Player");
             prevInBalloon = inBalloon;
         }
 
