@@ -18749,7 +18749,6 @@ MonoBehaviour:
   player: {fileID: 0}
   playerTrans: {fileID: 0}
   balloon: {fileID: 0}
-  anchor: {fileID: 2000147967}
   facingRight: 0
   facePlayer: 1
   bodyTrans: {fileID: 772235897}
@@ -47497,7 +47496,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4768351909077701381, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351909077701381, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351909077701381, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4768351909077701381, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
       propertyPath: m_LocalPosition.x
@@ -47505,8 +47512,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4768351909077701381, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.122
       objectReference: {fileID: 0}
+    - target: {fileID: 4768351909077701386, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1aee392fdf2d69f4284914340e4a14a9, type: 3}
     - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -61492,17 +61503,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2000147967 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3968976079174973356, guid: 77a048e6e88068b419a0f270c755df7a, type: 3}
-  m_PrefabInstance: {fileID: 1730267759916955434}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9322cf6f3d86e6c4aa733d59a506b8dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2000947552
 GameObject:
   m_ObjectHideFlags: 0
