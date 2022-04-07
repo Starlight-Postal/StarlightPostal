@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-public class PostOfficeClerk : MonoBehaviour
+public class EncounterNPC : MonoBehaviour
 {
 
     [Header("Visual Cue")]
@@ -26,6 +26,7 @@ public class PostOfficeClerk : MonoBehaviour
     public float visWidth;
 
     public bool canLeave = true;
+    public bool encountered = false;
 
 
     public bool inMenu = false;
@@ -38,17 +39,10 @@ public class PostOfficeClerk : MonoBehaviour
     [SerializeField] private VisualElement rve;
 
     //bool's for players they talked too
-    public bool playerDone = false;
-    public bool delivered = false;
-    public float newHeight;
-    public EncounterNPC recipient;
+    private bool firstNPC = false;
 
-    public string phase = "maildrop";
-
-    public string[] script_maildrop;
-    public string[] script_delivery;
-    public string[] script_delivered;
-    public string[] script_done;
+    public string[] intro_script;
+    public string[] loop_script;
 
     string[] script;
 
@@ -56,8 +50,6 @@ public class PostOfficeClerk : MonoBehaviour
 
     private void Start()
     {
-        playerDone = false;
-        delivered = false;
         playerInRange = false;
         visualCue.SetActive(false);
         player = GameObject.Find("player").GetComponent<player>();
@@ -65,18 +57,14 @@ public class PostOfficeClerk : MonoBehaviour
         //anchor = balloon.anchor;
         playerTrans = player.GetComponent<Transform>();
         visWidth = bodyTrans.localScale.x;
-        phase = "maildrop";
-        script = script_maildrop;
+        encountered = false;
+        script = intro_script;
     }
 
 
 
     private void FixedUpdate()
     {
-        if (recipient.encountered == true)
-        {
-            delivered = true;
-        }
         if (rve.visible)
         {
             if (player.kiSPACE == 1)
@@ -85,7 +73,6 @@ public class PostOfficeClerk : MonoBehaviour
                 Script.text = script[counter];
                 if (counter == script.Length - 1) { chatButton.text = "space"; }
                 else { chatButton.text = "space"; }
-
             }
             if (!playerInRange)
             {
@@ -106,10 +93,18 @@ public class PostOfficeClerk : MonoBehaviour
                 visualCue.SetActive(true);
                 if (player.kiSPACE == 1)
                 {
+                    if (encountered)
+                    {
+                        script = loop_script;
+                    } else
+                    {
+                        script = intro_script;
+                    }
                     counter = 0;
                     inMenu = true;
                     rve.visible = inMenu;
                     Script.text = script[counter];
+                    encountered = true;
                 }
             }
 
@@ -126,43 +121,11 @@ public class PostOfficeClerk : MonoBehaviour
         //Gets rid of the chat if they hid next one more time
         if (counter >= script.Length)
         {
-            switch (phase)
-            {
-                case "maildrop":
-                    phase = "delivery";
-                    script = script_delivery;
-                    playerDone = true;
-                    balloon.heightCap = newHeight;
-                    break;
-                case "delivery":
-                    break;
-                case "delivered":
-                    phase = "done";
-                    script = script_done;
-                    break;
-                case "done":
-                    break;
-                default:
-                    phase = "done";
-                    break;
-            }
             inMenu = false;
             rve.visible = inMenu;
             counter = 0;
             Script.text = script[counter];
         }
-
-        if(phase == "delivery")
-        {
-            if (delivered)
-            {
-                phase = "delivered";
-                script = script_delivered;
-                counter = 0;
-                Script.text = script[counter];
-            }
-        }
-
         //if (counter == script.Length - 1) { chatButton.text = "End"; }
 
         rve.visible = inMenu;
@@ -216,7 +179,6 @@ public class PostOfficeClerk : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player")
         {
-            Debug.Log("player hit");
             playerInRange = true;
         }
 
