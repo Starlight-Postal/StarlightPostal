@@ -26,6 +26,9 @@ public class aura : MonoBehaviour
         //life = 0;
         trans.localScale = new Vector3(size,size,size);
         pos = trans.position;
+        
+        FixedUpdate();
+        sprite.enabled = true;
         TICK = 0;
     }
 
@@ -33,10 +36,10 @@ public class aura : MonoBehaviour
     void FixedUpdate()
     {
         TICK++;
-        float life = Mathf.Pow(1 - (Mathf.Pow(((float)TICK / lifetime) - 0.5f, 2) * 4),0.25f);
+        float life = Mathf.Pow(1 - (Mathf.Pow(((float)TICK / lifetime) - 0.5f, 2) * 4),0.5f);
         trans.position = pos + new Vector3(0, Mathf.Sin((TICK*speed)+period)*range, 0);
-        sprite.color = color;
-        color.a = life;
+        sprite.color = color*new Color(1,1,1,life);
+        // color.a = life;
         trans.localScale = new Vector3(1, 1, 1) * size * life;
 
         if (TICK > lifetime)
