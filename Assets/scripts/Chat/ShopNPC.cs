@@ -94,7 +94,7 @@ public class ShopNPC : MonoBehaviour
           });
           button2.RegisterCallback<ClickEvent>(ev =>
           {
-              if (!ownBalloon2 && !(gdata.balloon == 2))
+              if (ownBalloon2 && !(gdata.balloon == 2))
               {
                   gdata.balloon = 2;
                   balloon.ChangeBalloonSkin("logo-1");
@@ -102,7 +102,7 @@ public class ShopNPC : MonoBehaviour
           });
           button3.RegisterCallback<ClickEvent>(ev =>
           {
-              if (!ownBalloon3 && !(gdata.balloon == 3))
+              if (ownBalloon3 && !(gdata.balloon == 3))
               {
                   gdata.balloon = 3;
                   balloon.ChangeBalloonSkin("epic");
