@@ -16,6 +16,10 @@
     border-width: 0px;
 }
 
+.sp-controller-selection {
+    background-color: rgba(0,0,0,0.5);
+}
+
 #continue-button, #resume-button {    
     background-image: resource('textures/UI Text/ContinueNormal');
 }
