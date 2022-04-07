@@ -5,9 +5,8 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-public class DialogueTrigger : MonoBehaviour
+public class SideQuestGiver : MonoBehaviour
 {
-    
     [Header("Visual Cue")]
     [SerializeField] private GameObject visualCue;
 
@@ -17,17 +16,22 @@ public class DialogueTrigger : MonoBehaviour
     public player player;
     public balloon balloon;
     public anchor anchor;
-
-
     public bool inMenu = false;
+    public bool grabbedDog = false;
 
     // Start is called before the first frame update
-    private Button chatButton;
+    private Button firstButton;
+    private Button secondButton;
     private Label Script;
     private int counter;
-    public int checkpoint = 16;
+
+    public int checkpoint;
+    public int endtalking;
+    public int whereToStart;
+
     [SerializeField] private VisualElement rve;
 
+    //bool's for players they talked too
     public string[] script;
 
     //public Transform trans;
@@ -36,6 +40,7 @@ public class DialogueTrigger : MonoBehaviour
     {
         playerInRange = false;
         visualCue.SetActive(false);
+        inMenu = false;
         player = GameObject.Find("player").GetComponent<player>();
         balloon = GameObject.Find("balloon").GetComponent<balloon>();
         anchor = balloon.anchor;
@@ -45,14 +50,22 @@ public class DialogueTrigger : MonoBehaviour
 
     private void Update()
     {
+
         //activates the text bubble if player in range
         if (playerInRange)
         {
             visualCue.SetActive(true);
-            if (Input.GetKeyDown("space"))
+            if (inMenu = true)
+            {
+                if (Input.GetKeyDown("space"))
+                {
+                    counter++;
+                    Script.text = script[counter];
+                }
+            }
+            else if (Input.GetKeyDown("space"))
             {
                 inMenu = true;
-                rve.visible = inMenu;
                 Script.text = script[counter];
             }
         }
@@ -61,41 +74,47 @@ public class DialogueTrigger : MonoBehaviour
         else
         {
             visualCue.SetActive(false);
-            counter = 0;
-            Script.text = script[counter];
             inMenu = false;
         }
 
-        //Gets rid of the chat if they hid next one more time
+/*        //Gets rid of the chat if they hid next one more time
         if (counter >= script.Length)
         {
             inMenu = false;
-            rve.visible = inMenu;
-            counter = 0;
-            Script.text = script[counter];
+            //rve.visible = inMenu;
         }
-        if (counter == script.Length - 1) { chatButton.text = "End"; }
+        if (counter == script.Length - 1) { firstButton.text = "End"; }*/
 
-            rve.visible = inMenu;
+        if (inMenu) { startUI(); }
+        else { endUI(); }
     }
 
     private void OnEnable()
     {
         rve = GetComponent<UIDocument>().rootVisualElement;
-        chatButton = rve.Q<Button>("chatButton");
+        firstButton = rve.Q<Button>("firstButton");
         Script = rve.Q<Label>("chatLabel");
+        secondButton = rve.Q<Button>("secondButton");
+        secondButton.visible = false;
 
-        chatButton.RegisterCallback<ClickEvent>(ev =>
+        firstButton.RegisterCallback<ClickEvent>(ev =>
         {
-            if (chatButton.visible == true)
+            if (firstButton.visible == true)
             {
                 counter++;
                 Script.text = script[counter];
-                if (counter == script.Length - 1) { chatButton.text = "End"; }
-                else { chatButton.text = "Next"; }
+
             }
         }
         );
+        secondButton.RegisterCallback<ClickEvent>(ev =>
+        {
+            if (secondButton.visible == true)
+            {
+
+            }
+        }
+);
         rve.visible = false;
     }
 
@@ -116,7 +135,30 @@ public class DialogueTrigger : MonoBehaviour
         }
     }
 
- 
+    private void startUI()
+    {
+        rve.visible = true;
+        if (!(counter == checkpoint))
+        {
+            secondButton.visible = false;
+            firstButton.text = "Space";
+
+        }
+        else
+        {
+            secondButton.visible = true;
+            firstButton.text = "Sure";
+            secondButton.text = "hell no";
+        }
+    }
+
+    private void endUI()
+    {
+        rve.visible = false;
+        secondButton.visible = false;
+        counter = 0;
+        Script.text = script[counter];
+    }
 }
 
 
