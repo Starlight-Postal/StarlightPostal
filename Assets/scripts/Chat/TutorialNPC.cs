@@ -27,7 +27,6 @@ public class TutorialNPC : MonoBehaviour
 
     // Start is called before the first frame update
     private Button chatButton;
-    private Button sideButton;
     private Label Script;
     public int counter;
     public int checkpoint = 16;
@@ -106,7 +105,6 @@ public class TutorialNPC : MonoBehaviour
                     Script.text = script[counter];
                     if (counter == script.Length - 1) { chatButton.text = "space"; }
                     else { chatButton.text = "space"; }
-                    sideButton.visible = false;
                 }
             }
         } else {
@@ -119,7 +117,6 @@ public class TutorialNPC : MonoBehaviour
                     {
                         //counter = 0;
                         turnOnDisplay();
-                        sideButton.visible = true;
 
                         Script.text = script[counter];
                     }
@@ -200,7 +197,6 @@ public class TutorialNPC : MonoBehaviour
         rve = GetComponent<UIDocument>().rootVisualElement;
         chatButton = rve.Q<Button>("chatButton");
         Script = rve.Q<Label>("chatLabel");
-        sideButton = rve.Q<Button>("sideButton");
 
         chatButton.RegisterCallback<ClickEvent>(ev =>
         {
@@ -210,16 +206,9 @@ public class TutorialNPC : MonoBehaviour
                 Script.text = script[counter];
                 if (counter == script.Length - 1) { chatButton.text = "space"; }
                 else { chatButton.text = "space"; }
-                sideButton.visible = false;
             }
         }
         );
-        sideButton.RegisterCallback<ClickEvent>(ev =>
-        {
-            counter = 26;
-            turnOffDisplay();
-        }
-    );
         rve.visible = false;
 
     }
@@ -574,7 +563,6 @@ public class TutorialNPC : MonoBehaviour
         rve.visible = false;
         inMenu = false;
         chatButton.visible = false;
-        sideButton.visible = false;
         canNext = false;
     }
     public void turnOnDisplay()

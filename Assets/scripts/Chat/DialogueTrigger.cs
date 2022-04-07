@@ -33,7 +33,6 @@ public class DialogueTrigger : MonoBehaviour
 
     // Start is called before the first frame update
     private Button chatButton;
-    private Button sideButton;
     private Label Script;
     private int counter;
     public int checkpoint = 16;
@@ -70,7 +69,6 @@ public class DialogueTrigger : MonoBehaviour
                 Script.text = script[counter];
                 if (counter == script.Length - 1) { chatButton.text = "space"; }
                 else { chatButton.text = "space"; }
-                sideButton.visible = false;
             }
             if (!playerInRange)
             {
@@ -150,8 +148,6 @@ public class DialogueTrigger : MonoBehaviour
         rve = GetComponent<UIDocument>().rootVisualElement;
         chatButton = rve.Q<Button>("chatButton");
         Script = rve.Q<Label>("chatLabel");
-        sideButton = rve.Q<Button>("sideButton");
-        sideButton.visible = false;
 
         chatButton.RegisterCallback<ClickEvent>(ev =>
         {
