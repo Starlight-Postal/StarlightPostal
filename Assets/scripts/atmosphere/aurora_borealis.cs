@@ -30,9 +30,9 @@ public class aurora_borealis : MonoBehaviour
             float s = getAurora(x, y) * 10;
             if (Random.Range(0.0f, 1.0f) < s)
             {
-                if (s > 15)
+                if (s > 10)
                 {
-                    s = 15;
+                    s = 10;
                 }
                 spawnAura(x, y, 0.1f, 60, s, new Color(0.6f * s, (1.5f+(y*0.05f)) * s, (2-(y*0.05f)) * s, s * 0.0025f),auraObj);
             }
