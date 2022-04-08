@@ -84,6 +84,10 @@ public class player : MonoBehaviour
         aniLookDown = new Sprite[1];
         aniLookDown[0] = Resources.Load<Sprite>("textures/Player/player_down");
         camHeight = 0;
+
+        // Register instance commands
+        DebugLogConsole.AddCommandInstance("player.inballoon", "Toggle the player in and out of the balloon", "ToggleInBalloon", this);
+        DebugLogConsole.AddCommandInstance("player.inballoon", "Sets the players balloon state", "SetInBalloon", this);
     }
 
     // Update is called once per frame
@@ -364,15 +368,13 @@ public class player : MonoBehaviour
         }
     }
 
-    [ConsoleMethod("player.inballoon", "toggle the player in and out of the balloon")]
-    public static void ToggleInBalloon() {
+    public void ToggleInBalloon() {
         var ps = GameObject.Find("player").GetComponent<player>();
         ps.inBalloon = !ps.inBalloon;
         Debug.Log("Toggled inBalloon state to " + ps.inBalloon);
     }
 
-    [ConsoleMethod("player.inballoon", "toggle the player in and out of the balloon")]
-    public static void SetInBalloon(bool balloonState) {
+    public void SetInBalloon(bool balloonState) {
         var ps = GameObject.Find("player").GetComponent<player>();
         ps.inBalloon = balloonState;
         Debug.Log("Toggled inBalloon state to " + ps.inBalloon);
