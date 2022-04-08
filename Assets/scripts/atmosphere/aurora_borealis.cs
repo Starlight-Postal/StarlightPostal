@@ -42,18 +42,6 @@ public class aurora_borealis : MonoBehaviour
                 spawnAura(x, y, aniSpeed, decay, s*size, new Color(0.6f * s, (1.5f+(y*0.05f)) * s, (2-(y*0.05f)) * s, s * 0.01f*alpha),auraObj);
             }
         }
-        /*for(int x = -20;x < 20;x+=1)
-        {
-            for(int y = -20;y < 20;y+=1)
-            {
-                float s = getAurora(x, y);
-                if (s > 0.5f)
-                {
-                    spawnAura(x, y, 0.1f, 1, 1, auraObj);
-                }
-                //Debug.Log(s);
-            }
-        }*/
     }
 
     public float getAurora(float ix, float iy)
@@ -63,7 +51,6 @@ public class aurora_borealis : MonoBehaviour
         float TIME = TICK * speed;
         float v = Mathf.PerlinNoise(((x * 0.5f) + TIME) * 0.005f, (y + (TIME * 0.5f)) * 0.005f);
         v += Mathf.PerlinNoise(((x * 0.25f) + TIME) * 0.005f, (y - TIME) * 0.005f);
-        //float v = 1;
         v *= (Mathf.Cos((iy * window) * Mathf.PI));// * 0.5f;
         if (v > 0.5f)
         {
@@ -71,22 +58,19 @@ public class aurora_borealis : MonoBehaviour
         }
         v *= 2;
         v = Mathf.Pow(v, 10);
-        //v -= 0.5f;
         return v;
     }
 
     void spawnAura(float x, float y, float speed,int lifespan,float size,Color c,GameObject aobj)
     {
-        GameObject ao = Instantiate(aobj, new Vector3(x, y, z), Quaternion.identity);
+        GameObject ao = Instantiate(aobj, gameObject.transform.position + new Vector3(x, y, z), Quaternion.identity);
         aura a = ao.GetComponent<aura>();
         a.speed = speed;
         a.period = Random.Range(0, Mathf.PI * 2);
         a.lifetime = lifespan;
         a.size = size;
         a.color = c;
-        /*flakes.Add(flakeObj.transform);
-        flakeLife.Add(Random.Range(0f, 1f));
-        flakeWeight.Add(Random.Range(0.9f, 1.1f));
-        flakeV.Add(new Vector2(0, 0));*/
+
+        ao.transform.parent = gameObject.transform;
     }
 }

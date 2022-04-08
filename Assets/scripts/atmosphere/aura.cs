@@ -6,8 +6,6 @@ public class aura : MonoBehaviour
 {
     public Transform trans;
     public SpriteRenderer sprite;
-    //float life;
-    //public float lifespan = 25;
     public float speed = 0.1f;
     public float range;
     public float period;
@@ -22,10 +20,8 @@ public class aura : MonoBehaviour
     void Start()
     {
         trans = gameObject.GetComponent<Transform>();
-        //sprite = gameObject.GetComponent<SpriteRenderer>();
-        //life = 0;
         trans.localScale = new Vector3(size,size,size);
-        pos = trans.position;
+        pos = trans.localPosition;
         
         FixedUpdate();
         sprite.enabled = true;
@@ -37,11 +33,15 @@ public class aura : MonoBehaviour
     {
         TICK++;
         float life = Mathf.Pow(1 - (Mathf.Pow(((float)TICK / lifetime) - 0.5f, 2) * 4),0.5f);
-        trans.position = pos + new Vector3(0, Mathf.Sin((TICK*speed)+period)*range, 0);
-        sprite.color = color*new Color(1,1,1,life);
-        // color.a = life;
-        trans.localScale = new Vector3(1, 1, 1) * size * life;
-
+        if (life > 0)
+        {
+            trans.localPosition = pos + new Vector3(0, Mathf.Sin((TICK * speed) + period) * range, 0);
+            sprite.color = color * new Color(1, 1, 1, life);
+            trans.localScale = new Vector3(1, 1, 1) * size * life;
+        } else
+        {
+            trans.localScale = new Vector3(0, 0, 0);
+        }
         if (TICK > lifetime)
         {
             Destroy(gameObject);
