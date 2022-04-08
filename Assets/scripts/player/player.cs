@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using IngameDebugConsole;
 
 public class player : MonoBehaviour
 {
@@ -362,4 +363,19 @@ public class player : MonoBehaviour
             kiSPACE = 0;
         }
     }
+
+    [ConsoleMethod("player.inballoon", "toggle the player in and out of the balloon")]
+    public static void ToggleInBalloon() {
+        var ps = GameObject.Find("player").GetComponent<player>();
+        ps.inBalloon = !ps.inBalloon;
+        Debug.Log("Toggled inBalloon state to " + ps.inBalloon);
+    }
+
+    [ConsoleMethod("player.inballoon", "toggle the player in and out of the balloon")]
+    public static void SetInBalloon(bool balloonState) {
+        var ps = GameObject.Find("player").GetComponent<player>();
+        ps.inBalloon = balloonState;
+        Debug.Log("Toggled inBalloon state to " + ps.inBalloon);
+    }
+
 }
