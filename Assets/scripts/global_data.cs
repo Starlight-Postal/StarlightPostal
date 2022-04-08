@@ -10,6 +10,10 @@ public class global_data : MonoBehaviour
     void Start()
     {
         coins = 0;
+
+        // Register instance commands
+        DebugLogConsole.AddCommandInstance("data.coins", "Gets current coin count", "GetCoins", this);
+        DebugLogConsole.AddCommandInstance("data.coins", "Sets current coin count", "SetCoins", this);
     }
 
     // Update is called once per frame
@@ -18,18 +22,13 @@ public class global_data : MonoBehaviour
 
     }
 
-    private static global_data Inst() {
-        return GameObject.Find("Coin Global Data").GetComponent<global_data>();
+
+    public void GetCoins() {
+        Debug.Log("Coins: " + coins);
     }
 
-    [ConsoleMethod("data.coins", "Gets current coin count")]
-    public static void GetCoins() {
-        Debug.Log("Coins: " + Inst().coins);
-    }
-
-    [ConsoleMethod("data.coins", "Gets current coin count")]
-    public static void SetCoins(int newCoinValue) {
-        Inst().coins = newCoinValue;
+    public void SetCoins(int newCoinValue) {
+        coins = newCoinValue;
         GetCoins();
     }
 
