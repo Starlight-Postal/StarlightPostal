@@ -20,7 +20,6 @@ public class PopHazard : MonoBehaviour {
 
         // Register instance commands
         DebugLogConsole.AddCommandInstance("balloon.nopop", "Toggles the nopop cheat", "ToggleNopop", this);
-        DebugLogConsole.AddCommandInstance("balloon.nopop", "Sets the nopop cheat", "SetNopop", this);
     }
 
     void OnCollisionEnter2D(Collision2D other) {
@@ -39,11 +38,6 @@ public class PopHazard : MonoBehaviour {
 
     public void ToggleNopop() {
         noPop = !noPop;
-        Debug.Log("NoPop cheat toggled to " + noPop);
-    }
-
-    public void SetNopop(bool value) {
-        noPop = value;
         Debug.Log("NoPop cheat toggled to " + noPop);
     }
 

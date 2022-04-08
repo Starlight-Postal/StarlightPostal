@@ -87,7 +87,6 @@ public class player : MonoBehaviour
 
         // Register instance commands
         DebugLogConsole.AddCommandInstance("player.inballoon", "Toggle the player in and out of the balloon", "ToggleInBalloon", this);
-        DebugLogConsole.AddCommandInstance("player.inballoon", "Sets the players balloon state", "SetInBalloon", this);
     }
 
     // Update is called once per frame
@@ -371,12 +370,6 @@ public class player : MonoBehaviour
     public void ToggleInBalloon() {
         var ps = GameObject.Find("player").GetComponent<player>();
         ps.inBalloon = !ps.inBalloon;
-        Debug.Log("Toggled inBalloon state to " + ps.inBalloon);
-    }
-
-    public void SetInBalloon(bool balloonState) {
-        var ps = GameObject.Find("player").GetComponent<player>();
-        ps.inBalloon = balloonState;
         Debug.Log("Toggled inBalloon state to " + ps.inBalloon);
     }
 
