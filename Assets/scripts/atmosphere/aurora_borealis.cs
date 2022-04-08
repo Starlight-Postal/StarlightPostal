@@ -9,6 +9,11 @@ public class aurora_borealis : MonoBehaviour
     public float speed;
     public float z;
     public int rate = 15;
+    public float window = 0.025f;
+    public float alpha = 0.25f;
+    public float size = 1;
+    public int decay = 60;
+    public float aniSpeed = 0.1f;
 
     public GameObject auraObj;
     // Start is called before the first frame update
@@ -34,7 +39,7 @@ public class aurora_borealis : MonoBehaviour
                 {
                     s = 10;
                 }
-                spawnAura(x, y, 0.1f, 60, s, new Color(0.6f * s, (1.5f+(y*0.05f)) * s, (2-(y*0.05f)) * s, s * 0.0025f),auraObj);
+                spawnAura(x, y, aniSpeed, decay, s*size, new Color(0.6f * s, (1.5f+(y*0.05f)) * s, (2-(y*0.05f)) * s, s * 0.01f*alpha),auraObj);
             }
         }
         /*for(int x = -20;x < 20;x+=1)
@@ -59,7 +64,7 @@ public class aurora_borealis : MonoBehaviour
         float v = Mathf.PerlinNoise(((x * 0.5f) + TIME) * 0.005f, (y + (TIME * 0.5f)) * 0.005f);
         v += Mathf.PerlinNoise(((x * 0.25f) + TIME) * 0.005f, (y - TIME) * 0.005f);
         //float v = 1;
-        v *= (Mathf.Cos((iy / 40f) * Mathf.PI) + 0);// * 0.5f;
+        v *= (Mathf.Cos((iy * window) * Mathf.PI));// * 0.5f;
         if (v > 0.5f)
         {
             v = 1 - v;
@@ -75,6 +80,7 @@ public class aurora_borealis : MonoBehaviour
         GameObject ao = Instantiate(aobj, new Vector3(x, y, z), Quaternion.identity);
         aura a = ao.GetComponent<aura>();
         a.speed = speed;
+        a.period = Random.Range(0, Mathf.PI * 2);
         a.lifetime = lifespan;
         a.size = size;
         a.color = c;
