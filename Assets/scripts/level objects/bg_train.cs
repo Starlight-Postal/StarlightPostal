@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using IngameDebugConsole;
 
 public class bg_train : MonoBehaviour
 {
@@ -28,6 +29,9 @@ public class bg_train : MonoBehaviour
         player.free = false;
         cam.follow = false;
         camTrans.position = new Vector3(-10,camTrans.position.y,camTrans.position.z);
+
+        // Register skip command
+        DebugLogConsole.AddCommandInstance("train.skip", "Skips train cutscene", "SkipCutscene", this);
     }
 
     // Update is called once per frame
@@ -54,5 +58,9 @@ public class bg_train : MonoBehaviour
                 camTrans.position += new Vector3(((x+6.35f-2.25f)-camTrans.position.x)*0.02f, 0,0);
             }
         }
+    }
+
+    public void SkipCutscene() {
+        x = x2;
     }
 }
