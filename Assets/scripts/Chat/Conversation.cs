@@ -159,10 +159,6 @@ public class Conversation : Interractable
     }
 
     ////  /\ SCRIPT AND UI UPDATES /\  ////
-    
-    ////  \/ OTHER VARIOUS HELPER FUNCTIONS \/  ////
-
-    ////  /\ OTHER VARIOUS HELPER FUNCTIONS /\  ////
 
     ////  \/ BEHAVIOUR OVERRIDES \/  ////
 
