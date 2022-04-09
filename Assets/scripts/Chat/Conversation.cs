@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class Conversation : MonoBehaviour, Interractable
+public class Conversation : Interractable
 {
 
     [SerializeField] private GameObject visualCue;

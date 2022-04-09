@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-public class TutorialNPC : MonoBehaviour
+public class TutorialNPC : Interractable
 {
     [Header("Visual Cue")]
     [SerializeField] private GameObject visualCue;
@@ -58,6 +58,8 @@ public class TutorialNPC : MonoBehaviour
     public float aniWalkSpeed = 1f;
     public float aniFrame = 0;
 
+    private bool pressedDown = false;
+
     private void Start()
     {
         playerInRange = false;
@@ -89,7 +91,12 @@ public class TutorialNPC : MonoBehaviour
         sprite = body.GetComponent<SpriteRenderer>();
     }
 
-
+    public override void OnPlayerInterract()
+    {
+        turnOnDisplay();
+        //sideButton.visible = true;
+        Script.text = script[counter];
+    }
 
     private void FixedUpdate()
     {
@@ -190,6 +197,7 @@ public class TutorialNPC : MonoBehaviour
             bodyTrans.localScale += new Vector3((0.35f - bodyTrans.localScale.x), 0, 0) * 0.1f;
         }
         
+        pressedDown = false;
     }
 
     private void OnEnable()
@@ -397,7 +405,7 @@ public class TutorialNPC : MonoBehaviour
                 counter++;
                 Script.text = script[counter];
             }
-            if (counter == 14 && (Input.GetKey("down")||Input.GetKey("s"))){
+            if (counter == 14 && pressedDown){
                 chatButton.visible = true;
                 canNext = true;
                 counter++;
@@ -571,6 +579,12 @@ public class TutorialNPC : MonoBehaviour
         inMenu = true;
         chatButton.visible = true;
         canNext = true;
+    }
+
+    void OnBurnVent(float axis) {
+        if (axis < 0) {
+            pressedDown = true;
+        }
     }
 }
 

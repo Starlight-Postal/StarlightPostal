@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-interface Interractable {
+public class Interractable : MonoBehaviour {
     
-    void OnPlayerInterract();
+    public virtual void OnPlayerInterract() {
+        
+    }
 
 }

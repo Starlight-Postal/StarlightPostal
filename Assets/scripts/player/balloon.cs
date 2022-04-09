@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using IngameDebugConsole;
 
 public class balloon : MonoBehaviour
@@ -69,6 +70,8 @@ public class balloon : MonoBehaviour
 
     public BonkSoundController bonk;
 
+    private float burnVentInput = 0;
+    private float leanInput = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -111,8 +114,6 @@ public class balloon : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        UIUpdate();
-
         trackV = rb.velocity;
         rb.velocity *= airFric;
 
@@ -137,18 +138,10 @@ public class balloon : MonoBehaviour
 
             if (player.inBalloon)
             {
-                if (Input.GetKey("q"))
+                /*if (Input.GetKey("q"))
                 {
                     anchorD *= 0.99f;
-                }
-                if (kiE==1)
-                {
-                    //Debug.Log("retract");
-                    anchored = false;
-                    anchorObj.SetActive(false);
-                    anchor.stuck = false;
-                    anchor.landed = false;
-                }
+                }*/
             } else
             {
                 anchorD += (2.5f - anchorD) * 0.01f;
@@ -178,20 +171,6 @@ public class balloon : MonoBehaviour
         }
         else
         {
-            if (player.inBalloon)
-            {
-                if (kiE==1)
-                {
-                    //Debug.Log("throw");
-                    anchored = true;
-                    anchorD = anchorRange;
-                    anchorObj.GetComponent<Transform>().position = basketTrans.position + anchorOrg;
-                    anchorObj.SetActive(true);
-                    anchor.stuck = false;
-                    anchor.landed = false;
-                    //anchor.GetComponent<SpringJoint2D>().distance = 10;
-                }
-            }
             line.enabled = false;
             landed = false;
         }
@@ -213,31 +192,23 @@ public class balloon : MonoBehaviour
         sprite.color = new Color(1,0.9f,0.9f);
         if (player.inBalloon)
         {
-            
-            if (Input.GetKey("up") || Input.GetKey("w"))
+
+            if (burnVentInput != 0)
             {
-                
-                sprite.color = new Color(1,1,1);
-                fr += (fillRate * 3 - fr) * 0.0025f;
-                th += fr;
-            } else if (Input.GetKey("down") || Input.GetKey("s"))
-            {
-                sprite.color = new Color(1, 0.8f,0.8f);
-                fr += (fillRate * 3 - fr) * 0.0025f;
-                th -= fr;
+                sprite.color = new Color(1, 0.9f + (burnVentInput / 10), 0.9f + (burnVentInput / 10));
+                fr += ((fillRate * 3 - fr) * 0.0025f) * Mathf.Abs(burnVentInput);
+                th += burnVentInput > 0 ? fr : fr * -1;
             } else
             {
                 fr += (fillRate - fr) * 0.1f;
             }
+
             lean *= 0.75f;
-            if (Input.GetKey("right") || Input.GetKey("d"))
+            if (leanInput != 0)
             {
-                lean += leanPower;
+                lean += leanPower * leanInput;
             }
-            if (Input.GetKey("left") || Input.GetKey("a"))
-            {
-                lean -= leanPower;
-            }
+
         }
 
         if (th < heightFloor)
@@ -267,6 +238,46 @@ public class balloon : MonoBehaviour
         rb.velocity += new Vector2(lean,hd * buoyancy);
 
         //Debug.Log(targetHeight);
+    }
+
+    void OnBurnVent(InputValue value)
+    {
+        burnVentInput = value.Get<float>();
+    }
+
+    void OnLean(InputValue value)
+    {
+        leanInput = value.Get<float>();
+    }
+
+    void OnAnchor()
+    {
+        if (anchored)
+        {
+            //Debug.Log("retract");
+            anchored = false;
+            anchorObj.SetActive(false);
+            anchor.stuck = false;
+            anchor.landed = false;
+        } else
+        {
+            //Debug.Log("throw");
+            anchored = true;
+            anchorD = anchorRange;
+            anchorObj.GetComponent<Transform>().position = basketTrans.position + anchorOrg;
+            anchorObj.SetActive(true);
+            anchor.stuck = false;
+            anchor.landed = false;
+            //anchor.GetComponent<SpringJoint2D>().distance = 10;
+        }
+    }
+
+    void OnLeaveBalloon()
+    {
+        if (landed)
+        {
+            player.inBalloon = false;
+        }
     }
 
     public void centerHit()
@@ -302,55 +313,6 @@ public class balloon : MonoBehaviour
     {
         skin = id % skins.Length;
         sprite.sprite = skins[skin];
-    }
-
-    void UIUpdate()
-    {
-        if (Input.GetMouseButton(0))
-        {
-            if (kiLMOUSE == 0)
-            {
-                kiLMOUSE = 1;
-            }
-            else
-            {
-                kiLMOUSE = 2;
-            }
-        }
-        else
-        {
-            kiLMOUSE = 0;
-        }
-        if (Input.GetMouseButton(1))
-        {
-            if (kiRMOUSE == 0)
-            {
-                kiRMOUSE = 1;
-            }
-            else
-            {
-                kiRMOUSE = 2;
-            }
-        }
-        else
-        {
-            kiRMOUSE = 0;
-        }
-        if (Input.GetKey("e"))
-        {
-            if (kiE == 0)
-            {
-                kiE = 1;
-            }
-            else
-            {
-                kiE = 2;
-            }
-        }
-        else
-        {
-            kiE = 0;
-        }
     }
 
     float toAngle(float a,float b,float amt)

@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-public class DialogueTrigger : MonoBehaviour
+public class DialogueTrigger : Interractable
 {
     
     [Header("Visual Cue")]
@@ -57,7 +57,13 @@ public class DialogueTrigger : MonoBehaviour
         encountered = false;
     }
 
-
+    public override void OnPlayerInterract()
+    {
+        counter = 0;
+        inMenu = true;
+        rve.visible = inMenu;
+        Script.text = script[counter];
+    }
 
     private void FixedUpdate()
     {
