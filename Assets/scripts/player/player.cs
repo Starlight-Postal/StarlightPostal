@@ -99,9 +99,9 @@ public class player : MonoBehaviour
             {
                 sprite.enabled = false;
                 collider.enabled = false;
-                trans.position = new Vector3(balloonTrans.position.x, balloonTrans.position.y - 2.5f, 0);
+                trans.position = new Vector3(balloon.basketTrans.position.x, balloon.basketTrans.position.y, 0);
                 rb.velocity = new Vector2(0, 0);
-                if (Input.GetKey("space"))
+                if (kiSPACE == 1)
                 {
                     if (swap)
                     {
@@ -257,11 +257,11 @@ public class player : MonoBehaviour
                             }
                         }
                     }
-                    else
-                    {
-                        swap = true;
-                    }
 
+                }
+                else
+                {
+                    swap = true;
                 }
             }
         }

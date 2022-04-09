@@ -40,6 +40,7 @@ public class balloon : MonoBehaviour
     public Vector2 anchorStrength;
     public Vector3 anchorOrg;
     public bool landed = false;
+    Vector2 anchorOA;
 
     public Rigidbody2D basket;
     public Transform basketTrans;
@@ -92,7 +93,10 @@ public class balloon : MonoBehaviour
         anchor = anchorObj.GetComponent<anchor>();
         anchorObj.SetActive(anchored);
         anchorTrans = anchorObj.GetComponent<Transform>();
-        //anchored = true;
+
+        anchorOA = new Vector2(anchorOrg.magnitude, Mathf.Atan2(anchorOrg.y, anchorOrg.x));
+        Debug.Log("OA " + anchorOA);
+
         line = gameObject.GetComponent<LineRenderer>();
         line.enabled=false;
 
@@ -135,6 +139,7 @@ public class balloon : MonoBehaviour
 
         rb.velocity += wind.getWind(trans.position.x, trans.position.y)*windPower;
 
+        anchorOrg = new Vector3(Mathf.Cos(anchorOA.y + (basketTrans.eulerAngles.z * (Mathf.PI / 180f))) * anchorOA.x, Mathf.Sin(anchorOA.y + (basketTrans.eulerAngles.z * (Mathf.PI / 180f))) * anchorOA.x, 0);
 
         if (anchored)
         {
@@ -166,13 +171,13 @@ public class balloon : MonoBehaviour
                 }
             } else
             {
-                anchorD += (2.5f - anchorD) * 0.01f;
+                anchorD += (5f - anchorD) * 0.005f;
                 //volume *= 0.999f;
             }
 
             line.enabled = true;
-            line.SetPosition(0, basketTrans.position + anchorOrg);
-            line.SetPosition(1, anchorTrans.position+new Vector3(0,0.25f,0));
+            line.SetPosition(0, basketTrans.position + anchorOrg+new Vector3(0,0,0.5f));
+            line.SetPosition(1, anchorTrans.position+new Vector3(0,0.25f,0.5f));
 
             if (anchor.landed)
             {
@@ -184,7 +189,7 @@ public class balloon : MonoBehaviour
                     landed = false;
                 }
                 
-                th += ((anchor.targetTrans.position.y+3.5f) - th) * 0.005f;
+                th += ((anchor.targetTrans.position.y+4f) - th) * 0.0025f;
                 //anchorD += (1 - anchorD) * 0.01f;
             } else
             {
