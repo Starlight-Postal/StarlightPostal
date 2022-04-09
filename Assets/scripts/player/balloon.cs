@@ -105,11 +105,26 @@ public class balloon : MonoBehaviour
         basketTrans = GameObject.Find("Basket").GetComponent<Transform>();
 
         //Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), anchor.GetComponent<Collider2D>(), true);
-        Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), basketCollider, true);
+        //Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), basketCollider, true); // This was causing ArgumentNullException, Parameter name: collider1
 
         basket.centerOfMass = new Vector2(0, -1f);
 
         setSkin(skin);
+
+        Debug.Log("dingus");
+        // Register instanced console commands
+        DebugLogConsole.AddCommandInstance("balloon.anchor", "Toggles the balloon anchor", "ToggleAnchor", this);
+        DebugLogConsole.AddCommandInstance("balloon.heightcap", "Gets the balloon height cap", "GetHeightCap", this);
+        DebugLogConsole.AddCommandInstance("balloon.heightcap", "Sets the balloon height cap", "SetHeightCap", this);
+        DebugLogConsole.AddCommandInstance("balloon.heightfloor", "Gets the balloon height floor", "GetHeightFloor", this);
+        DebugLogConsole.AddCommandInstance("balloon.heightfloor", "Sets the balloon height floor", "SetHeightFloor", this);
+        DebugLogConsole.AddCommandInstance("balloon.leanpower", "Gets the balloon lean power", "GetLeanPower", this);
+        DebugLogConsole.AddCommandInstance("balloon.leanpower", "Sets the balloon lean power", "SetLeanPower", this);
+        DebugLogConsole.AddCommandInstance("balloon.fillrate", "Gets the balloon fill rate", "GetFillRate", this);
+        DebugLogConsole.AddCommandInstance("balloon.fillrate", "Sets the balloon fill rate", "SetFillRate", this);
+        DebugLogConsole.AddCommandInstance("balloon.windpower", "Gets the balloon wind power", "GetWindPower", this);
+        DebugLogConsole.AddCommandInstance("balloon.windpower", "Sets the balloon wind power", "SetWindPower", this);
+
     }
 
     // Update is called once per frame
@@ -412,6 +427,56 @@ public class balloon : MonoBehaviour
             first = false;
         }
         Debug.Log(output);
+    }
+
+    public void ToggleAnchor() {
+        anchored = !anchored;
+        Debug.Log("Toggled anchor to " + anchored);
+    }
+
+    public void GetHeightCap() {
+        Debug.Log("Balloon height cap: " + heightCap);
+    }
+
+    public void SetHeightCap(float newHeightCap) {
+        heightCap = newHeightCap;
+        GetHeightCap();
+    }
+
+    public void GetHeightFloor() {
+        Debug.Log("Balloon height floor: " + heightFloor);
+    }
+
+    public void SetHeightFloor(float newHeightFloor) {
+        heightFloor = newHeightFloor;
+        GetHeightFloor();
+    }
+
+    public void GetLeanPower() {
+        Debug.Log("Balloon lean power: " + leanPower);
+    }
+
+    public void SetLeanPower(float newLeanPower) {
+        leanPower = newLeanPower;
+        GetLeanPower();
+    }
+
+    public void GetFillRate() {
+        Debug.Log("Balloon fill rate: " + fillRate);
+    }
+
+    public void SetFillRate(float newFillRate) {
+        fillRate = newFillRate;
+        GetFillRate();
+    }
+
+    public void GetWindPower() {
+        Debug.Log("Balloon wind power: " + windPower);
+    }
+
+    public void SetWindPower(float newWindPower) {
+        windPower = newWindPower;
+        GetWindPower();
     }
     
 }
