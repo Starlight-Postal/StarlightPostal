@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using IngameDebugConsole;
 
 public class player : MonoBehaviour
 {
@@ -83,6 +84,9 @@ public class player : MonoBehaviour
         aniLookDown = new Sprite[1];
         aniLookDown[0] = Resources.Load<Sprite>("textures/Player/player_down");
         camHeight = 0;
+
+        // Register instance commands
+        DebugLogConsole.AddCommandInstance("player.inballoon", "Toggle the player in and out of the balloon", "ToggleInBalloon", this);
     }
 
     // Update is called once per frame
@@ -95,9 +99,9 @@ public class player : MonoBehaviour
             {
                 sprite.enabled = false;
                 collider.enabled = false;
-                trans.position = new Vector3(balloonTrans.position.x, balloonTrans.position.y - 2.5f, 0);
+                trans.position = new Vector3(balloon.basketTrans.position.x, balloon.basketTrans.position.y, 0);
                 rb.velocity = new Vector2(0, 0);
-                if (Input.GetKey("space"))
+                if (kiSPACE == 1)
                 {
                     if (swap)
                     {
@@ -253,11 +257,11 @@ public class player : MonoBehaviour
                             }
                         }
                     }
-                    else
-                    {
-                        swap = true;
-                    }
 
+                }
+                else
+                {
+                    swap = true;
                 }
             }
         }
@@ -362,4 +366,11 @@ public class player : MonoBehaviour
             kiSPACE = 0;
         }
     }
+
+    public void ToggleInBalloon() {
+        var ps = GameObject.Find("player").GetComponent<player>();
+        ps.inBalloon = !ps.inBalloon;
+        Debug.Log("Toggled inBalloon state to " + ps.inBalloon);
+    }
+
 }

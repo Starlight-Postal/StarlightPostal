@@ -5,9 +5,9 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-public class DialogueTrigger : MonoBehaviour
+public class EncounterNPC : MonoBehaviour
 {
-    
+
     [Header("Visual Cue")]
     [SerializeField] private GameObject visualCue;
 
@@ -41,7 +41,10 @@ public class DialogueTrigger : MonoBehaviour
     //bool's for players they talked too
     private bool firstNPC = false;
 
-    public string[] script;
+    public string[] intro_script;
+    public string[] loop_script;
+
+    string[] script;
 
     //public Transform trans;
 
@@ -55,6 +58,7 @@ public class DialogueTrigger : MonoBehaviour
         playerTrans = player.GetComponent<Transform>();
         visWidth = bodyTrans.localScale.x;
         encountered = false;
+        script = intro_script;
     }
 
 
@@ -89,6 +93,13 @@ public class DialogueTrigger : MonoBehaviour
                 visualCue.SetActive(true);
                 if (player.kiSPACE == 1)
                 {
+                    if (encountered)
+                    {
+                        script = loop_script;
+                    } else
+                    {
+                        script = intro_script;
+                    }
                     counter = 0;
                     inMenu = true;
                     rve.visible = inMenu;
@@ -117,7 +128,7 @@ public class DialogueTrigger : MonoBehaviour
         }
         //if (counter == script.Length - 1) { chatButton.text = "End"; }
 
-            rve.visible = inMenu;
+        rve.visible = inMenu;
 
 
         if (facePlayer)
@@ -181,7 +192,7 @@ public class DialogueTrigger : MonoBehaviour
         }
     }
 
- 
+
 }
 
 
