@@ -171,7 +171,7 @@ public class balloon : MonoBehaviour
         }
         else
         {
-            line.enabled = false;
+//            line.enabled = false;
             landed = false;
         }
 

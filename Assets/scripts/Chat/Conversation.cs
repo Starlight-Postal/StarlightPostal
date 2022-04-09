@@ -64,19 +64,25 @@ public class Conversation : Interractable
 
     ////  \/ EXTERNAL TRIGGERS AND PLAYER INPUT \/  ////
 
-    public void OnPlayerInterract()
+    public override void OnPlayerInterract()
     {
-
+        if (encountered)
+        {
+            AdvanceScript();
+        } else
+        {
+            StartScript();
+        }
     }
 
     public void OnConversationAdvance()
     {
-        
+        AdvanceScript();
     }
 
     private void OnChatButtonClick()
     {
-        
+        AdvanceScript();        
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
@@ -121,6 +127,10 @@ public class Conversation : Interractable
         if (scriptIndex >= script.Length)
         {
             TurnOffDisplay();
+            if (ResetOnComplete())
+            {
+                encountered = false;
+            }
             return;
         }
 
@@ -188,6 +198,13 @@ public class Conversation : Interractable
      */
     public virtual bool ReadyToAdvanceTo(int index)
     {
+        return true;
+    }
+
+    /**
+     * Should this conversation reset itself?
+     */
+    public virtual bool ResetOnComplete() {
         return true;
     }
 
