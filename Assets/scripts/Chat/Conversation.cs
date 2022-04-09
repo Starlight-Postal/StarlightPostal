@@ -7,7 +7,7 @@ public class Conversation : Interractable
 {
 
     [SerializeField] private GameObject visualCue;
-	[SerializeField] private string[] script;
+	[SerializeField] public string[] script;
     private bool inMenu;
 
     private int scriptIndex;
@@ -110,6 +110,7 @@ public class Conversation : Interractable
         scriptIndex = 0;
         TurnOnDisplay();
         encountered = true;
+        OnConversationStart();
 	}
 
     private void AdvanceScript()
@@ -131,6 +132,7 @@ public class Conversation : Interractable
             {
                 encountered = false;
             }
+            OnConversationEnd();
             return;
         }
 
@@ -202,6 +204,23 @@ public class Conversation : Interractable
      */
     public virtual bool ResetOnComplete() {
         return true;
+    }
+
+    /**
+     * Called when the conversation is started
+     * (Before first line)
+     */
+    public virtual void OnConversationStart()
+    {
+
+    }
+
+    /**
+     * Called when the conversation is finished
+     */
+    public virtual void OnConversationEnd()
+    {
+
     }
 
     ////  /\ BEHAVIOUR OVERRIDES /\  ////
