@@ -20,7 +20,7 @@ public class TutorialNPC : Interractable
     public GameObject anchorObj;
     public anchor anchor;
     public bool anchored;
-    public PostOfficeClerk clerk;
+    //public PostOfficeClerk clerk;
 
 
     public bool inMenu = false;
@@ -486,12 +486,12 @@ public class TutorialNPC : Interractable
                 Script.text = script[counter];
                 turnOffDisplay();
             }
-            if (clerk.playerDone)
+            /*if (clerk.playerDone)
             {
                 phase = 16;
                 counter = 27;
                 Script.text = script[counter];
-            }
+            }*/
         }
         if (phase == 16) {
             if (counter == 29)
@@ -533,11 +533,11 @@ public class TutorialNPC : Interractable
                 Script.text = script[counter];
                 turnOffDisplay();
             }
-            if (clerk.delivered)
+            /*if (clerk.delivered)
             {
                 phase = 21;
                 counter = 31;
-            }
+            }*/
         }
         if(phase == 21)
         {

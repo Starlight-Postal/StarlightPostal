@@ -107,10 +107,10 @@ public class Conversation : Interractable
 
 	private void StartScript()
     {
+        OnConversationStart();
         scriptIndex = 0;
         TurnOnDisplay();
         encountered = true;
-        OnConversationStart();
 	}
 
     private void AdvanceScript()
