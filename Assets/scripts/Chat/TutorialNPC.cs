@@ -157,11 +157,29 @@ public class TutorialNPC : Conversation
 
     private bool WalkToPostOffice()
     {
-        return true;
+        return walkTo(583.5f, 39.85f, walkSpeed);
     }
 
     private bool DadGetsMilkFromDownTheStreet()
     {
+        facingRight = true;
+        switch (subphase) {
+            case 0:
+                if (walkTo(619, 39.85f, walkSpeed))
+                    subphase++;
+                return false;
+            case 1:
+                if (walkTo(619.7f, 40.1f, walkSpeed))
+                    subphase++;
+                return false;
+            case 2:
+                if (walkTo(622.6f, 40.1f, walkSpeed))
+                {
+                    subphase = 0;
+                    return true;
+                }
+                return false;
+        }
         return true;
     }
 
