@@ -11013,6 +11013,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &367213126 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4768351908478419693, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+  m_PrefabInstance: {fileID: 1611818103}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &367213127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367213126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6cf2a8a679fc141eaf772c63263160b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visualCue: {fileID: 1829372916}
+  script:
+  - hi! i'm the secret npc (you found me)
+  - i'll give you a side quest or something?? idk lol
 --- !u!1001 &367718253
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43204,7 +43225,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: bartender
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2931887959683300530, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
 --- !u!1 &1391215796
 GameObject:
@@ -50834,13 +50856,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: side npc
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2931887959683300530, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
 --- !u!4 &1611818104 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
   m_PrefabInstance: {fileID: 1611818103}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1616143302 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4768351908478419693, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+  m_PrefabInstance: {fileID: 1386307337}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1616143303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1616143302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6cf2a8a679fc141eaf772c63263160b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visualCue: {fileID: 1925415003}
+  script:
+  - Hello!
+  - It's me (pierre) i am an npc in this video game
+  - ok bye <3
 --- !u!1 &1617845620
 GameObject:
   m_ObjectHideFlags: 0
@@ -60059,6 +60104,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1829372916 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4768351908748709585, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+  m_PrefabInstance: {fileID: 1611818103}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1830141021
 GameObject:
   m_ObjectHideFlags: 0
@@ -63236,6 +63286,11 @@ Transform:
   m_Father: {fileID: 56864739}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1925415003 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4768351908748709585, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+  m_PrefabInstance: {fileID: 1386307337}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1925651222
 GameObject:
   m_ObjectHideFlags: 0
