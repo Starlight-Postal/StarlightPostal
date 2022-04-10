@@ -21,7 +21,7 @@ public class TutorialNPC : Conversation
     public Transform trans;
     public GameObject body;
     private SpriteRenderer sprite;
-    private bool facingRight = false;
+    private bool facingLeft = false;
     private string aniMode = "idle";
     private float aniSpeed = 0.25f;
     private Sprite[] aniIdle;
@@ -35,6 +35,8 @@ public class TutorialNPC : Conversation
 
     public TutorialPhase phase = TutorialPhase.INTRO;
     private int subphase;
+
+    private FacePlayer face;
 
     public string[] scriptIntro;
     public string[] scriptBalloon;
@@ -50,6 +52,7 @@ public class TutorialNPC : Conversation
         balloonTrans = GameObject.Find("Center").transform;
         balloonScript = GameObject.Find("balloon").GetComponent<balloon>();
         playerScript = GameObject.Find("player").GetComponent<player>();
+        face = GetComponent<FacePlayer>();
     }
 
     private void AnimationStart()
@@ -102,6 +105,7 @@ public class TutorialNPC : Conversation
 
     public bool walkTo(float x,float y,float s)
     {
+        face.facePlayer = false;
         aniMode = "walk";
         Vector3 d = new Vector3(x - trans.position.x, y - trans.position.y, 0);
         if (d.magnitude > s)
@@ -113,13 +117,14 @@ public class TutorialNPC : Conversation
         {
             aniMode = "idle";
             trans.position += d;
+            face.facePlayer = true;
             return true;
         }
     }
 
     private bool WalkToLandingPad()
     {
-        facingRight = false;
+        face.facingLeft = true;
         switch (subphase)
         {
             case 0:
@@ -159,12 +164,13 @@ public class TutorialNPC : Conversation
 
     private bool WalkToPostOffice()
     {
+        face.facingLeft = false;
         return walkTo(583.5f, 39.85f, walkSpeed);
     }
 
     private bool DadGetsMilkFromDownTheStreet()
     {
-        facingRight = true;
+        face.facingLeft = false;
         switch (subphase) {
             case 0:
                 if (walkTo(619, 39.85f, walkSpeed))

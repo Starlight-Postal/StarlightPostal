@@ -12,7 +12,7 @@ public class FacePlayer : MonoBehaviour
     private Transform playerTrans;
     private Transform trans;
     private float visWidth;
-    private bool facingRight;
+    public bool facingLeft;
 
     void Start()
     {
@@ -27,15 +27,15 @@ public class FacePlayer : MonoBehaviour
         {
             if (playerTrans.position.x > trans.position.x)
             {
-                facingRight = invert;
+                facingLeft = invert;
             }
             if (playerTrans.position.x < trans.position.x)
             {
-                facingRight = !invert;
+                facingLeft = !invert;
             }
         }
 
-        if (facingRight)
+        if (facingLeft)
         {
             bodyTrans.localScale += new Vector3((visWidth - bodyTrans.localScale.x), 0, 0) * 0.1f;
         }
