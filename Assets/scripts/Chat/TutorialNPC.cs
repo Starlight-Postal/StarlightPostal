@@ -209,6 +209,14 @@ public class TutorialNPC : Conversation
         }
     }
 
+    public override void OnConversationLineUpdate(int index)
+    {
+        if (phase == TutorialPhase.BALLOON && index == 19)
+        {
+            trans.position = new Vector3(577.5f, 39.85f, 0);
+        }
+    }
+
     // For when we want the player to be able to advance to the next line
     public override bool CanPlayerContinue(int index)
     {
