@@ -26,4 +26,8 @@ public class UIInputRedirect : MonoBehaviour {
         globals.BroadcastMessage("OnSelect");
     }
 
+    void OnDeviceLost() {
+        globals.BroadcastMessage("OnControllerDisconnect");
+    }
+
 }

@@ -88,6 +88,10 @@ public class PauseMenuBehaviour : NavigatableMenu {
         inMenu = !inMenu;
     }
 
+    void OnControllerDisconnect() {
+        inMenu = true;
+    }
+
     private void Rescale() {
         float contWidth;
         float contHeight;
