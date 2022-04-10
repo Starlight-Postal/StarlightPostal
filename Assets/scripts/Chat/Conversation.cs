@@ -156,6 +156,7 @@ public class Conversation : Interractable
         root.visible = true;
         inMenu = true;
         chatButton.visible = true;
+        OnConversationLineUpdate(scriptIndex);
     }
 
     private void TurnOffDisplay()
@@ -224,6 +225,14 @@ public class Conversation : Interractable
      * Called when the conversation is finished
      */
     public virtual void OnConversationEnd()
+    {
+
+    }
+
+    /**
+     * Called every time the current line updates
+     */
+    public virtual void OnConversationLineUpdate(int index)
     {
 
     }
