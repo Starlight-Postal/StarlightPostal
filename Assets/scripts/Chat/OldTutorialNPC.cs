@@ -1,17 +1,78 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
-public class TutorialNPC : Conversation
+public class OldTutorialNPC : Interractable
 {
+    [Header("Visual Cue")]
+    [SerializeField] private GameObject visualCue;
+
+    // private Story currentStory;
+    public bool playerInRange;
+
+    public player player;
+    public Transform playerTrans;
+    public balloon balloon;
+    public Transform balloonTrans;
+    public GameObject anchorObj;
+    public anchor anchor;
+    public bool anchored;
+    //public PostOfficeClerk clerk;
+
+
+    public bool inMenu = false;
+
+    // Start is called before the first frame update
+    private Button chatButton;
+    private Label Script;
+    public int counter;
+    public int checkpoint = 16;
+
+    public bool canNext = true;
+
+    [SerializeField] private VisualElement rve;
+
+    //bool's for players they talked too
+    private bool firstNPC = false;
+
+    public string[] script;
+    public bool canLeave;
+
+    public Transform trans;
+    public GameObject body;
+    public Transform bodyTrans;
+
+    public int phase = 0;
+    public float walkSpeed = 0.05f;
+
+    public SpriteRenderer sprite;
+    public bool facingRight = false;
+    public string aniMode = "idle";
+    public float aniSpeed = 0.25f;
+    public Sprite[] aniIdle;
+    public float aniIdleSpeed = 0.25f;
+    public Sprite[] aniWalk;
+    public float aniWalkSpeed = 1f;
+    public float aniFrame = 0;
+
+    private bool pressedDown = false;
 
     private void Start()
     {
-        AnimationStart();
-    }
+        playerInRange = false;
+        visualCue.SetActive(false);
+        player = GameObject.Find("player").GetComponent<player>();
+        playerTrans = player.GetComponent<Transform>();
+        balloon = GameObject.Find("balloon").GetComponent<balloon>();
+        balloonTrans = GameObject.Find("Center").GetComponent<Transform>();
+        anchor = balloon.anchor;
+        phase = 0;
+        trans.position = new Vector3(2.2f,2.68f,0);
+        bodyTrans = body.GetComponent<Transform>();
 
-    private void AnimationStart()
-    {
         aniMode = "idle";
         aniFrame = 0;
         aniIdle = new Sprite[7];
@@ -30,13 +91,85 @@ public class TutorialNPC : Conversation
         sprite = body.GetComponent<SpriteRenderer>();
     }
 
-    private void FixedUpdate()
+    public override void OnPlayerInterract()
     {
-        AnimationUpdate();
+        turnOnDisplay();
+        //sideButton.visible = true;
+        Script.text = script[counter];
     }
 
-    private void AnimationUpdate()
+    private void FixedUpdate()
     {
+        //activates the text bubble if player in range
+        if (playerInRange)
+        {
+            visualCue.SetActive(false);
+            if (canNext)
+            {
+                if (player.kiSPACE == 1)
+                {
+                    counter++;
+                    Script.text = script[counter];
+                    if (counter == script.Length - 1) { chatButton.text = "space"; }
+                    else { chatButton.text = "space"; }
+                }
+            }
+        } else {
+            if (playerInRange)
+            {
+                if (phase == 0 || phase == 8 || phase == 15||phase==16||phase==20||phase==21)
+                {
+                    visualCue.SetActive(true);
+                    if (player.kiSPACE == 1)
+                    {
+                        //counter = 0;
+                        turnOnDisplay();
+
+                        Script.text = script[counter];
+                    }
+                } else
+                {
+                    visualCue.SetActive(false);
+                }
+            }
+            //Checks to see if players are in range. If they arn't and chat should disappear it does
+            else
+            {
+                visualCue.SetActive(false);
+                if (playerInRange == false && canLeave == false)
+                {
+                    counter = 0;
+                    Script.text = script[counter];
+                    turnOffDisplay();
+                }
+            }
+        }
+
+        
+
+        //Gets rid of the chat if they hid next one more time
+        if (counter >= script.Length)
+        {
+            turnOffDisplay();
+            balloon.lockEntry = false;
+        }
+
+        
+        rve.visible = inMenu;
+
+        
+
+        if (playerTrans.position.x > trans.position.x)
+        {
+            facingRight = true;
+        }
+        if (playerTrans.position.x < trans.position.x)
+        {
+            facingRight = false;
+        }
+
+        if (canLeave) { playerCanLeave(); }
+
         Sprite[] ani = aniIdle;
         switch (aniMode)
         {
@@ -55,45 +188,54 @@ public class TutorialNPC : Conversation
         aniFrame = aniFrame % ani.Length;
         sprite.sprite = ani[(int)aniFrame];
         aniFrame = (aniFrame + aniSpeed) % ani.Length;
-    }
 
-    public bool walkTo(float x,float y,float s)
-    {
-        aniMode = "walk";
-        Vector3 d = new Vector3(x - trans.position.x, y - trans.position.y, 0);
-        if (d.magnitude > s)
+        if (facingRight)
         {
-            Vector3 m = (d / d.magnitude) * s;
-            trans.position += m;
-            return false;
+            bodyTrans.localScale += new Vector3((-0.35f - bodyTrans.localScale.x), 0, 0) * 0.1f;
         } else
         {
-            trans.position += d;
-            return true;
+            bodyTrans.localScale += new Vector3((0.35f - bodyTrans.localScale.x), 0, 0) * 0.1f;
+        }
+        
+        pressedDown = false;
+    }
+
+    private void OnEnable()
+    {
+        rve = GetComponent<UIDocument>().rootVisualElement;
+        chatButton = rve.Q<Button>("chatButton");
+        Script = rve.Q<Label>("chatLabel");
+
+        chatButton.RegisterCallback<ClickEvent>(ev =>
+        {
+            if (chatButton.visible == true)
+            {
+                counter++;
+                Script.text = script[counter];
+                if (counter == script.Length - 1) { chatButton.text = "space"; }
+                else { chatButton.text = "space"; }
+            }
+        }
+        );
+        rve.visible = false;
+
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag == "Player")
+        {
+            playerInRange = true;
         }
     }
 
-    public override bool ResetOnComplete()
+    private void OnTriggerExit2D(Collider2D collider)
     {
-        return false;
-    }
-
-    // For when we want the player to be able to advance to the next line
-    public override bool CanPlayerContinue(int index)
-    {
-
-    }
-
-    // For when we want to automatically advance to the next line
-    public override bool AutoAdvanceConditionMet(int index)
-    {
-
-    }
-
-    // For when we want the ui to disappear and wait for conditions
-    public override bool ReadyToAdvanceTo(int index)
-    {
-
+        if (collider.gameObject.tag == "Player")
+        {
+            playerInRange = false;
+        }
     }
 
     private void playerCanLeave()
@@ -408,4 +550,43 @@ public class TutorialNPC : Conversation
         }
     }
 
+    public bool walkTo(float x,float y,float s)
+    {
+        aniMode = "walk";
+        Vector3 d = new Vector3(x - trans.position.x, y - trans.position.y, 0);
+        if (d.magnitude > s)
+        {
+            Vector3 m = (d / d.magnitude) * s;
+            trans.position += m;
+            return false;
+        } else
+        {
+            trans.position += d;
+            return true;
+        }
+    }
+
+    public void turnOffDisplay()
+    {
+        rve.visible = false;
+        inMenu = false;
+        chatButton.visible = false;
+        canNext = false;
+    }
+    public void turnOnDisplay()
+    {
+        rve.visible = true;
+        inMenu = true;
+        chatButton.visible = true;
+        canNext = true;
+    }
+
+    void OnBurnVent(float axis) {
+        if (axis < 0) {
+            pressedDown = true;
+        }
+    }
 }
+
+
+
