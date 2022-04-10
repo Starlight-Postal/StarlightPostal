@@ -4,11 +4,11 @@ using UnityEngine;
 
 public enum TutorialPhase
 {
-    STARTING_POST_OFFICE,
-    WALKING_TO_BALLOON,
-    WAITING_AT_BALLOON,
-
-
+    INTRO,
+    BALLOON,
+    POSTOFFICE,
+    BAR,
+    DELIVERED
 }
 
 public class TutorialNPC : Conversation
@@ -31,8 +31,14 @@ public class TutorialNPC : Conversation
     private float aniFrame = 0;
     public float walkSpeed = 0.05f;
 
-    private TutorialPhase phase = TutorialPhase.STARTING_POST_OFFICE;
+    private TutorialPhase phase = TutorialPhase.INTRO;
     private int subphase;
+
+    public string[] scriptIntro;
+    public string[] scriptBalloon;
+    public string[] scriptPostOffice;
+    public string[] scriptBar;
+    public string[] scriptDelivered;
 
     private void Start()
     {
@@ -109,118 +115,182 @@ public class TutorialNPC : Conversation
         }
     }
 
+    private bool WalkToLandingPad()
+    {
+        facingRight = false;
+        switch (subphase)
+        {
+            case 0:
+                if (walkTo(1.75f, 2.68f, walkSpeed))
+                    subphase++;
+                return false;
+            case 1:
+                if (walkTo(-0.54f, 0.58f, walkSpeed))
+                    subphase++;
+                return false;
+            case 2:
+                if (walkTo(-4f, 0.58f, walkSpeed))
+                    subphase++;
+                return false;
+            case 3:
+                if (walkTo(-4.55f, 0.44f, walkSpeed))
+                    subphase++;
+                return false;
+            case 4:
+                if (walkTo(-7.7f, 0.44f, walkSpeed))
+                    subphase++;
+                return false;
+            case 5:
+                if (walkTo(-9f, 0.75f, walkSpeed))
+                    subphase++;
+                return false;
+            case 6:
+                if (walkTo(-9.5f, 0.75f, walkSpeed))
+                {
+                    subphase = 0;
+                    return true;
+                }
+                return false;
+        }
+        return true;
+    }
+
+    private bool WalkToPostOffice()
+    {
+        return true;
+    }
+
+    private bool DadGetsMilkFromDownTheStreet()
+    {
+        return true;
+    }
+
     void OnLeaveBalloon()
     {
         AdvanceScript();
     }
 
-    public override bool ResetOnComplete()
+    public override void OnConversationStart()
     {
-        return false;
+        switch (phase)
+        {
+            default:
+            case TutorialPhase.INTRO:
+                script = scriptIntro;
+                break;
+            case TutorialPhase.BALLOON:
+                script = scriptBalloon;
+                break;
+            case TutorialPhase.POSTOFFICE:
+                script = scriptPostOffice;
+                break;
+            case TutorialPhase.BAR:
+                script = scriptBar;
+                break;
+            case TutorialPhase.DELIVERED:
+                script = scriptDelivered;
+                break;
+        }
+    }
+
+    public override void OnConversationEnd()
+    {
+        switch (phase)
+        {
+            case TutorialPhase.INTRO:
+                phase = TutorialPhase.BALLOON;
+                break;
+            case TutorialPhase.BALLOON:
+                phase = TutorialPhase.POSTOFFICE;
+                break;
+            case TutorialPhase.POSTOFFICE:
+                phase = TutorialPhase.BAR;
+                break;
+        }
     }
 
     // For when we want the player to be able to advance to the next line
     public override bool CanPlayerContinue(int index)
     {
-        switch (index)
+        if (phase == TutorialPhase.BALLOON)
         {
-            case 9:
-            case 11:
-            //case 14:
-            case 21:
-            case 22:
-            case 23:
-            case 24:
-                return false;
-            default:
-                return true;
+            switch (index)
+            {
+                case 3:
+                case 5:
+                //case 8:
+                case 15:
+                case 16:
+                case 17:
+                case 18:
+                    return false;
+            }
         }
+        return true;
     }
 
     // For when we want to automatically advance to the next line
     public override bool AutoAdvanceConditionMet(int index)
     {
-        switch (index)
+        switch (phase)
         {
-            case 9:
-                return playerScript.inBalloon;
-            case 11:
-                return balloonTrans.position.y > 5.0f;
-            case 14:
-                //TODO
-                return false;
-            case 21:
-                return balloonScript.th <= 55;
-            case 22:
-                return balloonScript.anchor.stuck;
-            case 23:
-                return balloonScript.anchor.landed;
-            case 24:
-                return !playerScript.inBalloon;
-            default:
-                return false;            
+            case TutorialPhase.INTRO:
+                return index == 6;
+            case TutorialPhase.BALLOON:
+                switch (index)
+                {
+                    case 3:
+                        return playerScript.inBalloon;
+                    case 5:
+                        return balloonTrans.position.y > 5.0f;
+                    case 8:
+                        //TODO
+                        return false;
+                    case 15:
+                        return balloonScript.th <= 55;
+                    case 16:
+                        return balloonScript.anchor.stuck;
+                    case 17:
+                        return balloonScript.anchor.landed;
+                    case 18:
+                        return !playerScript.inBalloon;
+                    case 20:
+                        return true;    
+                }
+                break;
+            case TutorialPhase.POSTOFFICE:
+                return index == 3;
         }
+
+        return false;        
     }
 
     // For when we want the ui to disappear and wait for conditions
     public override bool ReadyToAdvanceTo(int index)
     {
-        Debug.Log(phase);
-        Debug.Log(subphase);
-        switch (index)
+        switch (phase)
         {
-            case 6:
-                facingRight = false;
-                switch (subphase)
+            case TutorialPhase.INTRO:
+                if (index == 6)
+                    return WalkToLandingPad();
+                break;
+            case TutorialPhase.BALLOON:
+                switch (index)
                 {
-                    case 0:
-                        if (walkTo(1.75f, 2.68f, walkSpeed))
-                            subphase++;
-                        return false;
-                        break;
-                    case 1:
-                        if (walkTo(-0.54f, 0.58f, walkSpeed))
-                            subphase++;
-                        return false;
-                        break;
-                    case 2:
-                        if (walkTo(-4f, 0.58f, walkSpeed))
-                            subphase++;
-                        return false;
-                        break;
-                    case 3:
-                        if (walkTo(-4.55f, 0.44f, walkSpeed))
-                            subphase++;
-                        return false;
-                        break;
-                    case 4:
-                        if (walkTo(-7.7f, 0.44f, walkSpeed))
-                            subphase++;
-                        return false;
-                        break;
-                    case 5:
-                        if (walkTo(-9f, 0.75f, walkSpeed))
-                            subphase++;
-                        return false;
-                        break;
-                    case 6:
-                        if (walkTo(-9.5f, 0.75f, walkSpeed))
-                        {
-                            subphase = 0;
-                            phase = TutorialPhase.WAITING_AT_BALLOON;
-                            return true;
-                        }
-                        return false;
-                        break;
+                    case 12:
+                        return balloonTrans.position.x >= 80;
+                    case 14:
+                        return balloonTrans.position.x >= 550;
+                    case 20:
+                        return WalkToPostOffice();
                 }
                 break;
-            case 18:
-                return balloonTrans.position.x >= 80;
-            case 20:
-                return balloonTrans.position.x >= 550;
-            default:
-                return true;
+            case TutorialPhase.POSTOFFICE:
+                if (index == 3)
+                    return DadGetsMilkFromDownTheStreet();
+                break;
         }
+        
         return true;
     }
 

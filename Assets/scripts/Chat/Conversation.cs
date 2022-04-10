@@ -115,6 +115,11 @@ public class Conversation : Interractable
 
     protected void AdvanceScript()
     {
+        if (!encountered)
+        {
+            StartScript();
+            return;
+        }
         if (CanPlayerContinue(scriptIndex) && !waitingForReady)
         {
             ForceAdvanceScript();
