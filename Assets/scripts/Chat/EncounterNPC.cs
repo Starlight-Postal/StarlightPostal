@@ -5,9 +5,9 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-public class DialogueTrigger : Interractable
+public class EncounterNPC : MonoBehaviour
 {
-    
+
     [Header("Visual Cue")]
     [SerializeField] private GameObject visualCue;
 
@@ -41,7 +41,10 @@ public class DialogueTrigger : Interractable
     //bool's for players they talked too
     private bool firstNPC = false;
 
-    public string[] script;
+    public string[] intro_script;
+    public string[] loop_script;
+
+    string[] script;
 
     //public Transform trans;
 
@@ -55,26 +58,32 @@ public class DialogueTrigger : Interractable
         playerTrans = player.GetComponent<Transform>();
         visWidth = bodyTrans.localScale.x;
         encountered = false;
+        script = intro_script;
     }
 
-    public override void OnPlayerInterract()
-    {
-        counter = 0;
-        inMenu = true;
-        rve.visible = inMenu;
-        Script.text = script[counter];
-    }
+
 
     private void FixedUpdate()
     {
         if (rve.visible)
         {
-            visualCue.SetActive(true);
-            /*if (Input.GetKeyDown("c"))
+            if (player.kiSPACE == 1)
             {
                 counter++;
                 Script.text = script[counter];
-            }*/
+                if (counter == script.Length - 1) { chatButton.text = "space"; }
+                else { chatButton.text = "space"; }
+            }
+            if (!playerInRange)
+            {
+                if (canLeave)
+                {
+                    visualCue.SetActive(false);
+                    counter = 0;
+                    Script.text = script[counter];
+                    inMenu = false;
+                }
+            }
         }
         else
         {
@@ -84,6 +93,13 @@ public class DialogueTrigger : Interractable
                 visualCue.SetActive(true);
                 if (player.kiSPACE == 1)
                 {
+                    if (encountered)
+                    {
+                        script = loop_script;
+                    } else
+                    {
+                        script = intro_script;
+                    }
                     counter = 0;
                     inMenu = true;
                     rve.visible = inMenu;
@@ -112,7 +128,7 @@ public class DialogueTrigger : Interractable
         }
         //if (counter == script.Length - 1) { chatButton.text = "End"; }
 
-            rve.visible = inMenu;
+        rve.visible = inMenu;
 
 
         if (facePlayer)
@@ -176,7 +192,7 @@ public class DialogueTrigger : Interractable
         }
     }
 
- 
+
 }
 
 

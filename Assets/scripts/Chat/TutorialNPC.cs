@@ -20,15 +20,15 @@ public class TutorialNPC : Interractable
     public GameObject anchorObj;
     public anchor anchor;
     public bool anchored;
+    public PostOfficeClerk clerk;
 
 
     public bool inMenu = false;
 
     // Start is called before the first frame update
     private Button chatButton;
-    private Button sideButton;
     private Label Script;
-    private int counter;
+    public int counter;
     public int checkpoint = 16;
 
     public bool canNext = true;
@@ -94,7 +94,7 @@ public class TutorialNPC : Interractable
     public override void OnPlayerInterract()
     {
         turnOnDisplay();
-        sideButton.visible = true;
+        //sideButton.visible = true;
         Script.text = script[counter];
     }
 
@@ -103,26 +103,49 @@ public class TutorialNPC : Interractable
         //activates the text bubble if player in range
         if (playerInRange)
         {
-            if (phase == 0||phase==8)
+            visualCue.SetActive(false);
+            if (canNext)
             {
-                visualCue.SetActive(true);
-            } else
+                if (player.kiSPACE == 1)
+                {
+                    counter++;
+                    Script.text = script[counter];
+                    if (counter == script.Length - 1) { chatButton.text = "space"; }
+                    else { chatButton.text = "space"; }
+                }
+            }
+        } else {
+            if (playerInRange)
+            {
+                if (phase == 0 || phase == 8 || phase == 15||phase==16||phase==20||phase==21)
+                {
+                    visualCue.SetActive(true);
+                    if (player.kiSPACE == 1)
+                    {
+                        //counter = 0;
+                        turnOnDisplay();
+
+                        Script.text = script[counter];
+                    }
+                } else
+                {
+                    visualCue.SetActive(false);
+                }
+            }
+            //Checks to see if players are in range. If they arn't and chat should disappear it does
+            else
             {
                 visualCue.SetActive(false);
+                if (playerInRange == false && canLeave == false)
+                {
+                    counter = 0;
+                    Script.text = script[counter];
+                    turnOffDisplay();
+                }
             }
         }
 
-        //Checks to see if players are in range. If they arn't and chat should disappear it does
-        else
-        {
-            visualCue.SetActive(false);
-            if (playerInRange == false && canLeave == false)
-            {
-                counter = 0;
-                Script.text = script[counter];
-                turnOffDisplay();          
-            }
-        }
+        
 
         //Gets rid of the chat if they hid next one more time
         if (counter >= script.Length)
@@ -134,20 +157,7 @@ public class TutorialNPC : Interractable
         
         rve.visible = inMenu;
 
-        if (rve.visible)
-        {
-            if (canNext)
-            {
-                if (player.kiSPACE == 1)
-                {
-                    counter++;
-                    Script.text = script[counter];
-                    if (counter == script.Length - 1) { chatButton.text = "space"; }
-                    else { chatButton.text = "space"; }
-                    sideButton.visible = false;
-                }
-            }
-        }
+        
 
         if (playerTrans.position.x > trans.position.x)
         {
@@ -195,7 +205,6 @@ public class TutorialNPC : Interractable
         rve = GetComponent<UIDocument>().rootVisualElement;
         chatButton = rve.Q<Button>("chatButton");
         Script = rve.Q<Label>("chatLabel");
-        sideButton = rve.Q<Button>("sideButton");
 
         chatButton.RegisterCallback<ClickEvent>(ev =>
         {
@@ -205,16 +214,9 @@ public class TutorialNPC : Interractable
                 Script.text = script[counter];
                 if (counter == script.Length - 1) { chatButton.text = "space"; }
                 else { chatButton.text = "space"; }
-                sideButton.visible = false;
             }
         }
         );
-        sideButton.RegisterCallback<ClickEvent>(ev =>
-        {
-            counter = 26;
-            turnOffDisplay();
-        }
-    );
         rve.visible = false;
 
     }
@@ -325,6 +327,7 @@ public class TutorialNPC : Interractable
             if (counter >9)
             {
                 phase = 9;
+                player.GetComponent<player>().inBalloon = true;
             }
         }
         //80 170 280
@@ -460,6 +463,90 @@ public class TutorialNPC : Interractable
         if (counter == 26)
         {
             balloon.lockEntry = false;
+            if (phase == 13)
+            {
+                phase = 14;
+                turnOffDisplay();
+            }
+        }
+        if (phase == 14)
+        {
+            turnOffDisplay();
+            facingRight = true;
+            if (walkTo(583.5f, 39.85f, walkSpeed))
+            {
+                phase = 15;
+            }
+        }
+        if (phase == 15)
+        {
+            if (counter > 26)
+            {
+                counter = 26;
+                Script.text = script[counter];
+                turnOffDisplay();
+            }
+            if (clerk.playerDone)
+            {
+                phase = 16;
+                counter = 27;
+                Script.text = script[counter];
+            }
+        }
+        if (phase == 16) {
+            if (counter == 29)
+            {
+                phase = 17;
+                    turnOffDisplay();
+            }
+        }
+        if (phase == 17)
+        {
+            turnOffDisplay();
+            facingRight = true;
+            if (walkTo(619, 39.85f, walkSpeed))
+            {
+                phase = 18;
+            }
+        }
+        if (phase == 18)
+        {
+            facingRight = true;
+            if (walkTo(619.7f, 40.1f, walkSpeed))
+            {
+                phase = 19;
+            }
+        }
+        if (phase == 19)
+        {
+            facingRight = true;
+            if (walkTo(622.6f, 40.1f, walkSpeed))
+            {
+                phase = 20;
+            }
+        }
+        if(phase == 20)
+        {
+            if (counter == 31)
+            {
+                counter = 29;
+                Script.text = script[counter];
+                turnOffDisplay();
+            }
+            if (clerk.delivered)
+            {
+                phase = 21;
+                counter = 31;
+            }
+        }
+        if(phase == 21)
+        {
+            if (counter > 31)
+            {
+                counter = 31;
+                Script.text = script[counter];
+                turnOffDisplay();
+            }
         }
     }
 
@@ -484,7 +571,6 @@ public class TutorialNPC : Interractable
         rve.visible = false;
         inMenu = false;
         chatButton.visible = false;
-        sideButton.visible = false;
         canNext = false;
     }
     public void turnOnDisplay()
