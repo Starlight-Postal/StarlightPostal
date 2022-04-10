@@ -4612,81 +4612,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7389766237202144772, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
-      propertyPath: body
-      value: 
-      objectReference: {fileID: 770208755}
-    - target: {fileID: 7389766237202144772, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
-      propertyPath: clerk
-      value: 
-      objectReference: {fileID: 636691352}
-    - target: {fileID: 7389766237202144772, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
-      propertyPath: trans
-      value: 
-      objectReference: {fileID: 1336435265}
-    - target: {fileID: 7389766237202144772, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
-      propertyPath: walkSpeed
-      value: 0.025
-      objectReference: {fileID: 0}
-    - target: {fileID: 7389766237202144772, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
-      propertyPath: aniIdleSpeed
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7389766237202144772, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
-      propertyPath: aniWalkSpeed
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7389766237202144772, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
-      propertyPath: script.Array.size
-      value: 32
-      objectReference: {fileID: 0}
-    - target: {fileID: 7389766237202144772, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
-      propertyPath: script.Array.data[15]
-      value: "Nice job! Be gentle with her, we don\u2019t want to be rocketing up
-        and down."
-      objectReference: {fileID: 0}
-    - target: {fileID: 7389766237202144772, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
-      propertyPath: script.Array.data[16]
-      value: Ballooning is all about your ups and downs, side-to-side is more of
-        a challenge.
-      objectReference: {fileID: 0}
-    - target: {fileID: 7389766237202144772, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
-      propertyPath: script.Array.data[22]
-      value: Now in order to dock here we need to be tied down. Press E to drop the
-        anchor.
-      objectReference: {fileID: 0}
-    - target: {fileID: 7389766237202144772, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
-      propertyPath: script.Array.data[23]
-      value: "Whoops, we need to anchor to the landing platform! Press E again to
-        retract the anchor. Let\u2019s try again, make sure you\u2019re over the
-        target."
-      objectReference: {fileID: 0}
-    - target: {fileID: 7389766237202144772, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
-      propertyPath: script.Array.data[26]
-      value: This is the Autumn Hills post office, every town will have their own
-        branch.
-      objectReference: {fileID: 0}
-    - target: {fileID: 7389766237202144772, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
-      propertyPath: script.Array.data[27]
-      value: Well that's that! All that's left here is to deliver that package.
-      objectReference: {fileID: 0}
-    - target: {fileID: 7389766237202144772, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
-      propertyPath: script.Array.data[28]
-      value: Good luck, kiddo, I'll be town at the tavern.
-      objectReference: {fileID: 0}
-    - target: {fileID: 7389766237202144772, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
-      propertyPath: script.Array.data[29]
-      value: Hey sport, still looking for the mayor?
-      objectReference: {fileID: 0}
-    - target: {fileID: 7389766237202144772, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
-      propertyPath: script.Array.data[30]
-      value: They might be at the state house, just east of the post office.
-      objectReference: {fileID: 0}
-    - target: {fileID: 7389766237202144772, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
-      propertyPath: script.Array.data[31]
-      value: Good work kiddo, you better get going. There's a lot more mail to deliver
-        tonight!
-      objectReference: {fileID: 0}
     - target: {fileID: 7395493958752536842, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
       propertyPath: m_Name
       value: captain
@@ -5304,6 +5229,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &162983219 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9141537861159164209, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
+  m_PrefabInstance: {fileID: 140663584}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &163015445
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33187,6 +33117,35 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1076736922 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3416446386320748779, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
+  m_PrefabInstance: {fileID: 140663584}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1076736924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076736922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1b7eb2862b93c201bac1b3d36282ed1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visualCue: {fileID: 162983219}
+  script:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  trans: {fileID: 1336435265}
+  body: {fileID: 770208755}
+  walkSpeed: 0.05
 --- !u!1 &1077169413
 GameObject:
   m_ObjectHideFlags: 0

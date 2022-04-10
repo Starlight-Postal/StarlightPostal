@@ -5,14 +5,16 @@ using UnityEngine;
 public class TutorialNPCInputRedirect : MonoBehaviour
 {
 
+    GameObject npcs;
+
     void Start()
     {
-        
+        npcs = GameObject.Find("npcs");
     }
 
     void OnLeaveBalloon()
     {
-        //TODO: This needs to reboadcast the OnLeaveBalloon event to the tutorial npc to advance the conversation where applicable.
+        npcs.BroadcastMessage("OnLeaveBalloon");
     }
 
 }

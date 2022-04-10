@@ -10,7 +10,7 @@ public class Conversation : Interractable
 	[SerializeField] public string[] script;
     private bool inMenu;
 
-    private int scriptIndex;
+    protected int scriptIndex;
     private bool encountered;
     private bool waitingForReady;
     
@@ -20,7 +20,7 @@ public class Conversation : Interractable
 
     ////  \/ STARTUP FUNCTIONS \/ ////
 
-    void Start()
+    protected void Start()
     {
         inMenu = false;
         scriptIndex = 0;
@@ -43,7 +43,7 @@ public class Conversation : Interractable
 
     ////  \/ ON UPDATES \/  ////
 
-    void FixedUpdate()
+    protected void FixedUpdate()
     {
         if (waitingForReady)
         {
@@ -113,9 +113,9 @@ public class Conversation : Interractable
         encountered = true;
 	}
 
-    private void AdvanceScript()
+    protected void AdvanceScript()
     {
-        if (CanPlayerContinue(scriptIndex))
+        if (CanPlayerContinue(scriptIndex) && !waitingForReady)
         {
             ForceAdvanceScript();
         }
