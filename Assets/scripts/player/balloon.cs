@@ -73,6 +73,7 @@ public class balloon : MonoBehaviour
 
     private float burnVentInput = 0;
     private float leanInput = 0;
+    private float reelInput = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -158,10 +159,10 @@ public class balloon : MonoBehaviour
 
             if (player.inBalloon)
             {
-                /*if (Input.GetKey("q"))
+                if (reelInput > 0.75f)
                 {
                     anchorD *= 0.99f;
-                }*/
+                }
             } else
             {
                 anchorD += (5f - anchorD) * 0.005f;
@@ -298,6 +299,11 @@ public class balloon : MonoBehaviour
         {
             player.inBalloon = false;
         }
+    }
+
+    void OnReel(InputValue value)
+    {
+        reelInput = value.Get<float>();
     }
 
     public void centerHit()
