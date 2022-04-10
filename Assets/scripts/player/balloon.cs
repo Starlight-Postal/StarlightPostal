@@ -75,6 +75,8 @@ public class balloon : MonoBehaviour
     private float leanInput = 0;
     private float reelInput = 0;
 
+    public bool captainIsWith = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -198,7 +200,13 @@ public class balloon : MonoBehaviour
 
         if (player.inBalloon)
         {
-            basketSprite.sprite = basketTex_1;
+            if (captainIsWith)
+            {
+                basketSprite.sprite = basketTex_2;
+            } else
+            {                
+                basketSprite.sprite = basketTex_1;
+            }
         } else
         {
             basketSprite.sprite = basketTex_0;

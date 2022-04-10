@@ -234,6 +234,7 @@ public class TutorialNPC : Conversation
         if (phase == TutorialPhase.BALLOON && index == 4)
         {
             body.SetActive(false);
+            balloonScript.captainIsWith = true;
         }
         if (phase == TutorialPhase.BALLOON && index == 8)
         {
@@ -243,6 +244,7 @@ public class TutorialNPC : Conversation
         {
             trans.position = new Vector3(577.5f, 39.85f, 0);
             body.SetActive(true);
+            balloonScript.captainIsWith = false;
         }
     }
 
