@@ -11,7 +11,8 @@ public class snow : MonoBehaviour
     public float gravity = 0.05f;
     public float size = 0.25f;
     public float decayRate = 0.025f;
-    public int n = 100;
+    public int initN = 100;
+    private int n = 100;
     public List<Transform> flakes;
     public List<float> flakeLife;
     public List<float> flakeWeight;
@@ -21,6 +22,9 @@ public class snow : MonoBehaviour
     private Vector2 ratio;
     public Vector2 range;
     public float buffer = 1.1f;
+
+    private Vector2 lastScreenSize;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,14 +32,56 @@ public class snow : MonoBehaviour
         focus = GameObject.Find("Main Camera").GetComponent<Transform>();
         cam = GameObject.Find("Main Camera").GetComponent<Camera>();
 
-        ratio = new Vector2(cam.aspect, 1);
-        n = (int) (cam.aspect * ((float)n / 1.776f));
+        Resize();
 
         range = ratio * cam.orthographicSize;
 
-        for (int i = 0; i < n; i++)
+        SpawnNewFlakes(n);
+    }
+
+    void Update()
+    {
+        var screenSize = new Vector2(Screen.width, Screen.height);
+        if (lastScreenSize != screenSize)
+        {
+            Resize();
+            lastScreenSize = screenSize;
+        }
+    }
+
+    void Resize()
+    {
+        ratio = new Vector2(cam.aspect, 1);
+        var lastN = n;
+        n = (int) (cam.aspect * ((float)initN / 1.776f));
+        if (lastN < n)
+        {
+            SpawnNewFlakes(n - lastN);
+        } else if (lastN > n)
+        {
+            KillFlakes(lastN - n);
+        }
+    }
+
+    private void SpawnNewFlakes(int num)
+    {
+        for (int i = 0; i < num; i++)
         {
             spawnFlake(focus.position.x + range.x * Random.Range(-0.5f, 0.5f), focus.position.y + range.y * Random.Range(-0.5f, 0.5f),windParticle);
+        }
+    }
+
+    private void KillFlakes(int num)
+    {
+        for (int i= 0; i < num; i++)
+        {
+            int index = flakes.Count -1;
+            var flake = flakes[index];
+            Destroy(flake.gameObject);
+            flakes.RemoveAt(index);
+            flakeLife.RemoveAt(index);
+            flakeWeight.RemoveAt(index);
+            flakeV.RemoveAt(index);
         }
     }
 

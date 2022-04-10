@@ -69,23 +69,12 @@ public class DialogueTrigger : Interractable
     {
         if (rve.visible)
         {
-            if (player.kiSPACE == 1)
+            visualCue.SetActive(true);
+            /*if (Input.GetKeyDown("c"))
             {
                 counter++;
                 Script.text = script[counter];
-                if (counter == script.Length - 1) { chatButton.text = "space"; }
-                else { chatButton.text = "space"; }
-            }
-            if (!playerInRange)
-            {
-                if (canLeave)
-                {
-                    visualCue.SetActive(false);
-                    counter = 0;
-                    Script.text = script[counter];
-                    inMenu = false;
-                }
-            }
+            }*/
         }
         else
         {

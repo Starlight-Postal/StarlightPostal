@@ -101,7 +101,7 @@ public class TutorialNPC : Interractable
     private void FixedUpdate()
     {
         //activates the text bubble if player in range
-        if (rve.visible)
+        if (playerInRange)
         {
             visualCue.SetActive(false);
             if (canNext)
