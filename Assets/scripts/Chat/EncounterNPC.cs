@@ -13,6 +13,7 @@ public class EncounterNPC : Conversation
         deliveredTo = true;
         script = loopScript;
         GameObject.FindObjectsOfType<PostOfficeClerk>()[0].phase = MailPhase.DELIVERED;
+        GameObject.FindObjectsOfType<TutorialNPC>()[0].phase = TutorialPhase.DELIVERED;
     }
 
 }

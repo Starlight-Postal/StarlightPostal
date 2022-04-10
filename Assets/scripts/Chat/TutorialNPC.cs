@@ -31,7 +31,9 @@ public class TutorialNPC : Conversation
     private float aniFrame = 0;
     public float walkSpeed = 0.05f;
 
-    private TutorialPhase phase = TutorialPhase.INTRO;
+    private float prevTH;
+
+    public TutorialPhase phase = TutorialPhase.INTRO;
     private int subphase;
 
     public string[] scriptIntro;
@@ -233,6 +235,10 @@ public class TutorialNPC : Conversation
         {
             trans.position = new Vector3(577.5f, 39.85f, 0);
         }
+        if (phase == TutorialPhase.BALLOON && index == 8)
+        {
+            prevTH = balloonScript.th;
+        }
     }
 
     // For when we want the player to be able to advance to the next line
@@ -244,7 +250,7 @@ public class TutorialNPC : Conversation
             {
                 case 3:
                 case 5:
-                //case 8:
+                case 8:
                 case 15:
                 case 16:
                 case 17:
@@ -270,8 +276,7 @@ public class TutorialNPC : Conversation
                     case 5:
                         return balloonTrans.position.y > 5.0f;
                     case 8:
-                        //TODO
-                        return false;
+                        return prevTH - 2.0f > balloonScript.th;
                     case 15:
                         return balloonScript.th <= 55;
                     case 16:
