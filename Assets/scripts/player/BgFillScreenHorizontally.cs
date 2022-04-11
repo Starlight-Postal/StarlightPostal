@@ -6,6 +6,7 @@ public class BgFillScreenHorizontally : MonoBehaviour {
 
     private Vector2 lastScreenSize;
     private Vector3 initScale;
+    public float buffer = 1;
 
     void Start() {
         lastScreenSize = new Vector2(Screen.width, Screen.height);
@@ -26,11 +27,11 @@ public class BgFillScreenHorizontally : MonoBehaviour {
         
         float x, y;
         if (cam.aspect >= (float)16/9) {
-            x = (cam.aspect / ((float)16/9)) * initScale.x * 0.9f;
-            y = (cam.aspect / ((float)16/9)) * initScale.y * 0.9f;
+            x = (cam.aspect / ((float)16/9)) * initScale.x * buffer;
+            y = (cam.aspect / ((float)16/9)) * initScale.y * buffer;
         } else {            
-            y = ((cam.aspect / ((float)16/9)) * -1 + 2) * initScale.y * 0.9f;
-            x = ((cam.aspect / ((float)16/9)) * -1 + 2) * initScale.x * 0.9f;
+            y = ((cam.aspect / ((float)16/9)) * -1 + 2) * initScale.y * buffer;
+            x = ((cam.aspect / ((float)16/9)) * -1 + 2) * initScale.x * buffer;
         }
 
         gameObject.transform.localScale = new Vector3 (x, y, initScale.z);
