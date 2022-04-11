@@ -18,15 +18,15 @@ public class SaveFileManager : MonoBehaviour
     [Serializable]
     public class Preferences
     {
-
+        public string testString;
     }
 
     public SaveData saveData;
-    //public Preferences preferences;
+    public Preferences preferences;
 
     private string saveFileName = "savedata";
 
-    public void Save()
+    public void SaveSaveData()
     {
         var form = new BinaryFormatter();
         var path = Application.persistentDataPath + "/" + saveFileName + ".dat";
@@ -36,7 +36,7 @@ public class SaveFileManager : MonoBehaviour
         fs.Close();
     }
 
-    public void Load()
+    public void LoadSaveData()
     {
         var path = Application.persistentDataPath + "/" + saveFileName + ".dat";
 
@@ -53,16 +53,55 @@ public class SaveFileManager : MonoBehaviour
         }
     }
 
+    public void SavePreferences()
+    {
+        var form = new BinaryFormatter();
+        var path = Application.persistentDataPath + "/playerprefs.dat";
+        var fs = new FileStream(path, FileMode.Create);
+
+        form.Serialize(fs, preferences);
+        fs.Close();
+    }
+
+    public void LoadPreferences()
+    {
+        var path = Application.persistentDataPath + "/playerprefs.dat";
+
+        if (File.Exists(path))
+        {
+            var form = new BinaryFormatter();
+            var fs = new FileStream(path, FileMode.Open);
+            
+            preferences = form.Deserialize(fs) as Preferences;
+            fs.Close();
+        } else
+        {
+            Debug.LogError("No save file found");
+        }
+    }
+
     [ConsoleMethod("file.save", "")]
     public static void SaveFile()
     {
-        GameObject.Find("Save File").GetComponent<SaveFileManager>().Save();
+        GameObject.Find("Save File").GetComponent<SaveFileManager>().SaveSaveData();
     }
 
     [ConsoleMethod("file.load", "")]
     public static void LoadFile()
     {
-        GameObject.Find("Save File").GetComponent<SaveFileManager>().Load();
+        GameObject.Find("Save File").GetComponent<SaveFileManager>().LoadSaveData();
+    }
+
+    [ConsoleMethod("prefs.save", "")]
+    public static void SaveFilePref()
+    {
+        GameObject.Find("Save File").GetComponent<SaveFileManager>().SavePreferences();
+    }
+
+    [ConsoleMethod("prefs.load", "")]
+    public static void LoadFilePref()
+    {
+        GameObject.Find("Save File").GetComponent<SaveFileManager>().LoadPreferences();
     }
 
 }
