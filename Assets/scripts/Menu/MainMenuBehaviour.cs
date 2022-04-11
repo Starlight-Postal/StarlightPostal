@@ -34,7 +34,8 @@ public class MainMenuBehaviour : MonoBehaviour {
     }
 
     private void ContinueGame() {
-        StartNewGame();
+        GameObject.FindObjectsOfType<SaveFileManager>()[0].LoadSaveData();
+        CheckpointManager.Respawn();
     }
 
     private void StartNewGame() {
