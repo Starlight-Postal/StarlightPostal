@@ -29,6 +29,10 @@ public class balloon : MonoBehaviour
     public Sprite[] skins;
     public int skin = 0;
 
+    public Color colorBase = new Color(1,1,1,1);
+    public Color colorBurn = new Color(1, 1, 1, 1);
+    public Color colorVent = new Color(1, 1, 1, 1);
+
     public wind wind;
 
     public GameObject anchorObj;
@@ -230,19 +234,19 @@ public class balloon : MonoBehaviour
 
     void TargetControl()
     {
-        sprite.color = new Color(1,0.9f,0.9f);
+        sprite.color = colorBase;
         if (player.inBalloon)
         {
             
             if (Input.GetKey("up") || Input.GetKey("w"))
             {
-                
-                sprite.color = new Color(1,1,1);
+
+                sprite.color = colorBurn;
                 fr += (fillRate * 3 - fr) * 0.0025f;
                 th += fr;
             } else if (Input.GetKey("down") || Input.GetKey("s"))
             {
-                sprite.color = new Color(1, 0.8f,0.8f);
+                sprite.color = colorVent;
                 fr += (fillRate * 3 - fr) * 0.0025f;
                 th -= fr;
             } else
