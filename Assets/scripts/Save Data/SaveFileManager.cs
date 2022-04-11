@@ -62,6 +62,12 @@ public class SaveFileManager : MonoBehaviour
         }
     }
 
+    public bool SaveDataExists()
+    {
+        var path = Application.persistentDataPath + "/" + saveFileName + ".dat";
+        return File.Exists(path);
+    }
+
     public void SavePreferences()
     {
         var form = new BinaryFormatter();
@@ -87,6 +93,12 @@ public class SaveFileManager : MonoBehaviour
         {
             Debug.LogError("No save file found");
         }
+    }
+    
+    public bool PreferencesExists()
+    {
+        var path = Application.persistentDataPath + "/playerprefs.dat";
+        return File.Exists(path);
     }
 
     [ConsoleMethod("file.save", "")]

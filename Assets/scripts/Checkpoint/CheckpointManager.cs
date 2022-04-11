@@ -29,7 +29,7 @@ public class CheckpointManager : MonoBehaviour {
     }
 
     void OnSceneLoad(Scene scene, LoadSceneMode mode) {
-        if (needsMoveOnceSceneIsLoaded) {
+        if (needsMoveOnceSceneIsLoaded && savemgr.saveData.checkpointScene == scene.name) {
             needsMoveOnceSceneIsLoaded = false;
             MoveBalloon();
             GameObject.Find("Main Camera").GetComponent<camera>().Teleport();

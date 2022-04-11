@@ -41,7 +41,7 @@ public class PauseMenuBehaviour : MonoBehaviour {
         resumeButton.RegisterCallback<ClickEvent>(ev => { inMenu = false; });
         resetButton.RegisterCallback<ClickEvent>(ev => { Reset(); });
         quitMenuButton.RegisterCallback<ClickEvent>(ev => { LoadMainMenu(); });
-        quitDesktopButton.RegisterCallback<ClickEvent>(ev => { Application.Quit(); });
+        quitDesktopButton.RegisterCallback<ClickEvent>(ev => { QuitGame(); });
 
         rve.visible = false;
         Rescale();
@@ -57,8 +57,14 @@ public class PauseMenuBehaviour : MonoBehaviour {
     }
 
     private void LoadMainMenu() {
+        GameObject.FindObjectsOfType<SaveFileManager>()[0].SaveSaveData();
         Time.timeScale = 1;
         SceneManager.LoadScene("Main Menu");
+    }
+
+    private void QuitGame() {
+        GameObject.FindObjectsOfType<SaveFileManager>()[0].SaveSaveData();
+        Application.Quit();
     }
 
     private void Rescale() {
