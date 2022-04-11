@@ -105,7 +105,7 @@ public class balloon : MonoBehaviour
         basketTrans = GameObject.Find("Basket").GetComponent<Transform>();
 
         //Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), anchor.GetComponent<Collider2D>(), true);
-        //Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), basketCollider, true); // This was causing ArgumentNullException, Parameter name: collider1
+        Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), basketCollider, true); // This was causing ArgumentNullException, Parameter name: collider1
 
         basket.centerOfMass = new Vector2(0, -1f);
 
