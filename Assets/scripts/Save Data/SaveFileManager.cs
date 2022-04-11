@@ -13,18 +13,27 @@ public class SaveFileManager : MonoBehaviour
     public class SaveData
     {
         public int coins;
+        public int checkpointId;
+        public string checkpointScene;
     }
 
     [Serializable]
     public class Preferences
     {
-        public string testString;
+
     }
 
     public SaveData saveData;
     public Preferences preferences;
 
     private string saveFileName = "savedata";
+
+    void Start()
+    {
+        // Register instance commands
+        DebugLogConsole.AddCommandInstance("data.coins", "Gets current coin count", "GetCoins", this);
+        DebugLogConsole.AddCommandInstance("data.coins", "Sets current coin count", "SetCoins", this);
+    }
 
     public void SaveSaveData()
     {
@@ -102,6 +111,17 @@ public class SaveFileManager : MonoBehaviour
     public static void LoadFilePref()
     {
         GameObject.Find("Save File").GetComponent<SaveFileManager>().LoadPreferences();
+    }
+
+    public void GetCoins()
+    {
+        Debug.Log("Coins: " + saveData.coins);
+    }
+
+    public void SetCoins(int newCoinValue)
+    {
+        saveData.coins = newCoinValue;
+        GetCoins();
     }
 
 }

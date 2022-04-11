@@ -64,7 +64,7 @@ public class balloon : MonoBehaviour
 
     public bool lockEntry = false;
 
-    global_data gdata;
+    SaveFileManager gdata;
 
     public GameObject dropCoin;
 
@@ -74,7 +74,7 @@ public class balloon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gdata = GameObject.Find("Coin Global Data").GetComponent<global_data>();
+        gdata = GameObject.FindObjectsOfType<SaveFileManager>()[0];
         //rb = gameObject.GetComponent<Rigidbody2D>();
         //trans = gameObject.GetComponent<Transform>();
         sprite = gameObject.GetComponent<SpriteRenderer>();
@@ -304,14 +304,14 @@ public class balloon : MonoBehaviour
     void dropCoins(int n)
     {
         //Debug.Log(n);
-        if (n > gdata.coins)
+        if (n > gdata.saveData.coins)
         {
-            n = gdata.coins;
+            n = gdata.saveData.coins;
         }
 
         bonk.CoinsDropped(n);
 
-        gdata.coins -= n;
+        gdata.saveData.coins -= n;
         for(int i = 0;i < n;i++)
         {
             Instantiate(dropCoin, basketTrans.position, Quaternion.identity);
