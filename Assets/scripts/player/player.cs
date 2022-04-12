@@ -25,6 +25,9 @@ public class player : MonoBehaviour
     public int kiSPACE = 0;
     //public EdgeCollider2D targetPlatform;
 
+    public AudioSource sfx_embark;
+    public AudioSource sfx_disembark;
+
 
     public string aniMode = "idle";
     public float aniSpeed = 0.25f;
@@ -110,6 +113,8 @@ public class player : MonoBehaviour
                             inBalloon = false;
                             //Debug.Log("disembark");
                             swap = false;
+
+                            sfx_disembark.Play(0);
                         }
                     }
                 }
@@ -254,6 +259,7 @@ public class player : MonoBehaviour
                                 //Debug.Log("embark");
                                 inBalloon = true;
                                 swap = false;
+                                sfx_embark.Play(0);
                             }
                         }
                     }
@@ -285,6 +291,7 @@ public class player : MonoBehaviour
                     inChair = false;
                     chair = null;
                     Debug.Log("chair out");
+                    sfx_disembark.Play(0);
                 }
             } else
             {

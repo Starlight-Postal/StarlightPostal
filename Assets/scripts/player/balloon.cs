@@ -70,6 +70,9 @@ public class balloon : MonoBehaviour
 
     public BonkSoundController bonk;
 
+    public AudioSource sfx_anchor_out;
+    public AudioSource sfx_anchor_in;
+
 
     // Start is called before the first frame update
     void Start()
@@ -168,6 +171,8 @@ public class balloon : MonoBehaviour
                     anchorObj.SetActive(false);
                     anchor.stuck = false;
                     anchor.landed = false;
+
+                    sfx_anchor_in.Play(0);
                 }
             } else
             {
@@ -210,6 +215,7 @@ public class balloon : MonoBehaviour
                     anchor.stuck = false;
                     anchor.landed = false;
                     //anchor.GetComponent<SpringJoint2D>().distance = 10;
+                    sfx_anchor_out.Play(0);
                 }
             }
             line.enabled = false;

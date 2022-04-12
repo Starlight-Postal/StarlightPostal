@@ -14,15 +14,24 @@ public class lift_chair : MonoBehaviour
     public Transform playerTrans;
     public player player;
     public float range = 2;
+
+    public AudioSource sfx_attach;
+    public AudioSource sfx_sit;
+    public AudioSource sfx_unsit;
+
+    balloon balloon;
+
     // Start is called before the first frame update
     void Start()
     {
         trans = gameObject.GetComponent<Transform>();
-        anchor = GameObject.Find("balloon").GetComponent<balloon>().anchorObj.GetComponent<anchor>();
+        balloon = GameObject.Find("balloon").GetComponent<balloon>();
+        anchor=balloon.anchorObj.GetComponent<anchor>();
         anchorTrans = GameObject.Find("balloon").GetComponent<balloon>().anchorObj.GetComponent<Transform>();
 
         player = GameObject.Find("player").GetComponent<player>();
         playerTrans = player.gameObject.GetComponent<Transform>();
+
         
     }
 
@@ -53,18 +62,25 @@ public class lift_chair : MonoBehaviour
                     player.inChair = false;
                     player.chair = null;
                     Debug.Log("chair end");
+                    sfx_unsit.Play(0);
                 }
             }
             
         }
 
-        if (new Vector2(trans.position.x- anchorTrans.position.x, trans.position.y- anchorTrans.position.y).magnitude < 1)
+        if (balloon.anchored&&new Vector2(trans.position.x - anchorTrans.position.x, trans.position.y - anchorTrans.position.y).magnitude < 1)
         {
+            if (anchor.target != gameObject)
+            {
+                sfx_attach.Play(0);
+                Debug.Log("snatched");
+            }
             anchor.target = gameObject;
             anchor.targetTrans = trans;
-            anchor.tOff = new Vector3(0, 0, anchorTrans.position.z-trans.position.z);// anchorTrans.position - trans.position;
+            anchor.tOff = new Vector3(0, 0, anchorTrans.position.z - trans.position.z);// anchorTrans.position - trans.position;
             //anchorTrans.position = trans.position;
-            Debug.Log("snatched");
+            
+            
         }
 
         if (player.inChair)
@@ -83,6 +99,7 @@ public class lift_chair : MonoBehaviour
                         player.inChair = true;
                         player.chair = trans;
                         Debug.Log("in chair");
+                        sfx_sit.Play(0);
                     }
                 }
             }
