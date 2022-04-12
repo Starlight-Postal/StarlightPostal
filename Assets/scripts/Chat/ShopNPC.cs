@@ -30,6 +30,17 @@ public class ShopNPC : MonoBehaviour
     private Label Shop2;
     private Label Shop3;
 
+    private Label skin1;
+    private Label skin2;
+    private Label skin3;
+    private Label skin4;
+    private Label skin5;
+    private Label skin6;
+    private Label skin7;
+    private Label skin8;
+    private Label skin9;
+
+
     [SerializeField] private VisualElement rve;
 
 
@@ -55,8 +66,11 @@ public class ShopNPC : MonoBehaviour
             visualCue.SetActive(true);
             if (Input.GetKeyDown("space"))
             {
+                openShop();
                 inMenu = true;
                 updateStage();
+                turnoffimage();
+                Displayimage();
 
             }
         }
@@ -67,7 +81,6 @@ public class ShopNPC : MonoBehaviour
             visualCue.SetActive(false);
             inMenu = false;
         }
-
         if (inMenu) { openShop(); }
         else { closeShop(); }
     }
@@ -85,6 +98,16 @@ public class ShopNPC : MonoBehaviour
         button1 = rve.Q<Button>("Balloon1");
         button2 = rve.Q<Button>("Balloon2");
         button3 = rve.Q<Button>("Balloon3");
+        
+        skin1 = rve.Q<Label>("skin1");
+        skin2 = rve.Q<Label>("skin2");
+        skin3 = rve.Q<Label>("skin3");
+        skin4 = rve.Q<Label>("skin4");
+        skin5 = rve.Q<Label>("skin5");
+        skin6 = rve.Q<Label>("skin6");
+        skin7 = rve.Q<Label>("skin7");
+        skin8 = rve.Q<Label>("skin8");
+        skin9 = rve.Q<Label>("skin9");
 
         button1.RegisterCallback<ClickEvent>(ev =>
         {
@@ -194,7 +217,7 @@ public class ShopNPC : MonoBehaviour
 
     private void closeShop()
     {
-
+        turnoffimage();
         rve.visible = false;
     }
 
@@ -221,6 +244,42 @@ public class ShopNPC : MonoBehaviour
         }
     }
 
+    private void Displayimage()
+    {
+        if (stage == 1)
+        {
+            skin1.visible = true;
+            skin2.visible = true;
+            skin3.visible = true;
+        }
+        if (stage == 2)
+        {
+            skin4.visible = true;
+            skin5.visible = true;
+            skin6.visible = true;
+        }
+        if (stage == 3)
+        {
+            skin7.visible = true;
+            skin8.visible = true;
+            skin9.visible = true;
+        }
+    }
+
+    private void turnoffimage()
+    {
+
+        skin1.visible = false;
+        skin2.visible = false;
+        skin3.visible = false;
+        skin4.visible = false;
+        skin5.visible = false;
+        skin6.visible = false;
+        skin7.visible = false;
+        skin8.visible = false;
+        skin9.visible = false;
+
+    }
 
 
 }

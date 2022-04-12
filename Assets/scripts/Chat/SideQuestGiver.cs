@@ -20,8 +20,8 @@ public class SideQuestGiver : MonoBehaviour
     public bool grabbedDog = false;
 
     // Start is called before the first frame update
-    private Button firstButton;
-    private Button secondButton;
+    private Button yesButton;
+    private Button noButton;
     private Label Script;
     private int counter;
 
@@ -86,14 +86,14 @@ public class SideQuestGiver : MonoBehaviour
     private void OnEnable()
     {
         rve = GetComponent<UIDocument>().rootVisualElement;
-        firstButton = rve.Q<Button>("firstButton");
+        yesButton = rve.Q<Button>("yesButton");
         Script = rve.Q<Label>("chatLabel");
-        secondButton = rve.Q<Button>("secondButton");
-        secondButton.visible = false;
+        noButton = rve.Q<Button>("noButton");
+        noButton.visible = false;
 
-        firstButton.RegisterCallback<ClickEvent>(ev =>
+        yesButton.RegisterCallback<ClickEvent>(ev =>
         {
-            if (firstButton.visible == true)
+            if (yesButton.visible == true)
             {
                 counter++;
                 Script.text = script[counter];
@@ -101,9 +101,9 @@ public class SideQuestGiver : MonoBehaviour
             }
         }
         );
-        secondButton.RegisterCallback<ClickEvent>(ev =>
+        noButton.RegisterCallback<ClickEvent>(ev =>
         {
-            if (secondButton.visible == true)
+            if (noButton.visible == true)
             {
 
             }
@@ -134,24 +134,24 @@ public class SideQuestGiver : MonoBehaviour
         rve.visible = true;
         if (!(counter == checkpoint))
         {
-            secondButton.visible = false;
-            firstButton.text = "Space";
+            noButton.visible = false;
+            yesButton.text = "Space";
 
         }
         else
         {
-            secondButton.visible = true;
-            firstButton.text = "Sure";
-            secondButton.text = "hell no";
+            noButton.visible = true;
+            yesButton.text = "Sure";
+            noButton.text = "hell no";
         }
     }
 
     private void endUI()
     {
-       // rve.visible = false;
-       // secondButton.visible = false;
+        // rve.visible = false;
+        // noButton.visible = false;
         //counter = 0;
-       // Script.text = script[counter];
+        // Script.text = script[counter];
     }
 }
 

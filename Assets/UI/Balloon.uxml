@@ -5,15 +5,21 @@
         </ui:VisualElement>
     </ui:VisualElement>
     <ui:VisualElement name="Shop1" style="left: 25%; top: 71%; width: 15%; height: 23%; position: relative; display: flex;">
-        <ui:Label display-tooltip-when-elided="true" name="Starting" style="background-image: resource(&apos;textures/Balloons/stripes-1&apos;); width: 100%; height: 80%; left: 0; top: 0;" />
-        <ui:Button text="Select" display-tooltip-when-elided="true" name="Balloon1" style="width: 90%; height: 15%; left: 5%; top: 5%; background-color: rgba(178, 178, 178, 255); -unity-text-outline-color: rgba(0, 0, 0, 255);" />
+        <ui:Label display-tooltip-when-elided="true" name="skin1" style="background-image: resource(&apos;textures/Balloons/stripes-1&apos;); width: 100%; height: 80%; left: 0; top: 0;" />
+        <ui:Label display-tooltip-when-elided="true" name="skin4" style="background-image: resource(&apos;textures/Level 1 Environment/Props/Bar&apos;); width: 100%; height: 80%; left: 0; top: 0; position: absolute; -unity-font-definition: none;" />
+        <ui:Label display-tooltip-when-elided="true" name="skin7" style="background-image: resource(&apos;textures/Balloons/stripes-1&apos;); width: 100%; height: 80%; left: 0; top: 0; position: absolute;" />
+        <ui:Button text="Select" display-tooltip-when-elided="true" name="Balloon1" style="width: 90%; height: 15%; left: 5%; top: 5%; background-color: rgb(178, 178, 178); -unity-text-outline-color: rgb(0, 0, 0);" />
     </ui:VisualElement>
     <ui:VisualElement name="Shop2" style="left: 42.5%; top: 48%; height: 23%; width: 15%; display: flex;">
-        <ui:Label display-tooltip-when-elided="true" name="Logo" style="background-image: resource(&apos;textures/Balloons/logo-1&apos;); width: 100%; height: 80%; left: 0; top: 0;" />
+        <ui:Label display-tooltip-when-elided="true" name="skin2" style="background-image: resource(&apos;textures/Balloons/logo-1&apos;); width: 100%; height: 80%; left: 0; top: 0;" />
+        <ui:Label display-tooltip-when-elided="true" name="skin5" style="background-image: resource(&apos;textures/Balloons/logo-1&apos;); width: 100%; height: 80%; left: 0; top: 0; position: absolute;" />
+        <ui:Label display-tooltip-when-elided="true" name="skin8" style="background-image: resource(&apos;textures/Balloons/logo-1&apos;); width: 100%; height: 80%; left: 0; top: 0; position: absolute;" />
         <ui:Button text="Unlock at 50 stars" display-tooltip-when-elided="true" name="Balloon2" style="width: 90%; height: 15%; left: 5%; top: 5%; background-color: rgba(0, 0, 0, 0.33); color: rgb(255, 255, 255); -unity-text-align: middle-center;" />
     </ui:VisualElement>
     <ui:VisualElement name="Shop3" style="left: 60%; top: 24%; width: 15%; height: 23%; right: auto; display: flex;">
-        <ui:Label display-tooltip-when-elided="true" name="Sonic" style="background-image: resource(&apos;textures/Balloons/epic&apos;); width: 100%; height: 85%; left: 0; top: 2%;" />
-        <ui:Button text="Unlock at 200 stars" display-tooltip-when-elided="true" name="Balloon3" style="width: 90%; height: 15%; left: 5%; top: 5%; background-color: rgba(179, 179, 179, 255);" />
+        <ui:Label display-tooltip-when-elided="true" name="skin3" style="background-image: resource(&apos;textures/Balloons/epic&apos;); width: 100%; height: 85%; left: 0; top: 2%;" />
+        <ui:Label display-tooltip-when-elided="true" name="skin6" style="background-image: resource(&apos;textures/Balloons/epic&apos;); width: 100%; height: 85%; left: 0; top: 2%; position: absolute;" />
+        <ui:Label display-tooltip-when-elided="true" name="skin9" style="background-image: resource(&apos;textures/Balloons/epic&apos;); width: 100%; height: 85%; left: 0; top: 2%; position: absolute;" />
+        <ui:Button text="Unlock at 200 stars" display-tooltip-when-elided="true" name="Balloon3" style="width: 90%; height: 15%; left: 5%; top: 5%; background-color: rgb(179, 179, 179);" />
     </ui:VisualElement>
 </ui:UXML>
