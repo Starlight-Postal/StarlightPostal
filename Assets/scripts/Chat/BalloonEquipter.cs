@@ -116,34 +116,34 @@ public class BalloonEquipter : MonoBehaviour
 
         Button0.RegisterCallback<ClickEvent>(ev =>
         {
-            if (gdata.balloon0 == 1)
+            if (gdata.balloon0 == 1 && !(gdata.balloon == 0))
             {
                 Label0.text = "Equipped";
-                balloon.ChangeBalloonSkin("logo-1");
+                balloon.ChangeBalloonSkin("stripes-1");
                 gdata.balloon = 0;
             }
         });
         Button1.RegisterCallback<ClickEvent>(ev =>
         {
-            if (gdata.balloon1 == 1)
+            if (gdata.balloon1 == 1 && !(gdata.balloon == 1))
             {
                 Label1.text = "Equipped";
-                balloon.ChangeBalloonSkin("stripes-1");
+                balloon.ChangeBalloonSkin("logo-1");
                 gdata.balloon = 1;
             }
         });
         Button2.RegisterCallback<ClickEvent>(ev =>
         {
-            if (gdata.balloon2 == 1)
+            if (gdata.balloon2 == 1 && !(gdata.balloon == 2))
             {
                 Label2.text = "Equipped";
-                // balloon.ChangeBalloonSkin("stripes-1");
+                balloon.ChangeBalloonSkin("epic");
                 gdata.balloon = 2;
             }
         });
         Button3.RegisterCallback<ClickEvent>(ev =>
         {
-            if (gdata.balloon3 == 1)
+            if (gdata.balloon3 == 1 && !(gdata.balloon == 3))
             {
                 Label3.text = "Equipped";
                 // balloon.ChangeBalloonSkin("stripes-1");
@@ -152,7 +152,7 @@ public class BalloonEquipter : MonoBehaviour
         });
         Button4.RegisterCallback<ClickEvent>(ev =>
         {
-            if (gdata.balloon4 == 1)
+            if (gdata.balloon4 == 1 && !(gdata.balloon == 4))
             {
                 Label4.text = "Equipped";
                 // balloon.ChangeBalloonSkin("stripes-1");
@@ -161,7 +161,7 @@ public class BalloonEquipter : MonoBehaviour
         });
         Button5.RegisterCallback<ClickEvent>(ev =>
         {
-            if (gdata.balloon5 == 1)
+            if (gdata.balloon5 == 1 && !(gdata.balloon == 5))
             {
                 Label5.text = "Equipped";
                 // balloon.ChangeBalloonSkin("stripes-1");
@@ -170,7 +170,7 @@ public class BalloonEquipter : MonoBehaviour
         });
         Button6.RegisterCallback<ClickEvent>(ev =>
         {
-            if (gdata.balloon6 == 1)
+            if (gdata.balloon6 == 1 && !(gdata.balloon == 6))
             {
                 Label6.text = "Equipped";
                 // balloon.ChangeBalloonSkin("stripes-1");
@@ -179,7 +179,7 @@ public class BalloonEquipter : MonoBehaviour
         });
         Button7.RegisterCallback<ClickEvent>(ev =>
         {
-            if (gdata.balloon7 == 1)
+            if (gdata.balloon7 == 1 && !(gdata.balloon == 7))
             {
                 Label7.text = "Equipped";
                 // balloon.ChangeBalloonSkin("stripes-1");
@@ -188,7 +188,7 @@ public class BalloonEquipter : MonoBehaviour
         });
         Button8.RegisterCallback<ClickEvent>(ev =>
         {
-            if (gdata.balloon8 == 1)
+            if (gdata.balloon8 == 1 && !(gdata.balloon == 8))
             {
                 Label8.text = "Equipped";
                 // balloon.ChangeBalloonSkin("stripes-1");
@@ -198,7 +198,7 @@ public class BalloonEquipter : MonoBehaviour
         Button9.RegisterCallback<ClickEvent>(ev =>
         {
         
-            if (gdata.balloon9 == 1)
+            if (gdata.balloon9 == 1 && !(gdata.balloon == 9))
             {
                 Label9.text = "Equipped";
                 // balloon.ChangeBalloonSkin("stripes-1");

@@ -88,55 +88,55 @@ public class ShopNPC : MonoBehaviour
 
         button1.RegisterCallback<ClickEvent>(ev =>
         {
-            if (gdata.coins >= 50 && !(gdata.balloon1 == 1) && stage == 1)
+            if (gdata.coins >= 150 && !(gdata.balloon1 == 1) && stage == 1)
             {
-                gdata.coins = gdata.coins - 50;
+                gdata.coins = gdata.coins - 150;
                 gdata.balloon1 = 1;
             }
-            else if (gdata.coins >= 50 && !(gdata.balloon4 == 1) && stage == 2)
+            else if (gdata.coins >= 150 && !(gdata.balloon4 == 1) && stage == 2)
             {
-                gdata.coins = gdata.coins - 50;
+                gdata.coins = gdata.coins - 150;
                 gdata.balloon4 = 1;
             }
-            else if (gdata.coins >= 50 && !(gdata.balloon7 == 1) && stage == 3)
+            else if (gdata.coins >= 150 && !(gdata.balloon7 == 1) && stage == 3)
             {
-                gdata.coins = gdata.coins - 50;
+                gdata.coins = gdata.coins - 150;
                 gdata.balloon7 = 1;
             }
         });
         button2.RegisterCallback<ClickEvent>(ev =>
         {
-            if (gdata.coins >= 100 && !(gdata.balloon2 == 1) && stage == 1)
+            if (gdata.coins >= 200 && !(gdata.balloon2 == 1) && stage == 1)
             {
-                gdata.coins = gdata.coins - 100;
+                gdata.coins = gdata.coins - 200;
                 gdata.balloon2 = 1;
             }
-            else if (gdata.coins >= 100 && !(gdata.balloon5 == 1) && stage == 2)
+            else if (gdata.coins >= 200 && !(gdata.balloon5 == 1) && stage == 2)
             {
-                gdata.coins = gdata.coins - 100;
+                gdata.coins = gdata.coins - 200;
                 gdata.balloon5 = 1;
             }
-            else if (gdata.coins >= 100 && !(gdata.balloon8 == 1) && stage == 3)
+            else if (gdata.coins >= 200 && !(gdata.balloon8 == 1) && stage == 3)
             {
-                gdata.coins = gdata.coins - 100;
+                gdata.coins = gdata.coins - 200;
                 gdata.balloon8 = 1;
             }
         });
         button3.RegisterCallback<ClickEvent>(ev =>
         {
-            if (gdata.coins >= 150 && !(gdata.balloon3 == 1) && stage == 1)
+            if (gdata.coins >= 250 && !(gdata.balloon3 == 1) && stage == 1)
             {
-                gdata.coins = gdata.coins - 150;
+                gdata.coins = gdata.coins - 250;
                 gdata.balloon3 = 1;
             }
-            else if (gdata.coins >= 150 && !(gdata.balloon6 == 1) && stage == 2)
+            else if (gdata.coins >= 350 && !(gdata.balloon6 == 1) && stage == 2)
             {
-                gdata.coins = gdata.coins - 150;
+                gdata.coins = gdata.coins - 350;
                 gdata.balloon6 = 1;
             }
-            else if (gdata.coins >= 150 && !(gdata.balloon9 == 1) && stage == 3)
+            else if (gdata.coins >= 450 && !(gdata.balloon9 == 1) && stage == 3)
             {
-                gdata.coins = gdata.coins - 150;
+                gdata.coins = gdata.coins - 450;
                 gdata.balloon9 = 1;
             }
         });
@@ -150,29 +150,29 @@ public class ShopNPC : MonoBehaviour
         if (stage == 1)
         {
             if (gdata.balloon1 == 1) { button1.text = "Owned"; }
-            else { button1.text = "Costs 50 stars"; }
-            if (gdata.balloon1 == 1) { button2.text = "Owned"; }
-            else { button2.text = "Costs 100 stars"; }
-            if (gdata.balloon1 == 1) { button3.text = "Owned"; }
-            else { button3.text = "Costs 150 stars"; }
+            else { button1.text = "Costs 150 stars"; }
+            if (gdata.balloon2 == 1) { button2.text = "Owned"; }
+            else { button2.text = "Costs 200 stars"; }
+            if (gdata.balloon3 == 1) { button3.text = "Owned"; }
+            else { button3.text = "Costs 250 stars"; }
         }
         if (stage == 2)
         {
-            if (gdata.balloon2 == 1) { button1.text = "Owned"; }
-            else { button1.text = "Costs 50 stars"; }
+            if (gdata.balloon4 == 1) { button1.text = "Owned"; }
+            else { button1.text = "Costs 150 stars"; }
             if (gdata.balloon5 == 1) { button2.text = "Owned"; }
-            else { button2.text = "Costs 100 stars"; }
-            if (gdata.balloon8 == 1) { button3.text = "Owned"; }
-            else { button3.text = "Costs 150 stars"; }
+            else { button2.text = "Costs 200 stars"; }
+            if (gdata.balloon6 == 1) { button3.text = "Owned"; }
+            else { button3.text = "Costs 350 stars"; }
         }
         if (stage == 3)
         {
-            if (gdata.balloon3 == 1) { button1.text = "Owned"; }
-            else { button1.text = "Costs 50 stars"; }
-            if (gdata.balloon6 == 1) { button2.text = "Owned"; }
-            else { button2.text = "Costs 100 stars"; }
+            if (gdata.balloon7 == 1) { button1.text = "Owned"; }
+            else { button1.text = "Costs 150 stars"; }
+            if (gdata.balloon8 == 1) { button2.text = "Owned"; }
+            else { button2.text = "Costs 200 stars"; }
             if (gdata.balloon9 == 1) { button3.text = "Owned"; }
-            else { button3.text = "Costs 150 stars"; }
+            else { button3.text = "Costs 450 stars"; }
         }
     }
 

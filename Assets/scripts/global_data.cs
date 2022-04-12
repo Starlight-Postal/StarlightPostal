@@ -23,7 +23,7 @@ public class global_data : MonoBehaviour
     void Start()
     {
         coins = 0;
-        balloon = 1;
+        balloon = 0;
     }
 
     // Update is called once per frame
