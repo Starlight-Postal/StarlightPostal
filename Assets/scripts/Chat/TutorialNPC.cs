@@ -130,31 +130,31 @@ public class TutorialNPC : Conversation
         switch (subphase)
         {
             case 0:
-                if (walkTo(1.75f, 2.68f, walkSpeed))
+                if (walkTo(1.86f, 2.59f, walkSpeed))
                     subphase++;
                 return false;
             case 1:
-                if (walkTo(-0.54f, 0.58f, walkSpeed))
+                if (walkTo(-0.13f, 0.50f, walkSpeed))
                     subphase++;
                 return false;
             case 2:
-                if (walkTo(-4f, 0.58f, walkSpeed))
+                if (walkTo(-4f, 0.5f, walkSpeed))
                     subphase++;
                 return false;
             case 3:
-                if (walkTo(-4.55f, 0.44f, walkSpeed))
+                if (walkTo(-4.2f, 0.35f, walkSpeed))
                     subphase++;
                 return false;
             case 4:
-                if (walkTo(-7.7f, 0.44f, walkSpeed))
+                if (walkTo(-7.5f, 0.35f, walkSpeed))
                     subphase++;
                 return false;
             case 5:
-                if (walkTo(-9f, 0.75f, walkSpeed))
+                if (walkTo(-8.74f, 0.67f, walkSpeed))
                     subphase++;
                 return false;
             case 6:
-                if (walkTo(-9.5f, 0.75f, walkSpeed))
+                if (walkTo(-9.5f, 0.67f, walkSpeed))
                 {
                     subphase = 0;
                     return true;
