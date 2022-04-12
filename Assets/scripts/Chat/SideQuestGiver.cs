@@ -77,15 +77,9 @@ public class SideQuestGiver : MonoBehaviour
             inMenu = false;
         }
 
-/*        //Gets rid of the chat if they hid next one more time
-        if (counter >= script.Length)
-        {
-            inMenu = false;
-            //rve.visible = inMenu;
-        }
-        if (counter == script.Length - 1) { firstButton.text = "End"; }*/
 
-        if (inMenu) { startUI(); }
+
+        if (inMenu = true) { startUI(); }
         else { endUI(); }
     }
 
@@ -154,10 +148,10 @@ public class SideQuestGiver : MonoBehaviour
 
     private void endUI()
     {
-        rve.visible = false;
-        secondButton.visible = false;
-        counter = 0;
-        Script.text = script[counter];
+       // rve.visible = false;
+       // secondButton.visible = false;
+        //counter = 0;
+       // Script.text = script[counter];
     }
 }
 

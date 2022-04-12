@@ -11,6 +11,8 @@ public class ShopNPC : MonoBehaviour
     [SerializeField] private GameObject visualCue;
 
     public bool playerInRange;
+    [SerializeField] public int stage;
+
 
     public player player;
     public balloon balloon;
@@ -32,7 +34,6 @@ public class ShopNPC : MonoBehaviour
 
 
     public global_data gdata;
-    public global_data balloonNumber;
 
     private bool ownBalloon2;
     private bool ownBalloon3;
@@ -43,7 +44,6 @@ public class ShopNPC : MonoBehaviour
         visualCue.SetActive(false);
         player = GameObject.Find("player").GetComponent<player>();
         gdata = GameObject.Find("Coin Global Data").GetComponent<global_data>();
-        balloonNumber = GameObject.Find("Coin Global Data").GetComponent<global_data>();
         updateShop();
     }
 
@@ -79,78 +79,101 @@ public class ShopNPC : MonoBehaviour
         Shop1 = rve.Q<Label>("Shop1");
         Shop2 = rve.Q<Label>("Shop2");
         Shop3 = rve.Q<Label>("Shop3");
-        
+
         button1 = rve.Q<Button>("Balloon1");
         button2 = rve.Q<Button>("Balloon2");
         button3 = rve.Q<Button>("Balloon3");
 
         button1.RegisterCallback<ClickEvent>(ev =>
-          {
-              if (!(gdata.balloon == 1))
-              {
-                  gdata.balloon = 1;
-                  balloon.ChangeBalloonSkin("stripes-1");
-              }
-          });
-          button2.RegisterCallback<ClickEvent>(ev =>
-          {
-              if (ownBalloon2 && !(gdata.balloon == 2))
-              {
-                  gdata.balloon = 2;
-                  balloon.ChangeBalloonSkin("logo-1");
-              }
-          });
-          button3.RegisterCallback<ClickEvent>(ev =>
-          {
-              if (ownBalloon3 && !(gdata.balloon == 3))
-              {
-                  gdata.balloon = 3;
-                  balloon.ChangeBalloonSkin("epic");
-              }
-          });
-  
+        {
+            if (gdata.coins > 50 && !(gdata.balloon1 == 1) && stage == 1)
+            {
+                gdata.coins = gdata.coins - 50;
+                gdata.balloon1 = 1;
+            }
+            else if (gdata.coins > 50 && !(gdata.balloon4 == 1) && stage == 2)
+            {
+                gdata.coins = gdata.coins - 50;
+                gdata.balloon4 = 1;
+            }
+            else if (gdata.coins > 50 && !(gdata.balloon7 == 1) && stage == 3)
+            {
+                gdata.coins = gdata.coins - 50;
+                gdata.balloon7 = 1;
+            }
+        });
+        button2.RegisterCallback<ClickEvent>(ev =>
+        {
+            if (gdata.coins > 50 && !(gdata.balloon2 == 1) && stage == 1)
+            {
+                gdata.coins = gdata.coins - 100;
+                gdata.balloon2 = 1;
+            }
+            else if (gdata.coins > 50 && !(gdata.balloon5 == 1) && stage == 2)
+            {
+                gdata.coins = gdata.coins - 100;
+                gdata.balloon5 = 1;
+            }
+            else if (gdata.coins > 50 && !(gdata.balloon8 == 1) && stage == 3)
+            {
+                gdata.coins = gdata.coins - 100;
+                gdata.balloon8 = 1;
+            }
+        });
+        button3.RegisterCallback<ClickEvent>(ev =>
+        {
+            if (gdata.coins > 50 && !(gdata.balloon3 == 1) && stage == 1)
+            {
+                gdata.coins = gdata.coins - 150;
+                gdata.balloon3 = 1;
+            }
+            else if (gdata.coins > 50 && !(gdata.balloon6 == 1) && stage == 2)
+            {
+                gdata.coins = gdata.coins - 150;
+                gdata.balloon6 = 1;
+            }
+            else if (gdata.coins > 50 && !(gdata.balloon9 == 1) && stage == 3)
+            {
+                gdata.coins = gdata.coins - 150;
+                gdata.balloon9 = 1;
+            }
+        });
+
 
         rve.visible = false;
     }
 
     private void updateShop()
     {
-        if (gdata.balloon == 1)
-        {
-            button1.text = "Equipped";
-            button2.text = "Select";
-            button3.text = "Select";
-        }
-        if (gdata.balloon == 2)
-        {
-            button1.text = "Select";
-            button2.text = "Equipped";
-            button3.text = "Select";
-        }
-        if (gdata.balloon == 3)
-        {
-            button1.text = "Select";
-            button2.text = "Select";
-            button3.text = "Equipped";
-        }
-
-    }
-    private void unlockShopSkins()
-    {
-        if (gdata.coins > 50 && !(gdata.balloon == 2))
-        {
-            ownBalloon2 = true;
-            button2.text = "Select";
-        }
-        else { button2.text = "Buy for 50 stars"; }
-        if (gdata.coins > 200 && !(gdata.balloon == 3))
+        if(stage == 1)
         { 
-            ownBalloon3 = true;
-            button3.text = "Select";
+            if (gdata.balloon1 == 1) { button1.text = "Owned"; }
+            else { button1.text = "Costs 50 stars"; }
+            if (gdata.balloon1 == 4) { button2.text = "Owned"; }
+            else { button2.text = "Costs 100 stars"; }
+            if (gdata.balloon1 == 7) { button3.text = "Owned"; }
+            else { button3.text = "Costs 150 stars"; }
         }
-       else { button3.text = "Buy for 200 stars"; }
+        if (stage == 2)
+        {
+            if (gdata.balloon2 == 2) { button1.text = "Owned"; }
+            else { button1.text = "Costs 50 stars"; }
+            if (gdata.balloon5 == 5) { button2.text = "Owned"; }
+            else { button2.text = "Costs 100 stars"; }
+            if (gdata.balloon8 == 8) { button3.text = "Owned"; }
+            else { button3.text = "Costs 150 stars"; }
+        }
+        if (stage == 3)
+        {
+            if (gdata.balloon3 == 3) { button1.text = "Owned"; }
+            else { button1.text = "Costs 50 stars"; }
+            if (gdata.balloon6 == 6) { button2.text = "Owned"; }
+            else { button2.text = "Costs 100 stars"; }
+            if (gdata.balloon9 == 9) { button3.text = "Owned"; }
+            else { button3.text = "Costs 150 stars"; }
+        }
     }
-
+   
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.tag == "Player")
@@ -193,3 +216,6 @@ public class ShopNPC : MonoBehaviour
 
 
 }
+
+
+// balloon.ChangeBalloonSkin("stripes-1");
