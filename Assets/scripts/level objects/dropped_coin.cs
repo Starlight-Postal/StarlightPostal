@@ -11,7 +11,7 @@ public class dropped_coin : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        velocity = new Vector2(Random.Range(-p, p), Random.Range(0, p));
+        velocity = new Vector2(Random.Range(-p, p), Random.Range(0, p*2));
         trans = gameObject.GetComponent<Transform>();
     }
 

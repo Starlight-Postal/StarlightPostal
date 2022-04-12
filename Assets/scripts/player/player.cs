@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using IngameDebugConsole;
 
 public class player : MonoBehaviour
 {
@@ -42,6 +43,9 @@ public class player : MonoBehaviour
     public float camRange = 1f;
     public float camCenter = 0.5f;
 
+    public bool inChair = false;
+    public Transform chair = null;
+
     public List<EdgeCollider2D> platformQueueu;
     // Start is called before the first frame update
     void Start()
@@ -80,6 +84,9 @@ public class player : MonoBehaviour
         aniLookDown = new Sprite[1];
         aniLookDown[0] = Resources.Load<Sprite>("textures/Player/player_down");
         camHeight = 0;
+
+        // Register instance commands
+        DebugLogConsole.AddCommandInstance("player.inballoon", "Toggle the player in and out of the balloon", "ToggleInBalloon", this);
     }
 
     // Update is called once per frame
@@ -92,9 +99,9 @@ public class player : MonoBehaviour
             {
                 sprite.enabled = false;
                 collider.enabled = false;
-                trans.position = new Vector3(balloonTrans.position.x, balloonTrans.position.y - 2.5f, 0);
+                trans.position = new Vector3(balloon.basketTrans.position.x, balloon.basketTrans.position.y, 0);
                 rb.velocity = new Vector2(0, 0);
-                if (Input.GetKey("space"))
+                if (kiSPACE == 1)
                 {
                     if (swap)
                     {
@@ -178,7 +185,7 @@ public class player : MonoBehaviour
                     }
                 }
 
-                if (kiDOWN == 1)
+                if (kiDOWN == 1&&!inChair)
                 {
                     RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(0, -1), 0.6f, LayerMask.GetMask("Default"));
                     if (hit != null)
@@ -250,88 +257,120 @@ public class player : MonoBehaviour
                             }
                         }
                     }
-                    else
-                    {
-                        swap = true;
-                    }
 
-                }
-
-
-                Sprite[] ani = aniIdle;
-                switch (aniMode)
-                {
-                    case "idle":
-                        ani = aniIdle;
-                        aniSpeed = aniIdleSpeed;
-                        break;
-                    case "wait":
-                        ani = aniWait;
-                        aniSpeed = aniWaitSpeed;
-                        break;
-                    case "walk":
-                        ani = aniWalk;
-                        aniSpeed = aniWalkSpeed;
-                        break;
-                    case "lookUp":
-                        ani = aniLookUp;
-                        aniSpeed = 1;
-                        break;
-                    case "lookDown":
-                        ani = aniLookDown;
-                        aniSpeed = 1;
-                        break;
-                    default:
-                        break;
-                }
-
-                aniFrame = aniFrame % ani.Length;
-                sprite.sprite = ani[(int)aniFrame];
-                aniFrame = (aniFrame + aniSpeed) % ani.Length;
-                //sprite.flipX = !facingRight;
-                if (facingRight)
-                {
-                    trans.localScale += new Vector3((0.25f - trans.localScale.x) * 0.2f, 0, 0);
                 }
                 else
                 {
-                    trans.localScale += new Vector3((-0.25f - trans.localScale.x) * 0.2f, 0, 0);
+                    swap = true;
                 }
             }
         }
 
-        void UIUpdate()
+        
+
+        if (inBalloon)
         {
-            if (Input.GetKey("down") || Input.GetKey("s"))
+            inChair = false;
+            chair = null;
+        } else
+        {
+            if (inChair)
             {
-                if (kiDOWN == 0)
+                aniMode = "idle";
+                rb.velocity *= 0;
+                collider.enabled = false;
+                trans.position = new Vector3(chair.position.x, chair.position.y-0.5f, trans.position.z);
+                if (kiSPACE == 1 || kiDOWN == 1)
                 {
-                    kiDOWN = 1;
+                    inChair = false;
+                    chair = null;
+                    Debug.Log("chair out");
                 }
-                else
-                {
-                    kiDOWN = 2;
-                }
-            }
-            else
+            } else
             {
-                kiDOWN = 0;
+                collider.enabled = true;
             }
-            if (Input.GetKey("space"))
-            {
-                if (kiSPACE == 0)
-                {
-                    kiSPACE = 1;
-                }
-                else
-                {
-                    kiSPACE = 2;
-                }
-            }
-            else
-            {
-                kiSPACE = 0;
-            }
+        }
+
+        
+        Sprite[] ani = aniIdle;
+        switch (aniMode)
+        {
+            case "idle":
+                ani = aniIdle;
+                aniSpeed = aniIdleSpeed;
+                break;
+            case "wait":
+                ani = aniWait;
+                aniSpeed = aniWaitSpeed;
+                break;
+            case "walk":
+                ani = aniWalk;
+                aniSpeed = aniWalkSpeed;
+                break;
+            case "lookUp":
+                ani = aniLookUp;
+                aniSpeed = 1;
+                break;
+            case "lookDown":
+                ani = aniLookDown;
+                aniSpeed = 1;
+                break;
+            default:
+                break;
+        }
+
+        aniFrame = aniFrame % ani.Length;
+        sprite.sprite = ani[(int)aniFrame];
+        aniFrame = (aniFrame + aniSpeed) % ani.Length;
+        //sprite.flipX = !facingRight;
+        if (facingRight)
+        {
+            trans.localScale += new Vector3((0.25f - trans.localScale.x) * 0.2f, 0, 0);
+        } else
+        {
+            trans.localScale += new Vector3((-0.25f - trans.localScale.x) * 0.2f, 0, 0);
         }
     }
+
+    void UIUpdate()
+    {
+        if (Input.GetKey("down") || Input.GetKey("s"))
+        {
+            if (kiDOWN == 0)
+            {
+                kiDOWN = 1;
+            }
+            else
+            {
+                kiDOWN = 2;
+            }
+        }
+        else
+        {
+            kiDOWN = 0;
+        }
+        if (Input.GetKey("space"))
+        {
+            if (kiSPACE == 0)
+            {
+                kiSPACE = 1;
+            }
+            else
+            {
+                kiSPACE = 2;
+            }
+        }
+        else
+        {
+            kiSPACE = 0;
+        }
+    }
+
+    public void ToggleInBalloon() {
+        var ps = GameObject.Find("player").GetComponent<player>();
+        ps.inBalloon = !ps.inBalloon;
+        Debug.Log("Toggled inBalloon state to " + ps.inBalloon);
+    }
+
 }

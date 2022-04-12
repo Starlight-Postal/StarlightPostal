@@ -122,6 +122,19 @@ public class CheckpointManager : MonoBehaviour {
     [ConsoleMethod("checkpoint.scene", "get current checkpoint scene")]
     public static string GetCheckpointScene() {
         return instance.lastCheckpointScene;
-    }    
+    }
 
+    [ConsoleMethod("goto", "Quickly teleport to a checkpoint")]
+    public static void GotoCheckpoint(int id) {
+        SetNewCheckpointId(id);
+        SetNewCheckpointScene(SceneManager.GetActiveScene().name);
+        Respawn();
+    }
+
+    [ConsoleMethod("goto", "Quickly teleport to a checkpoint")]
+    public static void GotoCheckpoint(int id, string scene) {
+        SetNewCheckpointId(id);
+        SetNewCheckpointScene(scene);
+        Respawn();
+    }
 }

@@ -40,6 +40,7 @@ public class balloon : MonoBehaviour
     public Vector2 anchorStrength;
     public Vector3 anchorOrg;
     public bool landed = false;
+    Vector2 anchorOA;
 
     public Rigidbody2D basket;
     public Transform basketTrans;
@@ -54,6 +55,7 @@ public class balloon : MonoBehaviour
 
     int kiLMOUSE;
     int kiRMOUSE;
+    int kiE;
 
     public Transform[] altExZones;
 
@@ -91,7 +93,10 @@ public class balloon : MonoBehaviour
         anchor = anchorObj.GetComponent<anchor>();
         anchorObj.SetActive(anchored);
         anchorTrans = anchorObj.GetComponent<Transform>();
-        //anchored = true;
+
+        anchorOA = new Vector2(anchorOrg.magnitude, Mathf.Atan2(anchorOrg.y, anchorOrg.x));
+        Debug.Log("OA " + anchorOA);
+
         line = gameObject.GetComponent<LineRenderer>();
         line.enabled=false;
 
@@ -100,11 +105,26 @@ public class balloon : MonoBehaviour
         basketTrans = GameObject.Find("Basket").GetComponent<Transform>();
 
         //Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), anchor.GetComponent<Collider2D>(), true);
-        Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), basketCollider, true);
+        Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), basketCollider, true); // This was causing ArgumentNullException, Parameter name: collider1
 
         basket.centerOfMass = new Vector2(0, -1f);
 
         setSkin(skin);
+
+        Debug.Log("dingus");
+        // Register instanced console commands
+        DebugLogConsole.AddCommandInstance("balloon.anchor", "Toggles the balloon anchor", "ToggleAnchor", this);
+        DebugLogConsole.AddCommandInstance("balloon.heightcap", "Gets the balloon height cap", "GetHeightCap", this);
+        DebugLogConsole.AddCommandInstance("balloon.heightcap", "Sets the balloon height cap", "SetHeightCap", this);
+        DebugLogConsole.AddCommandInstance("balloon.heightfloor", "Gets the balloon height floor", "GetHeightFloor", this);
+        DebugLogConsole.AddCommandInstance("balloon.heightfloor", "Sets the balloon height floor", "SetHeightFloor", this);
+        DebugLogConsole.AddCommandInstance("balloon.leanpower", "Gets the balloon lean power", "GetLeanPower", this);
+        DebugLogConsole.AddCommandInstance("balloon.leanpower", "Sets the balloon lean power", "SetLeanPower", this);
+        DebugLogConsole.AddCommandInstance("balloon.fillrate", "Gets the balloon fill rate", "GetFillRate", this);
+        DebugLogConsole.AddCommandInstance("balloon.fillrate", "Sets the balloon fill rate", "SetFillRate", this);
+        DebugLogConsole.AddCommandInstance("balloon.windpower", "Gets the balloon wind power", "GetWindPower", this);
+        DebugLogConsole.AddCommandInstance("balloon.windpower", "Sets the balloon wind power", "SetWindPower", this);
+
     }
 
     // Update is called once per frame
@@ -119,6 +139,7 @@ public class balloon : MonoBehaviour
 
         rb.velocity += wind.getWind(trans.position.x, trans.position.y)*windPower;
 
+        anchorOrg = new Vector3(Mathf.Cos(anchorOA.y + (basketTrans.eulerAngles.z * (Mathf.PI / 180f))) * anchorOA.x, Mathf.Sin(anchorOA.y + (basketTrans.eulerAngles.z * (Mathf.PI / 180f))) * anchorOA.x, 0);
 
         if (anchored)
         {
@@ -136,11 +157,11 @@ public class balloon : MonoBehaviour
 
             if (player.inBalloon)
             {
-                if (kiRMOUSE>0)
+                if (Input.GetKey("q"))
                 {
                     anchorD *= 0.99f;
                 }
-                if (kiLMOUSE==1)
+                if (kiE==1)
                 {
                     //Debug.Log("retract");
                     anchored = false;
@@ -150,13 +171,13 @@ public class balloon : MonoBehaviour
                 }
             } else
             {
-                anchorD += (2.5f - anchorD) * 0.01f;
+                anchorD += (5f - anchorD) * 0.005f;
                 //volume *= 0.999f;
             }
 
             line.enabled = true;
-            line.SetPosition(0, basketTrans.position + anchorOrg);
-            line.SetPosition(1, anchorTrans.position+new Vector3(0,0.25f,0));
+            line.SetPosition(0, basketTrans.position + anchorOrg+new Vector3(0,0,0.5f));
+            line.SetPosition(1, anchorTrans.position+new Vector3(0,0.25f,0.5f));
 
             if (anchor.landed)
             {
@@ -168,7 +189,7 @@ public class balloon : MonoBehaviour
                     landed = false;
                 }
                 
-                th += ((anchor.targetTrans.position.y+3.5f) - th) * 0.005f;
+                th += ((anchor.targetTrans.position.y+4f) - th) * 0.0025f;
                 //anchorD += (1 - anchorD) * 0.01f;
             } else
             {
@@ -179,7 +200,7 @@ public class balloon : MonoBehaviour
         {
             if (player.inBalloon)
             {
-                if (kiLMOUSE==1)
+                if (kiE==1)
                 {
                     //Debug.Log("throw");
                     anchored = true;
@@ -273,10 +294,10 @@ public class balloon : MonoBehaviour
         float d = (trackV-rb.velocity).magnitude;
         //Debug.Log(d);
         bonk.Bonk(d);
-        if (d >= 4)
+        if (d >= 3)
         {
             //dropCoins((int)Mathf.Floor(d) - 3);
-            dropCoins((int)Mathf.Floor(Mathf.Pow((d - 4) / 15f, 0.5f) * 10));
+            dropCoins((int)Mathf.Floor(Mathf.Pow((d - 3) / 15f, 0.5f) * 10));
         }
     }
 
@@ -335,6 +356,21 @@ public class balloon : MonoBehaviour
         {
             kiRMOUSE = 0;
         }
+        if (Input.GetKey("e"))
+        {
+            if (kiE == 0)
+            {
+                kiE = 1;
+            }
+            else
+            {
+                kiE = 2;
+            }
+        }
+        else
+        {
+            kiE = 0;
+        }
     }
 
     float toAngle(float a,float b,float amt)
@@ -391,6 +427,56 @@ public class balloon : MonoBehaviour
             first = false;
         }
         Debug.Log(output);
+    }
+
+    public void ToggleAnchor() {
+        anchored = !anchored;
+        Debug.Log("Toggled anchor to " + anchored);
+    }
+
+    public void GetHeightCap() {
+        Debug.Log("Balloon height cap: " + heightCap);
+    }
+
+    public void SetHeightCap(float newHeightCap) {
+        heightCap = newHeightCap;
+        GetHeightCap();
+    }
+
+    public void GetHeightFloor() {
+        Debug.Log("Balloon height floor: " + heightFloor);
+    }
+
+    public void SetHeightFloor(float newHeightFloor) {
+        heightFloor = newHeightFloor;
+        GetHeightFloor();
+    }
+
+    public void GetLeanPower() {
+        Debug.Log("Balloon lean power: " + leanPower);
+    }
+
+    public void SetLeanPower(float newLeanPower) {
+        leanPower = newLeanPower;
+        GetLeanPower();
+    }
+
+    public void GetFillRate() {
+        Debug.Log("Balloon fill rate: " + fillRate);
+    }
+
+    public void SetFillRate(float newFillRate) {
+        fillRate = newFillRate;
+        GetFillRate();
+    }
+
+    public void GetWindPower() {
+        Debug.Log("Balloon wind power: " + windPower);
+    }
+
+    public void SetWindPower(float newWindPower) {
+        windPower = newWindPower;
+        GetWindPower();
     }
     
 }

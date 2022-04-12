@@ -20,6 +20,7 @@ public class TutorialNPC : MonoBehaviour
     public GameObject anchorObj;
     public anchor anchor;
     public bool anchored;
+    public PostOfficeClerk clerk;
 
 
     public bool inMenu = false;
@@ -27,7 +28,7 @@ public class TutorialNPC : MonoBehaviour
     // Start is called before the first frame update
     private Button chatButton;
     private Label Script;
-    private int counter;
+    public int counter;
     public int checkpoint = 16;
 
     public bool canNext = true;
@@ -47,7 +48,15 @@ public class TutorialNPC : MonoBehaviour
     public int phase = 0;
     public float walkSpeed = 0.05f;
 
+    public SpriteRenderer sprite;
     public bool facingRight = false;
+    public string aniMode = "idle";
+    public float aniSpeed = 0.25f;
+    public Sprite[] aniIdle;
+    public float aniIdleSpeed = 0.25f;
+    public Sprite[] aniWalk;
+    public float aniWalkSpeed = 1f;
+    public float aniFrame = 0;
 
     private void Start()
     {
@@ -61,6 +70,23 @@ public class TutorialNPC : MonoBehaviour
         phase = 0;
         trans.position = new Vector3(2.2f,2.68f,0);
         bodyTrans = body.GetComponent<Transform>();
+
+        aniMode = "idle";
+        aniFrame = 0;
+        aniIdle = new Sprite[7];
+
+        for (int i = 0; i < 7; i++)
+        {
+            aniIdle[i] = Resources.Load<Sprite>("textures/grandpa/grandpa_idle/grandpa_idle_" + i);
+        }
+        aniWalk = new Sprite[8];
+
+        for (int i = 0; i < 8; i++)
+        {
+            aniWalk[i] = Resources.Load<Sprite>("textures/grandpa/grandpa_walk/grandpa_walk_" + i);
+        }
+
+        sprite = body.GetComponent<SpriteRenderer>();
     }
 
 
@@ -68,35 +94,51 @@ public class TutorialNPC : MonoBehaviour
     private void FixedUpdate()
     {
         //activates the text bubble if player in range
-        if (playerInRange)
-        {
-            if (phase == 0||phase==8)
-            {
-                visualCue.SetActive(true);
-                if (player.kiSPACE==1)
-                {
-                    //counter = 0;
-                    turnOnDisplay();
-
-                    Script.text = script[counter];
-                }
-            } else
-            {
-                visualCue.SetActive(false);
-            }
-        }
-
-        //Checks to see if players are in range. If they arn't and chat should disappear it does
-        else
+        if (rve.visible)
         {
             visualCue.SetActive(false);
-            if (playerInRange == false && canLeave == false)
+            if (canNext)
             {
-                counter = 0;
-                Script.text = script[counter];
-                turnOffDisplay();          
+                if (player.kiSPACE == 1)
+                {
+                    counter++;
+                    Script.text = script[counter];
+                    if (counter == script.Length - 1) { chatButton.text = "space"; }
+                    else { chatButton.text = "space"; }
+                }
+            }
+        } else {
+            if (playerInRange)
+            {
+                if (phase == 0 || phase == 8 || phase == 15||phase==16||phase==20||phase==21)
+                {
+                    visualCue.SetActive(true);
+                    if (player.kiSPACE == 1)
+                    {
+                        //counter = 0;
+                        turnOnDisplay();
+
+                        Script.text = script[counter];
+                    }
+                } else
+                {
+                    visualCue.SetActive(false);
+                }
+            }
+            //Checks to see if players are in range. If they arn't and chat should disappear it does
+            else
+            {
+                visualCue.SetActive(false);
+                if (playerInRange == false && canLeave == false)
+                {
+                    counter = 0;
+                    Script.text = script[counter];
+                    turnOffDisplay();
+                }
             }
         }
+
+        
 
         //Gets rid of the chat if they hid next one more time
         if (counter >= script.Length)
@@ -108,19 +150,7 @@ public class TutorialNPC : MonoBehaviour
         
         rve.visible = inMenu;
 
-        if (rve.visible)
-        {
-            if (canNext)
-            {
-                if (player.kiSPACE == 1)
-                {
-                    counter++;
-                    Script.text = script[counter];
-                    if (counter == script.Length - 1) { chatButton.text = "space"; }
-                    else { chatButton.text = "space"; }
-                }
-            }
-        }
+        
 
         if (playerTrans.position.x > trans.position.x)
         {
@@ -132,6 +162,25 @@ public class TutorialNPC : MonoBehaviour
         }
 
         if (canLeave) { playerCanLeave(); }
+
+        Sprite[] ani = aniIdle;
+        switch (aniMode)
+        {
+            case "idle":
+                ani = aniIdle;
+                aniSpeed = aniIdleSpeed;
+                break;
+            case "walk":
+                ani = aniWalk;
+                aniSpeed = aniWalkSpeed;
+                break;
+            default:
+                break;
+        }
+
+        aniFrame = aniFrame % ani.Length;
+        sprite.sprite = ani[(int)aniFrame];
+        aniFrame = (aniFrame + aniSpeed) % ani.Length;
 
         if (facingRight)
         {
@@ -183,6 +232,7 @@ public class TutorialNPC : MonoBehaviour
 
     private void playerCanLeave()
     {
+        aniMode = "idle";
         if (counter == 1)
         {
             balloon.lockEntry = true;
@@ -264,10 +314,12 @@ public class TutorialNPC : MonoBehaviour
             if (counter == 9)
             {
                 balloon.lockEntry = false;
+                canNext = false;
             }
             if (counter >9)
             {
                 phase = 9;
+                player.GetComponent<player>().inBalloon = true;
             }
         }
         //80 170 280
@@ -403,11 +455,96 @@ public class TutorialNPC : MonoBehaviour
         if (counter == 26)
         {
             balloon.lockEntry = false;
+            if (phase == 13)
+            {
+                phase = 14;
+                turnOffDisplay();
+            }
+        }
+        if (phase == 14)
+        {
+            turnOffDisplay();
+            facingRight = true;
+            if (walkTo(583.5f, 39.85f, walkSpeed))
+            {
+                phase = 15;
+            }
+        }
+        if (phase == 15)
+        {
+            if (counter > 26)
+            {
+                counter = 26;
+                Script.text = script[counter];
+                turnOffDisplay();
+            }
+            if (clerk.playerDone)
+            {
+                phase = 16;
+                counter = 27;
+                Script.text = script[counter];
+            }
+        }
+        if (phase == 16) {
+            if (counter == 29)
+            {
+                phase = 17;
+                    turnOffDisplay();
+            }
+        }
+        if (phase == 17)
+        {
+            turnOffDisplay();
+            facingRight = true;
+            if (walkTo(619, 39.85f, walkSpeed))
+            {
+                phase = 18;
+            }
+        }
+        if (phase == 18)
+        {
+            facingRight = true;
+            if (walkTo(619.7f, 40.1f, walkSpeed))
+            {
+                phase = 19;
+            }
+        }
+        if (phase == 19)
+        {
+            facingRight = true;
+            if (walkTo(622.6f, 40.1f, walkSpeed))
+            {
+                phase = 20;
+            }
+        }
+        if(phase == 20)
+        {
+            if (counter == 31)
+            {
+                counter = 29;
+                Script.text = script[counter];
+                turnOffDisplay();
+            }
+            if (clerk.delivered)
+            {
+                phase = 21;
+                counter = 31;
+            }
+        }
+        if(phase == 21)
+        {
+            if (counter > 31)
+            {
+                counter = 31;
+                Script.text = script[counter];
+                turnOffDisplay();
+            }
         }
     }
 
     public bool walkTo(float x,float y,float s)
     {
+        aniMode = "walk";
         Vector3 d = new Vector3(x - trans.position.x, y - trans.position.y, 0);
         if (d.magnitude > s)
         {
