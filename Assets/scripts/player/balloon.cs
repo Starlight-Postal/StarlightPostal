@@ -298,10 +298,10 @@ public class balloon : MonoBehaviour
         float d = (trackV-rb.velocity).magnitude;
         //Debug.Log(d);
         bonk.Bonk(d);
-        if (d >= 4)
+        if (d >= 3)
         {
             //dropCoins((int)Mathf.Floor(d) - 3);
-            dropCoins((int)Mathf.Floor(Mathf.Pow((d - 4) / 15f, 0.5f) * 10));
+            dropCoins((int)Mathf.Floor(Mathf.Pow((d - 3) / 15f, 0.5f) * 10));
         }
     }
 

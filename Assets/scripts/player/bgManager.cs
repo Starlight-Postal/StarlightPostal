@@ -8,6 +8,7 @@ public class bgManager : MonoBehaviour
     public Transform[] layers;
     public float[] depths;
     public Transform camera;
+    public Vector3 center;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +22,7 @@ public class bgManager : MonoBehaviour
         for(int i = 0;i < layers.Length;i++)
         {
             //layers[i].localScale = new Vector3(1, 1, 1) * ((1-depths[i])+depths[i]*0.1f);
-            layers[i].localPosition = new Vector3(-(trans.position.x-camera.position.x) * depths[i], -(trans.position.y-camera.position.y) * depths[i], layers[i].localPosition.z);
+            layers[i].localPosition = center+new Vector3(-(trans.position.x-camera.position.x) * depths[i], -(trans.position.y-camera.position.y) * depths[i], layers[i].localPosition.z);
         }
     }
 }
