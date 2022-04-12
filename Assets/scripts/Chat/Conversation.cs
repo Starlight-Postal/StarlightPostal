@@ -11,7 +11,8 @@ public class Conversation : Interractable
     private bool inMenu;
 
     protected int scriptIndex;
-    private bool encountered;
+    private bool isTalking;
+    private bool canTalk = true;
     private bool waitingForReady;
     
     private VisualElement root;
@@ -24,7 +25,7 @@ public class Conversation : Interractable
     {
         inMenu = false;
         scriptIndex = 0;
-        encountered = false;
+        isTalking = false;
         waitingForReady = false;
     }
 
@@ -66,7 +67,7 @@ public class Conversation : Interractable
 
     public override void OnPlayerInterract()
     {
-        if (encountered)
+        if (isTalking)
         {
             AdvanceScript();
         } else
@@ -87,7 +88,7 @@ public class Conversation : Interractable
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "Player")
+        if (collider.gameObject.tag == "Player" && !isTalking)
         {
             visualCue.SetActive(true);
         }
@@ -98,6 +99,10 @@ public class Conversation : Interractable
         if (collider.gameObject.tag == "Player")
         {
             visualCue.SetActive(false);
+            if (isTalking && ResetOnPlayerLeave(scriptIndex))
+            {
+                EndConversation();
+            }
         }
     }
 
@@ -107,15 +112,17 @@ public class Conversation : Interractable
 
 	private void StartScript()
     {
+        if (!canTalk) { return; }
         OnConversationStart();
         scriptIndex = 0;
         TurnOnDisplay();
-        encountered = true;
+        isTalking = true;
+        visualCue.SetActive(false);
 	}
 
     protected void AdvanceScript()
     {
-        if (!encountered)
+        if (!isTalking && canTalk)
         {
             StartScript();
             return;
@@ -132,12 +139,7 @@ public class Conversation : Interractable
 
         if (scriptIndex >= script.Length)
         {
-            TurnOffDisplay();
-            if (ResetOnComplete())
-            {
-                encountered = false;
-            }
-            OnConversationEnd();
+            EndConversation();
             return;
         }
 
@@ -148,6 +150,18 @@ public class Conversation : Interractable
         {
             TurnOnDisplay();
         }
+    }
+
+    private void EndConversation()
+    {
+        isTalking = false;
+        TurnOffDisplay();
+        if (!ResetOnComplete())
+        {
+            canTalk = false;
+        }
+        visualCue.SetActive(canTalk);
+        OnConversationEnd();
     }
 
     private void TurnOnDisplay()
@@ -184,6 +198,14 @@ public class Conversation : Interractable
      *  >>> NOT IMPLEMENTED FOR NOW
      */
     public virtual bool CanPlayerMove(int index)
+    {
+        return true;
+    }
+
+    /**
+     * If true, will reset conversation on player leaving range
+     */
+    public virtual bool ResetOnPlayerLeave(int index)
     {
         return true;
     }

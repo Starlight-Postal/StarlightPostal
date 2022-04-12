@@ -7,6 +7,7 @@ public enum TutorialPhase
     INTRO,
     BALLOON,
     POSTOFFICE,
+    POSTOFFICEDELIVERY,
     BAR,
     DELIVERED
 }
@@ -41,6 +42,7 @@ public class TutorialNPC : Conversation
     public string[] scriptIntro;
     public string[] scriptBalloon;
     public string[] scriptPostOffice;
+    public string[] scriptPostOfficeDelivery;
     public string[] scriptBar;
     public string[] scriptDelivered;
 
@@ -196,6 +198,11 @@ public class TutorialNPC : Conversation
         AdvanceScript();
     }
 
+    public override bool ResetOnPlayerLeave(int index)
+    {
+        return false;
+    }
+
     public override void OnConversationStart()
     {
         switch (phase)
@@ -209,6 +216,9 @@ public class TutorialNPC : Conversation
                 break;
             case TutorialPhase.POSTOFFICE:
                 script = scriptPostOffice;
+                break;
+            case TutorialPhase.POSTOFFICEDELIVERY:
+                script = scriptPostOfficeDelivery;
                 break;
             case TutorialPhase.BAR:
                 script = scriptBar;
@@ -229,7 +239,7 @@ public class TutorialNPC : Conversation
             case TutorialPhase.BALLOON:
                 phase = TutorialPhase.POSTOFFICE;
                 break;
-            case TutorialPhase.POSTOFFICE:
+            case TutorialPhase.POSTOFFICEDELIVERY:
                 phase = TutorialPhase.BAR;
                 break;
         }
@@ -302,8 +312,8 @@ public class TutorialNPC : Conversation
                         return true;    
                 }
                 break;
-            case TutorialPhase.POSTOFFICE:
-                return index == 3;
+            case TutorialPhase.POSTOFFICEDELIVERY:
+                return index == 2;
         }
 
         return false;        
@@ -321,16 +331,18 @@ public class TutorialNPC : Conversation
             case TutorialPhase.BALLOON:
                 switch (index)
                 {
-                    case 12:
+                    case 11:
                         return balloonTrans.position.x >= 80;
+                    case 12:
+                        return balloonTrans.position.x >= 170;
                     case 14:
                         return balloonTrans.position.x >= 550;
                     case 20:
                         return WalkToPostOffice();
                 }
                 break;
-            case TutorialPhase.POSTOFFICE:
-                if (index == 3)
+            case TutorialPhase.POSTOFFICEDELIVERY:
+                if (index == 2)
                     return DadGetsMilkFromDownTheStreet();
                 break;
         }

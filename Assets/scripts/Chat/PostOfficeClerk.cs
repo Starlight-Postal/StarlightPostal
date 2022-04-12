@@ -39,6 +39,14 @@ class PostOfficeClerk : Conversation
         }
     }
 
+    public override void OnConversationEnd()
+    {
+        if (phase == MailPhase.DELIVERY)
+        {
+            GameObject.FindObjectsOfType<TutorialNPC>()[0].phase = TutorialPhase.POSTOFFICEDELIVERY;
+        }
+    }
+
 }
 
 enum MailPhase
