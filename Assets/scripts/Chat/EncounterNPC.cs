@@ -34,7 +34,7 @@ public class EncounterNPC : MonoBehaviour
     // Start is called before the first frame update
     private Button chatButton;
     private Label Script;
-    private int counter;
+    public int counter;
     public int checkpoint = 16;
     [SerializeField] private VisualElement rve;
 
