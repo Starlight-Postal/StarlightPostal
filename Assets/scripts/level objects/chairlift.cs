@@ -13,6 +13,7 @@ public class chairlift : MonoBehaviour
     public float speed;
     public int chairs = 10;
     public GameObject chair;
+
     // Start is called before the first frame update
     void Start()
     {
