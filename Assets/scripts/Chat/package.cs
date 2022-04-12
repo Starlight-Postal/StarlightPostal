@@ -8,6 +8,7 @@ public class package : MonoBehaviour
     public SpriteRenderer sprite;
     public int line;
     public bool got = false;
+    public AudioSource sound;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,10 @@ public class package : MonoBehaviour
         {
             if (recipient.counter >= line)
             {
+                if (!got)
+                {
+                    sound.Play(0);
+                }
                 got = true;
             }
         }

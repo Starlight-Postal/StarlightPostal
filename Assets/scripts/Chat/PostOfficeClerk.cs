@@ -50,6 +50,9 @@ public class PostOfficeClerk : MonoBehaviour
     public string[] script_delivered;
     public string[] script_done;
 
+    public AudioSource sound;
+    public int sfx_line;
+
     string[] script;
 
     //public Transform trans;
@@ -85,7 +88,10 @@ public class PostOfficeClerk : MonoBehaviour
                 Script.text = script[counter];
                 if (counter == script.Length - 1) { chatButton.text = "space"; }
                 else { chatButton.text = "space"; }
-
+                if (phase == "maildrop" && sfx_line == counter)
+                {
+                    sound.Play(0);
+                }
             }
             if (!playerInRange)
             {
