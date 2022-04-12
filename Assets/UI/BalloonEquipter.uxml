@@ -1,0 +1,28 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="Shop" style="background-color: rgb(212, 212, 212); left: 20%; position: absolute; height: 29%; width: 60%; top: 70%; bottom: 5%;">
+        <ui:VisualElement style="left: 1%; top: 2%; width: 98%; height: 96%; right: auto; bottom: auto; background-color: rgb(0, 0, 0);">
+            <ui:VisualElement style="left: 1%; top: 2%; width: 98%; height: 96%; background-color: rgb(212, 212, 212);">
+                <ui:Button text="Starting Balloon" display-tooltip-when-elided="true" name="Button0" style="left: 1%; top: 2%; position: relative; width: 45%; height: 8%;" />
+                <ui:Label text="Equipped" display-tooltip-when-elided="true" name="Label0" style="left: 54%; top: -6%; right: auto; width: 45%; height: 8%; color: rgb(0, 0, 0); -unity-text-align: upper-center;" />
+                <ui:Button text="Basic Balloon" display-tooltip-when-elided="true" name="Button1" style="left: 1%; top: -5%; position: relative; width: 45%; height: 8%;" />
+                <ui:Label text="Purchase in Autumn Falls" display-tooltip-when-elided="true" name="Label1" style="left: 54%; top: -13%; right: auto; width: 45%; height: 8%; color: rgb(0, 0, 0); -unity-text-align: upper-center;" />
+                <ui:Button text="Maple Leaf Balloon" display-tooltip-when-elided="true" name="Button2" style="left: 1%; top: -12%; position: relative; width: 45%; height: 8%;" />
+                <ui:Label text="Purchase in Autumn Falls" display-tooltip-when-elided="true" name="Label2" style="left: 54%; top: -20%; right: auto; width: 45%; height: 8%; color: rgb(0, 0, 0); -unity-text-align: upper-center;" />
+                <ui:Button text="Train Balloon" display-tooltip-when-elided="true" name="Button3" style="left: 1%; top: -19%; position: relative; width: 45%; height: 8%;" />
+                <ui:Label text="Purchase in Autumn Falls" display-tooltip-when-elided="true" name="Label3" style="left: 54%; top: -27%; right: auto; width: 45%; height: 8%; color: rgb(0, 0, 0); -unity-text-align: upper-center;" />
+                <ui:Button text="Not Unlocked" display-tooltip-when-elided="true" name="Button4" style="left: 1%; top: -26%; position: relative; width: 45%; height: 8%;" />
+                <ui:Label text="Purchase in Crystal Caverns" display-tooltip-when-elided="true" name="Label4" style="left: 54%; top: -34%; right: auto; width: 45%; height: 8%; color: rgb(0, 0, 0); -unity-text-align: upper-center;" />
+                <ui:Button text="Not Unlocked" display-tooltip-when-elided="true" name="Button5" style="left: 1%; top: -33%; position: relative; width: 45%; height: 8%;" />
+                <ui:Label text="Purchase in Crystal Caverns" display-tooltip-when-elided="true" name="Label5" style="left: 54%; top: -41%; right: auto; width: 45%; height: 8%; color: rgb(0, 0, 0); -unity-text-align: upper-center;" />
+                <ui:Button text="Not Unlocked" display-tooltip-when-elided="true" name="Button6" style="left: 1%; top: -40%; position: relative; width: 45%; height: 8%;" />
+                <ui:Label text="Purchase in Crystal Caverns" display-tooltip-when-elided="true" name="Label6" style="left: 54%; top: -48%; right: auto; width: 45%; height: 8%; color: rgb(0, 0, 0); -unity-text-align: upper-center;" />
+                <ui:Button text="Not Unlocked" display-tooltip-when-elided="true" name="Button7" style="left: 1%; top: -47%; position: relative; width: 45%; height: 8%;" />
+                <ui:Label text="Purchase in Windswept Cholet" display-tooltip-when-elided="true" name="Label7" style="left: 54%; top: -55%; right: auto; width: 45%; height: 8%; color: rgb(0, 0, 0); -unity-text-align: upper-center;" />
+                <ui:Button text="Not Unlocked" display-tooltip-when-elided="true" name="Button8" style="left: 1%; top: -54%; position: relative; width: 45%; height: 8%;" />
+                <ui:Label text="Purchase in Windswept Cholet" display-tooltip-when-elided="true" name="Label8" style="left: 54%; top: -62%; right: auto; width: 45%; height: 8%; color: rgb(0, 0, 0); -unity-text-align: upper-center;" />
+                <ui:Button text="Not Unlocked" display-tooltip-when-elided="true" name="Button9" style="left: 1%; top: -61%; position: relative; width: 45%; height: 8%;" />
+                <ui:Label text="Purchase in Windswept Cholet" display-tooltip-when-elided="true" name="Label9" style="left: 54%; top: -69%; right: auto; width: 45%; height: 8%; color: rgb(0, 0, 0); -unity-text-align: upper-center;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

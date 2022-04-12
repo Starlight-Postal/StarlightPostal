@@ -56,6 +56,8 @@ public class ShopNPC : MonoBehaviour
             if (Input.GetKeyDown("space"))
             {
                 inMenu = true;
+                updateStage();
+
             }
         }
 
@@ -86,17 +88,17 @@ public class ShopNPC : MonoBehaviour
 
         button1.RegisterCallback<ClickEvent>(ev =>
         {
-            if (gdata.coins > 50 && !(gdata.balloon1 == 1) && stage == 1)
+            if (gdata.coins >= 50 && !(gdata.balloon1 == 1) && stage == 1)
             {
                 gdata.coins = gdata.coins - 50;
                 gdata.balloon1 = 1;
             }
-            else if (gdata.coins > 50 && !(gdata.balloon4 == 1) && stage == 2)
+            else if (gdata.coins >= 50 && !(gdata.balloon4 == 1) && stage == 2)
             {
                 gdata.coins = gdata.coins - 50;
                 gdata.balloon4 = 1;
             }
-            else if (gdata.coins > 50 && !(gdata.balloon7 == 1) && stage == 3)
+            else if (gdata.coins >= 50 && !(gdata.balloon7 == 1) && stage == 3)
             {
                 gdata.coins = gdata.coins - 50;
                 gdata.balloon7 = 1;
@@ -104,17 +106,17 @@ public class ShopNPC : MonoBehaviour
         });
         button2.RegisterCallback<ClickEvent>(ev =>
         {
-            if (gdata.coins > 50 && !(gdata.balloon2 == 1) && stage == 1)
+            if (gdata.coins >= 100 && !(gdata.balloon2 == 1) && stage == 1)
             {
                 gdata.coins = gdata.coins - 100;
                 gdata.balloon2 = 1;
             }
-            else if (gdata.coins > 50 && !(gdata.balloon5 == 1) && stage == 2)
+            else if (gdata.coins >= 100 && !(gdata.balloon5 == 1) && stage == 2)
             {
                 gdata.coins = gdata.coins - 100;
                 gdata.balloon5 = 1;
             }
-            else if (gdata.coins > 50 && !(gdata.balloon8 == 1) && stage == 3)
+            else if (gdata.coins >= 100 && !(gdata.balloon8 == 1) && stage == 3)
             {
                 gdata.coins = gdata.coins - 100;
                 gdata.balloon8 = 1;
@@ -122,17 +124,17 @@ public class ShopNPC : MonoBehaviour
         });
         button3.RegisterCallback<ClickEvent>(ev =>
         {
-            if (gdata.coins > 50 && !(gdata.balloon3 == 1) && stage == 1)
+            if (gdata.coins >= 150 && !(gdata.balloon3 == 1) && stage == 1)
             {
                 gdata.coins = gdata.coins - 150;
                 gdata.balloon3 = 1;
             }
-            else if (gdata.coins > 50 && !(gdata.balloon6 == 1) && stage == 2)
+            else if (gdata.coins >= 150 && !(gdata.balloon6 == 1) && stage == 2)
             {
                 gdata.coins = gdata.coins - 150;
                 gdata.balloon6 = 1;
             }
-            else if (gdata.coins > 50 && !(gdata.balloon9 == 1) && stage == 3)
+            else if (gdata.coins >= 150 && !(gdata.balloon9 == 1) && stage == 3)
             {
                 gdata.coins = gdata.coins - 150;
                 gdata.balloon9 = 1;
@@ -145,35 +147,35 @@ public class ShopNPC : MonoBehaviour
 
     private void updateShop()
     {
-        if(stage == 1)
-        { 
+        if (stage == 1)
+        {
             if (gdata.balloon1 == 1) { button1.text = "Owned"; }
             else { button1.text = "Costs 50 stars"; }
-            if (gdata.balloon1 == 4) { button2.text = "Owned"; }
+            if (gdata.balloon1 == 1) { button2.text = "Owned"; }
             else { button2.text = "Costs 100 stars"; }
-            if (gdata.balloon1 == 7) { button3.text = "Owned"; }
+            if (gdata.balloon1 == 1) { button3.text = "Owned"; }
             else { button3.text = "Costs 150 stars"; }
         }
         if (stage == 2)
         {
-            if (gdata.balloon2 == 2) { button1.text = "Owned"; }
+            if (gdata.balloon2 == 1) { button1.text = "Owned"; }
             else { button1.text = "Costs 50 stars"; }
-            if (gdata.balloon5 == 5) { button2.text = "Owned"; }
+            if (gdata.balloon5 == 1) { button2.text = "Owned"; }
             else { button2.text = "Costs 100 stars"; }
-            if (gdata.balloon8 == 8) { button3.text = "Owned"; }
+            if (gdata.balloon8 == 1) { button3.text = "Owned"; }
             else { button3.text = "Costs 150 stars"; }
         }
         if (stage == 3)
         {
-            if (gdata.balloon3 == 3) { button1.text = "Owned"; }
+            if (gdata.balloon3 == 1) { button1.text = "Owned"; }
             else { button1.text = "Costs 50 stars"; }
-            if (gdata.balloon6 == 6) { button2.text = "Owned"; }
+            if (gdata.balloon6 == 1) { button2.text = "Owned"; }
             else { button2.text = "Costs 100 stars"; }
-            if (gdata.balloon9 == 9) { button3.text = "Owned"; }
+            if (gdata.balloon9 == 1) { button3.text = "Owned"; }
             else { button3.text = "Costs 150 stars"; }
         }
     }
-   
+
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.tag == "Player")
@@ -211,7 +213,13 @@ public class ShopNPC : MonoBehaviour
         //unlockShopSkins();
     }
 
-
+    private void updateStage()
+    {
+        if(stage > gdata.stage)
+        {
+        gdata.stage = stage;
+        }
+    }
 
 
 
