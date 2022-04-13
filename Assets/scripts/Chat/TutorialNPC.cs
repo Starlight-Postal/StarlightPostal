@@ -134,19 +134,19 @@ public class TutorialNPC : Conversation
                     subphase++;
                 return false;
             case 1:
-                if (walkTo(-0.13f, 0.50f, walkSpeed))
+                if (walkTo(-0.13f, 0.48f, walkSpeed))
                     subphase++;
                 return false;
             case 2:
-                if (walkTo(-4f, 0.5f, walkSpeed))
+                if (walkTo(-4f, 0.48f, walkSpeed))
                     subphase++;
                 return false;
             case 3:
-                if (walkTo(-4.2f, 0.35f, walkSpeed))
+                if (walkTo(-4.2f, 0.33f, walkSpeed))
                     subphase++;
                 return false;
             case 4:
-                if (walkTo(-7.5f, 0.35f, walkSpeed))
+                if (walkTo(-7.5f, 0.33f, walkSpeed))
                     subphase++;
                 return false;
             case 5:
@@ -167,7 +167,7 @@ public class TutorialNPC : Conversation
     private bool WalkToPostOffice()
     {
         face.facingLeft = false;
-        return walkTo(583.5f, 39.85f, walkSpeed);
+        return walkTo(583.5f, 39.76f, walkSpeed);
     }
 
     private bool DadGetsMilkFromDownTheStreet()
@@ -175,7 +175,7 @@ public class TutorialNPC : Conversation
         face.facingLeft = false;
         switch (subphase) {
             case 0:
-                if (walkTo(619, 39.85f, walkSpeed))
+                if (walkTo(619, 39.76f, walkSpeed))
                     subphase++;
                 return false;
             case 1:
@@ -195,7 +195,10 @@ public class TutorialNPC : Conversation
 
     void OnLeaveBalloon()
     {
-        AdvanceScript();
+        if (isTalking)
+        {
+            AdvanceScript();
+        }
     }
 
     public override bool ResetOnPlayerLeave(int index)
@@ -258,7 +261,7 @@ public class TutorialNPC : Conversation
         }
         if (phase == TutorialPhase.BALLOON && index == 19)
         {
-            trans.position = new Vector3(577.5f, 39.85f, 0);
+            trans.position = new Vector3(577.5f, 39.76f, 0);
             body.SetActive(true);
             balloonScript.captainIsWith = false;
         }

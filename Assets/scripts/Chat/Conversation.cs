@@ -11,7 +11,7 @@ public class Conversation : Interractable
     private bool inMenu;
 
     protected int scriptIndex;
-    private bool isTalking;
+    protected bool isTalking;
     private bool canTalk = true;
     private bool waitingForReady;
     
