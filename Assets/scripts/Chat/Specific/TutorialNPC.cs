@@ -353,4 +353,11 @@ public class TutorialNPC : Conversation
         return true;
     }
 
+    // Prevents the player script from finding grandpa when the "press space to get in" message is showing,
+    // allowing the interract event to go to the balloon even when the tutorial npc is closer
+    public override bool CanPlayerInterract()
+    {
+        return !(phase == TutorialPhase.BALLOON && scriptIndex == 3);
+    }
+
 }

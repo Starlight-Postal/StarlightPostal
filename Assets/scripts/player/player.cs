@@ -304,7 +304,7 @@ public class player : MonoBehaviour
             var go = inter.gameObject;
             var dist = Vector2.Distance(new Vector2(go.transform.position.x, go.transform.position.y),
                 new Vector2(gameObject.transform.position.x, gameObject.transform.position.y));
-            if (dist <= closestDist) {
+            if (dist <= closestDist && inter.CanPlayerInterract()) {
                 closestDist = dist;
                 closest = inter;
             }

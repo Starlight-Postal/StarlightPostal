@@ -14,6 +14,7 @@ public class Conversation : Interractable
     protected bool isTalking;
     private bool canTalk = true;
     private bool waitingForReady;
+    private bool isInRange;
     
     private VisualElement root;
     private Button chatButton;
@@ -84,9 +85,10 @@ public class Conversation : Interractable
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "Player" && !isTalking)
+        if (collider.gameObject.tag == "Player")
         {
-            visualCue.SetActive(true);
+            isInRange = true;
+            visualCue.SetActive(!isTalking);
         }
     }
 
@@ -94,6 +96,7 @@ public class Conversation : Interractable
     {
         if (collider.gameObject.tag == "Player")
         {
+            isInRange = false;
             visualCue.SetActive(false);
             if (isTalking && ResetOnPlayerLeave(scriptIndex))
             {
@@ -156,7 +159,7 @@ public class Conversation : Interractable
         {
             canTalk = false;
         }
-        //visualCue.SetActive(canTalk);
+        visualCue.SetActive(canTalk && isInRange);
         OnConversationEnd();
     }
 
