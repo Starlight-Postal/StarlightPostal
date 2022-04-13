@@ -160,16 +160,19 @@ public class Conversation : Interractable
         {
             canTalk = false;
         }
-        visualCue.SetActive(canTalk);
+        //visualCue.SetActive(canTalk);
         OnConversationEnd();
     }
 
     private void TurnOnDisplay()
     {
 		chatScript.text = script[scriptIndex];
-        root.visible = true;
         inMenu = true;
-        chatButton.visible = true;
+        if (script[scriptIndex] != "")
+        {
+            root.visible = true;
+            chatButton.visible = true;
+        }
         OnConversationLineUpdate(scriptIndex);
     }
 
