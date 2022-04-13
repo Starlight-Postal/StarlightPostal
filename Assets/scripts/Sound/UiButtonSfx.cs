@@ -30,12 +30,12 @@ public class UiButtonSfx : MonoBehaviour {
         hovers = Resources.LoadAll<AudioClip>("audio/SFX/menu/hover");
     }
 
-    private void OnUiButtonClick() {
+    public void OnUiButtonClick() {
         source.clip = clicks[Random.Range(0,clicks.Length - 1)];
         source.Play();
     }
 
-    private void OnUiButtonHover() {
+    public void OnUiButtonHover() {
         source.clip = hovers[Random.Range(0,hovers.Length - 1)];
         source.Play();
     }

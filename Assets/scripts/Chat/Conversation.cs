@@ -67,6 +67,7 @@ public class Conversation : Interractable
 
     public override void OnPlayerInterract()
     {
+        GetComponent<UiButtonSfx>().OnUiButtonClick();
         if (isTalking)
         {
             AdvanceScript();
@@ -74,11 +75,6 @@ public class Conversation : Interractable
         {
             StartScript();
         }
-    }
-
-    public void OnConversationAdvance()
-    {
-        AdvanceScript();
     }
 
     private void OnChatButtonClick()
