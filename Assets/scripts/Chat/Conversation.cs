@@ -171,7 +171,7 @@ public class Conversation : Interractable
         if (script[scriptIndex] != "")
         {
             root.visible = true;
-            chatButton.visible = true;
+            chatButton.visible = CanPlayerContinue(scriptIndex);
         }
         OnConversationLineUpdate(scriptIndex);
     }
