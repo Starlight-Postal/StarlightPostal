@@ -60,7 +60,7 @@ public class camera : MonoBehaviour
             trans.position += ((new Vector3(target.position.x, target.position.y, trans.position.z) + offset) - trans.position) * speed;
             if (target == balloonTrans)
             {
-                if (balloon.anchored)
+                if (balloon.anchored&&balloon.anchor.landed)
                 {
                     cam.orthographicSize += (balloonSize * 0.5f - cam.orthographicSize) * 0.0025f;
                 }
