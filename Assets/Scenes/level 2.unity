@@ -1588,6 +1588,8 @@ MonoBehaviour:
   script_done:
   - You better get going, junior. Next stop is straight up from here. Good luck up
     at the summit!
+  sound: {fileID: 0}
+  sfx_line: 2
 --- !u!1 &37074910
 GameObject:
   m_ObjectHideFlags: 0
@@ -70538,6 +70540,7 @@ MonoBehaviour:
   canLeave: 1
   encountered: 0
   inMenu: 0
+  counter: 0
   checkpoint: 16
   intro_script:
   - hi i'm a small bat child??
