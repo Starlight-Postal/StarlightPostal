@@ -1400,7 +1400,7 @@ PrefabInstance:
     - target: {fileID: 4768351909077701386, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 1aee392fdf2d69f4284914340e4a14a9, type: 3}
+      objectReference: {fileID: 21300000, guid: ca381624972af6240b2c50ec98e24b2a, type: 3}
     - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1503,18 +1503,17 @@ MonoBehaviour:
   recipient: {fileID: 4768351910074951517}
   phase: maildrop
   script_maildrop:
-  - Well howdy, junior! How'd the flight in treat ya?
-  - You are right on time, lemme unload all that mail for you.
-  - Huh, looks like we got a package this week! You'll have to deliver this one manually.
+  - Right on time, junior! Welcome to Crystal Caverns.
+  - Let me take all that mail off your hands.
+  - Well look at this, you've got a package to deliver.
   - Her name is Batrice, she lives right upstairs.
   script_delivery:
   - Batrice lives just upstairs from here, remember to deliver her package!
   script_delivered:
-  - Nice work! We are all set here, you can go ahead and get on with your postal
-    route.
-  - Whenever you're ready, go ahead and take off again. You got a couple more stops
-    ahead of you.
-  - Make sure you remember to undock your anchor with E!
+  - Great work, junior! That's all for this stop.
+  - There's one more town left on your route, it's up at the summit. I hope you dressed
+    in layers!
+  - Make sure you remember to undock your anchor with E, then head straight up.
   script_done:
   - You better get going, junior. Next stop is straight up from here. Good luck up
     at the summit!
