@@ -56,6 +56,8 @@ public class player : MonoBehaviour
 
     private bool prevInBalloon = false;
 
+    public Conversation currentConversation = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -304,7 +306,22 @@ public class player : MonoBehaviour
             var go = inter.gameObject;
             var dist = Vector2.Distance(new Vector2(go.transform.position.x, go.transform.position.y),
                 new Vector2(gameObject.transform.position.x, gameObject.transform.position.y));
+
             if (dist <= closestDist && inter.CanPlayerInterract()) {
+                if (currentConversation != null && inter is Conversation)
+                {
+                    if (currentConversation == (Conversation) inter && ((Conversation) inter).InterractionSearchPriority())
+                    {
+                        closest = inter;
+                        break;
+                    } else
+                    {
+                        if (!currentConversation.AllowConcurrentConversations())
+                        {
+                            continue;
+                        }
+                    }
+                }
                 closestDist = dist;
                 closest = inter;
             }

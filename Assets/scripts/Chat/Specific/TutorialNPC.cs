@@ -360,4 +360,9 @@ public class TutorialNPC : Conversation
         return !(phase == TutorialPhase.BALLOON && scriptIndex == 3);
     }
 
+    public override bool AllowConcurrentConversations()
+    {
+        return !inMenu;
+    }
+
 }

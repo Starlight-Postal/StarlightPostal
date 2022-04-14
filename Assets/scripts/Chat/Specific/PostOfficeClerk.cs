@@ -14,6 +14,7 @@ class PostOfficeClerk : Conversation
 
     private void Start()
     {
+        base.Start();
         phase = MailPhase.MAILDROP;
     }
 

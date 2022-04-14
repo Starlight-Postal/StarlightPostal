@@ -6,9 +6,11 @@ using UnityEngine.UIElements;
 public class Conversation : Interractable
 {
 
+    private player player;
+
     [SerializeField] private GameObject visualCue;
 	[SerializeField] public string[] script;
-    private bool inMenu;
+    protected bool inMenu;
 
     protected int scriptIndex;
     protected bool isTalking;
@@ -28,6 +30,7 @@ public class Conversation : Interractable
         scriptIndex = 0;
         isTalking = false;
         waitingForReady = false;
+        player = GameObject.FindObjectsOfType<player>()[0];
     }
 
     void OnEnable()
@@ -116,6 +119,7 @@ public class Conversation : Interractable
         scriptIndex = 0;
         TurnOnDisplay();
         isTalking = true;
+        player.currentConversation = this;
         visualCue.SetActive(false);
 	}
 
@@ -154,6 +158,7 @@ public class Conversation : Interractable
     private void EndConversation()
     {
         isTalking = false;
+        player.currentConversation = null;
         TurnOffDisplay();
         if (!ResetOnComplete())
         {
@@ -259,6 +264,22 @@ public class Conversation : Interractable
     public virtual void OnConversationLineUpdate(int index)
     {
 
+    }
+
+    /**
+     * If true, allows the player to talk to another npc even if they are currently talking to this one
+     */
+    public virtual bool AllowConcurrentConversations()
+    {
+        return false;
+    }
+
+    /**
+     * If false, the player script interraction search will not prioritize this conversation
+     */
+    public virtual bool InterractionSearchPriority()
+    {
+        return true;
     }
 
     ////  /\ BEHAVIOUR OVERRIDES /\  ////
