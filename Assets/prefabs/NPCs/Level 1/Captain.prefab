@@ -16,7 +16,7 @@ MonoBehaviour:
   script: []
   trans: {fileID: 9059562427845056862}
   body: {fileID: 9077808032044410517}
-  walkSpeed: 0.05
+  walkSpeed: 0.025
   phase: 0
   scriptIntro:
   - Well hey there kiddo, you must be my transfer.
@@ -85,6 +85,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 830036357635062052, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351908478419730, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351908748709590, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.04
+      objectReference: {fileID: 0}
     - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
       propertyPath: m_RootOrder
       value: 0

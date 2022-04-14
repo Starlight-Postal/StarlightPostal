@@ -5,6 +5,8 @@ using UnityEngine;
 class PostOfficeClerk : Conversation
 {
 
+    private const float DELIVERED_HEIGHT_CAP = 100;
+
     public string[] script_maildrop;
     public string[] script_delivery;
     public string[] script_delivered;
@@ -45,6 +47,10 @@ class PostOfficeClerk : Conversation
         if (phase == MailPhase.DELIVERY)
         {
             GameObject.FindObjectsOfType<TutorialNPC>()[0].phase = TutorialPhase.POSTOFFICEDELIVERY;
+        }
+        if (phase == MailPhase.DONE)
+        {
+            GameObject.FindObjectsOfType<balloon>()[0].heightCap = DELIVERED_HEIGHT_CAP;
         }
     }
 

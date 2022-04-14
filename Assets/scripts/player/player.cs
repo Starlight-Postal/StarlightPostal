@@ -307,7 +307,7 @@ public class player : MonoBehaviour
             var dist = Vector2.Distance(new Vector2(go.transform.position.x, go.transform.position.y),
                 new Vector2(gameObject.transform.position.x, gameObject.transform.position.y));
 
-            if (dist <= closestDist && inter.CanPlayerInterract()) {
+            if (inter.CanPlayerInterract()) {
                 if (currentConversation != null && inter is Conversation)
                 {
                     if (currentConversation == (Conversation) inter && ((Conversation) inter).InterractionSearchPriority())
@@ -322,8 +322,12 @@ public class player : MonoBehaviour
                         }
                     }
                 }
-                closestDist = dist;
-                closest = inter;
+
+                if (dist <= closestDist)
+                {
+                    closestDist = dist;
+                    closest = inter;
+                }
             }
         }
         if (closest != null) {

@@ -26,11 +26,11 @@ public class TutorialNPC : Conversation
     private string aniMode = "idle";
     private float aniSpeed = 0.25f;
     private Sprite[] aniIdle;
-    private float aniIdleSpeed = 0.25f;
+    private float aniIdleSpeed = 0.1f;
     private Sprite[] aniWalk;
-    private float aniWalkSpeed = 1f;
+    private float aniWalkSpeed = 0.2f;
     private float aniFrame = 0;
-    public float walkSpeed = 0.05f;
+    public float walkSpeed = 0.025f;
 
     private float prevTH;
 
@@ -130,31 +130,31 @@ public class TutorialNPC : Conversation
         switch (subphase)
         {
             case 0:
-                if (walkTo(1.86f, 2.59f, walkSpeed))
+                if (walkTo(1.9f, 2.25f, walkSpeed))
                     subphase++;
                 return false;
             case 1:
-                if (walkTo(-0.13f, 0.48f, walkSpeed))
+                if (walkTo(-0.17f, 0.158f, walkSpeed))
                     subphase++;
                 return false;
             case 2:
-                if (walkTo(-4f, 0.48f, walkSpeed))
+                if (walkTo(-3.84f, 0.158f, walkSpeed))
                     subphase++;
                 return false;
             case 3:
-                if (walkTo(-4.2f, 0.33f, walkSpeed))
+                if (walkTo(-4.17f, 0.0f, walkSpeed))
                     subphase++;
                 return false;
             case 4:
-                if (walkTo(-7.5f, 0.33f, walkSpeed))
+                if (walkTo(-7.5f, 0.0f, walkSpeed))
                     subphase++;
                 return false;
             case 5:
-                if (walkTo(-8.74f, 0.67f, walkSpeed))
+                if (walkTo(-8.74f, 0.32f, walkSpeed))
                     subphase++;
                 return false;
             case 6:
-                if (walkTo(-9.5f, 0.67f, walkSpeed))
+                if (walkTo(-9.5f, 0.32f, walkSpeed))
                 {
                     subphase = 0;
                     return true;
@@ -167,7 +167,7 @@ public class TutorialNPC : Conversation
     private bool WalkToPostOffice()
     {
         face.facingLeft = false;
-        return walkTo(583.5f, 39.76f, walkSpeed);
+        return walkTo(583.5f, 39.42f, walkSpeed);
     }
 
     private bool DadGetsMilkFromDownTheStreet()
@@ -175,15 +175,15 @@ public class TutorialNPC : Conversation
         face.facingLeft = false;
         switch (subphase) {
             case 0:
-                if (walkTo(619, 39.76f, walkSpeed))
+                if (walkTo(619.3f, 39.42f, walkSpeed))
                     subphase++;
                 return false;
             case 1:
-                if (walkTo(619.7f, 40.1f, walkSpeed))
+                if (walkTo(619.7f, 39.67f, walkSpeed))
                     subphase++;
                 return false;
             case 2:
-                if (walkTo(622.6f, 40.1f, walkSpeed))
+                if (walkTo(622.6f, 39.67f, walkSpeed))
                 {
                     subphase = 0;
                     return true;
@@ -212,9 +212,11 @@ public class TutorialNPC : Conversation
         {
             default:
             case TutorialPhase.INTRO:
+                balloonScript.lockEntry = true;
                 script = scriptIntro;
                 break;
             case TutorialPhase.BALLOON:
+                balloonScript.lockEntry = false;
                 script = scriptBalloon;
                 break;
             case TutorialPhase.POSTOFFICE:
@@ -261,7 +263,7 @@ public class TutorialNPC : Conversation
         }
         if (phase == TutorialPhase.BALLOON && index == 19)
         {
-            trans.position = new Vector3(577.5f, 39.76f, 0);
+            trans.position = new Vector3(578.0f, 39.42f, 0);
             body.SetActive(true);
             balloonScript.captainIsWith = false;
         }
@@ -357,7 +359,15 @@ public class TutorialNPC : Conversation
     // allowing the interract event to go to the balloon even when the tutorial npc is closer
     public override bool CanPlayerInterract()
     {
-        return !(phase == TutorialPhase.BALLOON && scriptIndex == 3);
+        if (phase == TutorialPhase.BALLOON && scriptIndex == 3)
+        {
+            return false;
+        }
+        if (!inMenu && isTalking)
+        {
+            return false;
+        }
+        return true;
     }
 
     public override bool AllowConcurrentConversations()
