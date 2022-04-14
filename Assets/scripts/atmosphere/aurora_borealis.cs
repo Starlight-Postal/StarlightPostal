@@ -16,11 +16,15 @@ public class aurora_borealis : MonoBehaviour
     public float aniSpeed = 0.1f;
 
     public GameObject auraObj;
+    //public float mapScale = 1;
+    Camera cam;
+    Transform trans;
     // Start is called before the first frame update
     void Start()
     {
         TICK = 0;
-        
+        cam = GameObject.Find("Main Camera").GetComponent<Camera>();
+        trans = gameObject.transform;
     }
 
     // Update is called once per frame
@@ -42,6 +46,9 @@ public class aurora_borealis : MonoBehaviour
                 spawnAura(x, y, aniSpeed, decay, s*size, new Color(0.6f * s, (1.5f+(y*0.05f)) * s, (2-(y*0.05f)) * s, s * 0.01f*alpha),auraObj);
             }
         }
+
+        //mapScale = cam.orthographicSize / 20f;
+        trans.localScale = new Vector3(cam.orthographicSize * 0.05f, cam.orthographicSize * 0.05f, 1);
     }
 
     public float getAurora(float ix, float iy)
@@ -63,7 +70,9 @@ public class aurora_borealis : MonoBehaviour
 
     void spawnAura(float x, float y, float speed,int lifespan,float size,Color c,GameObject aobj)
     {
-        GameObject ao = Instantiate(aobj, gameObject.transform.position + new Vector3(x, y, z), Quaternion.identity);
+        GameObject ao = Instantiate(aobj, gameObject.transform.position + new Vector3(x*trans.localScale.x, y*trans.localScale.y, z), Quaternion.identity); //gameObject.transform.position + new Vector3(x, y, z)
+        ao.transform.parent = gameObject.transform;
+        //ao.transform.position = new Vector3(x, y, z);
         aura a = ao.GetComponent<aura>();
         a.speed = speed;
         a.period = Random.Range(0, Mathf.PI * 2);
@@ -71,6 +80,6 @@ public class aurora_borealis : MonoBehaviour
         a.size = size;
         a.color = c;
 
-        ao.transform.parent = gameObject.transform;
+        
     }
 }

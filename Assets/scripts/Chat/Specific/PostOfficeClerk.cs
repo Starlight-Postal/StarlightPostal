@@ -7,6 +7,8 @@ class PostOfficeClerk : Conversation
 
     private const float DELIVERED_HEIGHT_CAP = 100;
 
+    public AudioSource sound;
+
     public string[] script_maildrop;
     public string[] script_delivery;
     public string[] script_delivered;
@@ -51,6 +53,14 @@ class PostOfficeClerk : Conversation
         if (phase == MailPhase.DONE)
         {
             GameObject.FindObjectsOfType<balloon>()[0].heightCap = DELIVERED_HEIGHT_CAP;
+        }
+    }
+
+    public override void OnConversationLineUpdate(int index)
+    {
+        if (phase == MailPhase.MAILDROP && index == 2)
+        {
+            sound.Play(0);
         }
     }
 

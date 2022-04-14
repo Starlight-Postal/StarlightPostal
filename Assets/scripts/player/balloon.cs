@@ -77,6 +77,10 @@ public class balloon : MonoBehaviour
 
     public bool captainIsWith = false;
 
+    public AudioSource sfx_anchor_out;
+    public AudioSource sfx_anchor_in;
+    public AudioSource sfx_disembark;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -111,7 +115,7 @@ public class balloon : MonoBehaviour
         basketTrans = GameObject.Find("Basket").GetComponent<Transform>();
 
         //Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), anchor.GetComponent<Collider2D>(), true);
-        //Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), basketCollider, true); // This was causing ArgumentNullException, Parameter name: collider1
+        Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), basketCollider, true); // This was causing ArgumentNullException, Parameter name: collider1
 
         basket.centerOfMass = new Vector2(0, -1f);
 
@@ -288,6 +292,8 @@ public class balloon : MonoBehaviour
             anchorObj.SetActive(false);
             anchor.stuck = false;
             anchor.landed = false;
+            
+            sfx_anchor_in.Play(0);
         } else
         {
             //Debug.Log("throw");
@@ -298,6 +304,8 @@ public class balloon : MonoBehaviour
             anchor.stuck = false;
             anchor.landed = false;
             //anchor.GetComponent<SpringJoint2D>().distance = 10;
+
+            sfx_anchor_out.Play(0);
         }
     }
 
@@ -306,6 +314,7 @@ public class balloon : MonoBehaviour
         if (landed)
         {
             player.inBalloon = false;
+            sfx_disembark.Play(0);
         }
     }
 
@@ -319,10 +328,10 @@ public class balloon : MonoBehaviour
         float d = (trackV-rb.velocity).magnitude;
         //Debug.Log(d);
         bonk.Bonk(d);
-        if (d >= 4)
+        if (d >= 3)
         {
             //dropCoins((int)Mathf.Floor(d) - 3);
-            dropCoins((int)Mathf.Floor(Mathf.Pow((d - 4) / 15f, 0.5f) * 10));
+            dropCoins((int)Mathf.Floor(Mathf.Pow((d - 3) / 15f, 0.5f) * 10));
         }
     }
 

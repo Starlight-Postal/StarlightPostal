@@ -26,7 +26,6 @@ public class player : MonoBehaviour
     public int kiSPACE = 0;
     //public EdgeCollider2D targetPlatform;
 
-
     public string aniMode = "idle";
     public float aniSpeed = 0.25f;
     public Sprite[] aniIdle;
@@ -190,29 +189,6 @@ public class player : MonoBehaviour
                         }
                     }
                 }
-
-                //Debug.Log("balloon range!");
-                if (kiSPACE == 1)
-                {
-                    if (swap)
-                    {
-                        if (!balloon.lockEntry && Vector3.Distance(trans.position, balloonTrans.position + new Vector3(0, 0, (trans.position.z - balloonTrans.position.z))) < 3.5f || Vector3.Distance(trans.position, anchorTrans.position + new Vector3(0, 0, (trans.position.z - anchorTrans.position.z))) < 1f)
-
-                        {
-                            if (Vector3.Distance(trans.position, balloonTrans.position + new Vector3(0, 0, (trans.position.z - balloonTrans.position.z))) < 3.5f || Vector3.Distance(trans.position, anchorTrans.position + new Vector3(0, 0, (trans.position.z - anchorTrans.position.z))) < 1f)
-                            {
-                                //Debug.Log("embark");
-                                inBalloon = true;
-                                swap = false;
-                            }
-                        }
-                    }
-
-                }
-                else
-                {
-                    swap = true;
-                }
             }
         }
 
@@ -237,6 +213,7 @@ public class player : MonoBehaviour
                     inChair = false;
                     chair = null;
                     Debug.Log("chair out");
+                    //sfx_disembark.Play(0); //TODO: Sound should play when player gets out of char
                 }
             } else
             {
