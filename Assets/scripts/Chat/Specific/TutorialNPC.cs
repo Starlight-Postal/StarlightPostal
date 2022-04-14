@@ -365,4 +365,9 @@ public class TutorialNPC : Conversation
         return !inMenu;
     }
 
+    public override bool ZoomCamera()
+    {
+        return inMenu;
+    }
+
 }

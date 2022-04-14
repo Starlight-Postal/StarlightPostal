@@ -282,6 +282,14 @@ public class Conversation : Interractable
         return true;
     }
 
+    /**
+     * If true, the camera will zoom in
+     */
+    public virtual bool ZoomCamera()
+    {
+        return true;
+    }
+
     ////  /\ BEHAVIOUR OVERRIDES /\  ////
 
 }

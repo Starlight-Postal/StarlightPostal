@@ -3577,6 +3577,7 @@ MonoBehaviour:
   balloon: {fileID: 0}
   balloonSize: 20
   playerSize: 2
+  conversationSize: 0.9
   balloonOff: {x: 0, y: 0, z: 0}
   playerOff: {x: 0, y: 0.5, z: 0}
   camRange: {x: 0, y: 0}
@@ -3678,6 +3679,7 @@ MonoBehaviour:
   lockEntry: 0
   dropCoin: {fileID: 8731895260476005950, guid: 6ce47b0d2b4a9b744be2a73a09fb9acc, type: 3}
   bonk: {fileID: 0}
+  captainIsWith: 0
 --- !u!212 &3968976079676043112
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4132,6 +4134,7 @@ MonoBehaviour:
   inChair: 0
   chair: {fileID: 0}
   platformQueueu: []
+  currentConversation: {fileID: 0}
 --- !u!95 &1730267759719722911
 Animator:
   serializedVersion: 3

@@ -19,6 +19,7 @@ public class camera : MonoBehaviour
 
     public float balloonSize = 20;
     public float playerSize = 10;
+    public float conversationSize = 1.5f;
 
     public Vector3 balloonOff;
     public Vector3 playerOff;
@@ -82,7 +83,13 @@ public class camera : MonoBehaviour
             }
             if (target == playerTrans)
             {
-                cam.orthographicSize += (playerSize - cam.orthographicSize) * 0.01f;
+                if (player.currentConversation != null && player.currentConversation.ZoomCamera())
+                {
+                    cam.orthographicSize += (conversationSize - cam.orthographicSize) * 0.01f;
+                } else
+                {
+                    cam.orthographicSize += (playerSize - cam.orthographicSize) * 0.01f;
+                }
             }
 
             if (range != null)
