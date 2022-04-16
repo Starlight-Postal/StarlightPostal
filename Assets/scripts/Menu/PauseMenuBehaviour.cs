@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-public class PauseMenuBehaviour : MonoBehaviour {
+public class PauseMenuBehaviour : NavigatableMenu {
 
     public bool inMenu = false;
 
@@ -17,11 +17,7 @@ public class PauseMenuBehaviour : MonoBehaviour {
     private VisualElement container;
     private VisualElement rve;
     
-    void Update() {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            inMenu = !inMenu;
-        }
-        
+    void Update() {        
         Time.timeScale = inMenu ? 0 : 1;
         rve.visible = inMenu;
     }
@@ -37,28 +33,59 @@ public class PauseMenuBehaviour : MonoBehaviour {
         quitDesktopButton = rve.Q<Button>("quit-desktop-button");
 
         rve.RegisterCallback<GeometryChangedEvent>(ev => { Rescale(); });
-
-        resumeButton.RegisterCallback<ClickEvent>(ev => { inMenu = false; });
+        
+        resumeButton.RegisterCallback<ClickEvent>(ev => { ResumeGame(); });
         resetButton.RegisterCallback<ClickEvent>(ev => { Reset(); });
         quitMenuButton.RegisterCallback<ClickEvent>(ev => { LoadMainMenu(); });
-        quitDesktopButton.RegisterCallback<ClickEvent>(ev => { Application.Quit(); });
+        quitDesktopButton.RegisterCallback<ClickEvent>(ev => { QuitGame(); });
 
         rve.visible = false;
         Rescale();
     }
 
+    public override void ClickButton(int index) {
+        switch (index) {
+        case 0:
+            ResumeGame();
+            break;
+        case 1:
+            Reset();
+            break;
+        case 2:
+            LoadMainMenu();
+            break;
+        case 3:
+            QuitGame();
+            break;
+        default:
+            break;
+        }
+    }
+
+    private void ResumeGame() {
+        inMenu = false;
+    }
+
     private void Reset() {
         inMenu = false;
-        if (Input.GetKey(KeyCode.LeftShift)) {
+        /*if (Input.GetKey(KeyCode.LeftShift)) {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        } else {
+        } else {*/
             CheckpointManager.Respawn();
-        }
+        //}
     }
 
     private void LoadMainMenu() {
         Time.timeScale = 1;
         SceneManager.LoadScene("Main Menu");
+    }
+
+    private void QuitGame() {
+        Application.Quit();
+    }
+
+    void OnPauseGame() {
+        inMenu = !inMenu;
     }
 
     private void Rescale() {
