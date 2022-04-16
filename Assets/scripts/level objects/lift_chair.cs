@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class lift_chair : MonoBehaviour
+public class lift_chair : Interractable
 {
     public chairlift chairlift;
     public int node = 0;
@@ -83,26 +83,17 @@ public class lift_chair : MonoBehaviour
             
         }
 
+    }
+
+    public override void OnPlayerInterract()
+    {
+        player.inChair = !player.inChair;
         if (player.inChair)
         {
-
-        }
-        else
-        {
-            if (!player.inBalloon)
-            {
-                if (new Vector2(trans.position.x - playerTrans.position.x, trans.position.y - playerTrans.position.y).magnitude <= range)
-                {
-                    //Debug.Log("chair range");
-                    if (player.kiSPACE==1)
-                    {
-                        player.inChair = true;
-                        player.chair = trans;
-                        Debug.Log("in chair");
-                        sfx_sit.Play(0);
-                    }
-                }
-            }
+            player.chair = trans;
+            Debug.Log("in chair");
+            sfx_sit.Play(0);
         }
     }
+
 }

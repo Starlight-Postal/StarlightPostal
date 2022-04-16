@@ -51,7 +51,7 @@ public class player : MonoBehaviour
     private float walkInput = 0;
     private float lookInput = 0;
 
-    private float INTERRACT_MAX_DISTANCE = 3;
+    private float INTERRACT_MAX_DISTANCE = 1.5f;
 
     private bool prevInBalloon = false;
 
