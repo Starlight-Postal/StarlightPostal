@@ -53,7 +53,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2066624159846824903, guid: 296d3c9c68450314e97b622c03cbf3fa, type: 3}
       propertyPath: m_Name
-      value: Miner
+      value: Miner 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5962641511014812913, guid: 296d3c9c68450314e97b622c03cbf3fa, type: 3}
+      propertyPath: script.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5962641511014812913, guid: 296d3c9c68450314e97b622c03cbf3fa, type: 3}
+      propertyPath: script.Array.data[0]
+      value: Thank's a load for yer service little missie, we really appreciate all
+        the importing and exporting around here.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5962641511014812913, guid: 296d3c9c68450314e97b622c03cbf3fa, type: 3}
+      propertyPath: script.Array.data[1]
+      value: You wouldn't think it, but a town who's whole economy is based on jewels
+        and mushrooms really benefits from a good delivery service.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 296d3c9c68450314e97b622c03cbf3fa, type: 3}

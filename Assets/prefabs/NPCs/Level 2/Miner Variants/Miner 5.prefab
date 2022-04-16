@@ -59,5 +59,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Miner 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5962641511014812913, guid: 296d3c9c68450314e97b622c03cbf3fa, type: 3}
+      propertyPath: script.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5962641511014812913, guid: 296d3c9c68450314e97b622c03cbf3fa, type: 3}
+      propertyPath: script.Array.data[0]
+      value: Say, yer the new pilot aren't ya?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5962641511014812913, guid: 296d3c9c68450314e97b622c03cbf3fa, type: 3}
+      propertyPath: script.Array.data[1]
+      value: You should know, you don't have to drop your anchor just when yer makin'
+        a landing. You can drop it any time you need to tie yerself down.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5962641511014812913, guid: 296d3c9c68450314e97b622c03cbf3fa, type: 3}
+      propertyPath: script.Array.data[2]
+      value: You can even real yerself in by holding Q! Isn't that something!
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 296d3c9c68450314e97b622c03cbf3fa, type: 3}

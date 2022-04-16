@@ -59,5 +59,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Miner 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5962641511014812913, guid: 296d3c9c68450314e97b622c03cbf3fa, type: 3}
+      propertyPath: script.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5962641511014812913, guid: 296d3c9c68450314e97b622c03cbf3fa, type: 3}
+      propertyPath: script.Array.data[0]
+      value: Careful lass, mining is an awfully dangerous business for a little one
+        like yerself.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5962641511014812913, guid: 296d3c9c68450314e97b622c03cbf3fa, type: 3}
+      propertyPath: script.Array.data[1]
+      value: Sharp crystals, pointy stalactites. You could really hurt yerself on
+        one of those!
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 296d3c9c68450314e97b622c03cbf3fa, type: 3}
