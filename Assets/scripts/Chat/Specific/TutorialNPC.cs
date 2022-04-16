@@ -304,6 +304,10 @@ public class TutorialNPC : Conversation
                     case 5:
                         return balloonTrans.position.y > 5.0f;
                     case 8:
+                        if (balloonScript.th > prevTH)
+                        {
+                            prevTH = balloonScript.th;
+                        }
                         return prevTH - 2.0f > balloonScript.th;
                     case 15:
                         return balloonScript.th <= 55;
