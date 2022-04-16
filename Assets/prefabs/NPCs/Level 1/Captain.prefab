@@ -1,0 +1,190 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &304300000617169906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9059562427032042999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1b7eb2862b93c201bac1b3d36282ed1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visualCue: {fileID: 9059562426740257227}
+  script: []
+  trans: {fileID: 9059562427845056862}
+  body: {fileID: 9077808032044410517}
+  walkSpeed: 0.025
+  phase: 0
+  scriptIntro:
+  - Well hey there kiddo, you must be my transfer.
+  - "Welcome to Autumn Outpost, I\u2019m Captain."
+  - It might not look like much, but this is kind of the central hub for all of Starlight
+    Mountain! Only way in or out is through this station.
+  - "Well I\u2019m sure you know, but you\u2019ll be our new mail carrier for the
+    season. \u2018Whole mountain is serviced by this postal service, so it\u2019s
+    a big responsibility!"
+  - "I won\u2019t bore you with the details, we\u2019ve got a big night ahead of
+    us. This week\u2019s mail just came in, we gotta get going."
+  - "I hope you got some shut-eye on the train because your first shift starts right
+    now! I\u2019ll give you a minute to get settled but when you\u2019re ready to
+    go, meet me out back."
+  - 
+  scriptBalloon:
+  - Hey kiddo, all set?
+  - "This is it, the Starlight Express! She\u2019s a real beauty."
+  - "What\u2019s the matter, never flown a hot air balloon before? How else did you
+    think all those packages made it to the summit?"
+  - "Well, I\u2019m a big believer in learning by experience. Press SPACE to hop
+    in!"
+  - "Now a hot air balloon is about the simplest kind of vehicle you\u2019ll ever
+    drive. There\u2019s only two directions: up and down!"
+  - We go up by heating up the air in the balloon, tap W to use your burner.
+  - "There you go! The hotter our little air bubble gets, the higher up it\u2019ll
+    want to float. Be careful though, she might take a minute to get up as high as
+    she wants to go, so there\u2019s no need to floor the burner."
+  - Little taps will usually do the trick!
+  - Now to go DOWN, we need to vent some of that hot air out the top. Tap S to open
+    the vent.
+  - "Nice job! Be gentle with her, we don\u2019t want to be rocketing up and down."
+  - Ballooning is all about your ups and downs, side-to-side is more of a challenge.
+  - "We can always lean the balloon with A or D, but that\u2019ll only get you so
+    far. A master balloon pilot needs to learn to follow the wind."
+  - Pay attention to your surroundings! See how the leaves are blowing in all different
+    directions?
+  - Think about the direction you want to go, and see if you can find a wind current
+    that can take you that way. Be like the leaves!
+  - "Well here we are, this is our first stop. Let\u2019s make our way to the landing
+    platform!"
+  - "Easy does it now, let\u2019s make it a gentle landing."
+  - Now in order to dock here we need to be tied down. Press E to drop the anchor.
+  - "Whoops, we need to anchor to the landing platform! Press E again to retract
+    the anchor. Let\u2019s try again, make sure you\u2019re over the target."
+  - Nice job! Now lower the balloon closer to the groud. Then we can press SPACE
+    again to hop out.
+  - "Great work kiddo, you survived your maiden voyage! Let\u2019s get to the post
+    office- we\u2019ve got some packages to deliver."
+  - 
+  scriptPostOffice:
+  - This is the Autumn Hills post office, every town will have their own branch.
+  scriptPostOfficeDelivery:
+  - Well that's that! All that's left here is to deliver that package.
+  - Good luck, kiddo, I'll be town at the tavern.
+  - 
+  scriptBar:
+  - Hey sport, still looking for the mayor?
+  - They might be at the state house, just east of the post office.
+  scriptDelivered:
+  - Good work kiddo, you better get going. There's a lot more mail to deliver tonight!
+--- !u!1001 &4582024266137075482
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 830036357635062052, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 830036357635062052, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 830036357635062052, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 830036357635062052, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351908478419730, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351908748709590, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768351909796898375, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: m_Name
+      value: Captain
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786275837955545487, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: m_Name
+      value: Visual
+      objectReference: {fileID: 0}
+    - target: {fileID: 5158619574026226743, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cd950a30b6523874083e916dfda2fca9, type: 3}
+    m_RemovedComponents:
+    - {fileID: 881869528284156273, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+--- !u!4 &9059562427845056862 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4768351909796898372, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+  m_PrefabInstance: {fileID: 4582024266137075482}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9059562427032042999 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4768351908478419693, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+  m_PrefabInstance: {fileID: 4582024266137075482}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9059562426740257227 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4768351908748709585, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+  m_PrefabInstance: {fileID: 4582024266137075482}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9077808032044410517 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4786275837955545487, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+  m_PrefabInstance: {fileID: 4582024266137075482}
+  m_PrefabAsset: {fileID: 0}

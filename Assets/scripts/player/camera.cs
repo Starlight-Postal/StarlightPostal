@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class camera : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class camera : MonoBehaviour
 
     public float balloonSize = 20;
     public float playerSize = 10;
+    public float conversationSize = 1.5f;
 
     public Vector3 balloonOff;
     public Vector3 playerOff;
@@ -27,6 +29,9 @@ public class camera : MonoBehaviour
     public Vector2 camRange;
 
     public Transform range;
+    public float playerLookRange = 1.0f;
+    public float balloonLookRange = 10.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,18 +51,25 @@ public class camera : MonoBehaviour
         if (follow)
         {
             camRange = ratio * cam.orthographicSize;
+
+            Vector3 cameraMove;
+            float lookRange;
             if (player.inBalloon)
             {
                 target = balloonTrans;
-                offset = balloonOff;
+                cameraMove = balloonOff;
+                lookRange = balloonLookRange;
             }
             else
             {
                 target = playerTrans;
-                offset = playerOff;
-                playerOff = new Vector2(0, player.camHeight);
+                cameraMove = playerOff;
+                lookRange = playerLookRange;
             }
-            trans.position += ((new Vector3(target.position.x, target.position.y, trans.position.z) + offset) - trans.position) * speed;
+
+            cameraMove += offset * lookRange;
+
+            trans.position += ((new Vector3(target.position.x, target.position.y, trans.position.z) + cameraMove) - trans.position) * speed;
             if (target == balloonTrans)
             {
                 if (balloon.anchored&&balloon.anchor.landed)
@@ -71,7 +83,13 @@ public class camera : MonoBehaviour
             }
             if (target == playerTrans)
             {
-                cam.orthographicSize += (playerSize - cam.orthographicSize) * 0.01f;
+                if (player.currentConversation != null && player.currentConversation.ZoomCamera())
+                {
+                    cam.orthographicSize += (conversationSize - cam.orthographicSize) * 0.01f;
+                } else
+                {
+                    cam.orthographicSize += (playerSize - cam.orthographicSize) * 0.01f;
+                }
             }
 
             if (range != null)
@@ -101,6 +119,11 @@ public class camera : MonoBehaviour
         target = balloonTrans;
         trans.position = new Vector3(target.position.x,target.position.y,trans.position.z) + offset;
         cam.orthographicSize = balloonSize;
+    }
+
+    void OnLook(InputValue value) {
+        var input = value.Get<Vector2>();
+        offset = new Vector3(input.x, input.y, 0);
     }
 
 }
