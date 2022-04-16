@@ -5,9 +5,10 @@ using UnityEngine;
 class PostOfficeClerk : Conversation
 {
 
-    private const float DELIVERED_HEIGHT_CAP = 100;
+    public float DELIVERED_HEIGHT_CAP = 100;
 
     public AudioSource sound;
+    public int dropLine;
 
     public string[] script_maildrop;
     public string[] script_delivery;
@@ -27,14 +28,12 @@ class PostOfficeClerk : Conversation
         switch (phase)
         {
             case MailPhase.MAILDROP:
-                phase = MailPhase.DELIVERY;
                 script = script_maildrop;
                 break;
             case MailPhase.DELIVERY:
                 script = script_delivery;
                 break;
             case MailPhase.DELIVERED:
-                phase = MailPhase.DONE;
                 script = script_delivered;
                 break;
             case MailPhase.DONE:
@@ -46,21 +45,32 @@ class PostOfficeClerk : Conversation
 
     public override void OnConversationEnd()
     {
-        if (phase == MailPhase.DELIVERY)
+        switch (phase)
         {
-            GameObject.FindObjectsOfType<TutorialNPC>()[0].phase = TutorialPhase.POSTOFFICEDELIVERY;
-        }
-        if (phase == MailPhase.DONE)
-        {
-            GameObject.FindObjectsOfType<balloon>()[0].heightCap = DELIVERED_HEIGHT_CAP;
+            case MailPhase.MAILDROP:
+                phase = MailPhase.DELIVERY;
+                GameObject.FindObjectsOfType<balloon>()[0].heightCap = DELIVERED_HEIGHT_CAP; //package optional
+                GameObject.FindObjectsOfType<TutorialNPC>()[0].phase = TutorialPhase.POSTOFFICEDELIVERY;
+                break;
+            case MailPhase.DELIVERY:
+                break;
+            case MailPhase.DELIVERED:
+                phase = MailPhase.DONE;
+                //GameObject.FindObjectsOfType<balloon>()[0].heightCap = DELIVERED_HEIGHT_CAP; //package mandatory, but we should move this to the recipient instead if we want to do this
+                break;
+            case MailPhase.DONE:
+            default:
+                break;
         }
     }
 
     public override void OnConversationLineUpdate(int index)
     {
-        if (phase == MailPhase.MAILDROP && index == 2)
+        //Debug.Log(phase + " , " + index);
+        if (phase == MailPhase.MAILDROP && index == dropLine)
         {
             sound.Play(0);
+            //Debug.Log("SOUND");
         }
     }
 
