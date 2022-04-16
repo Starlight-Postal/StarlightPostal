@@ -27980,6 +27980,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &801816653 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3305828229648416700, guid: 921ad00ed75f7b2438faec9390515407, type: 3}
+  m_PrefabInstance: {fileID: 1227932145}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &802082755
 GameObject:
   m_ObjectHideFlags: 0
@@ -42579,6 +42584,10 @@ PrefabInstance:
     - target: {fileID: 2363531076811489625, guid: 921ad00ed75f7b2438faec9390515407, type: 3}
       propertyPath: visualCue
       value: 
+      objectReference: {fileID: 801816653}
+    - target: {fileID: 2363531076811489625, guid: 921ad00ed75f7b2438faec9390515407, type: 3}
+      propertyPath: DELIVERED_HEIGHT_CAP
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 2363531076811489625, guid: 921ad00ed75f7b2438faec9390515407, type: 3}
       propertyPath: script_done.Array.data[0]
@@ -57609,7 +57618,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1706721664
 Transform:
   m_ObjectHideFlags: 0
@@ -70102,8 +70111,8 @@ Transform:
   m_LocalPosition: {x: 11.072, y: 5.4, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4768351909609928372}
   - {fileID: 4768351910074951331}
+  - {fileID: 4768351909609928372}
   - {fileID: 4768351910375648103}
   - {fileID: 1706721664}
   m_Father: {fileID: 171671596}
@@ -70137,7 +70146,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 4768351909260346357}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4768351909609928373
 GameObject:
@@ -70261,7 +70270,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4768351909260346357}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4768351910074951516
 GameObject:
@@ -70276,6 +70285,7 @@ GameObject:
   - component: {fileID: 4768351910074951328}
   - component: {fileID: 4768351910074951517}
   - component: {fileID: 2416855207012806571}
+  - component: {fileID: 4768351910074951518}
   m_Layer: 6
   m_Name: Trigger
   m_TagString: Untagged
@@ -70296,12 +70306,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualCue: {fileID: 4768351910375648096}
-  script: []
-  loopScript: []
+  script:
+  - hi! i'm batrice! are you the new mailman?
+  - wow! is this for me? i love him!
+  - thanks new mail man!!
+  loopScript:
+  - his name is batthew. you can come play with us any time!
   deliveredTo: 0
   package: {fileID: 1706721663}
-  sound: {fileID: 0}
-  dropLine: 0
+  sound: {fileID: 1706721665}
+  dropLine: 1
+--- !u!114 &4768351910074951518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4768351910074951516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c9934d77758a2b07ad065d536a02042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  facePlayer: 1
+  invert: 1
+  bodyTrans: {fileID: 4768351909609928372}
+  facingLeft: 0
 --- !u!1 &4768351910375648096
 GameObject:
   m_ObjectHideFlags: 0
@@ -70318,7 +70348,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &4768351910375648102
 SpriteRenderer:
   m_ObjectHideFlags: 0

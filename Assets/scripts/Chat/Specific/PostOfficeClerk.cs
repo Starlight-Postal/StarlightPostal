@@ -5,7 +5,7 @@ using UnityEngine;
 class PostOfficeClerk : Conversation
 {
 
-    public const float DELIVERED_HEIGHT_CAP = 100;
+    public float DELIVERED_HEIGHT_CAP = 100;
 
     public AudioSource sound;
     public int dropLine;
@@ -49,13 +49,14 @@ class PostOfficeClerk : Conversation
         {
             case MailPhase.MAILDROP:
                 phase = MailPhase.DELIVERY;
+                GameObject.FindObjectsOfType<balloon>()[0].heightCap = DELIVERED_HEIGHT_CAP; //package optional
                 GameObject.FindObjectsOfType<TutorialNPC>()[0].phase = TutorialPhase.POSTOFFICEDELIVERY;
                 break;
             case MailPhase.DELIVERY:
                 break;
             case MailPhase.DELIVERED:
                 phase = MailPhase.DONE;
-                GameObject.FindObjectsOfType<balloon>()[0].heightCap = DELIVERED_HEIGHT_CAP;
+                //GameObject.FindObjectsOfType<balloon>()[0].heightCap = DELIVERED_HEIGHT_CAP; //package mandatory, but we should move this to the recipient instead if we want to do this
                 break;
             case MailPhase.DONE:
             default:

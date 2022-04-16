@@ -15,11 +15,6 @@ public class EncounterNPC : Conversation
 
     public override void OnConversationEnd()
     {
-        /*if (!deliveredTo)
-        {
-            package.SetActive(true);
-            sound.Play();
-        }*/
         deliveredTo = true;
         script = loopScript;
         GameObject.FindObjectsOfType<PostOfficeClerk>()[0].phase = MailPhase.DELIVERED;
