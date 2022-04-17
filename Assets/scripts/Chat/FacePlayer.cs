@@ -9,8 +9,8 @@ public class FacePlayer : MonoBehaviour
     public bool invert;
     public bool faceInRange;
     public Transform bodyTrans;
-    public bool defaultLook;
-
+    
+    private bool defaultLook;
     private Transform playerTrans;
     private Transform trans;
     private float visWidth;
@@ -33,9 +33,9 @@ public class FacePlayer : MonoBehaviour
 
     void FixedUpdate()
     {
-        facingLeft = defaultLook;
         if (facePlayer)
         {
+            facingLeft = defaultLook;
             if (!faceInRange || npc.isInRange)
             {
                 if (playerTrans.position.x > trans.position.x)
