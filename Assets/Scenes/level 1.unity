@@ -2001,7 +2001,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 34560627}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.25, y: 0.45, z: 0}
+  m_LocalPosition: {x: -0.25, y: 0.45, z: -0.1}
   m_LocalScale: {x: 0.5, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 1768859388}
@@ -4740,7 +4740,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 149410366}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.00495, y: 0.0188, z: 0}
+  m_LocalPosition: {x: 0.00495, y: 0.0188, z: -0.1}
   m_LocalScale: {x: 1.0593865, y: 0.048448, z: 1}
   m_Children: []
   m_Father: {fileID: 1768859388}
@@ -24115,7 +24115,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 785889169}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5488, y: 0.0178, z: 0}
+  m_LocalPosition: {x: -0.5488, y: 0.0178, z: -0.1}
   m_LocalScale: {x: -0.05, y: 0.05, z: 1}
   m_Children: []
   m_Father: {fileID: 1768859388}
@@ -28150,7 +28150,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 897288968}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.95, z: 0}
+  m_LocalPosition: {x: 0, y: 0.95, z: -0.1}
   m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 1768859388}
@@ -29907,6 +29907,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3717088292121903715, guid: e87aff6b8101f8b4fb8878e678188de3, type: 3}
+      propertyPath: faceInRange
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5426809507851432319, guid: e87aff6b8101f8b4fb8878e678188de3, type: 3}
+      propertyPath: script.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5426809507851432319, guid: e87aff6b8101f8b4fb8878e678188de3, type: 3}
+      propertyPath: script.Array.data[0]
+      value: Hello! Welcome to the Tavern.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5426809507851432319, guid: e87aff6b8101f8b4fb8878e678188de3, type: 3}
+      propertyPath: script.Array.data[1]
+      value: I'm Pierre, make yourself at home.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5426809507851432319, guid: e87aff6b8101f8b4fb8878e678188de3, type: 3}
+      propertyPath: script.Array.data[2]
+      value: We get all sorts of passers-by through here, so don't be a stranger.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5426809507851432319, guid: e87aff6b8101f8b4fb8878e678188de3, type: 3}
+      propertyPath: script.Array.data[3]
+      value: Although legally I have to disclose we only serve apple cider in here.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5426809507851432319, guid: e87aff6b8101f8b4fb8878e678188de3, type: 3}
+      propertyPath: script.Array.data[4]
+      value: It's an ESRB thing.
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e87aff6b8101f8b4fb8878e678188de3, type: 3}
 --- !u!4 &963216150 stripped
@@ -30809,7 +30837,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 983913516}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.475, y: 0.68003, z: 0}
+  m_LocalPosition: {x: -0.475, y: 0.68003, z: -0.1}
   m_LocalScale: {x: 0.05, y: 0.63993, z: 1}
   m_Children: []
   m_Father: {fileID: 1768859388}
@@ -41625,7 +41653,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1334230423}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5589, y: 0.0177, z: 0}
+  m_LocalPosition: {x: 0.5589, y: 0.0177, z: -0.1}
   m_LocalScale: {x: 0.05, y: 0.05, z: 1}
   m_Children: []
   m_Father: {fileID: 1768859388}
@@ -64996,7 +65024,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2010801068}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.475, y: 0.68003, z: 0}
+  m_LocalPosition: {x: 0.475, y: 0.68003, z: -0.1}
   m_LocalScale: {x: 0.05, y: 0.63993, z: 1}
   m_Children: []
   m_Father: {fileID: 1768859388}

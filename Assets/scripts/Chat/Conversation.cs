@@ -16,7 +16,7 @@ public class Conversation : Interractable
     protected bool isTalking;
     private bool canTalk = true;
     private bool waitingForReady;
-    private bool isInRange;
+    public bool isInRange;
     
     private VisualElement root;
     private Button chatButton;
