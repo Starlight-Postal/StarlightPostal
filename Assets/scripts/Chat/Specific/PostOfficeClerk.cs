@@ -17,6 +17,8 @@ class PostOfficeClerk : Conversation
 
     public MailPhase phase;
 
+    
+
     private void Start()
     {
         base.Start();
