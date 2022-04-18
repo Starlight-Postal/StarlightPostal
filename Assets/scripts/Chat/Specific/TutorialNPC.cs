@@ -46,6 +46,8 @@ public class TutorialNPC : Conversation
     public string[] scriptBar;
     public string[] scriptDelivered;
 
+    public EncounterNPC recipient;
+
     private void Start()
     {
         base.Start();
@@ -208,6 +210,16 @@ public class TutorialNPC : Conversation
 
     public override void OnConversationStart()
     {
+        if (recipient.deliveredTo)
+        {
+            if (phase == TutorialPhase.POSTOFFICE)
+            {
+                phase = TutorialPhase.POSTOFFICEDELIVERY;
+            } else if(phase == TutorialPhase.BAR)
+            {
+                phase = TutorialPhase.DELIVERED;
+            }
+        }
         switch (phase)
         {
             default:

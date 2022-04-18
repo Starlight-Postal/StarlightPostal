@@ -16,7 +16,7 @@ public class EncounterNPC : LoopingConversation
         base.OnConversationEnd();
         deliveredTo = true;
         GameObject.FindObjectsOfType<PostOfficeClerk>()[0].phase = MailPhase.DELIVERED;
-        GameObject.FindObjectsOfType<TutorialNPC>()[0].phase = TutorialPhase.DELIVERED;
+        //GameObject.FindObjectsOfType<TutorialNPC>()[0].phase = TutorialPhase.DELIVERED;
     }
 
     public override void OnConversationLineUpdate(int index)
