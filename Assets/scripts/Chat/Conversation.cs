@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 public class Conversation : Interractable
 {
 
-    private player player;
+    protected player player;
 
     [SerializeField] private GameObject visualCue;
 	[SerializeField] public string[] script;
