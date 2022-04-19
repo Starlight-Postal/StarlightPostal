@@ -10,10 +10,20 @@ public class pulse : MonoBehaviour
     public float speed;
     public float period;
     int TICK = 0;
+
+    public bool randomPeriod = false;
     // Start is called before the first frame update
     void Start()
     {
+        if (sprite == null)
+        {
+            sprite = gameObject.GetComponent<SpriteRenderer>();
+        }
         TICK = 0;
+        if (randomPeriod)
+        {
+            period = Random.Range(0, 2 * Mathf.PI);
+        }
     }
 
     // Update is called once per frame
