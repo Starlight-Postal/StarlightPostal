@@ -257,12 +257,15 @@ public class BalloonEquipter : MonoBehaviour
     private void closeShop()
     {
         rve.visible = false;
+        Button10.visible = false;
     }
 
     private void openShop()
     {
         rve.visible = true;
         updateShop();
+        Button10.visible = true;
+
     }
 
     private void updateButtons()
