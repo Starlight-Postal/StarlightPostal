@@ -14,14 +14,7 @@ public class BalloonEquipter : MonoBehaviour
     public bool playerInRange;
     [SerializeField] public int stage;
 
-
-    public player player;
-    public balloon balloon;
-    public anchor anchor;
-
-
     public bool inMenu = false;
-
 
     private Label Shop;
     private Label Label0;
@@ -48,17 +41,12 @@ public class BalloonEquipter : MonoBehaviour
 
     [SerializeField] private VisualElement rve;
 
-
     public global_data gdata;
-
-    private bool ownBalloon2;
-    private bool ownBalloon3;
 
     private void Start()
     {
         playerInRange = false;
         visualCue.SetActive(false);
-        player = GameObject.Find("player").GetComponent<player>();
         gdata = GameObject.Find("Coin Global Data").GetComponent<global_data>();
         updateShop();
     }
@@ -211,7 +199,7 @@ public class BalloonEquipter : MonoBehaviour
         {
             if (gdata.balloon == 10)
             {
-                balloon.ChangeBalloonSkin("logo-1");
+                balloon.ChangeBalloonSkin("stripes-1");
                 gdata.balloon = 11;
             }
             else
@@ -260,7 +248,7 @@ public class BalloonEquipter : MonoBehaviour
         Button10.visible = false;
     }
 
-    private void openShop()
+    private void openShop()//asdf
     {
         rve.visible = true;
         updateShop();
@@ -272,9 +260,9 @@ public class BalloonEquipter : MonoBehaviour
     {
         if (gdata.stage >= 1)
         {
-            Button4.text = "Red balloon";
-            Button5.text = "Maple Leaf";
-            Button6.text = "Train";
+            Button1.text = "Red balloon";
+            Button2.text = "Maple Leaf";
+            Button3.text = "Train";
         }
         if (gdata.stage >= 2)
         {
@@ -290,7 +278,3 @@ public class BalloonEquipter : MonoBehaviour
         }
     }
 }
-
-
-
-// balloon.ChangeBalloonSkin("stripes-1");

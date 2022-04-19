@@ -94,6 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visualCue: {fileID: 4768351908748709585}
   script: []
+  isInRange: 0
 --- !u!114 &8423738791333503597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,8 +109,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   facePlayer: 1
   invert: 0
+  faceInRange: 0
   bodyTrans: {fileID: 830036357635062052}
   facingLeft: 0
+  npc: {fileID: 0}
 --- !u!1 &4768351908748709585
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,7 +139,7 @@ Transform:
   m_GameObject: {fileID: 4768351908748709585}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.947, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.04, y: 0.05, z: 1}
   m_Children: []
   m_Father: {fileID: 4768351909796898372}
   m_RootOrder: 1
