@@ -11,6 +11,9 @@ public class anchor : MonoBehaviour
     public Vector3 tOff;
     public Transform trans;
     public Rigidbody2D rb;
+
+    public AudioSource sfx_land;
+    public AudioSource sfx_attach;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +30,14 @@ public class anchor : MonoBehaviour
         {
             trans.position = targetTrans.position + tOff;
             rb.bodyType = RigidbodyType2D.Static;
-            landed = (target.tag == "landing");
+            if (target.tag == "landing")
+            {
+                if (!landed)
+                {
+                    sfx_attach.Play(0);
+                }
+                landed = true;
+            }
         } else
         {
             rb.bodyType = RigidbodyType2D.Dynamic;
@@ -44,6 +54,7 @@ public class anchor : MonoBehaviour
             target = c.gameObject;
             targetTrans = target.GetComponent<Transform>();
             tOff = trans.position - targetTrans.position;
+            sfx_land.Play(0);
         }
     }
     /*void OnCollisionExit2D(Collision2D c)

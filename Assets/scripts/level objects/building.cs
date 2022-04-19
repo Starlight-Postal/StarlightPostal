@@ -13,7 +13,7 @@ public class building : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        trans = gameObject.GetComponent<Transform>();
+        //trans = gameObject.GetComponent<Transform>();
         player = GameObject.Find("player").GetComponent<Transform>();
         sprites = exterior.GetComponentsInChildren<SpriteRenderer>();
         

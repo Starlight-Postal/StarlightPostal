@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class package_dropoff : MonoBehaviour
+public class package_dropoff : Interractable
 {
     Transform playerTrans;
     Transform trans;
@@ -19,26 +19,17 @@ public class package_dropoff : MonoBehaviour
         playerTrans = GameObject.Find("player").GetComponent<Transform>();
         balloon = GameObject.Find("balloon").GetComponent<balloon>();
         //sprite = gameObject.GetComponent<SpriteRenderer>();
+        sprite.color = new Color(1,1,1);
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void OnPlayerInterract()
     {
-        sprite.color = new Color(0.9f, 0.8f, 0.8f);
-        if (!player.inBalloon)
+        if (balloon.heightCap < newHeight)
         {
-            if(Vector2.Distance(new Vector2(trans.position.x,trans.position.y),new Vector2(playerTrans.position.x, playerTrans.position.y)) <= range)
-            {
-                if (balloon.heightCap < newHeight)
-                {
-                    if (Input.GetKey("space"))
-                    {
-                        Debug.Log("dropoff");
-                        balloon.heightCap = newHeight;
-                    }
-                    sprite.color = new Color(1,1,1);
-                }
-            }
+            Debug.Log("dropoff");
+            balloon.heightCap = newHeight;
+            sprite.color = new Color(0.9f, 0.8f, 0.8f);
         }
     }
+
 }
