@@ -44,6 +44,7 @@ public class BalloonEquipter : MonoBehaviour
     private Button Button7;
     private Button Button8;
     private Button Button9;
+    private Button Button10;
 
     [SerializeField] private VisualElement rve;
 
@@ -113,13 +114,14 @@ public class BalloonEquipter : MonoBehaviour
         Button7 = rve.Q<Button>("Button7");
         Button8 = rve.Q<Button>("Button8");
         Button9 = rve.Q<Button>("Button9");
+        Button10 = rve.Q<Button>("egg");
 
         Button0.RegisterCallback<ClickEvent>(ev =>
         {
             if (gdata.balloon0 == 1 && !(gdata.balloon == 0))
             {
                 Label0.text = "Equipped";
-                balloon.ChangeBalloonSkin("stripes-1");
+                balloon.ChangeBalloonSkin("logo-1");
                 gdata.balloon = 0;
             }
         });
@@ -128,7 +130,7 @@ public class BalloonEquipter : MonoBehaviour
             if (gdata.balloon1 == 1 && !(gdata.balloon == 1))
             {
                 Label1.text = "Equipped";
-                balloon.ChangeBalloonSkin("logo-1");
+                balloon.ChangeBalloonSkin("Skin_pattern_01");
                 gdata.balloon = 1;
             }
         });
@@ -137,7 +139,7 @@ public class BalloonEquipter : MonoBehaviour
             if (gdata.balloon2 == 1 && !(gdata.balloon == 2))
             {
                 Label2.text = "Equipped";
-                balloon.ChangeBalloonSkin("epic");
+                balloon.ChangeBalloonSkin("skin_image_01");
                 gdata.balloon = 2;
             }
         });
@@ -146,7 +148,7 @@ public class BalloonEquipter : MonoBehaviour
             if (gdata.balloon3 == 1 && !(gdata.balloon == 3))
             {
                 Label3.text = "Equipped";
-                // balloon.ChangeBalloonSkin("stripes-1");
+                balloon.ChangeBalloonSkin("skin_shpae_01");
                 gdata.balloon = 3;
             }
         });
@@ -155,7 +157,7 @@ public class BalloonEquipter : MonoBehaviour
             if (gdata.balloon4 == 1 && !(gdata.balloon == 4))
             {
                 Label4.text = "Equipped";
-                // balloon.ChangeBalloonSkin("stripes-1");
+                balloon.ChangeBalloonSkin("Skin_pattern_02");
                 gdata.balloon = 4;
             }
         });
@@ -164,7 +166,7 @@ public class BalloonEquipter : MonoBehaviour
             if (gdata.balloon5 == 1 && !(gdata.balloon == 5))
             {
                 Label5.text = "Equipped";
-                // balloon.ChangeBalloonSkin("stripes-1");
+                balloon.ChangeBalloonSkin("skin_image_02");
                 gdata.balloon = 5;
             }
         });
@@ -173,7 +175,7 @@ public class BalloonEquipter : MonoBehaviour
             if (gdata.balloon6 == 1 && !(gdata.balloon == 6))
             {
                 Label6.text = "Equipped";
-                // balloon.ChangeBalloonSkin("stripes-1");
+                balloon.ChangeBalloonSkin("skin_shpae_02");
                 gdata.balloon = 6;
             }
         });
@@ -182,7 +184,7 @@ public class BalloonEquipter : MonoBehaviour
             if (gdata.balloon7 == 1 && !(gdata.balloon == 7))
             {
                 Label7.text = "Equipped";
-                // balloon.ChangeBalloonSkin("stripes-1");
+                balloon.ChangeBalloonSkin("Skin_pattern_03");
                 gdata.balloon = 7;
             }
         });
@@ -191,7 +193,7 @@ public class BalloonEquipter : MonoBehaviour
             if (gdata.balloon8 == 1 && !(gdata.balloon == 8))
             {
                 Label8.text = "Equipped";
-                // balloon.ChangeBalloonSkin("stripes-1");
+                balloon.ChangeBalloonSkin("skin_image_03");
                 gdata.balloon = 8;
             }
         });
@@ -201,13 +203,24 @@ public class BalloonEquipter : MonoBehaviour
             if (gdata.balloon9 == 1 && !(gdata.balloon == 9))
             {
                 Label9.text = "Equipped";
-                // balloon.ChangeBalloonSkin("stripes-1");
+                balloon.ChangeBalloonSkin("skin_shpae_03");
                 gdata.balloon = 9;
             }
         });
-
-
-
+        Button10.RegisterCallback<ClickEvent>(ev =>
+        {
+            if (gdata.balloon == 10)
+            {
+                balloon.ChangeBalloonSkin("logo-1");
+                gdata.balloon = 11;
+            }
+            else
+            {
+                balloon.ChangeBalloonSkin("epic");
+                gdata.balloon = 10;
+            }
+        });
+       
         rve.visible = false;
     }
 
@@ -254,17 +267,23 @@ public class BalloonEquipter : MonoBehaviour
 
     private void updateButtons()
     {
+        if (gdata.stage >= 1)
+        {
+            Button4.text = "Red balloon";
+            Button5.text = "Maple Leaf";
+            Button6.text = "Train";
+        }
         if (gdata.stage >= 2)
         {
-            Button4.text = "";
-            Button5.text = "";
-            Button6.text = "";
+            Button4.text = "Blue Zig-Zag";
+            Button5.text = "Mushroom";
+            Button6.text = "Vampire";
         }
         if (gdata.stage == 3)
         {
-            Button7.text = "";
-            Button8.text = "";
-            Button9.text = "";
+            Button7.text = "Blue Waves";
+            Button8.text = "Snowflake";
+            Button9.text = "Mitten";
         }
     }
 }
