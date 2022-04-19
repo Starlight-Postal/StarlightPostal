@@ -91,12 +91,17 @@ MonoBehaviour:
   visualCue: {fileID: 9141537861159164209}
   playerInRange: 0
   player: {fileID: 0}
+  playerTrans: {fileID: 0}
   balloon: {fileID: 0}
+  balloonTrans: {fileID: 0}
   anchorObj: {fileID: 0}
   anchor: {fileID: 0}
   anchored: 0
+  clerk: {fileID: 0}
   inMenu: 0
+  counter: 0
   checkpoint: 16
+  canNext: 1
   script:
   - 'Well hey there kiddo, you must be my transfer. '
   - "Welcome to Autumn Outpost, I\u2019m Captain."
@@ -146,6 +151,20 @@ MonoBehaviour:
   - "Great work kiddo, you survived your maiden voyage! Let\u2019s get to the post
     office- we\u2019ve got some packages to deliver."
   canLeave: 1
+  trans: {fileID: 0}
+  body: {fileID: 0}
+  bodyTrans: {fileID: 0}
+  phase: 0
+  walkSpeed: 0.05
+  sprite: {fileID: 0}
+  facingRight: 0
+  aniMode: idle
+  aniSpeed: 0.25
+  aniIdle: []
+  aniIdleSpeed: 0.25
+  aniWalk: []
+  aniWalkSpeed: 1
+  aniFrame: 0
 --- !u!114 &6818180385283155373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,6 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6d48102d2e2c17c9aa43b325ad5d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mixer: {fileID: 0}
 --- !u!1 &7395493958752536842
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,7 +319,7 @@ Transform:
   m_GameObject: {fileID: 9141537861159164209}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.159, y: 0.702, z: 0}
-  m_LocalScale: {x: 1.101053, y: 1.0940146, z: 1}
+  m_LocalScale: {x: 0.04, y: 0.05, z: 1}
   m_Children: []
   m_Father: {fileID: 5341197870141319797}
   m_RootOrder: 2
@@ -344,7 +364,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a1724ee8847ad7746b1f52e6634a567f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 20efcb4f6396bc64abd9d6e691aac1cc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

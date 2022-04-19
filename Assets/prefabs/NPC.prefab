@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4768351908478419728}
   - component: {fileID: 4768351908478419729}
   - component: {fileID: 2416855205400676890}
-  - component: {fileID: 7298355176914036929}
+  - component: {fileID: 3085557339689261868}
   m_Layer: 6
   m_Name: Trigger
   m_TagString: Untagged
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PanelSettings: {fileID: 11400000, guid: 89af5b241d1f90d4881bb31682a98c24, type: 2}
   m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: 6efe71141c0d82541b5ee925288434a1, type: 3}
+  sourceAsset: {fileID: 9197481963319205126, guid: 88fcd175209499e408b8c68dba0d652f, type: 3}
   m_SortingOrder: 0
 --- !u!114 &2416855205400676890
 MonoBehaviour:
@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mixer: {fileID: 0}
---- !u!114 &7298355176914036929
+--- !u!114 &3085557339689261868
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -98,20 +98,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 4768351908478419693}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7906eaaf8f3415d449ccb3de90fbae04, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ff6e869ca6c1934cbda2c1ca0035093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visualCue: {fileID: 0}
+  visualCue: {fileID: 4768351908748709585}
   playerInRange: 0
+  trans: {fileID: 0}
   player: {fileID: 0}
+  playerTrans: {fileID: 0}
   balloon: {fileID: 0}
-  anchor: {fileID: 0}
+  facingRight: 0
+  facePlayer: 1
+  bodyTrans: {fileID: 0}
+  visWidth: 0
+  canLeave: 1
+  encountered: 0
   inMenu: 0
-  grabbedDog: 0
-  checkpoint: 0
-  endtalking: 0
-  whereToStart: 0
-  script: []
+  checkpoint: 16
+  intro_script: []
+  loop_script: []
 --- !u!1 &4768351908748709585
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,7 +143,7 @@ Transform:
   m_GameObject: {fileID: 4768351908748709585}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.159, y: 0.702, z: 0}
-  m_LocalScale: {x: 1.101053, y: 1.0940146, z: 1}
+  m_LocalScale: {x: 0.04, y: 0.05, z: 1}
   m_Children: []
   m_Father: {fileID: 4768351909796898372}
   m_RootOrder: 2
@@ -183,7 +188,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a1724ee8847ad7746b1f52e6634a567f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 20efcb4f6396bc64abd9d6e691aac1cc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
