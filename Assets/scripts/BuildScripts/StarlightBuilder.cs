@@ -20,7 +20,7 @@ public static class StarlightBuilder
         Linux();
         MacOS();
         WebGL();
-        Android();
+        //Android(); Doesnt work currently
     }
 
     [MenuItem("Bob the Builder/Windows")]
@@ -51,7 +51,7 @@ public static class StarlightBuilder
         BuildPipeline.BuildPlayer(GetScenes(),buildLocation + "/" + FOLDER_PREFIX + "-webgl",BuildTarget.WebGL,BuildOptions.None);
     }
 
-    [MenuItem("Bob the Builder/Android")]
+    [MenuItem("Bob the Builder/Android [borked :(]")]
     public static void Android()
     {
         SetupVariables();
