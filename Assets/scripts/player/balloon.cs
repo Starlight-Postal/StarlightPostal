@@ -114,14 +114,8 @@ public class balloon : MonoBehaviour
         basketCollider = GameObject.Find("Basket").GetComponent<Collider2D>();
         basketTrans = GameObject.Find("Basket").GetComponent<Transform>();
 
-        //Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), anchor.GetComponent<Collider2D>(), true);
-        Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), basketCollider, true); // This was causing ArgumentNullException, Parameter name: collider1
-
-        basket.centerOfMass = new Vector2(0, -1f);
-
         setSkin(skin);
 
-        Debug.Log("dingus");
         // Register instanced console commands
         DebugLogConsole.AddCommandInstance("balloon.anchor", "Toggles the balloon anchor", "ToggleAnchor", this);
         DebugLogConsole.AddCommandInstance("balloon.heightcap", "Gets the balloon height cap", "GetHeightCap", this);
@@ -134,7 +128,6 @@ public class balloon : MonoBehaviour
         DebugLogConsole.AddCommandInstance("balloon.fillrate", "Sets the balloon fill rate", "SetFillRate", this);
         DebugLogConsole.AddCommandInstance("balloon.windpower", "Gets the balloon wind power", "GetWindPower", this);
         DebugLogConsole.AddCommandInstance("balloon.windpower", "Sets the balloon wind power", "SetWindPower", this);
-
     }
 
     // Update is called once per frame
