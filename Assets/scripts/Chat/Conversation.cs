@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 public class Conversation : Interractable
 {
 
-    private player player;
+    protected player player;
 
     [SerializeField] private GameObject visualCue;
 	[SerializeField] public string[] script;
@@ -16,7 +16,7 @@ public class Conversation : Interractable
     protected bool isTalking;
     private bool canTalk = true;
     private bool waitingForReady;
-    private bool isInRange;
+    public bool isInRange;
     
     private VisualElement root;
     private Button chatButton;

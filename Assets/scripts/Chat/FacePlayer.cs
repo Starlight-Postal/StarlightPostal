@@ -7,31 +7,45 @@ public class FacePlayer : MonoBehaviour
 
     public bool facePlayer;
     public bool invert;
+    public bool faceInRange;
     public Transform bodyTrans;
-
+    
+    private bool defaultLook;
     private Transform playerTrans;
     private Transform trans;
     private float visWidth;
     public bool facingLeft;
+
+    public Conversation npc;
 
     void Start()
     {
         playerTrans = GameObject.Find("player").GetComponent<Transform>();
         trans = GetComponent<Transform>();
         visWidth = bodyTrans.localScale.x;
+        npc = gameObject.GetComponent<Conversation>();
+        defaultLook = (bodyTrans.localScale.x > 0);
+        if (invert)
+        {
+            defaultLook = !defaultLook;
+        }
     }
 
     void FixedUpdate()
     {
         if (facePlayer)
         {
-            if (playerTrans.position.x > trans.position.x)
+            facingLeft = defaultLook;
+            if (!faceInRange || npc.isInRange)
             {
-                facingLeft = invert;
-            }
-            if (playerTrans.position.x < trans.position.x)
-            {
-                facingLeft = !invert;
+                if (playerTrans.position.x > trans.position.x)
+                {
+                    facingLeft = invert;
+                }
+                if (playerTrans.position.x < trans.position.x)
+                {
+                    facingLeft = !invert;
+                }
             }
         }
 
