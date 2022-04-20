@@ -9,7 +9,7 @@ using System.Diagnostics;
 public static class StarlightBuilder
 {
 
-    private static string buildLocation = "../starlightbuilds";
+    private static string buildLocation = "./Builds";
     private static string EXEC_NAME = "StarlightPostal";
     private static string FOLDER_PREFIX = "StarlightPostal";
 
