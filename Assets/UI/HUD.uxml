@@ -2,7 +2,7 @@
     <ui:VisualElement style="flex-grow: 1; -unity-font: url(&apos;/Assets/UI/Arsenal-Regular.ttf&apos;);">
         <ui:VisualElement name="coin-counter" style="position: absolute; right: 10px; top: 10px; min-width: 10%; min-height: 10%; border-top-left-radius: 10%; border-bottom-left-radius: 10%; border-top-right-radius: 10%; border-bottom-right-radius: 10%; background-color: rgba(0, 0, 0, 0.31); -unity-font: url(&apos;/Assets/UI/Arsenal-Regular.ttf&apos;); -unity-font-definition: url(&apos;/Assets/UI/Arsenal-Bold SDF.asset&apos;);">
             <ui:VisualElement style="width: 33%; height: 100%; background-image: resource(&apos;textures/Particles/Star 1&apos;); -unity-background-scale-mode: scale-to-fit; -unity-background-image-tint-color: rgb(255, 231, 175); left: 5%; -unity-font: url(&apos;/Assets/UI/Arsenal-Regular.ttf&apos;);" />
-            <ui:Label text="999" display-tooltip-when-elided="true" name="star-counter-label" class="hud-text" style="right: 0; -unity-text-align: middle-center; position: absolute; top: 0; color: rgb(255, 255, 255); font-size: 20%; -unity-font-style: bold; width: 66px; height: 100%; -unity-font: url(&apos;/Assets/UI/Arsenal-Regular.ttf&apos;);" />
+            <ui:Label text="999" display-tooltip-when-elided="true" name="star-counter-label" class="hud-text" style="right: 0; -unity-text-align: middle-center; position: absolute; top: 0; color: rgb(255, 255, 255); font-size: 15%; -unity-font-style: bold; width: 66px; height: 100%; -unity-font: url(&apos;/Assets/UI/AutourOne-Regular.ttf&apos;); -unity-font-definition: url(&apos;/Assets/UI/AutourOne-Regular SDF.asset&apos;);" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
