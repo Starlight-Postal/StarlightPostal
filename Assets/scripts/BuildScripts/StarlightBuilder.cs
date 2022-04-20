@@ -55,7 +55,7 @@ public static class StarlightBuilder
     public static void Android()
     {
         SetupVariables();
-        BuildPipeline.BuildPlayer(GetScenes(),buildLocation + "/" + FOLDER_PREFIX + "-android/" + EXEC_NAME + ".apk",BuildTarget.Android,BuildOptions.None);
+        BuildPipeline.BuildPlayer(GetScenes(),buildLocation + "/" + EXEC_NAME + "-android.apk",BuildTarget.Android,BuildOptions.None);
     }
 
     private static string[] GetScenes()
