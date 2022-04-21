@@ -42266,8 +42266,21 @@ PrefabInstance:
         luck up at the summit!
       objectReference: {fileID: 0}
     - target: {fileID: 2363531076811489625, guid: 921ad00ed75f7b2438faec9390515407, type: 3}
+      propertyPath: script_delivery.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363531076811489625, guid: 921ad00ed75f7b2438faec9390515407, type: 3}
+      propertyPath: script_maildrop.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363531076811489625, guid: 921ad00ed75f7b2438faec9390515407, type: 3}
       propertyPath: script_delivery.Array.data[0]
       value: Batrice lives just upstairs from here, remember to deliver her package!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363531076811489625, guid: 921ad00ed75f7b2438faec9390515407, type: 3}
+      propertyPath: script_delivery.Array.data[1]
+      value: This pickaxe could go to any of the miners, maybe try checking the new
+        tunnel upstairs.
       objectReference: {fileID: 0}
     - target: {fileID: 2363531076811489625, guid: 921ad00ed75f7b2438faec9390515407, type: 3}
       propertyPath: script_maildrop.Array.data[0]
@@ -42279,11 +42292,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2363531076811489625, guid: 921ad00ed75f7b2438faec9390515407, type: 3}
       propertyPath: script_maildrop.Array.data[2]
-      value: Well look at this, you've got a package to deliver.
+      value: Well look at this, you've got two packages to deliver.
       objectReference: {fileID: 0}
     - target: {fileID: 2363531076811489625, guid: 921ad00ed75f7b2438faec9390515407, type: 3}
       propertyPath: script_maildrop.Array.data[3]
-      value: Her name is Batrice, she lives right upstairs.
+      value: One is for a girl named Batrice, she lives right upstairs.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363531076811489625, guid: 921ad00ed75f7b2438faec9390515407, type: 3}
+      propertyPath: script_maildrop.Array.data[4]
+      value: The other is just a new pickaxe. There's no address here, but it's probably
+        for one of the miners. You can probably just ask around
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363531076811489625, guid: 921ad00ed75f7b2438faec9390515407, type: 3}
+      propertyPath: script_maildrop.Array.data[5]
+      value: Don't get discouraged if you can't find everyone. You can always leave
+        the packages here with me. You can move on to the next town any time!
       objectReference: {fileID: 0}
     - target: {fileID: 2363531076811489625, guid: 921ad00ed75f7b2438faec9390515407, type: 3}
       propertyPath: script_delivered.Array.data[0]

@@ -51189,6 +51189,23 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 36770516}
     m_Modifications:
+    - target: {fileID: 2363531076750759882, guid: 7ea10863f449444409272fffb097b344, type: 3}
+      propertyPath: sound
+      value: 
+      objectReference: {fileID: 2083107858}
+    - target: {fileID: 2363531076750759882, guid: 7ea10863f449444409272fffb097b344, type: 3}
+      propertyPath: visualCue
+      value: 
+      objectReference: {fileID: 2083107857}
+    - target: {fileID: 2363531076750759882, guid: 7ea10863f449444409272fffb097b344, type: 3}
+      propertyPath: script_maildrop.Array.data[2]
+      value: Well you know the drill, but we got three packages this time.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363531076750759882, guid: 7ea10863f449444409272fffb097b344, type: 3}
+      propertyPath: script_maildrop.Array.data[3]
+      value: Two of them live in town just East of here, but the other one is up
+        at the peak.
+      objectReference: {fileID: 0}
     - target: {fileID: 2574888694219424417, guid: 7ea10863f449444409272fffb097b344, type: 3}
       propertyPath: m_Name
       value: Post Office Clerk
@@ -51254,6 +51271,16 @@ PrefabInstance:
 --- !u!4 &2083107856 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2574888694219424418, guid: 7ea10863f449444409272fffb097b344, type: 3}
+  m_PrefabInstance: {fileID: 2083107855}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2083107857 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2574888695331318327, guid: 7ea10863f449444409272fffb097b344, type: 3}
+  m_PrefabInstance: {fileID: 2083107855}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &2083107858 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 283823255591979654, guid: 7ea10863f449444409272fffb097b344, type: 3}
   m_PrefabInstance: {fileID: 2083107855}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2084368154
