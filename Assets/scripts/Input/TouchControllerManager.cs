@@ -13,14 +13,16 @@ public class TouchControllerManager : MonoBehaviour
     void Start()
     {
         play = GameObject.FindObjectOfType<player>();
+        playerTouchControls.SetActive(false);
+        balloonTouchControls.SetActive(false);
     }
     
+    #if PLATFORM_ANDROID
     void FixedUpdate()
     {
-        #if PLATFORM_ANDROID
         playerTouchControls.SetActive(!play.inBalloon);
         balloonTouchControls.SetActive(play.inBalloon);
-        #endif
     }
+    #endif
     
 }
