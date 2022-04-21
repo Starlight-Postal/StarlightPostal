@@ -10920,11 +10920,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 391332008615601959, guid: a4a1353074d84f82ba63bfeeefea8b90, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.373
+      value: 563.31
       objectReference: {fileID: 0}
     - target: {fileID: 391332008615601959, guid: a4a1353074d84f82ba63bfeeefea8b90, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.110630214
+      value: 39.532
       objectReference: {fileID: 0}
     - target: {fileID: 391332008615601959, guid: a4a1353074d84f82ba63bfeeefea8b90, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10957,6 +10957,10 @@ PrefabInstance:
     - target: {fileID: 391332008615601959, guid: a4a1353074d84f82ba63bfeeefea8b90, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2468624431913067321, guid: a4a1353074d84f82ba63bfeeefea8b90, type: 3}
+      propertyPath: stage
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5532176280847726663, guid: a4a1353074d84f82ba63bfeeefea8b90, type: 3}
       propertyPath: m_LocalScale.x
@@ -39270,11 +39274,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7659042981894051378, guid: c97842e31328e8dcf9a9c84638ea3170, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.629
+      value: 563.444
       objectReference: {fileID: 0}
     - target: {fileID: 7659042981894051378, guid: c97842e31328e8dcf9a9c84638ea3170, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.015
+      value: 41.935
       objectReference: {fileID: 0}
     - target: {fileID: 7659042981894051378, guid: c97842e31328e8dcf9a9c84638ea3170, type: 3}
       propertyPath: m_LocalPosition.z
@@ -67418,7 +67422,7 @@ Transform:
   m_GameObject: {fileID: 2017391775}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.59, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.18, z: 1}
+  m_LocalScale: {x: 0.15, y: 0.18, z: -2}
   m_Children: []
   m_Father: {fileID: 2500739048247833291}
   m_RootOrder: 0

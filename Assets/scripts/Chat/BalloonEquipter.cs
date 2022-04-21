@@ -98,7 +98,7 @@ public class BalloonEquipter : Interractable
             if (gdata.balloon0 == 1 && !(gdata.balloon == 0))
             {
                 Label0.text = "Equipped";
-                balloon.ChangeBalloonSkin("logo-1");
+                balloon.ChangeBalloonSkin("stripes-1");
                 gdata.balloon = 0;
             }
         });
@@ -188,7 +188,7 @@ public class BalloonEquipter : Interractable
         {
             if (gdata.balloon == 10)
             {
-                balloon.ChangeBalloonSkin("stripes-1");
+                balloon.ChangeBalloonSkin("logo-1");
                 gdata.balloon = 11;
             }
             else
