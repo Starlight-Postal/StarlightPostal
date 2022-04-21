@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 
-public class BalloonEquipter : MonoBehaviour
+public class BalloonEquipter : Interractable
 {
     [Header("Visual Cue")]
     [SerializeField] private GameObject visualCue;
@@ -53,26 +53,15 @@ public class BalloonEquipter : MonoBehaviour
 
     private void Update()
     {
-        //activates the text bubble if player in range
-        if (playerInRange)
-        {
-            visualCue.SetActive(true);
-            if (Input.GetKeyDown("space"))
-            {
-                inMenu = true;
-                updateButtons();
-            }
-        }
-
-        //Checks to see if players are in range. If they arn't and chat should disappear it does
-        else
-        {
-            visualCue.SetActive(false);
-            inMenu = false;
-        }
-
         if (inMenu) { openShop(); }
         else { closeShop(); }
+    }
+
+    public override void OnPlayerInterract()
+    {
+        inMenu = true;
+        updateButtons();
+        visualCue.SetActive(false);
     }
 
     private void OnEnable()
@@ -231,6 +220,7 @@ public class BalloonEquipter : MonoBehaviour
         if (collider.gameObject.tag == "Player")
         {
             playerInRange = true;
+            visualCue.SetActive(true);
         }
     }
 
@@ -239,6 +229,8 @@ public class BalloonEquipter : MonoBehaviour
         if (collider.gameObject.tag == "Player")
         {
             playerInRange = false;
+            visualCue.SetActive(false);
+            inMenu = false;
         }
     }
 
