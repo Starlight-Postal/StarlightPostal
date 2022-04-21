@@ -52,7 +52,7 @@ public class snow : MonoBehaviour
     void Resize()
     {
         ratio = new Vector2(cam.aspect, 1);
-        var lastN = n;
+        var lastN = flakes.Count;
         n = (int) (cam.aspect * ((float)initN / 1.776f));
         if (lastN < n)
         {
