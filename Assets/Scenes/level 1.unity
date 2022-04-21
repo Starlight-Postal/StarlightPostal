@@ -11249,6 +11249,30 @@ PrefabInstance:
       propertyPath: thanksLoopScript.Array.data[0]
       value: I think it's time to invest in a kitty-leash...
       objectReference: {fileID: 0}
+    - target: {fileID: 7203036169409816953, guid: 4e711e1bcc111244689f6f134301d4a5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7203036169409816958, guid: 4e711e1bcc111244689f6f134301d4a5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.887
+      objectReference: {fileID: 0}
+    - target: {fileID: 7203036169409816959, guid: 4e711e1bcc111244689f6f134301d4a5, type: 3}
+      propertyPath: m_Size.x
+      value: 0.185
+      objectReference: {fileID: 0}
+    - target: {fileID: 7203036169409816959, guid: 4e711e1bcc111244689f6f134301d4a5, type: 3}
+      propertyPath: m_Size.y
+      value: 0.185
+      objectReference: {fileID: 0}
+    - target: {fileID: 7203036169409816959, guid: 4e711e1bcc111244689f6f134301d4a5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0eed369b35d646347b11005a2855837f, type: 3}
+    - target: {fileID: 7203036169409816959, guid: 4e711e1bcc111244689f6f134301d4a5, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7203036170443047404, guid: 4e711e1bcc111244689f6f134301d4a5, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -31027,6 +31051,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 386877577017028319, guid: e87aff6b8101f8b4fb8878e678188de3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3717088292121903715, guid: e87aff6b8101f8b4fb8878e678188de3, type: 3}
       propertyPath: faceInRange
       value: 1
@@ -44367,6 +44395,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Oberand Mayor
       objectReference: {fileID: 0}
+    - target: {fileID: 2517742012970669837, guid: 8718fe35a779d604488128a62b54d777, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2925034102378874590, guid: 8718fe35a779d604488128a62b54d777, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -45649,6 +45681,14 @@ PrefabInstance:
       propertyPath: dropLine
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3305828229648416699, guid: 921ad00ed75f7b2438faec9390515407, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3305828229648416700, guid: 921ad00ed75f7b2438faec9390515407, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3305828230692132649, guid: 921ad00ed75f7b2438faec9390515407, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -45696,6 +45736,10 @@ PrefabInstance:
     - target: {fileID: 3305828230692132650, guid: 921ad00ed75f7b2438faec9390515407, type: 3}
       propertyPath: m_Name
       value: Post Office Clerk
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226269856752732233, guid: 921ad00ed75f7b2438faec9390515407, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 921ad00ed75f7b2438faec9390515407, type: 3}
@@ -72187,7 +72231,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 288393141565340375}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.947, z: 0}
+  m_LocalPosition: {x: 0, y: 0.697, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 288393140393677378}
@@ -72233,12 +72277,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a1724ee8847ad7746b1f52e6634a567f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0eed369b35d646347b11005a2855837f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 21, y: 15.001465}
+  m_Size: {x: 0.185, y: 0.185}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

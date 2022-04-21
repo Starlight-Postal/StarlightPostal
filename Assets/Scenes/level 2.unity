@@ -3168,6 +3168,7 @@ MonoBehaviour:
   colorB: {r: 0.60784316, g: 0.84313726, b: 0.7647059, a: 1}
   speed: 0.05
   period: 0
+  randomPeriod: 0
 --- !u!212 &94411727 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: -7871556540511652807, guid: e327e2adfc1f9344aa86d934d2d5a589, type: 3}
@@ -11663,6 +11664,7 @@ MonoBehaviour:
   colorB: {r: 0.60784316, g: 0.84313726, b: 0.7647059, a: 1}
   speed: 0.05
   period: 4
+  randomPeriod: 0
 --- !u!212 &345251697 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: -7871556540511652807, guid: b55799e7752406746b2ab8912d2decdf, type: 3}
@@ -42375,6 +42377,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: be7c19bfc485ed34298d8d800daaf38e, type: 3}
+    - target: {fileID: 3305828229648416700, guid: 921ad00ed75f7b2438faec9390515407, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3305828230692132649, guid: 921ad00ed75f7b2438faec9390515407, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -44969,6 +44975,7 @@ MonoBehaviour:
   colorB: {r: 0.60784316, g: 0.84313726, b: 0.7647059, a: 1}
   speed: 0.05
   period: 0
+  randomPeriod: 0
 --- !u!1 &1309934188
 GameObject:
   m_ObjectHideFlags: 0
@@ -46389,6 +46396,7 @@ MonoBehaviour:
   colorB: {r: 0.60784316, g: 0.84313726, b: 0.7647059, a: 1}
   speed: 0.05
   period: 3
+  randomPeriod: 0
 --- !u!212 &1353275332 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: -7871556540511652807, guid: d7949bd78df38444d97ae973b63e63d5, type: 3}
@@ -58706,6 +58714,7 @@ MonoBehaviour:
   colorB: {r: 0.60784316, g: 0.84313726, b: 0.7647059, a: 1}
   speed: 0.05
   period: 1
+  randomPeriod: 0
 --- !u!212 &1762822445 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: -7871556540511652807, guid: 03d674ed1a3fb7e4a836d176404c43d1, type: 3}
@@ -62248,6 +62257,7 @@ MonoBehaviour:
   colorB: {r: 0.60784316, g: 0.84313726, b: 0.7647059, a: 1}
   speed: 0.05
   period: 2
+  randomPeriod: 0
 --- !u!212 &1909437449 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: -7871556540511652807, guid: 91980466389e721408cc2d933ffc2d35, type: 3}
@@ -62461,6 +62471,7 @@ MonoBehaviour:
   colorB: {r: 0.60784316, g: 0.84313726, b: 0.7647059, a: 1}
   speed: 0.05
   period: 5
+  randomPeriod: 0
 --- !u!212 &1914225970 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: -7871556540511652807, guid: 6c40e725b6baa884dbf489680ec65501, type: 3}
@@ -69561,6 +69572,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9029959004493102342, guid: 6a358cbf235117444a69b3f5de75e837, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9029959005469709715, guid: 6a358cbf235117444a69b3f5de75e837, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
