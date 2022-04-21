@@ -1,8 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement style="flex-grow: 1;">
-        <ui:VisualElement name="coin-counter" style="position: absolute; right: 10px; top: 10px; min-width: 10%; min-height: 10%; border-top-left-radius: 10%; border-bottom-left-radius: 10%; border-top-right-radius: 10%; border-bottom-right-radius: 10%; background-color: rgba(0, 0, 0, 0.31);">
-            <ui:VisualElement style="width: 33%; height: 100%; background-image: resource(&apos;textures/Particles/Star 1&apos;); -unity-background-scale-mode: scale-to-fit; -unity-background-image-tint-color: rgb(255, 231, 175); left: 5%;" />
-            <ui:Label text="999" display-tooltip-when-elided="true" name="star-counter-label" class="hud-text" style="right: 0; -unity-text-align: middle-center; position: absolute; top: 0; color: rgb(255, 255, 255); font-size: 30%; -unity-font-style: bold; width: 66px; height: 100%;" />
-        </ui:VisualElement>
+    <ui:VisualElement name="coin-counter" style="position: absolute; right: 10px; top: 10px; min-width: 10%; min-height: 10%; border-top-left-radius: 10%; border-bottom-left-radius: 10%; border-top-right-radius: 10%; border-bottom-right-radius: 10%; background-color: rgba(0, 0, 0, 0.31);">
+        <ui:VisualElement style="width: 33%; height: 100%; background-image: resource(&apos;textures/Particles/Star 1&apos;); -unity-background-scale-mode: scale-to-fit; -unity-background-image-tint-color: rgb(255, 231, 175); left: 5%;" />
+        <ui:Label text="999" display-tooltip-when-elided="true" name="star-counter-label" class="hud-text" style="right: 0; -unity-text-align: middle-center; position: absolute; top: 0; color: rgb(255, 255, 255); font-size: 30%; -unity-font-style: bold; width: 66px; height: 100%; -unity-font-definition: url(&apos;/Assets/UI/AutourOne-Regular SDF.asset&apos;);" />
     </ui:VisualElement>
 </ui:UXML>
