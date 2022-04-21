@@ -4644,6 +4644,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 4125690010740824229, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
+      propertyPath: m_Radius
+      value: 0.79999995
+      objectReference: {fileID: 0}
+    - target: {fileID: 4125690010740824229, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 4468105491938107014, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
       propertyPath: m_Size.y
       value: 1.5
@@ -56521,10 +56529,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6819687643547399654, guid: eb646bb755b2c3a26b42ab86a0f6be35, type: 3}
-      propertyPath: sourceAsset
-      value: 
-      objectReference: {fileID: 9197481963319205126, guid: 6518614c57ea3bf49b3b8302dc6cff7c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb646bb755b2c3a26b42ab86a0f6be35, type: 3}
 --- !u!1 &1701693863
