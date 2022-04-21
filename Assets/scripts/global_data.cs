@@ -23,8 +23,10 @@ public class global_data : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        coins = 0;
+        coins = 1000;
         balloon = 0;
+        DebugLogConsole.AddCommandInstance("data.coins", "Gets player coin count", "GetCoins", this);
+        DebugLogConsole.AddCommandInstance("data.coins", "Sets player coin count", "SetCoins", this);
     }
 
     // Update is called once per frame

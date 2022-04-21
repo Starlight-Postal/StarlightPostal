@@ -76,7 +76,6 @@ public class ShopNPC : Interractable
 
         Button1.RegisterCallback<ClickEvent>(ev =>
         {
-            gdata.coins = gdata.coins - 150;
             if (gdata.coins >= 150 && !(gdata.balloon1 == 1) && stage == 1)
             {
                 gdata.coins = gdata.coins - 150;
