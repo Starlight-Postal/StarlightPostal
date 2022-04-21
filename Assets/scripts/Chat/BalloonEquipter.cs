@@ -125,7 +125,7 @@ public class BalloonEquipter : Interractable
             if (gdata.balloon3 == 1 && !(gdata.balloon == 3))
             {
                 Label3.text = "Equipped";
-                balloon.ChangeBalloonSkin("skin_shpae_01");
+                balloon.ChangeBalloonSkin("skin_shape_01");
                 gdata.balloon = 3;
             }
         });
@@ -152,7 +152,7 @@ public class BalloonEquipter : Interractable
             if (gdata.balloon6 == 1 && !(gdata.balloon == 6))
             {
                 Label6.text = "Equipped";
-                balloon.ChangeBalloonSkin("skin_shpae_02");
+                balloon.ChangeBalloonSkin("skin_shape_02");
                 gdata.balloon = 6;
             }
         });
@@ -180,7 +180,7 @@ public class BalloonEquipter : Interractable
             if (gdata.balloon9 == 1 && !(gdata.balloon == 9))
             {
                 Label9.text = "Equipped";
-                balloon.ChangeBalloonSkin("skin_shpae_03");
+                balloon.ChangeBalloonSkin("skin_shape_03");
                 gdata.balloon = 9;
             }
         });

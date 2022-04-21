@@ -23,7 +23,7 @@ public class global_data : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        coins = 150;
+        coins = 0;
         balloon = 0;
     }
 
