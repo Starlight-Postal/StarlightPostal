@@ -10,7 +10,7 @@ fi
 
 cd Builds/
 
-echo "Uploading tag: $tag"
-gh release upload $tag $packagefolder/*
+echo "Creating and uploading release for tag: $tag"
+gh release create $tag --generate-notes $packagefolder/*
 echo "Done uploading"
 
