@@ -363,6 +363,7 @@ public class TutorialNPC : Conversation
                 }
                 break;
             case TutorialPhase.POSTOFFICEDELIVERY:
+            case TutorialPhase.DELIVERED:
                 if (index == 2)
                     return DadGetsMilkFromDownTheStreet();
                 break;
