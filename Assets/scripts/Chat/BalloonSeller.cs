@@ -108,11 +108,8 @@ public class BalloonSeller : Interractable
         skin7 = rve.Q<Label>("skin7");
         skin8 = rve.Q<Label>("skin8");
         skin9 = rve.Q<Label>("skin9");
-        Debug.Log("start");
         button1.RegisterCallback<ClickEvent>(ev =>
         {
-
-            Debug.Log("poopy");
 
             if (gdata.coins >= 150 && !(gdata.balloon1 == 1) && stage == 1)
             {
