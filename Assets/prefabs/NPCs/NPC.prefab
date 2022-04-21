@@ -94,6 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visualCue: {fileID: 4768351908748709585}
   script: []
+  isInRange: 0
 --- !u!114 &8423738791333503597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,8 +109,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   facePlayer: 1
   invert: 0
+  faceInRange: 0
   bodyTrans: {fileID: 830036357635062052}
   facingLeft: 0
+  npc: {fileID: 0}
 --- !u!1 &4768351908748709585
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,7 +184,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a1724ee8847ad7746b1f52e6634a567f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0eed369b35d646347b11005a2855837f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
