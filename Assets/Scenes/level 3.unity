@@ -1438,6 +1438,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4547195815684934963, guid: f06ce08ac4862b14e9737e82fed83787, type: 3}
+      propertyPath: photo
+      value: 
+      objectReference: {fileID: 1855384653}
+    - target: {fileID: 4547195815684934963, guid: f06ce08ac4862b14e9737e82fed83787, type: 3}
+      propertyPath: turnLine
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4547195815684934963, guid: f06ce08ac4862b14e9737e82fed83787, type: 3}
+      propertyPath: visualCue
+      value: 
+      objectReference: {fileID: 1114702717}
     - target: {fileID: 5966020619005063335, guid: f06ce08ac4862b14e9737e82fed83787, type: 3}
       propertyPath: invert
       value: 1
@@ -1502,7 +1514,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1992350471911253308, guid: f06ce08ac4862b14e9737e82fed83787, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f06ce08ac4862b14e9737e82fed83787, type: 3}
 --- !u!4 &77390678 stripped
 Transform:
@@ -27230,6 +27243,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8742538545776668643, guid: 8f9d1c615aba70045880a174656ad845, type: 3}
   m_PrefabInstance: {fileID: 1111097342}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1114702717 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7205802439657298971, guid: f06ce08ac4862b14e9737e82fed83787, type: 3}
+  m_PrefabInstance: {fileID: 77390677}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1115248159
 PrefabInstance:
