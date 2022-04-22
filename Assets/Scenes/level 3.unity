@@ -10848,7 +10848,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2865156935995658183, guid: 991407a2b10f37246b47de4bae3309f8, type: 3}
       propertyPath: m_LocalScale.y
-      value: -34.119125
+      value: 34.11913
       objectReference: {fileID: 0}
     - target: {fileID: 2865156935995658183, guid: 991407a2b10f37246b47de4bae3309f8, type: 3}
       propertyPath: m_LocalScale.z
@@ -14711,7 +14711,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2865156935995658183, guid: 991407a2b10f37246b47de4bae3309f8, type: 3}
       propertyPath: m_LocalScale.y
-      value: -131.12329
+      value: 131.1233
       objectReference: {fileID: 0}
     - target: {fileID: 2865156935995658183, guid: 991407a2b10f37246b47de4bae3309f8, type: 3}
       propertyPath: m_LocalScale.z
@@ -23049,7 +23049,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8742538545776668643, guid: 7e4b62b683d6b0949ba37299a5604e3d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -61.399994
+      value: -59.1
       objectReference: {fileID: 0}
     - target: {fileID: 8742538545776668643, guid: 7e4b62b683d6b0949ba37299a5604e3d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -26231,6 +26231,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 36770516}
     m_Modifications:
+    - target: {fileID: 2585651555982018898, guid: c97842e31328e8dcf9a9c84638ea3170, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7659042981894051377, guid: c97842e31328e8dcf9a9c84638ea3170, type: 3}
       propertyPath: m_Name
       value: BalloonEquipper
@@ -29844,6 +29848,10 @@ PrefabInstance:
     - target: {fileID: 2468624431913067321, guid: a4a1353074d84f82ba63bfeeefea8b90, type: 3}
       propertyPath: stage
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532176280847726663, guid: a4a1353074d84f82ba63bfeeefea8b90, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4a1353074d84f82ba63bfeeefea8b90, type: 3}
@@ -34001,7 +34009,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2865156935995658183, guid: 991407a2b10f37246b47de4bae3309f8, type: 3}
       propertyPath: m_LocalScale.y
-      value: -16.554508
+      value: 16.55451
       objectReference: {fileID: 0}
     - target: {fileID: 2865156935995658183, guid: 991407a2b10f37246b47de4bae3309f8, type: 3}
       propertyPath: m_LocalScale.z
@@ -35474,7 +35482,7 @@ MonoBehaviour:
   stroke: {fileID: 1429834986}
   collider: {fileID: 1429834989}
   path: []
-  speed: 0.15
+  speed: 0.125
   chairs: 20
   chair: {fileID: 6916275399492248257, guid: 44cc9c36a98b09d4d840f1c24e0be9fd, type: 3}
 --- !u!68 &1429834989
@@ -51795,7 +51803,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2574888694219424418, guid: 7ea10863f449444409272fffb097b344, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2574888694219424418, guid: 7ea10863f449444409272fffb097b344, type: 3}
       propertyPath: m_LocalRotation.w
