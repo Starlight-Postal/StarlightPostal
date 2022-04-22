@@ -34,7 +34,7 @@ public class Astronomer : LoopingConversation
         if (faceTelescope)
         {
             face.facePlayer = false;
-            face.facingLeft = true;
+            face.facingLeft = false;
         } else
         {
             face.facePlayer = true;
@@ -62,7 +62,7 @@ public class Astronomer : LoopingConversation
         }
 
 
-        faceTelescope = (index == turnLine);
+        faceTelescope = (index == turnLine||index==turnLine+1);
 
     }
 }
