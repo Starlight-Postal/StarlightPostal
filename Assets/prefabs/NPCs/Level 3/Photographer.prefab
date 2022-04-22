@@ -15,12 +15,12 @@ MonoBehaviour:
   visualCue: {fileID: 7205802439657298971}
   script:
   - Oh! H-hello! You must be here with my package!
-  - Oh please tell me you brought me my camera, I've never seen an aurora so strong!
-  - Marvellous! That's just what I needed. This is the photo opportunity of a lifetime!
+  - 'Oh please tell me you brought me some more film, I''ve never seen an aurora
+    so strong- and I''m fresh out! '
+  - Marvellous! That's just what I needed. This is the photo opportunity of a timetime!
   - Look at that night sky! You came at the perfect time...
   - (FLASH)
   - Beautiful! Oh this'll make an exquisite mantle piece.
-  isInRange: 0
   loopScript:
   - I can't thank you enough, Madam! What a tragedy it would have been to miss a
     shot like this!
@@ -81,7 +81,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4768351909796898375, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
       propertyPath: m_Name
-      value: Astronomer
+      value: Photographer
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 881869528284156273, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
