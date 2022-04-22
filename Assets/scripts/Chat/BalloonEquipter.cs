@@ -252,20 +252,20 @@ public class BalloonEquipter : Interractable
     {
         if (gdata.stage >= 1)
         {
-            Button1.text = "Red balloon";
-            Button2.text = "Maple Leaf";
-            Button3.text = "Train";
+            Button1.text = "Sunset";
+            Button2.text = "Sycamore";
+            Button3.text = "Steamtrain";
         }
         if (gdata.stage >= 2)
         {
-            Button4.text = "Blue Zig-Zag";
-            Button5.text = "Mushroom";
-            Button6.text = "Vampire";
+            Button4.text = "Spelunker";
+            Button5.text = "Toadstool";
+            Button6.text = "Vesper";
         }
         if (gdata.stage == 3)
         {
-            Button7.text = "Blue Waves";
-            Button8.text = "Snowflake";
+            Button7.text = "Aurora";
+            Button8.text = "Blizzard";
             Button9.text = "Mitten";
         }
     }
