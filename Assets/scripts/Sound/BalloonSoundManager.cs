@@ -29,7 +29,9 @@ public class BalloonSoundManager : MonoBehaviour {
             if (!sustaining) {
                 sustaining = true;
                 sources[0].Play();
+                #if !UNITY_WEBGL
                 sources[1].PlayScheduled(AudioSettings.dspTime + clips[0].length);
+                #endif
             }
 
             for (int i = 0; i < 3; i++) {
@@ -44,5 +46,15 @@ public class BalloonSoundManager : MonoBehaviour {
             sources[2].Play();
         }
     }
+
+    #if UNITY_WEBGL
+    void Update()
+    {
+        if (sustaining && !sources[0].isPlaying && !sources[1].isPlaying)
+        {
+            sources[1].Play();
+        }
+    }
+    #endif
 
 }
