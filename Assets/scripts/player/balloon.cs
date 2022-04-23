@@ -218,6 +218,10 @@ public class balloon : MonoBehaviour
 
     void TargetControl()
     {
+        int skinID = gdata.getSkin(sprite.sprite);
+        baseColor = gdata.baseColors[skinID];
+        burnColor = gdata.burnColors[skinID];
+        ventColor = gdata.ventColors[skinID];
         sprite.color = baseColor;// new Color(1,0.9f,0.9f);
         if (player.inBalloon)
         {
