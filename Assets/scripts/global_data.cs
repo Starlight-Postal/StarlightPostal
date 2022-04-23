@@ -20,6 +20,11 @@ public class global_data : MonoBehaviour
     public int balloon10 = 0;
     public int stage = 1;
 
+    public Sprite[] skins;
+    public Color[] burnColors;
+    public Color[] baseColors;
+    public Color[] ventColors;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +48,18 @@ public class global_data : MonoBehaviour
     public void SetCoins(int newCoinValue) {
         coins = newCoinValue;
         GetCoins();
+    }
+
+    public int getSkin(Sprite skin)
+    {
+        for(int i=0;i < skins.Length;i++)
+        {
+            if (skins[i] == skin)
+            {
+                return i;
+            }
+        }
+        return -1;
     }
 
 }
