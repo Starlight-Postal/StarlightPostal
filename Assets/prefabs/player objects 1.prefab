@@ -3329,8 +3329,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 79e740da6520b5c418126bd6ff7c49a2, type: 3}
-  m_Color: {r: 0.46974015, g: 0.37409514, b: 0.6132076, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 91bdf108f0e015b42b3adc6ad6aa189c, type: 3}
+  m_Color: {r: 0.81960785, g: 0.7176471, b: 0.5019608, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3353,9 +3353,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.07}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.425
 --- !u!50 &3968976079174973328
 Rigidbody2D:
   serializedVersion: 4
@@ -3983,7 +3983,7 @@ MonoBehaviour:
   balloonSize: 20
   playerSize: 2
   conversationSize: 0.9
-  balloonOff: {x: 0, y: 0, z: 0}
+  balloonOff: {x: 0, y: -2, z: 0}
   playerOff: {x: 0, y: 0.5, z: 0}
   camRange: {x: 0, y: 0}
   range: {fileID: 0}
@@ -4059,6 +4059,9 @@ MonoBehaviour:
   rb: {fileID: 1730267759112930735}
   trans: {fileID: 1730267759112930734}
   sprite: {fileID: 0}
+  baseColor: {r: 1, g: 0.9019608, b: 0.9019608, a: 1}
+  burnColor: {r: 1, g: 1, b: 1, a: 1}
+  ventColor: {r: 1, g: 0.78431374, b: 0.78431374, a: 1}
   skins:
   - {fileID: 21300000, guid: a3cdc51cc286ab04a82f6a474c7a144e, type: 3}
   - {fileID: 21300000, guid: c38eb1571802f5b459663531104153ed, type: 3}

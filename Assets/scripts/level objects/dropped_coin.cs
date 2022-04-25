@@ -16,7 +16,7 @@ public class dropped_coin : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         velocity += new Vector2(0,-grav);
         trans.position += new Vector3(velocity.x, velocity.y, 0);

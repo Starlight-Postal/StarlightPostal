@@ -6,11 +6,13 @@ public class LoopingConversation : Conversation
 {
 
     public string[] loopScript;
+    public bool encountered = false;
 
     public override void OnConversationEnd()
     {
         base.OnConversationEnd();
         script = loopScript;
+        encountered = true;
     }
 
 }

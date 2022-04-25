@@ -25,6 +25,9 @@ public class balloon : MonoBehaviour
     public Rigidbody2D rb;
     public Transform trans;
     public SpriteRenderer sprite;
+    public Color baseColor;
+    public Color burnColor;
+    public Color ventColor;
     Vector2 trackV;
     
     public Sprite[] skins;
@@ -215,13 +218,25 @@ public class balloon : MonoBehaviour
 
     void TargetControl()
     {
-        sprite.color = new Color(1,0.9f,0.9f);
+        int skinID = gdata.getSkin(sprite.sprite);
+        baseColor = gdata.baseColors[skinID];
+        burnColor = gdata.burnColors[skinID];
+        ventColor = gdata.ventColors[skinID];
+        sprite.color = baseColor;// new Color(1,0.9f,0.9f);
         if (player.inBalloon)
         {
 
             if (burnVentInput != 0)
             {
-                sprite.color = new Color(1, 0.9f + (burnVentInput / 10), 0.9f + (burnVentInput / 10));
+                //new Color(1, 0.9f + (burnVentInput / 10), 0.9f + (burnVentInput / 10));
+                if (burnVentInput > 0)
+                {
+                    sprite.color = baseColor + (burnColor - baseColor) * (burnVentInput);
+                }
+                if (burnVentInput < 0)
+                {
+                    sprite.color = baseColor + (ventColor - baseColor) * (-burnVentInput);
+                }
                 fr += ((fillRate * 3 - fr) * 0.0025f) * Mathf.Abs(burnVentInput);
                 th += burnVentInput > 0 ? fr : fr * -1;
             } else
