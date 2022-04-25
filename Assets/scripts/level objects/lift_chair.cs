@@ -21,6 +21,8 @@ public class lift_chair : Interractable
 
     balloon balloon;
 
+    public Transform bodyTrans;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +42,14 @@ public class lift_chair : Interractable
     {
         Vector2 t = chairlift.path[(node + 1) % chairlift.path.Length];
         Vector2 d = t - new Vector2(trans.position.x, trans.position.y);
+        if (d.x > 0)
+        {
+            bodyTrans.localScale = new Vector3(1, 1, 1);
+        }
+        if (d.x < 0)
+        {
+            bodyTrans.localScale = new Vector3(-1, 1, 1);
+        }
         if (d.magnitude > speed)
         {
             trans.position += (Vector3)(d / d.magnitude * speed);

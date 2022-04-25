@@ -45,6 +45,7 @@ public class player : MonoBehaviour
 
     public bool inChair = false;
     public Transform chair = null;
+    public Vector3 chairOff;
 
     public List<EdgeCollider2D> platformQueueu;
 
@@ -207,7 +208,7 @@ public class player : MonoBehaviour
                 aniMode = "idle";
                 rb.velocity *= 0;
                 collider.enabled = false;
-                trans.position = new Vector3(chair.position.x, chair.position.y-0.5f, trans.position.z);
+                trans.position = new Vector3(chair.position.x, chair.position.y, chair.position.z)+chairOff;
                 if (kiSPACE == 1 || kiDOWN == 1)
                 {
                     inChair = false;
@@ -218,6 +219,7 @@ public class player : MonoBehaviour
             } else
             {
                 collider.enabled = true;
+                trans.position = new Vector3(trans.position.x,trans.position.y, 0);
             }
         }
 
