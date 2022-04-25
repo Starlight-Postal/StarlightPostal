@@ -20,8 +20,15 @@ public class TouchControllerManager : MonoBehaviour
     #if PLATFORM_ANDROID
     void FixedUpdate()
     {
-        playerTouchControls.SetActive(!play.inBalloon);
-        balloonTouchControls.SetActive(play.inBalloon);
+        if (play.free)
+        {
+            playerTouchControls.SetActive(!play.inBalloon);
+            balloonTouchControls.SetActive(play.inBalloon);
+        } else
+        {
+            playerTouchControls.SetActive(false);
+            balloonTouchControls.SetActive(false);
+        }
     }
     #endif
     
