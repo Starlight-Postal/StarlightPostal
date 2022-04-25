@@ -20,7 +20,7 @@ public static class StarlightBuilder
         Linux();
         MacOS();
         WebGL();
-        //Android(); Doesnt work currently
+        Android();
     }
 
     [MenuItem("Bob the Builder/Windows")]
