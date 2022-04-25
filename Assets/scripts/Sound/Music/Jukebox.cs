@@ -14,6 +14,9 @@ public class Jukebox : MonoBehaviour
     private bool sourceA = true;
     private double lastScheduleStart;
     private player play;
+    private float fader;
+
+    private const float FADE_RATE = 0.025f;
 
     void Start()
     {
@@ -69,19 +72,16 @@ public class Jukebox : MonoBehaviour
 
     void Update()
     {
-        if (play.inBalloon)
-        {
-            groundSourceA.volume = 0.0f;
-            groundSourceB.volume = 0.0f;
-            airSourceA.volume = 1.0f;
-            airSourceB.volume = 1.0f;
-        } else
-        {
-            groundSourceA.volume = 1.0f;
-            groundSourceB.volume = 1.0f;
-            airSourceA.volume = 0.0f;
-            airSourceB.volume = 0.0f;
-        }
+        var fadeTo = play.inBalloon ? -1f : 1f;
+        fader += (fadeTo - fader) * FADE_RATE;
+
+        var groundVol = Mathf.Sqrt(0.5f * (1f + fader));
+        var airVol = Mathf.Sqrt(0.5f * (1f - fader));
+
+        groundSourceA.volume = groundVol;
+        groundSourceB.volume = groundVol;
+        airSourceA.volume = airVol;
+        airSourceB.volume = airVol;
     }
     
 }
