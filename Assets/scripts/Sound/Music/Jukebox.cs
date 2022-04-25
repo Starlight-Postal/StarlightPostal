@@ -14,6 +14,7 @@ public class Jukebox : MonoBehaviour
     private bool sourceA = true;
     private double lastScheduleStart;
     private player play;
+    public float fade = 0.025f;
 
     void Start()
     {
@@ -71,16 +72,16 @@ public class Jukebox : MonoBehaviour
     {
         if (play.inBalloon)
         {
-            groundSourceA.volume = 0.0f;
-            groundSourceB.volume = 0.0f;
-            airSourceA.volume = 1.0f;
-            airSourceB.volume = 1.0f;
+            groundSourceA.volume += (0.0f- groundSourceA.volume)*fade;
+            groundSourceB.volume += (0.0f- groundSourceB.volume)*fade;
+            airSourceA.volume += (1.0f- airSourceA.volume) *fade;
+            airSourceB.volume += (1.0f- airSourceB.volume) *fade;
         } else
         {
-            groundSourceA.volume = 1.0f;
-            groundSourceB.volume = 1.0f;
-            airSourceA.volume = 0.0f;
-            airSourceB.volume = 0.0f;
+            groundSourceA.volume += (1.0f - groundSourceA.volume) * fade;
+            groundSourceB.volume += (1.0f - groundSourceB.volume)*fade;
+            airSourceA.volume += (0.0f - airSourceA.volume) * fade;
+            airSourceB.volume += (0.0f - airSourceB.volume) * fade;
         }
     }
     
