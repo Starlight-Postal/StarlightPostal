@@ -8,11 +8,12 @@ public class Jukebox : MonoBehaviour
 
     public AudioMixerGroup mixerGroup;
     public AudioClip groundLoop, airLoop;
-    public double offsetSamples;
+    public double offset;
 
     private AudioSource groundSourceA, groundSourceB, airSourceA, airSourceB;
     private bool sourceA = true;
     private double lastScheduleStart;
+    private player play;
 
     void Start()
     {
@@ -31,7 +32,9 @@ public class Jukebox : MonoBehaviour
         airSourceA.outputAudioMixerGroup = mixerGroup;
         airSourceB.outputAudioMixerGroup = mixerGroup;
 
-        var scheduledTime = AudioSettings.dspTime + groundLoop.length - offsetSamples;
+        play = GameObject.FindObjectOfType<player>();
+
+        var scheduledTime = AudioSettings.dspTime + groundLoop.length - offset;
         groundSourceA.Play();
         airSourceA.Play();
         groundSourceB.PlayScheduled(scheduledTime);
@@ -39,13 +42,13 @@ public class Jukebox : MonoBehaviour
         lastScheduleStart = scheduledTime;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (sourceA)
         {
             if (!groundSourceA.isPlaying)
             {
-                var scheduledTime = lastScheduleStart + groundLoop.length - offsetSamples;
+                var scheduledTime = lastScheduleStart + groundLoop.length - offset;
                 groundSourceA.PlayScheduled(scheduledTime);
                 airSourceA.PlayScheduled(scheduledTime);
                 lastScheduleStart = scheduledTime;
@@ -55,13 +58,29 @@ public class Jukebox : MonoBehaviour
         {
             if (!groundSourceB.isPlaying)
             {
-                var scheduledTime = lastScheduleStart + groundLoop.length - offsetSamples;
+                var scheduledTime = lastScheduleStart + groundLoop.length - offset;
                 groundSourceB.PlayScheduled(scheduledTime);
                 airSourceB.PlayScheduled(scheduledTime);
                 lastScheduleStart = scheduledTime;
                 sourceA = true;
             }
+        }
+    }
 
+    void Update()
+    {
+        if (play.inBalloon)
+        {
+            groundSourceA.volume = 0.0f;
+            groundSourceB.volume = 0.0f;
+            airSourceA.volume = 1.0f;
+            airSourceB.volume = 1.0f;
+        } else
+        {
+            groundSourceA.volume = 1.0f;
+            groundSourceB.volume = 1.0f;
+            airSourceA.volume = 0.0f;
+            airSourceB.volume = 0.0f;
         }
     }
     
