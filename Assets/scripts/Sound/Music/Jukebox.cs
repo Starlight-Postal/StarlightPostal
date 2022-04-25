@@ -15,7 +15,7 @@ public class Jukebox : MonoBehaviour
     private double lastScheduleStart;
     private player play;
 
-    public const float FADE_RATE = 0.025f;
+    private const float FADE_RATE = 0.025f;
 
     void Start()
     {
