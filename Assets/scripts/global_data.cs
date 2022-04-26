@@ -18,6 +18,7 @@ public class global_data : MonoBehaviour
     public int balloon8 = 0;
     public int balloon9 = 0;
     public int balloon10 = 0;
+    public int balloonSkin = 0;
     public int stage = 1;
 
     public Sprite[] skins;
