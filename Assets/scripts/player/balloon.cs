@@ -91,6 +91,7 @@ public class balloon : MonoBehaviour
         //rb = gameObject.GetComponent<Rigidbody2D>();
         //trans = gameObject.GetComponent<Transform>();
         sprite = gameObject.GetComponent<SpriteRenderer>();
+        sprite.sprite = gdata.skins[gdata.balloonSkin];
 
         lean = 0;
         fr = fillRate;
@@ -117,7 +118,7 @@ public class balloon : MonoBehaviour
         basketCollider = GameObject.Find("Basket").GetComponent<Collider2D>();
         basketTrans = GameObject.Find("Basket").GetComponent<Transform>();
 
-        setSkin(skin);
+        //setSkin(skin);
 
         // Register instanced console commands
         DebugLogConsole.AddCommandInstance("balloon.anchor", "Toggles the balloon anchor", "ToggleAnchor", this);
@@ -212,7 +213,8 @@ public class balloon : MonoBehaviour
             basketSprite.sprite = basketTex_0;
         }
 
-
+        //sprite.sprite = gdata.skins[gdata.balloonSkin];
+        gdata.balloonSkin = gdata.getSkin(sprite.sprite);
     }
 
 
@@ -364,6 +366,7 @@ public class balloon : MonoBehaviour
     {
         skin = id % skins.Length;
         sprite.sprite = skins[skin];
+        //gdata.balloonSkin = gdata.getSkin(sprite.sprite);
     }
 
     float toAngle(float a,float b,float amt)
@@ -393,6 +396,7 @@ public class balloon : MonoBehaviour
         if (sprite != null)
         {
             spriteRender.sprite = sprite;
+            //GameObject.Find("Coin Global Data").GetComponent<global_data>().balloonSkin = GameObject.Find("Coin Global Data").GetComponent<global_data>().getSkin(sprite);
             Debug.Log("Changed balloon skin to " + name);
         }
         else

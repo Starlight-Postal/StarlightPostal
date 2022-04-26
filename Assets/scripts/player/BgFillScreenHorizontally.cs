@@ -20,6 +20,8 @@ public class BgFillScreenHorizontally : MonoBehaviour {
             Resize();
             lastScreenSize = screenSize;
         }
+        
+        Debug.Log("cam.aspect" + Camera.main.aspect);
     }
 
     private void Resize() {
@@ -33,6 +35,7 @@ public class BgFillScreenHorizontally : MonoBehaviour {
             y = ((cam.aspect / ((float)16/9)) * -1 + 2) * initScale.y * buffer;
             x = ((cam.aspect / ((float)16/9)) * -1 + 2) * initScale.x * buffer;
         }
+        Debug.Log("cam.aspect" + cam.aspect);
 
         gameObject.transform.localScale = new Vector3 (x, y, initScale.z);
     }
