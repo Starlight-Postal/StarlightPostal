@@ -46,11 +46,15 @@ public class Jukebox : MonoBehaviour
 
     void FixedUpdate()
     {
+        var scheduledTime = lastScheduleStart + groundLoop.length - offset;
+        if (scheduledTime < AudioSettings.dspTime)
+        {
+            scheduledTime = AudioSettings.dspTime; // If the audio were to be scheduled in the past, schedule it now instead
+        }
         if (sourceA)
         {
             if (!groundSourceA.isPlaying)
             {
-                var scheduledTime = lastScheduleStart + groundLoop.length - offset;
                 groundSourceA.PlayScheduled(scheduledTime);
                 airSourceA.PlayScheduled(scheduledTime);
                 lastScheduleStart = scheduledTime;
@@ -60,7 +64,6 @@ public class Jukebox : MonoBehaviour
         {
             if (!groundSourceB.isPlaying)
             {
-                var scheduledTime = lastScheduleStart + groundLoop.length - offset;
                 groundSourceB.PlayScheduled(scheduledTime);
                 airSourceB.PlayScheduled(scheduledTime);
                 lastScheduleStart = scheduledTime;
