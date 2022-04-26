@@ -68,7 +68,9 @@ public class MainMenuBehaviour : NavigatableMenu {
         Application.Quit();
     }
 
-    private void Rescale() {        
+    private void Rescale() {
+        Debug.Log("Resizing main menu UI to new screen size");
+        
         float contWidth;
         float contHeight;
         
@@ -79,8 +81,10 @@ public class MainMenuBehaviour : NavigatableMenu {
             contHeight = Screen.height * 0.66f;
             contWidth = contHeight * CONT_APSPECT_RATIO;
         }
+        
+        Debug.Log("Main menu height/width: " + contHeight + " / " + contWidth);
             
-        container.style.height = contHeight;
-        container.style.width = contWidth;
+        container.style.height = contHeight / 2;
+        container.style.width = contWidth / 2;
     }
 }

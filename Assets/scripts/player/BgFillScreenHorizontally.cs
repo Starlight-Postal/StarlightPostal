@@ -20,11 +20,10 @@ public class BgFillScreenHorizontally : MonoBehaviour {
             Resize();
             lastScreenSize = screenSize;
         }
-        
-        Debug.Log("cam.aspect" + Camera.main.aspect);
     }
 
     private void Resize() {
+        Debug.Log("Resizing background as screen size changed");
         var cam = Camera.main;
         
         float x, y;

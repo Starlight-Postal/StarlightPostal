@@ -89,6 +89,8 @@ public class PauseMenuBehaviour : NavigatableMenu {
     }
 
     private void Rescale() {
+        Debug.Log("Resizing pause menu UI to new screen size");
+        
         float contWidth;
         float contHeight;
         
