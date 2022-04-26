@@ -88,6 +88,7 @@ public class balloon : MonoBehaviour
     void Start()
     {
         gdata = GameObject.Find("Coin Global Data").GetComponent<global_data>();
+        sprite.sprite = gdata.skins[gdata.balloonSkin];
         //rb = gameObject.GetComponent<Rigidbody2D>();
         //trans = gameObject.GetComponent<Transform>();
         sprite = gameObject.GetComponent<SpriteRenderer>();
@@ -212,7 +213,7 @@ public class balloon : MonoBehaviour
             basketSprite.sprite = basketTex_0;
         }
 
-
+        gdata.balloonSkin = getSkin(sprite.sprite);
     }
 
 
