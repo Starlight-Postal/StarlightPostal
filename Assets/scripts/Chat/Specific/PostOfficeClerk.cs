@@ -27,6 +27,7 @@ class PostOfficeClerk : Conversation
 
     public override void OnConversationStart()
     {
+        GameObject.FindObjectsOfType<balloon>()[0].heightCap = DELIVERED_HEIGHT_CAP; //failsafe
         switch (phase)
         {
             case MailPhase.MAILDROP:
