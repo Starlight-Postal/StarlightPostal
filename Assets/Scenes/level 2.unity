@@ -42552,7 +42552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7413764752685158120, guid: 7d7e9df07a6ed024caf270ca1be27479, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d7e9df07a6ed024caf270ca1be27479, type: 3}
@@ -47204,7 +47204,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2067480104667165961, guid: 09ff7610f8aa5514d9e087d4d5b7312e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6132034986068372073, guid: 09ff7610f8aa5514d9e087d4d5b7312e, type: 3}
       propertyPath: m_RootOrder
@@ -56869,7 +56869,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8017961108491175494, guid: 168a35ea4976594409def6c70db83b07, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 168a35ea4976594409def6c70db83b07, type: 3}
@@ -59055,7 +59055,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3305828230692132649, guid: 921ad00ed75f7b2438faec9390515407, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3305828230692132649, guid: 921ad00ed75f7b2438faec9390515407, type: 3}
       propertyPath: m_LocalRotation.w
@@ -59092,6 +59092,10 @@ PrefabInstance:
     - target: {fileID: 7226269856752732233, guid: 921ad00ed75f7b2438faec9390515407, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.321
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226269856752732233, guid: 921ad00ed75f7b2438faec9390515407, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 921ad00ed75f7b2438faec9390515407, type: 3}
@@ -62087,6 +62091,10 @@ PrefabInstance:
     - target: {fileID: 132899525633573915, guid: f0cb3a1602d775146abcacc21e581c3a, type: 3}
       propertyPath: m_Name
       value: Batrice
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219759985628928888, guid: f0cb3a1602d775146abcacc21e581c3a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0cb3a1602d775146abcacc21e581c3a, type: 3}
@@ -71055,7 +71063,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2285263314184130776, guid: 026ace7feb7aecf43bea6f20f5f9dbf8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6205561745364062136, guid: 026ace7feb7aecf43bea6f20f5f9dbf8, type: 3}
       propertyPath: m_RootOrder
@@ -101322,6 +101330,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 171671596}
     m_Modifications:
+    - target: {fileID: 3206628654449017934, guid: cbbb0631b6006c541a5fdf088cc94823, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7289160258369690413, guid: cbbb0631b6006c541a5fdf088cc94823, type: 3}
       propertyPath: m_Name
       value: Recipient Miner
@@ -101451,6 +101463,10 @@ PrefabInstance:
       propertyPath: thanksLoopScript.Array.data[1]
       value: Not that there's many towns in Crystal Caverns to begin with... Are
         we on the map?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5576903749776538102, guid: cc5caf4c18a5b084b9f14344096fb0a1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc5caf4c18a5b084b9f14344096fb0a1, type: 3}
