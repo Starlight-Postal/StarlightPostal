@@ -12,11 +12,16 @@ public class CatOwner : Conversation
     public GameObject cat;
     public AudioSource sfx_place;
     public int dropLine;
+
+    public SpriteRenderer sprite;
+    public Sprite happy;
+    public Sprite sad;
     // Start is called before the first frame update
     void Start()
     {
         script = helpScript;
         //scriptIndex = 0;
+        sprite.sprite = sad;
     }
 
     // Update is called once per frame
@@ -43,6 +48,13 @@ public class CatOwner : Conversation
         if (script == thanksScript)
         {
             script = thanksLoopScript;
+        }
+    }
+    public override void OnConversationStart()
+    {
+        if (tree.found)
+        {
+            sprite.sprite = happy;
         }
     }
     public override void OnConversationLineUpdate(int index)
