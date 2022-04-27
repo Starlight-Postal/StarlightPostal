@@ -15,7 +15,7 @@ public class Jukebox : MonoBehaviour
     private double lastScheduleStart;
     private player play;
 
-    private const float FADE_RATE = 0.025f;
+    public const float FADE_RATE = 0.01f;
 
     void Start()
     {
@@ -70,23 +70,26 @@ public class Jukebox : MonoBehaviour
                 sourceA = true;
             }
         }
-    }
 
-    void Update()
-    {
         if (play.inBalloon)
         {
             groundSourceA.volume += (0.0f - groundSourceA.volume) * FADE_RATE;
             groundSourceB.volume += (0.0f - groundSourceA.volume) * FADE_RATE;
             airSourceA.volume += (1.0f - airSourceA.volume) * FADE_RATE;
             airSourceB.volume += (1.0f - airSourceA.volume) * FADE_RATE;
-        } else
+        }
+        else
         {
             groundSourceA.volume += (1.0f - groundSourceA.volume) * FADE_RATE;
             groundSourceB.volume += (1.0f - groundSourceA.volume) * FADE_RATE;
             airSourceA.volume += (0.0f - airSourceA.volume) * FADE_RATE;
             airSourceB.volume += (0.0f - airSourceA.volume) * FADE_RATE;
         }
+    }
+
+    void Update()
+    {
+        
     }
     
 }
