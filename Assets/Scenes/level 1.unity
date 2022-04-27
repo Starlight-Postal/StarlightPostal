@@ -46285,6 +46285,7 @@ MonoBehaviour:
   player: {fileID: 0}
   cam: {fileID: 0}
   camTrans: {fileID: 0}
+  gdata: {fileID: 0}
 --- !u!82 &1323917986
 AudioSource:
   m_ObjectHideFlags: 0
@@ -79423,6 +79424,14 @@ PrefabInstance:
     - target: {fileID: 7569847765227426189, guid: 77a048e6e88068b419a0f270c755df7a, type: 3}
       propertyPath: balloonOff.y
       value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877017493165684241, guid: 77a048e6e88068b419a0f270c755df7a, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877017493165684241, guid: 77a048e6e88068b419a0f270c755df7a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 571862499689109570, guid: 77a048e6e88068b419a0f270c755df7a, type: 3}
