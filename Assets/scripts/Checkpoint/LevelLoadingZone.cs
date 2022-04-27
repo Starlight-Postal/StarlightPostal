@@ -15,6 +15,7 @@ public class LevelLoadingZone : LandingPad {
     }
     
     public override void Trigger() {
+        Debug.Log("goodbye");
         reached = CheckpointManager.instance.UpdateCheckpoint(this);
         CheckpointManager.Respawn();
     }

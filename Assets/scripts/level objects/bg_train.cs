@@ -16,9 +16,12 @@ public class bg_train : MonoBehaviour
     public camera cam;
 
     public Transform camTrans;
+
+    public global_data gdata;
     // Start is called before the first frame update
     void Start()
     {
+        gdata = GameObject.Find("Coin Global Data").GetComponent<global_data>();
         trans = gameObject.GetComponent<Transform>();
         x = x1;
 
@@ -32,6 +35,13 @@ public class bg_train : MonoBehaviour
 
         // Register skip command
         DebugLogConsole.AddCommandInstance("train.skip", "Skips train cutscene", "SkipCutscene", this);
+
+        if (!gdata.introScene)
+        {
+            player.free = true;
+            cam.follow = true;
+            x = x2;
+        }
     }
 
     // Update is called once per frame
@@ -51,6 +61,7 @@ public class bg_train : MonoBehaviour
         {
             player.free = true;
             cam.follow = true;
+            gdata.introScene = false;
         } else
         {
             if (x > -20+6.35)
@@ -62,5 +73,6 @@ public class bg_train : MonoBehaviour
 
     public void SkipCutscene() {
         x = x2;
+        gdata.introScene = false;
     }
 }

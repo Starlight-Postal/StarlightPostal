@@ -26688,6 +26688,8 @@ MonoBehaviour:
   groundLoop: {fileID: 8300000, guid: a21046a201f02c458b549f6ce7baf96b, type: 3}
   airLoop: {fileID: 8300000, guid: 988b606c5abf501599123ab89782559d, type: 3}
   offset: 0
+  musicVolume: 1
+  polarity: 0
 --- !u!4 &769676879
 Transform:
   m_ObjectHideFlags: 0
@@ -46246,6 +46248,7 @@ MonoBehaviour:
   player: {fileID: 0}
   cam: {fileID: 0}
   camTrans: {fileID: 0}
+  gdata: {fileID: 0}
 --- !u!82 &1323917986
 AudioSource:
   m_ObjectHideFlags: 0
@@ -79384,6 +79387,14 @@ PrefabInstance:
     - target: {fileID: 7569847765227426189, guid: 77a048e6e88068b419a0f270c755df7a, type: 3}
       propertyPath: balloonOff.y
       value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877017493165684241, guid: 77a048e6e88068b419a0f270c755df7a, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877017493165684241, guid: 77a048e6e88068b419a0f270c755df7a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 571862499689109570, guid: 77a048e6e88068b419a0f270c755df7a, type: 3}
