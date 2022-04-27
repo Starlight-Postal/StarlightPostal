@@ -50,11 +50,14 @@ public class anchor : MonoBehaviour
         if (c.gameObject.layer == 0|| c.gameObject.layer == 9)
         {
             //Debug.Log("stick");
-            stuck = true;
-            target = c.gameObject;
-            targetTrans = target.GetComponent<Transform>();
-            tOff = trans.position - targetTrans.position;
-            sfx_land.Play(0);
+            if (target == null || target.tag != "landing")
+            {
+                stuck = true;
+                target = c.gameObject;
+                targetTrans = target.GetComponent<Transform>();
+                tOff = trans.position - targetTrans.position;
+                sfx_land.Play(0);
+            }
         }
     }
     /*void OnCollisionExit2D(Collision2D c)
