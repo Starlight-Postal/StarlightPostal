@@ -18,6 +18,8 @@ public class bg_train : MonoBehaviour
     public Transform camTrans;
 
     public global_data gdata;
+
+    GameObject music;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,11 +38,17 @@ public class bg_train : MonoBehaviour
         // Register skip command
         DebugLogConsole.AddCommandInstance("train.skip", "Skips train cutscene", "SkipCutscene", this);
 
+        music = GameObject.Find("Jukebox");
         if (!gdata.introScene)
         {
             player.free = true;
             cam.follow = true;
             x = x2;
+            music.SetActive(true);
+        }
+        else
+        {
+            music.SetActive(false);
         }
     }
 
@@ -62,6 +70,7 @@ public class bg_train : MonoBehaviour
             player.free = true;
             cam.follow = true;
             gdata.introScene = false;
+            music.SetActive(true);
         } else
         {
             if (x > -20+6.35)
@@ -74,5 +83,6 @@ public class bg_train : MonoBehaviour
     public void SkipCutscene() {
         x = x2;
         gdata.introScene = false;
+        music.SetActive(true);
     }
 }

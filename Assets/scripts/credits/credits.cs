@@ -34,6 +34,8 @@ public class credits : MonoBehaviour
         if (TICK > (end - fadeLength) * fps)
         {
             fade.color = new Color(0, 0, 0,1-((end-((float)TICK/fps)) / fadeLength));
+        } else if (TICK < (fadeLength*0.5f)*fps) {
+            fade.color = new Color(0, 0, 0, 1 - (((float)TICK / fps) / (fadeLength*0.5f)));
         } else
         {
             fade.color = new Color(0, 0, 0, 0);

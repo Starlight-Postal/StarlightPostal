@@ -7,19 +7,27 @@ public class cam_fade : MonoBehaviour
     SpriteRenderer sprite;
     public float fade = 1;
     public float fadeOut = 0.025f;
+    bool start = true;
     // Start is called before the first frame update
     void Start()
     {
         sprite = gameObject.GetComponent<SpriteRenderer > ();
         fade = 1;
+        start = true;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (fade > 0)
+        if (start)
         {
-            fade -= fadeOut;
+            if (fade > 0)
+            {
+                fade -= fadeOut;
+            } else
+            {
+                start = false;
+            }
         }
 
         sprite.color = new Color(0, 0, 0, fade);
