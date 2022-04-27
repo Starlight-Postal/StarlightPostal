@@ -12074,6 +12074,22 @@ PrefabInstance:
     m_TransformParent: {fileID: 978653985}
     m_Modifications:
     - target: {fileID: 3052917578844118668, guid: 4e711e1bcc111244689f6f134301d4a5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3052917578844118668, guid: 4e711e1bcc111244689f6f134301d4a5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3052917578844118668, guid: 4e711e1bcc111244689f6f134301d4a5, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3052917578844118668, guid: 4e711e1bcc111244689f6f134301d4a5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.375
+      objectReference: {fileID: 0}
+    - target: {fileID: 3052917578844118668, guid: 4e711e1bcc111244689f6f134301d4a5, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.5
       objectReference: {fileID: 0}
@@ -12082,9 +12098,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 334389784}
     - target: {fileID: 5243679808449856040, guid: 4e711e1bcc111244689f6f134301d4a5, type: 3}
+      propertyPath: sad
+      value: 
+      objectReference: {fileID: 21300000, guid: 5d421fb12e66ba54eb8cb6fa5eb09477, type: 3}
+    - target: {fileID: 5243679808449856040, guid: 4e711e1bcc111244689f6f134301d4a5, type: 3}
       propertyPath: tree
       value: 
       objectReference: {fileID: 288393141844014828}
+    - target: {fileID: 5243679808449856040, guid: 4e711e1bcc111244689f6f134301d4a5, type: 3}
+      propertyPath: happy
+      value: 
+      objectReference: {fileID: 21300000, guid: 7f7147dca92f9e041b2d050486c2b4b2, type: 3}
+    - target: {fileID: 5243679808449856040, guid: 4e711e1bcc111244689f6f134301d4a5, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 345546426}
     - target: {fileID: 5243679808449856040, guid: 4e711e1bcc111244689f6f134301d4a5, type: 3}
       propertyPath: dropLine
       value: 1
@@ -12223,12 +12251,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: CatQuestNPC
       objectReference: {fileID: 0}
+    - target: {fileID: 7371791003764026271, guid: 4e711e1bcc111244689f6f134301d4a5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5d421fb12e66ba54eb8cb6fa5eb09477, type: 3}
     m_RemovedComponents:
     - {fileID: 4317219025628643683, guid: 4e711e1bcc111244689f6f134301d4a5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4e711e1bcc111244689f6f134301d4a5, type: 3}
 --- !u!4 &345546425 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7203036170443047404, guid: 4e711e1bcc111244689f6f134301d4a5, type: 3}
+  m_PrefabInstance: {fileID: 345546424}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &345546426 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7371791003764026271, guid: 4e711e1bcc111244689f6f134301d4a5, type: 3}
   m_PrefabInstance: {fileID: 345546424}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &346131224
@@ -26688,6 +26725,8 @@ MonoBehaviour:
   groundLoop: {fileID: 8300000, guid: a21046a201f02c458b549f6ce7baf96b, type: 3}
   airLoop: {fileID: 8300000, guid: 988b606c5abf501599123ab89782559d, type: 3}
   offset: 0
+  musicVolume: 1
+  polarity: 0
 --- !u!4 &769676879
 Transform:
   m_ObjectHideFlags: 0
