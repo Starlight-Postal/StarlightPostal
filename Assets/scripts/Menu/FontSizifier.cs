@@ -22,6 +22,10 @@ public class FontSizifier : MonoBehaviour {
         labels.ForEach(l => {
             l.style.fontSize = (fontSizePercent / 100) * (float) vh;
         });
+        var buttons = rve.Query<Button>();
+        buttons.ForEach(b => {
+            b.style.fontSize = (fontSizePercent / 100) * (float) vh;
+        });
     }
 
 }
