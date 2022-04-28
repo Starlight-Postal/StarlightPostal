@@ -11723,7 +11723,7 @@ Transform:
   m_GameObject: {fileID: 334389784}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.153, y: 0.114, z: 0.5}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalScale: {x: -0.25, y: 0.25, z: 1}
   m_Children: []
   m_Father: {fileID: 345546425}
   m_RootOrder: 3
@@ -11864,7 +11864,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3a60109d499215e46a2577fd67db0c70, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2fb865383a247a646b90592ceadc222b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -77656,6 +77656,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 978653985}
     m_Modifications:
+    - target: {fileID: 128801450202463676, guid: 548eb4bec6dce8841b0271c58dbd12c6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2fb865383a247a646b90592ceadc222b, type: 3}
     - target: {fileID: 320344753257666508, guid: 548eb4bec6dce8841b0271c58dbd12c6, type: 3}
       propertyPath: m_Name
       value: tree cat
@@ -77708,6 +77712,14 @@ PrefabInstance:
       propertyPath: tree
       value: 
       objectReference: {fileID: 1739808729}
+    - target: {fileID: 5609902647010494639, guid: 548eb4bec6dce8841b0271c58dbd12c6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5609902647010494639, guid: 548eb4bec6dce8841b0271c58dbd12c6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 548eb4bec6dce8841b0271c58dbd12c6, type: 3}
 --- !u!4 &288393140393677378 stripped
