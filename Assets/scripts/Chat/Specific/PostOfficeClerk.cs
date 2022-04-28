@@ -53,7 +53,12 @@ class PostOfficeClerk : Conversation
             case MailPhase.MAILDROP:
                 phase = MailPhase.DELIVERY;
                 GameObject.FindObjectsOfType<balloon>()[0].heightCap = DELIVERED_HEIGHT_CAP; //package optional
-                GameObject.FindObjectsOfType<TutorialNPC>()[0].phase = TutorialPhase.POSTOFFICEDELIVERY;
+                TutorialNPC captain = GameObject.FindObjectsOfType<TutorialNPC>()[0];
+                if (captain != null)
+                {
+                    captain.phase = TutorialPhase.POSTOFFICEDELIVERY;
+                }
+                //GameObject.FindObjectsOfType<TutorialNPC>()[0].phase = TutorialPhase.POSTOFFICEDELIVERY;
                 break;
             case MailPhase.DELIVERY:
                 break;

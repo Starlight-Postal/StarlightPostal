@@ -87,6 +87,7 @@ public class TutorialNPC : Conversation
             {
                 scriptIndex = 19;
                 OnConversationLineUpdate(19);
+                TurnOnDisplay();
                 chatScript.text = script[scriptIndex];
             }
         }
@@ -378,6 +379,14 @@ public class TutorialNPC : Conversation
                 }
                 break;
             case TutorialPhase.POSTOFFICEDELIVERY:
+                if (index == 2)
+                {
+                    return DadGetsMilkFromDownTheStreet();
+                }
+                else
+                {
+                    return WalkToPostOffice();
+                }
             case TutorialPhase.DELIVERED:
                 if (index == 2)
                     return DadGetsMilkFromDownTheStreet();
