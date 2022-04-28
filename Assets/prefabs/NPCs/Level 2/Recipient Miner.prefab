@@ -214,6 +214,11 @@ MonoBehaviour:
   - Well you must be my new pickaxe! Perfect timing, lass, me old one has gotten
     right dull.
   - Thank ya kindly ma'am. We'll have this new hall done in to time!
+  inMenu: 0
+  scriptIndex: 0
+  isTalking: 0
+  canTalk: 1
+  waitingForReady: 0
   isInRange: 0
   loopScript:
   - Thank's a load for yer service little missie, we really appreciate all the importing
@@ -353,7 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe2ab07e26b5ddb4db5852c8b12b7348, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fontSizePercent: 2.25
+  fontSizePercent: 1.5
 --- !u!1 &7307265127464232165
 GameObject:
   m_ObjectHideFlags: 0

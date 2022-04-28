@@ -121,6 +121,11 @@ MonoBehaviour:
     It'd help us out a whole lot.
   - (You took a load of crystals)
   - Thanks a lot, lassie. We'll pay you a cut for yer troubles.
+  inMenu: 0
+  scriptIndex: 0
+  isTalking: 0
+  canTalk: 1
+  waitingForReady: 0
   isInRange: 0
   loopScript:
   - Look but don't touch, lassie. These crystals are all mine!
@@ -138,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe2ab07e26b5ddb4db5852c8b12b7348, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fontSizePercent: 2.25
+  fontSizePercent: 1.5
 --- !u!1 &5837904046309283735
 GameObject:
   m_ObjectHideFlags: 0
