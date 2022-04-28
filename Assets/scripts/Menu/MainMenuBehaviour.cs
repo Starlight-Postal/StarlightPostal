@@ -81,10 +81,13 @@ public class MainMenuBehaviour : NavigatableMenu {
             contHeight = Screen.height * 0.66f;
             contWidth = contHeight * CONT_APSPECT_RATIO;
         }
-        
-        Debug.Log("Main menu height/width: " + contHeight + " / " + contWidth);
+
+        #if PLATFORM_ANDROID
+        contHeight /= 2;
+        contWidth /= 2;
+        #endif
             
-        container.style.height = contHeight / 2;
-        container.style.width = contWidth / 2;
+        container.style.height = contHeight;
+        container.style.width = contWidth;
     }
 }

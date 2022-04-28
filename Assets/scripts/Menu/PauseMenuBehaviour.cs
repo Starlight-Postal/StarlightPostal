@@ -101,6 +101,11 @@ public class PauseMenuBehaviour : NavigatableMenu {
             contHeight = Screen.height * 0.66f;
             contWidth = contHeight * CONT_APSPECT_RATIO;
         }
+
+        #if PLATFORM_ANDROID
+        contHeight /= 2;
+        contWidth /= 2;
+        #endif
             
         container.style.height = contHeight;
         container.style.width = contWidth;
