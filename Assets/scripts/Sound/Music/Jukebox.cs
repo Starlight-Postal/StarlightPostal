@@ -93,6 +93,28 @@ public class Jukebox : MonoBehaviour
         airSourceB.volume = musicVolume * polarity;
         groundSourceA.volume = musicVolume * (1-polarity);
         groundSourceB.volume = musicVolume * (1-polarity);
+
+        bool alive = true;
+        if (!airSourceA.isPlaying && !airSourceB.isPlaying)
+        {
+            groundSourceA.Stop();
+            groundSourceB.Stop();
+            alive = false;
+        }
+        if (!groundSourceA.isPlaying && !groundSourceB.isPlaying)
+        {
+            airSourceA.Stop();
+            airSourceB.Stop();
+            alive = false;
+        }
+        if (!alive) {
+            scheduledTime = AudioSettings.dspTime + groundLoop.length - offset;
+            groundSourceA.Play();
+            airSourceA.Play();
+            groundSourceB.PlayScheduled(scheduledTime);
+            airSourceB.PlayScheduled(scheduledTime);
+            lastScheduleStart = scheduledTime;
+        }
     }
 
     void Update()
