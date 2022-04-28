@@ -126,4 +126,9 @@ public class camera : MonoBehaviour
         offset = new Vector3(input.x, input.y, 0);
     }
 
+    public void snapToTarget()
+    {
+        trans.position = new Vector3(target.position.x, target.position.y, trans.position.z);
+    }
+
 }

@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 2813973546931830807}
   - component: {fileID: 7203036169110168761}
   - component: {fileID: 22694979101371826}
+  - component: {fileID: 2771591609613924422}
   - component: {fileID: 6142316409980388805}
   - component: {fileID: 5243679808449856040}
   m_Layer: 6
@@ -162,6 +163,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mixer: {fileID: -5503087461429490858, guid: 3c1affec8217990a19f91b94113e5de3, type: 2}
+--- !u!114 &2771591609613924422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7203036169110168901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe2ab07e26b5ddb4db5852c8b12b7348, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fontSizePercent: 2
 --- !u!114 &6142316409980388805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,6 +217,9 @@ MonoBehaviour:
   cat: {fileID: 0}
   sfx_place: {fileID: 0}
   dropLine: 0
+  sprite: {fileID: 0}
+  happy: {fileID: 0}
+  sad: {fileID: 0}
 --- !u!1 &7203036169409816953
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,7 +299,7 @@ SpriteRenderer:
   m_Size: {x: 0.525, y: 0.37503663}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &7203036170443047407

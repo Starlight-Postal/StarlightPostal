@@ -101,6 +101,7 @@ MonoBehaviour:
   balloon8: 0
   balloon9: 0
   balloon10: 0
+  balloonSkin: 0
   stage: 1
   skins:
   - {fileID: 21300000, guid: a3cdc51cc286ab04a82f6a474c7a144e, type: 3}
@@ -115,7 +116,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8ddeddea0b55ccc40aeb8497a0a6514e, type: 3}
   - {fileID: 21300000, guid: c38eb1571802f5b459663531104153ed, type: 3}
   - {fileID: 21300000, guid: 58d340e52fb994c4ba5bdca7577f3b05, type: 3}
+  - {fileID: 21300000, guid: e74b0f55c37687e4a83ab4886aebcaca, type: 3}
   burnColors:
+  - {r: 1, g: 1, b: 1, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
@@ -141,6 +144,7 @@ MonoBehaviour:
   - {r: 1, g: 0.9019608, b: 0.9607843, a: 1}
   - {r: 1, g: 0.9019608, b: 0.9019608, a: 1}
   - {r: 0.9019608, g: 0.9019608, b: 1, a: 1}
+  - {r: 1, g: 0.93991935, b: 0.8836478, a: 1}
   ventColors:
   - {r: 1, g: 0.78431374, b: 0.78431374, a: 1}
   - {r: 1, g: 0.78431374, b: 0.78431374, a: 1}
@@ -154,6 +158,8 @@ MonoBehaviour:
   - {r: 1, g: 0.78431374, b: 0.9607843, a: 1}
   - {r: 1, g: 0.78431374, b: 0.78431374, a: 1}
   - {r: 0.78431374, g: 0.78431374, b: 1, a: 1}
+  - {r: 1, g: 0.7977401, b: 0.6949685, a: 1}
+  introScene: 1
 --- !u!1 &9023487762022538025
 GameObject:
   m_ObjectHideFlags: 0
