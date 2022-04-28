@@ -81,6 +81,15 @@ public class TutorialNPC : Conversation
 
     private void FixedUpdate()
     {
+        if (phase == TutorialPhase.BALLOON && !playerScript.inBalloon && balloonTrans.position.x >= 550)
+        {
+            if (scriptIndex < 19)
+            {
+                scriptIndex = 19;
+                OnConversationLineUpdate(19);
+                chatScript.text = script[scriptIndex];
+            }
+        }
         base.FixedUpdate();
         AnimationUpdate();
     }
@@ -260,6 +269,7 @@ public class TutorialNPC : Conversation
                 phase = TutorialPhase.BAR;
                 break;
         }
+        scriptIndex = 0;
     }
 
     public override void OnConversationLineUpdate(int index)
@@ -376,7 +386,7 @@ public class TutorialNPC : Conversation
     // allowing the interract event to go to the balloon even when the tutorial npc is closer
     public override bool CanPlayerInterract()
     {
-        if (phase == TutorialPhase.BALLOON && scriptIndex == 3)
+        if (phase == TutorialPhase.BALLOON && scriptIndex >= 3)
         {
             return false;
         }
