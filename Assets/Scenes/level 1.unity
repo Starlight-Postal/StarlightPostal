@@ -4968,6 +4968,19 @@ PrefabInstance:
       propertyPath: walkSpeed
       value: 0.025
       objectReference: {fileID: 0}
+    - target: {fileID: 304300000617169906, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
+      propertyPath: scriptLanded.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 304300000617169906, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
+      propertyPath: scriptLanded.Array.data[0]
+      value: "Great work kiddo, you survived your maiden voyage! Let\u2019s get to
+        the post office- we\u2019ve got some packages to deliver."
+      objectReference: {fileID: 0}
+    - target: {fileID: 304300000617169906, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
+      propertyPath: scriptLanded.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 907948254344770873, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.25
