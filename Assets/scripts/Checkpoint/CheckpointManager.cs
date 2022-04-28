@@ -79,6 +79,7 @@ public class CheckpointManager : MonoBehaviour {
         var move = respawnPosition - center.transform.position;
 
         balloon.transform.position += move;
+        balloon.GetComponent<balloon>().rb.velocity = new Vector2(0, 0);
 
         balloon.GetComponent<balloon>().th = respawnPosition.y;
         balloon.GetComponent<balloon>().anchored = false;
