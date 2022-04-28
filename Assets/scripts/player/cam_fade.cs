@@ -11,7 +11,7 @@ public class cam_fade : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sprite = gameObject.GetComponent<SpriteRenderer > ();
+        sprite = gameObject.GetComponent<SpriteRenderer>();
         fade = 1;
         start = true;
     }
@@ -19,6 +19,10 @@ public class cam_fade : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (sprite == null)
+        {
+            sprite = gameObject.GetComponent<SpriteRenderer>();
+        }
         if (start)
         {
             if (fade > 0)
@@ -29,7 +33,6 @@ public class cam_fade : MonoBehaviour
                 start = false;
             }
         }
-
         sprite.color = new Color(0, 0, 0, fade);
     }
 }

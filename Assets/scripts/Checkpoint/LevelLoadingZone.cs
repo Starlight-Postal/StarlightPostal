@@ -34,11 +34,15 @@ public class LevelLoadingZone : LandingPad {
             balloon.SetActive(false);
             f += fadeOut;
             fade.fade = f;
-            music.musicVolume = 1-f;
             if (f > 1)
             {
                 loadNext();
             }
+            music.musicVolume = 1 - f;
+        }
+        if (music == null)
+        {
+            music = GameObject.Find("Jukebox").GetComponent<Jukebox>();
         }
     }
     
