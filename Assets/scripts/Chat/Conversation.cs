@@ -20,7 +20,7 @@ public class Conversation : Interractable
     
     private VisualElement root;
     private Button chatButton;
-    private Label chatScript;
+    protected Label chatScript;
 
     ////  \/ STARTUP FUNCTIONS \/ ////
 
