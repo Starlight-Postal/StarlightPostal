@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe2ab07e26b5ddb4db5852c8b12b7348, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fontSizePercent: 2
+  fontSizePercent: 1.5
 --- !u!114 &320344753935954586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,6 +234,11 @@ MonoBehaviour:
   - MEW!
   - (!?)
   - (The cat... has added itself to your inventory)
+  inMenu: 0
+  scriptIndex: 0
+  isTalking: 0
+  canTalk: 1
+  waitingForReady: 0
   isInRange: 0
   loopScript:
   - (Just a regular tree)
