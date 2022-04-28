@@ -42,6 +42,7 @@ public class TutorialNPC : Conversation
 
     public string[] scriptIntro;
     public string[] scriptBalloon;
+    public string[] scriptLanded;
     public string[] scriptPostOffice;
     public string[] scriptPostOfficeDelivery;
     public string[] scriptBar;
@@ -84,15 +85,16 @@ public class TutorialNPC : Conversation
     {
         if (phase == TutorialPhase.BALLOON && !playerScript.inBalloon && balloonTrans.position.x >= 550)
         {
-            if (scriptIndex < 19)
-            {
+            //if (scriptIndex < 19)
+            //{
                 EndConversation();
                 //OnConversationLineUpdate(19);
-                phase = TutorialPhase.POSTOFFICE;
+                phase = TutorialPhase.LANDED;
                 //scriptIndex = 19;
                 isTalking = false;
                 canTalk = true;
                 scriptIndex = 0;
+                script = scriptLanded;
 
                 trans.position = new Vector3(578.0f, 39.42f, 0);
                 body.SetActive(true);
@@ -100,7 +102,7 @@ public class TutorialNPC : Conversation
 
                 //TurnOnDisplay();
                 //chatScript.text = script[scriptIndex];
-            }
+            //}
         }
         base.FixedUpdate();
         AnimationUpdate();
@@ -231,6 +233,11 @@ public class TutorialNPC : Conversation
 
     public override void OnConversationStart()
     {
+        /*if (phase == TutorialPhase.LANDED)
+        {
+            phase = TutorialPhase.BALLOON;
+            scriptIndex = 19;
+        }*/
         if (recipient.deliveredTo)
         {
             if (phase == TutorialPhase.POSTOFFICE)
@@ -251,6 +258,9 @@ public class TutorialNPC : Conversation
             case TutorialPhase.BALLOON:
                 balloonScript.lockEntry = false;
                 script = scriptBalloon;
+                break;
+            case TutorialPhase.LANDED:
+                scriptBalloon = scriptLanded;
                 break;
             case TutorialPhase.POSTOFFICE:
                 script = scriptPostOffice;
@@ -284,6 +294,9 @@ public class TutorialNPC : Conversation
                 {
                     phase = TutorialPhase.POSTOFFICE;
                 }
+                break;
+            case TutorialPhase.LANDED:
+                phase = TutorialPhase.POSTOFFICE;
                 break;
             case TutorialPhase.POSTOFFICEDELIVERY:
                 phase = TutorialPhase.BAR;
