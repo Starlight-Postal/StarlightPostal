@@ -6,6 +6,7 @@ public enum TutorialPhase
 {
     INTRO,
     BALLOON,
+    LANDED,
     POSTOFFICE,
     POSTOFFICEDELIVERY,
     BAR,
@@ -86,11 +87,17 @@ public class TutorialNPC : Conversation
             if (scriptIndex < 19)
             {
                 EndConversation();
-                OnConversationLineUpdate(19);
-                scriptIndex = 19;
+                //OnConversationLineUpdate(19);
+                phase = TutorialPhase.POSTOFFICE;
+                //scriptIndex = 19;
                 isTalking = false;
                 canTalk = true;
-                
+                scriptIndex = 0;
+
+                trans.position = new Vector3(578.0f, 39.42f, 0);
+                body.SetActive(true);
+                balloonScript.captainIsWith = false;
+
                 //TurnOnDisplay();
                 //chatScript.text = script[scriptIndex];
             }
