@@ -36,6 +36,7 @@ public class PopHazard : MonoBehaviour {
         if(dying){
             if (fade.death == 2)
             {
+                CheckpointManager.Respawn();
                 cam.snapToTarget();
                 cam.follow = true;
                 dying = false;
