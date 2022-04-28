@@ -20,6 +20,11 @@ public class BasketNote : Conversation
         {
             player = GameObject.FindObjectsOfType<player>()[0];
         }
+        if (player.inBalloon)
+        {
+            balloon.lockEntry = false;
+            this.gameObject.SetActive(false);
+        }
     }
 
     public override void OnConversationStart()
