@@ -73,27 +73,9 @@ public class player : MonoBehaviour
 
         aniMode = "idle";
         aniFrame = 0;
-        aniIdle = new Sprite[8];
 
-        for (int i = 0; i < 8; i++)
-        {
-            aniIdle[i] = Resources.Load<Sprite>("textures/Player/player_idle/player_idle_" + i);
-        }
-        aniWait = new Sprite[20];
-        for (int i = 0; i < 20; i++)
-        {
-            aniWait[i] = Resources.Load<Sprite>("textures/Player/player_wait/player_wait_" + i);
-        }
-        aniWalk = new Sprite[18];
-        for (int i = 0; i < 18; i++)
-        {
-            aniWalk[i] = Resources.Load<Sprite>("textures/Player/player_walk/player_walk_" + i);
-        }
-        aniLookUp = new Sprite[1];
-        aniLookUp[0] = Resources.Load<Sprite>("textures/Player/player_up");
+        loadTextures();
 
-        aniLookDown = new Sprite[1];
-        aniLookDown[0] = Resources.Load<Sprite>("textures/Player/player_down");
         camHeight = 0;
 
         // Register instance commands
@@ -103,6 +85,10 @@ public class player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (aniIdle.Length == 0)
+        {
+            loadTextures();
+        }
         if (free)
         {
             if (inBalloon)
@@ -342,6 +328,30 @@ public class player : MonoBehaviour
         var ps = GameObject.Find("player").GetComponent<player>();
         ps.inBalloon = !ps.inBalloon;
         Debug.Log("Toggled inBalloon state to " + ps.inBalloon);
+    }
+
+    public void loadTextures()
+    {
+        aniIdle = new Sprite[8];
+        for (int i = 0; i < 8; i++)
+        {
+            aniIdle[i] = Resources.Load<Sprite>("textures/Player/player_idle/player_idle_" + i);
+        }
+        aniWait = new Sprite[20];
+        for (int i = 0; i < 20; i++)
+        {
+            aniWait[i] = Resources.Load<Sprite>("textures/Player/player_wait/player_wait_" + i);
+        }
+        aniWalk = new Sprite[18];
+        for (int i = 0; i < 18; i++)
+        {
+            aniWalk[i] = Resources.Load<Sprite>("textures/Player/player_walk/player_walk_" + i);
+        }
+        aniLookUp = new Sprite[1];
+        aniLookUp[0] = Resources.Load<Sprite>("textures/Player/player_up");
+
+        aniLookDown = new Sprite[1];
+        aniLookDown[0] = Resources.Load<Sprite>("textures/Player/player_down");
     }
 
 }
