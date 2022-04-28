@@ -276,6 +276,7 @@ GameObject:
   - component: {fileID: 1939959159923100703}
   - component: {fileID: 3151659895144583187}
   - component: {fileID: 5465015728071018117}
+  - component: {fileID: 6895228997668523942}
   m_Layer: 6
   m_Name: Trigger
   m_TagString: Untagged
@@ -494,6 +495,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6895228997668523942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3181698111039761567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe2ab07e26b5ddb4db5852c8b12b7348, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fontSizePercent: 2.25
 --- !u!1 &3181698111870863413
 GameObject:
   m_ObjectHideFlags: 0
