@@ -253,6 +253,11 @@ public class TutorialNPC : Conversation
                 script = scriptDelivered;
                 break;
         }
+        GameObject note = GameObject.Find("basket note");
+        if (note != null)
+        {
+            note.SetActive(false);
+        }
     }
 
     public override void OnConversationEnd()
