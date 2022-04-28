@@ -158,7 +158,7 @@ public class Conversation : Interractable
         }
     }
 
-    private void EndConversation()
+    protected void EndConversation()
     {
         isTalking = false;
         player.currentConversation = null;

@@ -85,10 +85,14 @@ public class TutorialNPC : Conversation
         {
             if (scriptIndex < 19)
             {
-                scriptIndex = 19;
+                EndConversation();
                 OnConversationLineUpdate(19);
-                TurnOnDisplay();
-                chatScript.text = script[scriptIndex];
+                scriptIndex = 19;
+                isTalking = false;
+                canTalk = true;
+                
+                //TurnOnDisplay();
+                //chatScript.text = script[scriptIndex];
             }
         }
         base.FixedUpdate();
@@ -269,7 +273,10 @@ public class TutorialNPC : Conversation
                 phase = TutorialPhase.BALLOON;
                 break;
             case TutorialPhase.BALLOON:
-                phase = TutorialPhase.POSTOFFICE;
+                if (scriptIndex > 18)
+                {
+                    phase = TutorialPhase.POSTOFFICE;
+                }
                 break;
             case TutorialPhase.POSTOFFICEDELIVERY:
                 phase = TutorialPhase.BAR;
