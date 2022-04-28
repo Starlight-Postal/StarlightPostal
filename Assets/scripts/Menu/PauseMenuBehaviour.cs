@@ -105,6 +105,11 @@ public class PauseMenuBehaviour : NavigatableMenu {
         #if PLATFORM_ANDROID
         contHeight /= 2;
         contWidth /= 2;
+        if ((float) Screen.width / (float) Screen.height >= 2)
+        {
+            contHeight /= 2;
+            contWidth /= 2;
+        }
         #endif
             
         container.style.height = contHeight;

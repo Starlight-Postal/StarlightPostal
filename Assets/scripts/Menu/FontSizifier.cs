@@ -17,6 +17,10 @@ public class FontSizifier : MonoBehaviour {
         
         #if PLATFORM_ANDROID
         fontSizePercent /= 2;
+        if ((float) Screen.width / (float) Screen.height >= 2)
+        {
+            fontSizePercent /= 2;
+        }
         #endif
     }
 
