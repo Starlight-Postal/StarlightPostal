@@ -191,11 +191,6 @@ public class BalloonEquipter : Interractable
                 balloon.ChangeBalloonSkin("logo-1");
                 gdata.balloon = 11;
             }
-            else if(gdata.balloon == 11)
-            {
-                balloon.ChangeBalloonSkin("Cool_Balloonie");
-                gdata.balloon = 12;
-            }
             else
             {
                 balloon.ChangeBalloonSkin("epic");
