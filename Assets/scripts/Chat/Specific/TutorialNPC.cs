@@ -386,6 +386,7 @@ public class TutorialNPC : Conversation
     // For when we want the ui to disappear and wait for conditions
     public override bool ReadyToAdvanceTo(int index)
     {
+        Debug.Log(phase);
         switch (phase)
         {
             case TutorialPhase.INTRO:
@@ -405,6 +406,14 @@ public class TutorialNPC : Conversation
                         return WalkToPostOffice();
                 }
                 break;
+            case TutorialPhase.LANDED:
+                if (index == 1)
+                {
+                    return WalkToPostOffice();
+                }
+                break;
+            case TutorialPhase.POSTOFFICE:
+                return WalkToPostOffice();
             case TutorialPhase.POSTOFFICEDELIVERY:
                 if (index == 2)
                 {
