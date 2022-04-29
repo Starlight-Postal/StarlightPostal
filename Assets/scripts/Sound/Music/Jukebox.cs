@@ -49,34 +49,40 @@ public class Jukebox : MonoBehaviour
     void FixedUpdate()
     {
         var scheduledTime = lastScheduleStart + groundLoop.length - offset;
-        if (scheduledTime < AudioSettings.dspTime)
-        {
-            scheduledTime = AudioSettings.dspTime; // If the audio were to be scheduled in the past, schedule it now instead
-        }
-
-        // Prevents the next scheduled time from getting way ahead of the present when alt+tabbed
-        if (scheduledTime > AudioSettings.dspTime + (groundLoop.length - offset) + 1)
+        if (!groundSourceA.isPlaying && !groundSourceB.isPlaying)
         {
             scheduledTime = AudioSettings.dspTime + groundLoop.length - offset;
+            groundSourceA.Stop();
+            groundSourceB.Stop();
+            airSourceA.Stop();
+            airSourceB.Stop();
+            groundSourceA.Play();
+            airSourceA.Play();
+            groundSourceB.PlayScheduled(scheduledTime);
+            airSourceB.PlayScheduled(scheduledTime);
+            lastScheduleStart = scheduledTime;
         }
-        
-        if (sourceA)
+        else
         {
-            if (!groundSourceA.isPlaying)
+            if (sourceA)
             {
-                groundSourceA.PlayScheduled(scheduledTime);
-                airSourceA.PlayScheduled(scheduledTime);
-                lastScheduleStart = scheduledTime;
-                sourceA = false;
+                if (!groundSourceA.isPlaying)
+                {
+                    groundSourceA.PlayScheduled(scheduledTime);
+                    airSourceA.PlayScheduled(scheduledTime);
+                    lastScheduleStart = scheduledTime;
+                    sourceA = false;
+                }
             }
-        } else
-        {
-            if (!groundSourceB.isPlaying)
+            else
             {
-                groundSourceB.PlayScheduled(scheduledTime);
-                airSourceB.PlayScheduled(scheduledTime);
-                lastScheduleStart = scheduledTime;
-                sourceA = true;
+                if (!groundSourceB.isPlaying)
+                {
+                    groundSourceB.PlayScheduled(scheduledTime);
+                    airSourceB.PlayScheduled(scheduledTime);
+                    lastScheduleStart = scheduledTime;
+                    sourceA = true;
+                }
             }
         }
 
