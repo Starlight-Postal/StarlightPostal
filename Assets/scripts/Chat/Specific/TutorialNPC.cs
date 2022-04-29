@@ -85,24 +85,7 @@ public class TutorialNPC : Conversation
     {
         if (phase == TutorialPhase.BALLOON && !playerScript.inBalloon && balloonTrans.position.x >= 550)
         {
-            //if (scriptIndex < 19)
-            //{
-                EndConversation();
-                //OnConversationLineUpdate(19);
-                phase = TutorialPhase.LANDED;
-                //scriptIndex = 19;
-                isTalking = false;
-                canTalk = true;
-                scriptIndex = 0;
-                script = scriptLanded;
-
-                trans.position = new Vector3(578.0f, 39.42f, 0);
-                body.SetActive(true);
-                balloonScript.captainIsWith = false;
-
-                //TurnOnDisplay();
-                //chatScript.text = script[scriptIndex];
-            //}
+            EndConversation();
         }
         base.FixedUpdate();
         AnimationUpdate();
@@ -260,7 +243,7 @@ public class TutorialNPC : Conversation
                 script = scriptBalloon;
                 break;
             case TutorialPhase.LANDED:
-                scriptBalloon = scriptLanded;
+                script = scriptLanded;
                 break;
             case TutorialPhase.POSTOFFICE:
                 script = scriptPostOffice;
@@ -290,10 +273,10 @@ public class TutorialNPC : Conversation
                 phase = TutorialPhase.BALLOON;
                 break;
             case TutorialPhase.BALLOON:
-                if (scriptIndex > 18)
-                {
-                    phase = TutorialPhase.POSTOFFICE;
-                }
+                phase = TutorialPhase.LANDED;
+                trans.position = new Vector3(578.0f, 39.42f, 0);
+                body.SetActive(true);
+                balloonScript.captainIsWith = false;
                 break;
             case TutorialPhase.LANDED:
                 phase = TutorialPhase.POSTOFFICE;
@@ -315,12 +298,6 @@ public class TutorialNPC : Conversation
         if (phase == TutorialPhase.BALLOON && index == 8)
         {
             prevTH = balloonScript.th;
-        }
-        if (phase == TutorialPhase.BALLOON && index == 19)
-        {
-            trans.position = new Vector3(578.0f, 39.42f, 0);
-            body.SetActive(true);
-            balloonScript.captainIsWith = false;
         }
     }
 
@@ -376,6 +353,8 @@ public class TutorialNPC : Conversation
                         return true;    
                 }
                 break;
+            case TutorialPhase.LANDED:
+                return index == 1;
             case TutorialPhase.POSTOFFICEDELIVERY:
                 return index == 2;
         }
