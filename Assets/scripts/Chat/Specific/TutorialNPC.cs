@@ -386,7 +386,7 @@ public class TutorialNPC : Conversation
     // For when we want the ui to disappear and wait for conditions
     public override bool ReadyToAdvanceTo(int index)
     {
-        Debug.Log(phase);
+        //Debug.Log(phase);
         switch (phase)
         {
             case TutorialPhase.INTRO:

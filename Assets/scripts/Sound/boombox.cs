@@ -7,7 +7,7 @@ public class boombox : MonoBehaviour
     public AudioSource loop;
     public GameObject package;
     float vol;
-    float delay = 2.25f;
+    public float delay = 2.25f;
     bool play = false;
     float stime;
     // Start is called before the first frame update
