@@ -53,6 +53,13 @@ public class Jukebox : MonoBehaviour
         {
             scheduledTime = AudioSettings.dspTime; // If the audio were to be scheduled in the past, schedule it now instead
         }
+
+        // Prevents the next scheduled time from getting way ahead of the present when alt+tabbed
+        if (scheduledTime > AudioSettings.dspTime + (groundLoop.length - offset) + 1)
+        {
+            scheduledTime = AudioSettings.dspTime + groundLoop.length - offset;
+        }
+        
         if (sourceA)
         {
             if (!groundSourceA.isPlaying)
@@ -93,11 +100,6 @@ public class Jukebox : MonoBehaviour
         airSourceB.volume = musicVolume * polarity;
         groundSourceA.volume = musicVolume * (1-polarity);
         groundSourceB.volume = musicVolume * (1-polarity);
-    }
-
-    void Update()
-    {
-        
     }
     
 }
