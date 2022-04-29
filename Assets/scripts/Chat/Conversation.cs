@@ -71,7 +71,7 @@ public class Conversation : Interractable
 
     public override void OnPlayerInterract()
     {
-        Debug.Log("interact");
+        //Debug.Log("interact");
         GetComponent<UiButtonSfx>().OnUiButtonClick();
         if (isTalking)
         {
