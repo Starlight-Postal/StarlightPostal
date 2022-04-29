@@ -225,6 +225,7 @@ public class balloon : MonoBehaviour
         burnColor = gdata.burnColors[skinID];
         ventColor = gdata.ventColors[skinID];
         sprite.color = baseColor;// new Color(1,0.9f,0.9f);
+        lean *= 0.75f;
         if (player.inBalloon)
         {
 
@@ -246,13 +247,14 @@ public class balloon : MonoBehaviour
                 fr += (fillRate - fr) * 0.1f;
             }
 
-            lean *= 0.75f;
+            
             if (leanInput != 0)
             {
                 lean += leanPower * leanInput;
             }
 
         }
+        Debug.Log(lean);
 
         if (th < heightFloor)
         {
