@@ -254,7 +254,7 @@ public class balloon : MonoBehaviour
             }
 
         }
-        Debug.Log(lean);
+        //Debug.Log(lean);
 
         if (th < heightFloor)
         {
