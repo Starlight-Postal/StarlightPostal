@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 7289160259603758982}
   - component: {fileID: 6044951798977289991}
   - component: {fileID: 7289160259603758981}
+  - component: {fileID: 6684199686780660778}
   m_Layer: 6
   m_Name: Trigger
   m_TagString: Untagged
@@ -213,12 +214,18 @@ MonoBehaviour:
   - Well you must be my new pickaxe! Perfect timing, lass, me old one has gotten
     right dull.
   - Thank ya kindly ma'am. We'll have this new hall done in to time!
+  inMenu: 0
+  scriptIndex: 0
+  isTalking: 0
+  canTalk: 1
+  waitingForReady: 0
   isInRange: 0
   loopScript:
   - Thank's a load for yer service little missie, we really appreciate all the importing
     and exporting around here.
   - You wouldn't think it, but a town who's whole economy is based on jewels and
     mushrooms really benefits from a good delivery service.
+  encountered: 0
   deliveredTo: 0
   oldSkin: {fileID: 21300000, guid: 1f0bc6e40ed96fa41a4db0fcb617f17b, type: 3}
   newSkin: {fileID: 21300000, guid: 0ad01ab35b5ef3a45bb11c029a5797ad, type: 3}
@@ -339,6 +346,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6684199686780660778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7289160259603758983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe2ab07e26b5ddb4db5852c8b12b7348, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fontSizePercent: 1.5
 --- !u!1 &7307265127464232165
 GameObject:
   m_ObjectHideFlags: 0

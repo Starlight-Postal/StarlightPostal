@@ -6,6 +6,7 @@ public enum TutorialPhase
 {
     INTRO,
     BALLOON,
+    LANDED,
     POSTOFFICE,
     POSTOFFICEDELIVERY,
     BAR,
@@ -41,6 +42,7 @@ public class TutorialNPC : Conversation
 
     public string[] scriptIntro;
     public string[] scriptBalloon;
+    public string[] scriptLanded;
     public string[] scriptPostOffice;
     public string[] scriptPostOfficeDelivery;
     public string[] scriptBar;
@@ -81,6 +83,27 @@ public class TutorialNPC : Conversation
 
     private void FixedUpdate()
     {
+        if (phase == TutorialPhase.BALLOON && !playerScript.inBalloon && balloonTrans.position.x >= 550)
+        {
+            //if (scriptIndex < 19)
+            //{
+                EndConversation();
+                //OnConversationLineUpdate(19);
+                phase = TutorialPhase.LANDED;
+                //scriptIndex = 19;
+                isTalking = false;
+                canTalk = true;
+                scriptIndex = 0;
+                script = scriptLanded;
+
+                trans.position = new Vector3(578.0f, 39.42f, 0);
+                body.SetActive(true);
+                balloonScript.captainIsWith = false;
+
+                //TurnOnDisplay();
+                //chatScript.text = script[scriptIndex];
+            //}
+        }
         base.FixedUpdate();
         AnimationUpdate();
     }
@@ -210,6 +233,11 @@ public class TutorialNPC : Conversation
 
     public override void OnConversationStart()
     {
+        /*if (phase == TutorialPhase.LANDED)
+        {
+            phase = TutorialPhase.BALLOON;
+            scriptIndex = 19;
+        }*/
         if (recipient.deliveredTo)
         {
             if (phase == TutorialPhase.POSTOFFICE)
@@ -231,6 +259,9 @@ public class TutorialNPC : Conversation
                 balloonScript.lockEntry = false;
                 script = scriptBalloon;
                 break;
+            case TutorialPhase.LANDED:
+                scriptBalloon = scriptLanded;
+                break;
             case TutorialPhase.POSTOFFICE:
                 script = scriptPostOffice;
                 break;
@@ -244,6 +275,11 @@ public class TutorialNPC : Conversation
                 script = scriptDelivered;
                 break;
         }
+        GameObject note = GameObject.Find("basket note");
+        if (note != null)
+        {
+            note.SetActive(false);
+        }
     }
 
     public override void OnConversationEnd()
@@ -254,12 +290,19 @@ public class TutorialNPC : Conversation
                 phase = TutorialPhase.BALLOON;
                 break;
             case TutorialPhase.BALLOON:
+                if (scriptIndex > 18)
+                {
+                    phase = TutorialPhase.POSTOFFICE;
+                }
+                break;
+            case TutorialPhase.LANDED:
                 phase = TutorialPhase.POSTOFFICE;
                 break;
             case TutorialPhase.POSTOFFICEDELIVERY:
                 phase = TutorialPhase.BAR;
                 break;
         }
+        scriptIndex = 0;
     }
 
     public override void OnConversationLineUpdate(int index)
@@ -343,6 +386,7 @@ public class TutorialNPC : Conversation
     // For when we want the ui to disappear and wait for conditions
     public override bool ReadyToAdvanceTo(int index)
     {
+        //Debug.Log(phase);
         switch (phase)
         {
             case TutorialPhase.INTRO:
@@ -362,7 +406,23 @@ public class TutorialNPC : Conversation
                         return WalkToPostOffice();
                 }
                 break;
+            case TutorialPhase.LANDED:
+                if (index == 1)
+                {
+                    return WalkToPostOffice();
+                }
+                break;
+            case TutorialPhase.POSTOFFICE:
+                return WalkToPostOffice();
             case TutorialPhase.POSTOFFICEDELIVERY:
+                if (index == 2)
+                {
+                    return DadGetsMilkFromDownTheStreet();
+                }
+                else
+                {
+                    return WalkToPostOffice();
+                }
             case TutorialPhase.DELIVERED:
                 if (index == 2)
                     return DadGetsMilkFromDownTheStreet();
@@ -376,7 +436,7 @@ public class TutorialNPC : Conversation
     // allowing the interract event to go to the balloon even when the tutorial npc is closer
     public override bool CanPlayerInterract()
     {
-        if (phase == TutorialPhase.BALLOON && scriptIndex == 3)
+        if (phase == TutorialPhase.BALLOON && scriptIndex >= 3)
         {
             return false;
         }

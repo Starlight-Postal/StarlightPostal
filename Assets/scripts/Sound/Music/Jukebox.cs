@@ -15,7 +15,9 @@ public class Jukebox : MonoBehaviour
     private double lastScheduleStart;
     private player play;
 
-    private const float FADE_RATE = 0.025f;
+    public const float FADE_RATE = 0.01f;
+    public float musicVolume = 1f;
+    public float polarity = 0;
 
     void Start()
     {
@@ -46,11 +48,15 @@ public class Jukebox : MonoBehaviour
 
     void FixedUpdate()
     {
+        var scheduledTime = lastScheduleStart + groundLoop.length - offset;
+        if (scheduledTime < AudioSettings.dspTime)
+        {
+            scheduledTime = AudioSettings.dspTime; // If the audio were to be scheduled in the past, schedule it now instead
+        }
         if (sourceA)
         {
             if (!groundSourceA.isPlaying)
             {
-                var scheduledTime = lastScheduleStart + groundLoop.length - offset;
                 groundSourceA.PlayScheduled(scheduledTime);
                 airSourceA.PlayScheduled(scheduledTime);
                 lastScheduleStart = scheduledTime;
@@ -60,30 +66,38 @@ public class Jukebox : MonoBehaviour
         {
             if (!groundSourceB.isPlaying)
             {
-                var scheduledTime = lastScheduleStart + groundLoop.length - offset;
                 groundSourceB.PlayScheduled(scheduledTime);
                 airSourceB.PlayScheduled(scheduledTime);
                 lastScheduleStart = scheduledTime;
                 sourceA = true;
             }
         }
+
+        if (play.inBalloon)
+        {
+            //groundSourceA.volume += (0.0f - groundSourceA.volume) * FADE_RATE;
+            //groundSourceB.volume += (0.0f - groundSourceA.volume) * FADE_RATE;
+            //airSourceA.volume += (1.0f - airSourceA.volume) * FADE_RATE;
+            //airSourceB.volume += (1.0f - airSourceA.volume) * FADE_RATE;
+            polarity += (1 - polarity) * FADE_RATE;
+        }
+        else
+        {
+            //groundSourceA.volume += (1.0f - groundSourceA.volume) * FADE_RATE;
+            //groundSourceB.volume += (1.0f - groundSourceA.volume) * FADE_RATE;
+            //airSourceA.volume += (0.0f - airSourceA.volume) * FADE_RATE;
+            //airSourceB.volume += (0.0f - airSourceA.volume) * FADE_RATE;
+            polarity += (0 - polarity) * FADE_RATE;
+        }
+        airSourceA.volume = musicVolume * polarity;
+        airSourceB.volume = musicVolume * polarity;
+        groundSourceA.volume = musicVolume * (1-polarity);
+        groundSourceB.volume = musicVolume * (1-polarity);
     }
 
     void Update()
     {
-        if (play.inBalloon)
-        {
-            groundSourceA.volume += (0.0f - groundSourceA.volume) * FADE_RATE;
-            groundSourceB.volume += (0.0f - groundSourceA.volume) * FADE_RATE;
-            airSourceA.volume += (1.0f - airSourceA.volume) * FADE_RATE;
-            airSourceB.volume += (1.0f - airSourceA.volume) * FADE_RATE;
-        } else
-        {
-            groundSourceA.volume += (1.0f - groundSourceA.volume) * FADE_RATE;
-            groundSourceB.volume += (1.0f - groundSourceA.volume) * FADE_RATE;
-            airSourceA.volume += (0.0f - airSourceA.volume) * FADE_RATE;
-            airSourceB.volume += (0.0f - airSourceA.volume) * FADE_RATE;
-        }
+        
     }
     
 }

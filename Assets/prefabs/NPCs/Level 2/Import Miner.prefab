@@ -125,6 +125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 346024069267702720}
   - component: {fileID: 4626954100632856429}
+  - component: {fileID: 7460850419738789615}
   - component: {fileID: 346024069267702723}
   - component: {fileID: 7452226771416533704}
   - component: {fileID: 2618943800653991291}
@@ -168,6 +169,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.8
+--- !u!114 &7460850419738789615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346024069267702335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe2ab07e26b5ddb4db5852c8b12b7348, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fontSizePercent: 1.5
 --- !u!114 &346024069267702723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,6 +225,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visualCue: {fileID: 346024069554212355}
   script: []
+  inMenu: 0
+  scriptIndex: 0
+  isTalking: 0
+  canTalk: 1
+  waitingForReady: 0
   isInRange: 0
   helpScript:
   - Hullo missy, I've got a job offer for ye.
@@ -239,6 +258,7 @@ MonoBehaviour:
   dropLine: 1
   payLine: 2
   pay: 100
+  gdata: {fileID: 0}
 --- !u!114 &3604819300581040831
 MonoBehaviour:
   m_ObjectHideFlags: 0

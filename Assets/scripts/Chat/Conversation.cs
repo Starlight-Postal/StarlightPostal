@@ -10,17 +10,17 @@ public class Conversation : Interractable
 
     [SerializeField] private GameObject visualCue;
 	[SerializeField] public string[] script;
-    protected bool inMenu;
+    public bool inMenu;
 
-    protected int scriptIndex;
-    protected bool isTalking;
-    private bool canTalk = true;
-    private bool waitingForReady;
+    public int scriptIndex;
+    public bool isTalking;
+    public bool canTalk = true;
+    public bool waitingForReady;
     public bool isInRange;
     
     private VisualElement root;
     private Button chatButton;
-    private Label chatScript;
+    protected Label chatScript;
 
     ////  \/ STARTUP FUNCTIONS \/ ////
 
@@ -71,6 +71,7 @@ public class Conversation : Interractable
 
     public override void OnPlayerInterract()
     {
+        //Debug.Log("interact");
         GetComponent<UiButtonSfx>().OnUiButtonClick();
         if (isTalking)
         {
@@ -114,6 +115,7 @@ public class Conversation : Interractable
 
 	private void StartScript()
     {
+        //Debug.Log("start call " + scriptIndex);
         if (!canTalk) { return; }
         OnConversationStart();
         scriptIndex = 0;
@@ -125,6 +127,7 @@ public class Conversation : Interractable
 
     protected void AdvanceScript()
     {
+        //Debug.Log("advance call " + scriptIndex);
         if (!isTalking && canTalk)
         {
             StartScript();
@@ -155,7 +158,7 @@ public class Conversation : Interractable
         }
     }
 
-    private void EndConversation()
+    protected void EndConversation()
     {
         isTalking = false;
         player.currentConversation = null;
@@ -168,7 +171,7 @@ public class Conversation : Interractable
         OnConversationEnd();
     }
 
-    private void TurnOnDisplay()
+    protected void TurnOnDisplay()
     {
 		chatScript.text = script[scriptIndex];
         inMenu = true;

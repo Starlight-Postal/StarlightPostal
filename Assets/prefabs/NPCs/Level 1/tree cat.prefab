@@ -125,6 +125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 320344753935954585}
   - component: {fileID: 4650383231050241588}
+  - component: {fileID: 508329008060863047}
   - component: {fileID: 320344753935954586}
   - component: {fileID: 7481855665512430481}
   - component: {fileID: 320344753935954785}
@@ -167,6 +168,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.8
+--- !u!114 &508329008060863047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320344753935954790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe2ab07e26b5ddb4db5852c8b12b7348, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fontSizePercent: 1.5
 --- !u!114 &320344753935954586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,6 +234,11 @@ MonoBehaviour:
   - MEW!
   - (!?)
   - (The cat... has added itself to your inventory)
+  inMenu: 0
+  scriptIndex: 0
+  isTalking: 0
+  canTalk: 1
+  waitingForReady: 0
   isInRange: 0
   loopScript:
   - (Just a regular tree)

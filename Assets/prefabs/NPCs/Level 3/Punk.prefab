@@ -227,6 +227,7 @@ GameObject:
   - component: {fileID: 1663667721744747107}
   - component: {fileID: 4790647168179085844}
   - component: {fileID: 105146318719512008}
+  - component: {fileID: 5247469076704667581}
   m_Layer: 6
   m_Name: Trigger
   m_TagString: Untagged
@@ -328,6 +329,11 @@ MonoBehaviour:
   - Yo dude! Welcome to the pad!
   - My boombox! That's radical, man.
   - Thanks a lot, bro. Now I can jam out!
+  inMenu: 0
+  scriptIndex: 0
+  isTalking: 0
+  canTalk: 1
+  waitingForReady: 0
   isInRange: 0
   loopScript:
   - Everyone thinks my music taste is "unsophisticated" but I think that's a load
@@ -339,6 +345,19 @@ MonoBehaviour:
   package: {fileID: 3395896065225971344}
   sound: {fileID: 7652105062295418395}
   dropLine: 1
+--- !u!114 &5247469076704667581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8408355982224032404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe2ab07e26b5ddb4db5852c8b12b7348, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fontSizePercent: 1.5
 --- !u!1 &8408355982477020840
 GameObject:
   m_ObjectHideFlags: 0

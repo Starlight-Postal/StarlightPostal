@@ -42,6 +42,7 @@ public class anchor : MonoBehaviour
         {
             rb.bodyType = RigidbodyType2D.Dynamic;
             landed = false;
+            target = null;
         }
     }
 
@@ -51,10 +52,15 @@ public class anchor : MonoBehaviour
         {
             //Debug.Log("stick");
             stuck = true;
-            target = c.gameObject;
-            targetTrans = target.GetComponent<Transform>();
-            tOff = trans.position - targetTrans.position;
             sfx_land.Play(0);
+            if (target == null || target.tag != "landing")
+            {
+                
+                target = c.gameObject;
+                targetTrans = target.GetComponent<Transform>();
+                tOff = trans.position - targetTrans.position;
+                
+            }
         }
     }
     /*void OnCollisionExit2D(Collision2D c)

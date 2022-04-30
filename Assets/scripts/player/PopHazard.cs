@@ -13,13 +13,35 @@ public class PopHazard : MonoBehaviour {
     private AudioSource source;
     private AudioClip[] clips;
 
+    public camera cam;
+    public cam_fade fade;
+
+    bool dying = false;
+
     void Start() {
         source = gameObject.AddComponent<AudioSource>();
         source.outputAudioMixerGroup = mixer;
         clips = Resources.LoadAll<AudioClip>("audio/SFX/balloon/pop");
 
+        cam = Camera.main.gameObject.GetComponent<camera>();
+        fade = GameObject.Find("fade").GetComponent<cam_fade>();
+        dying = false;
+
         // Register instance commands
         DebugLogConsole.AddCommandInstance("balloon.nopop", "Toggles the nopop cheat", "ToggleNopop", this);
+    }
+
+    void Update()
+    {
+        if(dying){
+            if (fade.death == 2)
+            {
+                CheckpointManager.Respawn();
+                cam.snapToTarget();
+                cam.follow = true;
+                dying = false;
+            }
+        }
     }
 
     void OnCollisionEnter2D(Collision2D other) {
@@ -27,6 +49,10 @@ public class PopHazard : MonoBehaviour {
         if (other.gameObject.CompareTag("hazard")) {
             Debug.Log("Balloon has hit a hazard!");
             CheckpointManager.Respawn();
+            //cam.snapToTarget();
+            dying = true;
+            cam.follow = false;
+            fade.death = -1;
             Play();
         }
     }

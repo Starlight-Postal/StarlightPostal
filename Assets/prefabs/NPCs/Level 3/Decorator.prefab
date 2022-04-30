@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 9221652357476824076}
   - component: {fileID: 5274371525778707598}
   - component: {fileID: 5274371525778707599}
+  - component: {fileID: 6768780251975561632}
   m_Layer: 6
   m_Name: Trigger
   m_TagString: Untagged
@@ -203,6 +204,11 @@ MonoBehaviour:
   - Oh but I forgot to decorate the lodge! And what a beautiful Aurora it is! I do
     hope you've brought my decorations!
   - Oh, wonderful! Thank you so much dearie, it looks lovely.
+  inMenu: 0
+  scriptIndex: 0
+  isTalking: 0
+  canTalk: 1
+  waitingForReady: 0
   isInRange: 0
   loopScript:
   - Happy solstice, dear! Enjoy your stay in Vallanes!
@@ -308,6 +314,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6768780251975561632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5274371525778707596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe2ab07e26b5ddb4db5852c8b12b7348, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fontSizePercent: 1.5
 --- !u!1 &5274371526474330150
 GameObject:
   m_ObjectHideFlags: 0
