@@ -13,7 +13,7 @@ public class boombox : MonoBehaviour
     void Start()
     {
         music = GameObject.Find("Jukebox").GetComponent<Jukebox>();
-        trans = gameObject.transform;
+        trans = package.transform;
         player = GameObject.Find("player").GetComponent<Transform>();
     }
 
@@ -24,6 +24,8 @@ public class boombox : MonoBehaviour
         {
             float d = Vector2.Distance(new Vector2(player.position.x, player.position.y), new Vector2(trans.position.x, trans.position.y));
             music.beatPower = vol*(1/(0.9f+d))-(1/9f);
+            music.beatSourceA.panStereo = (trans.position.x - player.position.x) * 0.1f;
+            music.beatSourceB.panStereo = (trans.position.x - player.position.x) * 0.1f;
         }
         else
         {
