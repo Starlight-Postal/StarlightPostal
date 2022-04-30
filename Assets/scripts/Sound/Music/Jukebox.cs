@@ -88,18 +88,10 @@ public class Jukebox : MonoBehaviour
 
         if (play.inBalloon)
         {
-            //groundSourceA.volume += (0.0f - groundSourceA.volume) * FADE_RATE;
-            //groundSourceB.volume += (0.0f - groundSourceA.volume) * FADE_RATE;
-            //airSourceA.volume += (1.0f - airSourceA.volume) * FADE_RATE;
-            //airSourceB.volume += (1.0f - airSourceA.volume) * FADE_RATE;
             polarity += (1 - polarity) * FADE_RATE;
         }
         else
         {
-            //groundSourceA.volume += (1.0f - groundSourceA.volume) * FADE_RATE;
-            //groundSourceB.volume += (1.0f - groundSourceA.volume) * FADE_RATE;
-            //airSourceA.volume += (0.0f - airSourceA.volume) * FADE_RATE;
-            //airSourceB.volume += (0.0f - airSourceA.volume) * FADE_RATE;
             polarity += (0 - polarity) * FADE_RATE;
         }
         airSourceA.volume = musicVolume * polarity;
