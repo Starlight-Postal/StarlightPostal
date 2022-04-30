@@ -12,7 +12,7 @@ public class Jukebox : MonoBehaviour
     public double offset;
 
     private AudioSource groundSourceA, groundSourceB, airSourceA, airSourceB;
-    private AudioSource beatSourceA, beatSourceB;
+    public AudioSource beatSourceA, beatSourceB;
     private bool sourceA = true;
     private double lastScheduleStart;
     private player play;
