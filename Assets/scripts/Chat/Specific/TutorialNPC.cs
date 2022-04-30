@@ -375,7 +375,7 @@ public class TutorialNPC : Conversation
             case TutorialPhase.BALLOON:
                 switch (index)
                 {
-                    case 11:
+                    case 10:
                         return balloonTrans.position.x >= 80;
                     case 12:
                         return balloonTrans.position.x >= 170;
