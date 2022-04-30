@@ -171,7 +171,7 @@ public class Conversation : Interractable
         OnConversationEnd();
     }
 
-    protected void TurnOnDisplay()
+    private void TurnOnDisplay()
     {
 		chatScript.text = script[scriptIndex];
         inMenu = true;

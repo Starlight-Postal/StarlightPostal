@@ -14,6 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visualCue: {fileID: 9059562426740257227}
   script: []
+  inMenu: 0
+  scriptIndex: 0
+  isTalking: 0
+  canTalk: 1
+  waitingForReady: 0
   isInRange: 0
   trans: {fileID: 9059562427845056862}
   body: {fileID: 9077808032044410517}
@@ -65,6 +70,7 @@ MonoBehaviour:
     the anchor. Let\u2019s try again, make sure you\u2019re over the target."
   - Nice job! Now lower the balloon closer to the groud. Then we can press SPACE
     again to hop out.
+  scriptLanded:
   - "Great work kiddo, you survived your maiden voyage! Let\u2019s get to the post
     office- we\u2019ve got some packages to deliver."
   - 
@@ -79,6 +85,7 @@ MonoBehaviour:
   - They might be at the state house, just east of the post office.
   scriptDelivered:
   - Good work kiddo, you better get going. There's a lot more mail to deliver tonight!
+  recipient: {fileID: 0}
 --- !u!1001 &4582024266137075482
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -86,6 +93,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 493139759687034815, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: m_Radius
+      value: 0.79999995
+      objectReference: {fileID: 0}
+    - target: {fileID: 493139759687034815, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 830036357635062052, guid: c5b38e0117742c4458a0b96c77370903, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.35
