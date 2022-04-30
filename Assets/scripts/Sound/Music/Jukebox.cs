@@ -5,6 +5,7 @@ using UnityEngine.Audio;
 
 public class Jukebox : MonoBehaviour
 {
+    bool cut = false;
 
     public AudioMixerGroup mixerGroup;
     public AudioClip groundLoop, airLoop;
@@ -30,6 +31,10 @@ public class Jukebox : MonoBehaviour
         airSourceA = gameObject.AddComponent<AudioSource>();
         groundSourceB = gameObject.AddComponent<AudioSource>();
         airSourceB = gameObject.AddComponent<AudioSource>();
+        airSourceA.playOnAwake = false;
+        airSourceB.playOnAwake = false;
+        groundSourceA.playOnAwake = false;
+        groundSourceB.playOnAwake = false;
 
         groundSourceA.clip = groundLoop;
         groundSourceB.clip = groundLoop;
@@ -46,6 +51,8 @@ public class Jukebox : MonoBehaviour
             beat = true;
             beatSourceA = gameObject.AddComponent<AudioSource>();
             beatSourceB = gameObject.AddComponent<AudioSource>();
+            beatSourceA.playOnAwake = false;
+            beatSourceB.playOnAwake = false;
             beatSourceA.clip = beatLoop;
             beatSourceB.clip = beatLoop;
             beatSourceA.outputAudioMixerGroup = mixerGroup;
