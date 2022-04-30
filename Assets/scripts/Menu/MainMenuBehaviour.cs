@@ -68,7 +68,9 @@ public class MainMenuBehaviour : NavigatableMenu {
         Application.Quit();
     }
 
-    private void Rescale() {        
+    private void Rescale() {
+        Debug.Log("Resizing main menu UI to new screen size");
+        
         float contWidth;
         float contHeight;
         
@@ -79,7 +81,21 @@ public class MainMenuBehaviour : NavigatableMenu {
             contHeight = Screen.height * 0.66f;
             contWidth = contHeight * CONT_APSPECT_RATIO;
         }
-            
+        
+        Debug.Log("w/h" + Screen.width + " " + Screen.height);
+
+        #if PLATFORM_ANDROID
+        contHeight /= 2;
+        contWidth /= 2;
+        if ((float) Screen.width / (float) Screen.height >= 2)
+        {
+            contHeight /= 2;
+            contWidth /= 2;
+        }
+        #endif
+        
+        
+        Debug.Log("w/h" + contWidth + " " + contHeight);
         container.style.height = contHeight;
         container.style.width = contWidth;
     }
