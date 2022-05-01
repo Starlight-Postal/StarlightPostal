@@ -61,7 +61,8 @@ public class MainMenuBehaviour : NavigatableMenu {
     }
 
     private void OpenOptions() {
-        Application.OpenURL("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+        //Application.OpenURL("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+        GameObject.FindObjectOfType<OptionsMenuBehaviour>().ShowMenu();
     }
 
     private void QuitGame() {
