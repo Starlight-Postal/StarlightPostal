@@ -12,10 +12,13 @@ public class SaveFileManager : MonoBehaviour
     [Serializable]
     public class SaveData
     {
-        public int coins;
-        public int checkpointId;
-        public string checkpointScene;
+        public int coins = 0;
+        public int checkpointId = 0;
+        public string checkpointScene = "level 1";
         public bool introScene = true;
+        public int stage = 0;
+        public int equippedBalloon = 0;
+        public bool[] balloonUnlock = {true, false, false, false, false, false, false, false, false, false, false};
     }
 
     [Serializable]
