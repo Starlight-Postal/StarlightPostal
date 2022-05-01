@@ -27,6 +27,7 @@ public class global_data : MonoBehaviour
     public Color[] ventColors;
 
     public bool introScene = true;
+    public bool creditsBackToMenu = false;
 
     // Start is called before the first frame update
     void Start()

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class OptionsMenuBehaviour : MonoBehaviour
@@ -67,7 +68,8 @@ public class OptionsMenuBehaviour : MonoBehaviour
 
 	private void OnCreditsButtonClick()
 	{
-		
+		GameObject.FindObjectOfType<global_data>().creditsBackToMenu = true;
+		SceneManager.LoadScene("Credits");
 	}
 
 	private void OnHelpButtonClick()
