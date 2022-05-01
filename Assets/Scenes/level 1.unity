@@ -47533,6 +47533,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   camTrans: {fileID: 0}
   gdata: {fileID: 0}
+  sound: {fileID: 1323917986}
 --- !u!82 &1323917986
 AudioSource:
   m_ObjectHideFlags: 0
@@ -47544,7 +47545,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -3802933357212501803, guid: 864e70e7b046888629465777f95b91dc, type: 2}
   m_audioClip: {fileID: 8300000, guid: ec54b44e804e2feb6a3fd77f347f4401, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
