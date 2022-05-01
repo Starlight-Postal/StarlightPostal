@@ -8,7 +8,8 @@
                 <ui:Slider picking-mode="Ignore" label="Music Volume" value="42" high-value="100" name="vol-music" />
             </ui:VisualElement>
             <ui:VisualElement style="height: 50px;" />
-            <ui:Button text="About" display-tooltip-when-elided="true" name="about-button" />
+            <ui:Button text="Credits" display-tooltip-when-elided="true" name="credits-button" />
+            <ui:Button text="Help &amp; Support" display-tooltip-when-elided="true" name="help-button" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

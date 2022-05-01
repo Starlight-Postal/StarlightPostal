@@ -9,7 +9,8 @@ public class OptionsMenuBehaviour : MonoBehaviour
 	
 	private VisualElement rve;
 	private Button closeButton;
-	private Button aboutButton;
+	private Button creditsButton;
+	private Button helpButton;
 	private Slider sfxSlider;
 	private Slider musicSlider;
 
@@ -21,12 +22,14 @@ public class OptionsMenuBehaviour : MonoBehaviour
 		rve = GetComponent<UIDocument>().rootVisualElement;
 
 		closeButton = rve.Q<Button>("close-button");
-		aboutButton = rve.Q<Button>("about-button");
+		creditsButton = rve.Q<Button>("credits-button");
+		helpButton = rve.Q<Button>("help-button");
 		sfxSlider = rve.Q<Slider>("vol-sfx");
 		musicSlider = rve.Q<Slider>("vol-music");
 		
 		closeButton.RegisterCallback<ClickEvent>(ev => { OnCloseButtonClick(); });
-		aboutButton.RegisterCallback<ClickEvent>(ev => { OnAboutButtonClick(); });
+		creditsButton.RegisterCallback<ClickEvent>(ev => { OnCreditsButtonClick(); });
+		helpButton.RegisterCallback<ClickEvent>(ev => { OnHelpButtonClick(); });
 		sfxSlider.RegisterValueChangedCallback(vals => { OnSfxSliderChange(vals.previousValue, vals.newValue); }); //Why are these different lmao??
 		musicSlider.RegisterValueChangedCallback(vals => { OnMusicSliderChange(vals.previousValue, vals.newValue); });
 
@@ -48,7 +51,12 @@ public class OptionsMenuBehaviour : MonoBehaviour
 		rve.visible = false;
 	}
 
-	private void OnAboutButtonClick()
+	private void OnCreditsButtonClick()
+	{
+		
+	}
+
+	private void OnHelpButtonClick()
 	{
 		
 	}
@@ -70,12 +78,11 @@ public class OptionsMenuBehaviour : MonoBehaviour
 	private void OnSfxSliderChange(float oldVal, float newVal)
 	{
 		sfxMixer.SetFloat("MasterVol", SliderToDecibels(newVal));
-		
 	}
 
 	private void OnMusicSliderChange(float oldVal, float newVal)
 	{
-		
+		musicMixer.SetFloat("MasterVol", SliderToDecibels(newVal));
 	}
 
 }
