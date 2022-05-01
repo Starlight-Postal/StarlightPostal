@@ -56,7 +56,9 @@ public class MainMenuBehaviour : NavigatableMenu {
         StartNewGame();
     }
 
-    private void StartNewGame() {
+    private void StartNewGame()
+    {
+        GameObject.FindObjectOfType<global_data>().introScene = true;
         SceneManager.LoadScene("level 1");
     }
 
