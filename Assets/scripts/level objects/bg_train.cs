@@ -17,13 +17,13 @@ public class bg_train : MonoBehaviour
 
     public Transform camTrans;
 
-    public global_data gdata;
+    public SaveFileManager gdata;
 
     GameObject music;
     // Start is called before the first frame update
     void Start()
     {
-        gdata = GameObject.Find("Coin Global Data").GetComponent<global_data>();
+        gdata = GameObject.FindObjectOfType<SaveFileManager>();
         trans = gameObject.GetComponent<Transform>();
         x = x1;
 
@@ -39,7 +39,7 @@ public class bg_train : MonoBehaviour
         DebugLogConsole.AddCommandInstance("train.skip", "Skips train cutscene", "SkipCutscene", this);
 
         music = GameObject.Find("Jukebox");
-        if (!gdata.introScene)
+        if (!gdata.saveData.introScene)
         {
             player.free = true;
             cam.follow = true;
@@ -69,7 +69,7 @@ public class bg_train : MonoBehaviour
         {
             player.free = true;
             cam.follow = true;
-            gdata.introScene = false;
+            gdata.saveData.introScene = false;
             music.SetActive(true);
         } else
         {
@@ -82,7 +82,7 @@ public class bg_train : MonoBehaviour
 
     public void SkipCutscene() {
         x = x2;
-        gdata.introScene = false;
+        gdata.saveData.introScene = false;
         music.SetActive(true);
     }
 }

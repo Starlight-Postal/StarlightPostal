@@ -15,6 +15,7 @@ public class SaveFileManager : MonoBehaviour
         public int coins;
         public int checkpointId;
         public string checkpointScene;
+        public bool introScene = true;
     }
 
     [Serializable]
