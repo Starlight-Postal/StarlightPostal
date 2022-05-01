@@ -37,7 +37,6 @@ public class ShopNPC : Interractable
     {
         playerInRange = false;
         visualCue.SetActive(false);
-        save = GameObject.FindObjectOfType<SaveFileManager>();
         updateShop();
     }
 
@@ -56,6 +55,7 @@ public class ShopNPC : Interractable
 
     private void OnEnable()
     {
+        save = GameObject.FindObjectOfType<SaveFileManager>();
         rve = GetComponent<UIDocument>().rootVisualElement;
 
         Shop = rve.Q<Label>("Shop");

@@ -23,6 +23,10 @@ public class ImportMiner : Conversation
     {
         script = helpScript;
         //scriptIndex = 0;
+    }
+
+    private void OnEnable()
+    {
         save = GameObject.FindObjectOfType<SaveFileManager>();
     }
 

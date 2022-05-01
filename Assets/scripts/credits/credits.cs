@@ -17,6 +17,10 @@ public class credits : MonoBehaviour
     void Start()
     {
         TICK = 0;
+    }
+
+    private void OnEnable()
+    {
         gdata = GameObject.FindObjectOfType<SaveFileManager>();
     }
 
