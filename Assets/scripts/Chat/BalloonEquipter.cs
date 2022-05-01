@@ -208,16 +208,27 @@ public class BalloonEquipter : Interractable
 
     private void updateShop()
     {
-        if (save.saveData.balloonUnlock[0] && !(save.saveData.equippedBalloon == 0)) { Label0.text = "Can Equip"; }
-        if (save.saveData.balloonUnlock[1] && !(save.saveData.equippedBalloon == 1)) { Label1.text = "Can Equip"; }
-        if (save.saveData.balloonUnlock[2] && !(save.saveData.equippedBalloon == 2)) { Label2.text = "Can Equip"; }
-        if (save.saveData.balloonUnlock[3] && !(save.saveData.equippedBalloon == 3)) { Label3.text = "Can Equip"; }
-        if (save.saveData.balloonUnlock[4] && !(save.saveData.equippedBalloon == 4)) { Label4.text = "Can Equip"; }
-        if (save.saveData.balloonUnlock[5] && !(save.saveData.equippedBalloon == 5)) { Label5.text = "Can Equip"; }
-        if (save.saveData.balloonUnlock[6] && !(save.saveData.equippedBalloon == 6)) { Label6.text = "Can Equip"; }
-        if (save.saveData.balloonUnlock[7] && !(save.saveData.equippedBalloon == 7)) { Label7.text = "Can Equip"; }
-        if (save.saveData.balloonUnlock[8] && !(save.saveData.equippedBalloon == 8)) { Label8.text = "Can Equip"; }
-        if (save.saveData.balloonUnlock[9] && !(save.saveData.equippedBalloon == 9)) { Label9.text = "Can Equip"; }
+        if (save.saveData.balloonUnlock[0] && !(save.saveData.equippedBalloon == 0)) { Label0.text = "Unlocked"; }
+        if (save.saveData.balloonUnlock[1] && !(save.saveData.equippedBalloon == 1)) { Label1.text = "Unlocked"; }
+        if (save.saveData.balloonUnlock[2] && !(save.saveData.equippedBalloon == 2)) { Label2.text = "Unlocked"; }
+        if (save.saveData.balloonUnlock[3] && !(save.saveData.equippedBalloon == 3)) { Label3.text = "Unlocked"; }
+        if (save.saveData.balloonUnlock[4] && !(save.saveData.equippedBalloon == 4)) { Label4.text = "Unlocked"; }
+        if (save.saveData.balloonUnlock[5] && !(save.saveData.equippedBalloon == 5)) { Label5.text = "Unlocked"; }
+        if (save.saveData.balloonUnlock[6] && !(save.saveData.equippedBalloon == 6)) { Label6.text = "Unlocked"; }
+        if (save.saveData.balloonUnlock[7] && !(save.saveData.equippedBalloon == 7)) { Label7.text = "Unlocked"; }
+        if (save.saveData.balloonUnlock[8] && !(save.saveData.equippedBalloon == 8)) { Label8.text = "Unlocked"; }
+        if (save.saveData.balloonUnlock[9] && !(save.saveData.equippedBalloon == 9)) { Label9.text = "Unlocked"; }
+
+        if (save.saveData.equippedBalloon == 0) { Label0.text = "Equipped"; }
+        if (save.saveData.equippedBalloon == 1) { Label1.text = "Equipped"; }
+        if (save.saveData.equippedBalloon == 2) { Label2.text = "Equipped"; }
+        if (save.saveData.equippedBalloon == 3) { Label3.text = "Equipped"; }
+        if (save.saveData.equippedBalloon == 4) { Label4.text = "Equipped"; }
+        if (save.saveData.equippedBalloon == 5) { Label5.text = "Equipped"; }
+        if (save.saveData.equippedBalloon == 6) { Label6.text = "Equipped"; }
+        if (save.saveData.equippedBalloon == 7) { Label7.text = "Equipped"; }
+        if (save.saveData.equippedBalloon == 8) { Label8.text = "Equipped"; }
+        if (save.saveData.equippedBalloon == 9) { Label9.text = "Equipped"; }
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
