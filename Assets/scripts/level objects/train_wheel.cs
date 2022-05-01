@@ -16,6 +16,6 @@ public class train_wheel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        trans.eulerAngles = new Vector3(0, 0, trainTrans.position.x*-125);
+        trans.eulerAngles = new Vector3(0, 0, trainTrans.position.x*-150);
     }
 }
