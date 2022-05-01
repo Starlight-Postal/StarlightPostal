@@ -27,6 +27,7 @@ public class ImportMiner : Conversation
 
     private void OnEnable()
     {
+        base.OnEnable();
         save = GameObject.FindObjectOfType<SaveFileManager>();
     }
 

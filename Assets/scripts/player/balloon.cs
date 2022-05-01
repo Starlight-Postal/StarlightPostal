@@ -93,7 +93,7 @@ public class balloon : MonoBehaviour
         //rb = gameObject.GetComponent<Rigidbody2D>();
         //trans = gameObject.GetComponent<Transform>();
         sprite = gameObject.GetComponent<SpriteRenderer>();
-        sprite.sprite = gdata.skins[gdata.balloonSkin];
+        sprite.sprite = gdata.skins[saveData.saveData.equippedBalloon];
 
         lean = 0;
         fr = fillRate;
@@ -216,7 +216,7 @@ public class balloon : MonoBehaviour
         }
 
         //sprite.sprite = gdata.skins[gdata.balloonSkin];
-        gdata.balloonSkin = gdata.getSkin(sprite.sprite);
+        saveData.saveData.equippedBalloon = gdata.getSkin(sprite.sprite);
     }
 
 

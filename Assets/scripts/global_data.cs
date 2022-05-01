@@ -5,8 +5,6 @@ using IngameDebugConsole;
 
 public class global_data : MonoBehaviour
 {
-    public int balloonSkin = 0;
-
     public Sprite[] skins;
     public Color[] burnColors;
     public Color[] baseColors;

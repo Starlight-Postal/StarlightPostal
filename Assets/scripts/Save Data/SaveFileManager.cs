@@ -32,13 +32,6 @@ public class SaveFileManager : MonoBehaviour
 
     private string saveFileName = "savedata";
 
-    void Start()
-    {
-        // Register instance commands
-        DebugLogConsole.AddCommandInstance("data.coins", "Gets current coin count", "GetCoins", this);
-        DebugLogConsole.AddCommandInstance("data.coins", "Sets current coin count", "SetCoins", this);
-    }
-
     public void SaveSaveData()
     {
         var form = new BinaryFormatter();
@@ -129,14 +122,18 @@ public class SaveFileManager : MonoBehaviour
         GameObject.Find("Save File").GetComponent<SaveFileManager>().LoadPreferences();
     }
 
-    public void GetCoins()
+    [ConsoleMethod("data.coins", "Gets the players coin count")]
+    public static void GetCoins()
     {
-        Debug.Log("Coins: " + saveData.coins);
+        var save = GameObject.FindObjectOfType<SaveFileManager>();
+        Debug.Log("Coins: " + save.saveData.coins);
     }
 
-    public void SetCoins(int newCoinValue)
+    [ConsoleMethod("data.coins", "Sets the players coin count")]
+    public static void SetCoins(int newCoinValue)
     {
-        saveData.coins = newCoinValue;
+        var save = GameObject.FindObjectOfType<SaveFileManager>();
+        save.saveData.coins = newCoinValue;
         GetCoins();
     }
 

@@ -33,7 +33,7 @@ public class Conversation : Interractable
         player = GameObject.FindObjectsOfType<player>()[0];
     }
 
-    void OnEnable()
+    protected void OnEnable()
     {
         root = GetComponent<UIDocument>().rootVisualElement;
         chatButton = root.Q<Button>("chatButton");
