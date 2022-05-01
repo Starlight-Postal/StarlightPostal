@@ -7,7 +7,10 @@ using UnityEngine.UIElements;
 public class OptionsMenuBehaviour : MonoBehaviour
 {
 	
+	private const float CONT_APSPECT_RATIO = 1.25f;
+	
 	private VisualElement rve;
+	private VisualElement container;
 	private Button closeButton;
 	private Button creditsButton;
 	private Button helpButton;
@@ -22,6 +25,8 @@ public class OptionsMenuBehaviour : MonoBehaviour
 	private void OnEnable()
 	{
 		rve = GetComponent<UIDocument>().rootVisualElement;
+		
+		container = rve.Q<VisualElement>("options-menu-container");
 
 		closeButton = rve.Q<Button>("close-button");
 		creditsButton = rve.Q<Button>("credits-button");
@@ -29,6 +34,8 @@ public class OptionsMenuBehaviour : MonoBehaviour
 		sfxSlider = rve.Q<Slider>("vol-sfx");
 		musicSlider = rve.Q<Slider>("vol-music");
 		envSlider = rve.Q<Slider>("vol-env");
+		
+		rve.RegisterCallback<GeometryChangedEvent>(ev => { Rescale(); });
 		
 		closeButton.RegisterCallback<ClickEvent>(ev => { OnCloseButtonClick(); });
 		creditsButton.RegisterCallback<ClickEvent>(ev => { OnCreditsButtonClick(); });
@@ -93,6 +100,34 @@ public class OptionsMenuBehaviour : MonoBehaviour
 	private void OnEnvSliderChange(float oldVal, float newVal)
 	{
 		envMixer.SetFloat("MasterVol", Sl2Db(newVal));
+	}
+	
+	private void Rescale() {
+		Debug.Log("Resizing options menu UI to new screen size");
+        
+		float contWidth;
+		float contHeight;
+        
+		if (Screen.width <= Screen.height) {
+			contWidth = Screen.width * 0.8f;
+			contHeight = contWidth * (1f / CONT_APSPECT_RATIO);
+		} else {
+			contHeight = Screen.height * 0.66f;
+			contWidth = contHeight * CONT_APSPECT_RATIO;
+		}
+
+#if PLATFORM_ANDROID
+        contHeight /= 2;
+        contWidth /= 2;
+        if ((float) Screen.width / (float) Screen.height >= 2)
+        {
+            contHeight /= 2;
+            contWidth /= 2;
+        }
+#endif
+            
+		container.style.height = contHeight;
+		container.style.width = contWidth;
 	}
 
 }
