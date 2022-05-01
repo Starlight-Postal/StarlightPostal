@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 public class OptionsMenuBehaviour : MonoBehaviour
 {
 	
-	private const float CONT_APSPECT_RATIO = 1.25f;
+	private const float CONT_APSPECT_RATIO = 1.0f;
 	
 	private VisualElement rve;
 	private VisualElement container;
