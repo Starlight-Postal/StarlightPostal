@@ -67,6 +67,13 @@ public class SaveFileManager : MonoBehaviour
         return File.Exists(path);
     }
 
+    public void DeleteSave()
+    {
+        var path = Application.persistentDataPath + "/" + preferences.saveFileName + ".dat";
+        File.Delete(path);
+        saveData = new SaveData();
+    }
+
     public void SavePreferences()
     {
         var form = new BinaryFormatter();
@@ -98,6 +105,13 @@ public class SaveFileManager : MonoBehaviour
     {
         var path = Application.persistentDataPath + "/playerprefs.dat";
         return File.Exists(path);
+    }
+
+    public void DeletePrefs()
+    {
+        var path = Application.persistentDataPath + "/playerprefs.dat";
+        File.Delete(path);
+        preferences = new Preferences();
     }
 
     [ConsoleMethod("file.save", "")]

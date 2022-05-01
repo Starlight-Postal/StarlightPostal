@@ -86,6 +86,7 @@ public class OptionsMenuBehaviour : MonoBehaviour
 	
 	private void OnEraseButtonClick()
 	{
+		GameObject.FindObjectOfType<SaveFileDeleteUI>().ConfirmDelete();
 	}
 
 	private void OnHelpButtonClick()
