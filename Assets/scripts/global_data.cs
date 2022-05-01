@@ -28,6 +28,7 @@ public class global_data : MonoBehaviour
     public Color[] ventColors;
 
     public bool introScene = true;
+    public bool creditsBackToMenu = false;
 
     public float[] heightCaps;
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class credits : MonoBehaviour
 {
@@ -45,12 +46,16 @@ public class credits : MonoBehaviour
         TICK++;
         if (TICK > end * fps)
         {
-            //Application.LoadLevel(nextLevel);
-            if (gdata != null)
+            if (gdata.creditsBackToMenu)
+            {
+                SceneManager.LoadScene("Main Menu");
+                gdata.creditsBackToMenu = false;
+            }
+            else
             {
                 gdata.introScene = false;
+                CheckpointManager.GotoCheckpoint(-2, "level 1");
             }
-            CheckpointManager.GotoCheckpoint(-2, "level 1");
         }
     }
 }
