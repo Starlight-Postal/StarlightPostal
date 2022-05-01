@@ -19,6 +19,8 @@ public class bg_train : MonoBehaviour
 
     public SaveFileManager gdata;
 
+    public AudioSource sound;
+
     GameObject music;
     // Start is called before the first frame update
     void Start()
@@ -46,6 +48,7 @@ public class bg_train : MonoBehaviour
         }
         else
         {
+            sound.Play();
             music.SetActive(false);
             player.free = false;
             cam.follow = false;

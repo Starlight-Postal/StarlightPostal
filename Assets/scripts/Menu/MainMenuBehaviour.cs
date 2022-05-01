@@ -67,12 +67,15 @@ public class MainMenuBehaviour : NavigatableMenu {
         }
     }
 
-    private void StartNewGame() {
+    private void StartNewGame()
+    {
+        GameObject.FindObjectOfType<global_data>().introScene = true;
         SceneManager.LoadScene("level 1");
     }
 
     private void OpenOptions() {
-        Application.OpenURL("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+        //Application.OpenURL("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+        GameObject.FindObjectOfType<OptionsMenuBehaviour>().ShowMenu();
     }
 
     private void QuitGame() {

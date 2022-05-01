@@ -10,6 +10,8 @@ public class global_data : MonoBehaviour
     public Color[] burnColors;
     public Color[] baseColors;
     public Color[] ventColors;
+    
+    public bool creditsBackToMenu = false;
 
     public int getSkin(Sprite skin)
     {

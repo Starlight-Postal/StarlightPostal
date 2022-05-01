@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class credits : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class credits : MonoBehaviour
     public SpriteRenderer fade;
     public string nextLevel;
     SaveFileManager gdata;
+    global_data glob;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +24,7 @@ public class credits : MonoBehaviour
     private void OnEnable()
     {
         gdata = GameObject.FindObjectOfType<SaveFileManager>();
+        glob = GameObject.FindObjectOfType<global_data>();
     }
 
     // Update is called once per frame
@@ -49,12 +52,16 @@ public class credits : MonoBehaviour
         TICK++;
         if (TICK > end * fps)
         {
-            //Application.LoadLevel(nextLevel);
-            if (gdata != null)
+            if (glob.creditsBackToMenu)
+            {
+                SceneManager.LoadScene("Main Menu");
+                gdata.creditsBackToMenu = false;
+            }
+            else
             {
                 gdata.saveData.introScene = false;
+                CheckpointManager.GotoCheckpoint(-2, "level 1");
             }
-            CheckpointManager.GotoCheckpoint(-2, "level 1");
         }
     }
 }
