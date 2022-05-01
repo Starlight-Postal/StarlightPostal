@@ -31,9 +31,7 @@ public class bg_train : MonoBehaviour
         cam = GameObject.Find("Main Camera").GetComponent<camera>();
         camTrans = GameObject.Find("Main Camera").GetComponent < Transform>();
         GameObject.Find("player").GetComponent<SpriteRenderer>().enabled = false;
-        player.free = false;
-        cam.follow = false;
-        camTrans.position = new Vector3(-10,camTrans.position.y,camTrans.position.z);
+        
 
         // Register skip command
         DebugLogConsole.AddCommandInstance("train.skip", "Skips train cutscene", "SkipCutscene", this);
@@ -49,6 +47,9 @@ public class bg_train : MonoBehaviour
         else
         {
             music.SetActive(false);
+            player.free = false;
+            cam.follow = false;
+            camTrans.position = new Vector3(-10, camTrans.position.y, camTrans.position.z);
         }
     }
 
