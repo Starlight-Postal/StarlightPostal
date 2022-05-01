@@ -152,14 +152,14 @@ public class BalloonSeller : Interractable
                 gdata.coins = gdata.coins - 250;
                 gdata.balloon3 = 1;
             }
-            else if (gdata.coins >= 350 && !(gdata.balloon6 == 1) && stage == 2)
+            else if (gdata.coins >= 250 && !(gdata.balloon6 == 1) && stage == 2)
             {
-                gdata.coins = gdata.coins - 350;
+                gdata.coins = gdata.coins - 250;
                 gdata.balloon6 = 1;
             }
-            else if (gdata.coins >= 450 && !(gdata.balloon9 == 1) && stage == 3)
+            else if (gdata.coins >= 250 && !(gdata.balloon9 == 1) && stage == 3)
             {
-                gdata.coins = gdata.coins - 450;
+                gdata.coins = gdata.coins - 250;
                 gdata.balloon9 = 1;
             }
         });
@@ -186,7 +186,7 @@ public class BalloonSeller : Interractable
             if (gdata.balloon5 == 1) { button2.text = "Owned"; }
             else { button2.text = "Costs 200 stars"; }
             if (gdata.balloon6 == 1) { button3.text = "Owned"; }
-            else { button3.text = "Costs 350 stars"; }
+            else { button3.text = "Costs 250 stars"; }
         }
         if (stage == 3)
         {
@@ -195,7 +195,7 @@ public class BalloonSeller : Interractable
             if (gdata.balloon8 == 1) { button2.text = "Owned"; }
             else { button2.text = "Costs 200 stars"; }
             if (gdata.balloon9 == 1) { button3.text = "Owned"; }
-            else { button3.text = "Costs 450 stars"; }
+            else { button3.text = "Costs 250 stars"; }
         }
     }
 
