@@ -13,7 +13,7 @@ public class building : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        trans = gameObject.GetComponent<Transform>();
+        //trans = gameObject.GetComponent<Transform>();
         player = GameObject.Find("player").GetComponent<Transform>();
         sprites = exterior.GetComponentsInChildren<SpriteRenderer>();
         
@@ -22,7 +22,7 @@ public class building : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        inside = (Mathf.Abs(player.position.x - trans.position.x) <= trans.localScale.x/2f && Mathf.Abs(player.position.y - (trans.position.y+trans.localScale.y/2f)) <= trans.localScale.y/2f);
+        inside = (Mathf.Abs(player.position.x - trans.position.x) <= trans.lossyScale.x/2f && Mathf.Abs(player.position.y - (trans.position.y+trans.lossyScale.y/2f)) <= trans.lossyScale.y/2f);
         if (inside)
         {
             extAlpha += (0 - extAlpha) * 0.1f;
@@ -35,6 +35,7 @@ public class building : MonoBehaviour
             sprites[i].color = new Color(sprites[i].color.r, sprites[i].color.g, sprites[i].color.b, extAlpha*1);
         }
         //exterior.SetActive(!inside);
-        
+        //Debug.Log((player.position.x - trans.position.x)+" , "+ (player.position.y - (trans.position.y + trans.localScale.y / 2f)));
+        //Debug.Log(trans.lossyScale);
     }
 }

@@ -12,6 +12,7 @@ public class aura : MonoBehaviour
     public float size = 1;
     public Color color;
     public Vector3 pos;
+    //public float scale = 1;
 
     public int lifetime = 90;
 

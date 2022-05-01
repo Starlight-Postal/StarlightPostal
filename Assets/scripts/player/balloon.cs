@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using IngameDebugConsole;
 
 public class balloon : MonoBehaviour
@@ -24,6 +25,9 @@ public class balloon : MonoBehaviour
     public Rigidbody2D rb;
     public Transform trans;
     public SpriteRenderer sprite;
+    public Color baseColor;
+    public Color burnColor;
+    public Color ventColor;
     Vector2 trackV;
     
     public Sprite[] skins;
@@ -70,6 +74,15 @@ public class balloon : MonoBehaviour
 
     public BonkSoundController bonk;
 
+    private float burnVentInput = 0;
+    private float leanInput = 0;
+    private float reelInput = 0;
+
+    public bool captainIsWith = false;
+
+    public AudioSource sfx_anchor_out;
+    public AudioSource sfx_anchor_in;
+    public AudioSource sfx_disembark;
 
     // Start is called before the first frame update
     void Start()
@@ -78,6 +91,7 @@ public class balloon : MonoBehaviour
         //rb = gameObject.GetComponent<Rigidbody2D>();
         //trans = gameObject.GetComponent<Transform>();
         sprite = gameObject.GetComponent<SpriteRenderer>();
+        sprite.sprite = gdata.skins[gdata.balloonSkin];
 
         lean = 0;
         fr = fillRate;
@@ -104,14 +118,8 @@ public class balloon : MonoBehaviour
         basketCollider = GameObject.Find("Basket").GetComponent<Collider2D>();
         basketTrans = GameObject.Find("Basket").GetComponent<Transform>();
 
-        //Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), anchor.GetComponent<Collider2D>(), true);
-        Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), basketCollider, true); // This was causing ArgumentNullException, Parameter name: collider1
+        //setSkin(skin);
 
-        basket.centerOfMass = new Vector2(0, -1f);
-
-        setSkin(skin);
-
-        Debug.Log("dingus");
         // Register instanced console commands
         DebugLogConsole.AddCommandInstance("balloon.anchor", "Toggles the balloon anchor", "ToggleAnchor", this);
         DebugLogConsole.AddCommandInstance("balloon.heightcap", "Gets the balloon height cap", "GetHeightCap", this);
@@ -124,14 +132,11 @@ public class balloon : MonoBehaviour
         DebugLogConsole.AddCommandInstance("balloon.fillrate", "Sets the balloon fill rate", "SetFillRate", this);
         DebugLogConsole.AddCommandInstance("balloon.windpower", "Gets the balloon wind power", "GetWindPower", this);
         DebugLogConsole.AddCommandInstance("balloon.windpower", "Sets the balloon wind power", "SetWindPower", this);
-
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        UIUpdate();
-
         trackV = rb.velocity;
         rb.velocity *= airFric;
 
@@ -157,17 +162,9 @@ public class balloon : MonoBehaviour
 
             if (player.inBalloon)
             {
-                if (Input.GetKey("q"))
+                if (reelInput > 0.75f)
                 {
                     anchorD *= 0.99f;
-                }
-                if (kiE==1)
-                {
-                    //Debug.Log("retract");
-                    anchored = false;
-                    anchorObj.SetActive(false);
-                    anchor.stuck = false;
-                    anchor.landed = false;
                 }
             } else
             {
@@ -198,67 +195,66 @@ public class balloon : MonoBehaviour
         }
         else
         {
-            if (player.inBalloon)
-            {
-                if (kiE==1)
-                {
-                    //Debug.Log("throw");
-                    anchored = true;
-                    anchorD = anchorRange;
-                    anchorObj.GetComponent<Transform>().position = basketTrans.position + anchorOrg;
-                    anchorObj.SetActive(true);
-                    anchor.stuck = false;
-                    anchor.landed = false;
-                    //anchor.GetComponent<SpringJoint2D>().distance = 10;
-                }
-            }
             line.enabled = false;
             landed = false;
         }
 
         if (player.inBalloon)
         {
-            basketSprite.sprite = basketTex_1;
+            if (captainIsWith)
+            {
+                basketSprite.sprite = basketTex_2;
+            } else
+            {                
+                basketSprite.sprite = basketTex_1;
+            }
         } else
         {
             basketSprite.sprite = basketTex_0;
         }
 
-
+        //sprite.sprite = gdata.skins[gdata.balloonSkin];
+        gdata.balloonSkin = gdata.getSkin(sprite.sprite);
     }
 
 
     void TargetControl()
     {
-        sprite.color = new Color(1,0.9f,0.9f);
+        int skinID = gdata.getSkin(sprite.sprite);
+        baseColor = gdata.baseColors[skinID];
+        burnColor = gdata.burnColors[skinID];
+        ventColor = gdata.ventColors[skinID];
+        sprite.color = baseColor;// new Color(1,0.9f,0.9f);
+        lean *= 0.75f;
         if (player.inBalloon)
         {
-            
-            if (Input.GetKey("up") || Input.GetKey("w"))
+
+            if (burnVentInput != 0)
             {
-                
-                sprite.color = new Color(1,1,1);
-                fr += (fillRate * 3 - fr) * 0.0025f;
-                th += fr;
-            } else if (Input.GetKey("down") || Input.GetKey("s"))
-            {
-                sprite.color = new Color(1, 0.8f,0.8f);
-                fr += (fillRate * 3 - fr) * 0.0025f;
-                th -= fr;
+                //new Color(1, 0.9f + (burnVentInput / 10), 0.9f + (burnVentInput / 10));
+                if (burnVentInput > 0)
+                {
+                    sprite.color = baseColor + (burnColor - baseColor) * (burnVentInput);
+                }
+                if (burnVentInput < 0)
+                {
+                    sprite.color = baseColor + (ventColor - baseColor) * (-burnVentInput);
+                }
+                fr += ((fillRate * 3 - fr) * 0.0025f) * Mathf.Abs(burnVentInput);
+                th += burnVentInput > 0 ? fr : fr * -1;
             } else
             {
                 fr += (fillRate - fr) * 0.1f;
             }
-            lean *= 0.75f;
-            if (Input.GetKey("right") || Input.GetKey("d"))
+
+            
+            if (leanInput != 0)
             {
-                lean += leanPower;
+                lean += leanPower * leanInput;
             }
-            if (Input.GetKey("left") || Input.GetKey("a"))
-            {
-                lean -= leanPower;
-            }
+
         }
+        //Debug.Log(lean);
 
         if (th < heightFloor)
         {
@@ -289,15 +285,65 @@ public class balloon : MonoBehaviour
         //Debug.Log(targetHeight);
     }
 
+    void OnBurnVent(InputValue value)
+    {
+        burnVentInput = value.Get<float>();
+    }
+
+    void OnLean(InputValue value)
+    {
+        leanInput = value.Get<float>();
+    }
+
+    void OnAnchor()
+    {
+        if (anchored)
+        {
+            //Debug.Log("retract");
+            anchored = false;
+            anchorObj.SetActive(false);
+            anchor.stuck = false;
+            anchor.landed = false;
+            
+            sfx_anchor_in.Play(0);
+        } else
+        {
+            //Debug.Log("throw");
+            anchored = true;
+            anchorD = anchorRange;
+            anchorObj.GetComponent<Transform>().position = basketTrans.position + anchorOrg;
+            anchorObj.SetActive(true);
+            anchor.stuck = false;
+            anchor.landed = false;
+            //anchor.GetComponent<SpringJoint2D>().distance = 10;
+
+            sfx_anchor_out.Play(0);
+        }
+    }
+
+    void OnLeaveBalloon()
+    {
+        if (landed)
+        {
+            player.inBalloon = false;
+            sfx_disembark.Play(0);
+        }
+    }
+
+    void OnReel(InputValue value)
+    {
+        reelInput = value.Get<float>();
+    }
+
     public void centerHit()
     {
         float d = (trackV-rb.velocity).magnitude;
         //Debug.Log(d);
         bonk.Bonk(d);
-        if (d >= 4)
+        if (d >= 3)
         {
             //dropCoins((int)Mathf.Floor(d) - 3);
-            dropCoins((int)Mathf.Floor(Mathf.Pow((d - 4) / 15f, 0.5f) * 10));
+            dropCoins((int)Mathf.Floor(Mathf.Pow((d - 3) / 15f, 0.5f) * 10));
         }
     }
 
@@ -322,55 +368,7 @@ public class balloon : MonoBehaviour
     {
         skin = id % skins.Length;
         sprite.sprite = skins[skin];
-    }
-
-    void UIUpdate()
-    {
-        if (Input.GetMouseButton(0))
-        {
-            if (kiLMOUSE == 0)
-            {
-                kiLMOUSE = 1;
-            }
-            else
-            {
-                kiLMOUSE = 2;
-            }
-        }
-        else
-        {
-            kiLMOUSE = 0;
-        }
-        if (Input.GetMouseButton(1))
-        {
-            if (kiRMOUSE == 0)
-            {
-                kiRMOUSE = 1;
-            }
-            else
-            {
-                kiRMOUSE = 2;
-            }
-        }
-        else
-        {
-            kiRMOUSE = 0;
-        }
-        if (Input.GetKey("e"))
-        {
-            if (kiE == 0)
-            {
-                kiE = 1;
-            }
-            else
-            {
-                kiE = 2;
-            }
-        }
-        else
-        {
-            kiE = 0;
-        }
+        //gdata.balloonSkin = gdata.getSkin(sprite.sprite);
     }
 
     float toAngle(float a,float b,float amt)
@@ -400,6 +398,7 @@ public class balloon : MonoBehaviour
         if (sprite != null)
         {
             spriteRender.sprite = sprite;
+            //GameObject.Find("Coin Global Data").GetComponent<global_data>().balloonSkin = GameObject.Find("Coin Global Data").GetComponent<global_data>().getSkin(sprite);
             Debug.Log("Changed balloon skin to " + name);
         }
         else

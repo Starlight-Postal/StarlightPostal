@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using IngameDebugConsole;
 
 public class player : MonoBehaviour
@@ -25,7 +26,6 @@ public class player : MonoBehaviour
     public int kiSPACE = 0;
     //public EdgeCollider2D targetPlatform;
 
-
     public string aniMode = "idle";
     public float aniSpeed = 0.25f;
     public Sprite[] aniIdle;
@@ -45,8 +45,19 @@ public class player : MonoBehaviour
 
     public bool inChair = false;
     public Transform chair = null;
+    public Vector3 chairOff;
 
     public List<EdgeCollider2D> platformQueueu;
+
+    private float walkInput = 0;
+    private float lookInput = 0;
+
+    private float INTERRACT_MAX_DISTANCE = 1.5f;
+
+    private bool prevInBalloon = false;
+
+    public Conversation currentConversation = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,27 +73,9 @@ public class player : MonoBehaviour
 
         aniMode = "idle";
         aniFrame = 0;
-        aniIdle = new Sprite[8];
 
-        for (int i = 0; i < 8; i++)
-        {
-            aniIdle[i] = Resources.Load<Sprite>("textures/Player/player_idle/player_idle_" + i);
-        }
-        aniWait = new Sprite[20];
-        for (int i = 0; i < 20; i++)
-        {
-            aniWait[i] = Resources.Load<Sprite>("textures/Player/player_wait/player_wait_" + i);
-        }
-        aniWalk = new Sprite[18];
-        for (int i = 0; i < 18; i++)
-        {
-            aniWalk[i] = Resources.Load<Sprite>("textures/Player/player_walk/player_walk_" + i);
-        }
-        aniLookUp = new Sprite[1];
-        aniLookUp[0] = Resources.Load<Sprite>("textures/Player/player_up");
+        loadTextures();
 
-        aniLookDown = new Sprite[1];
-        aniLookDown[0] = Resources.Load<Sprite>("textures/Player/player_down");
         camHeight = 0;
 
         // Register instance commands
@@ -92,31 +85,18 @@ public class player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (aniIdle.Length == 0)
+        {
+            loadTextures();
+        }
         if (free)
         {
-            UIUpdate();
             if (inBalloon)
             {
                 sprite.enabled = false;
                 collider.enabled = false;
                 trans.position = new Vector3(balloon.basketTrans.position.x, balloon.basketTrans.position.y, 0);
                 rb.velocity = new Vector2(0, 0);
-                if (kiSPACE == 1)
-                {
-                    if (swap)
-                    {
-                        if (balloon.landed)
-                        {
-                            inBalloon = false;
-                            //Debug.Log("disembark");
-                            swap = false;
-                        }
-                    }
-                }
-                else
-                {
-                    swap = true;
-                }
             }
             else
             {
@@ -128,37 +108,22 @@ public class player : MonoBehaviour
                 collider.enabled = true;
                 rb.velocity = new Vector2(rb.velocity.x * 0.8f, rb.velocity.y); ;
                 rb.velocity += new Vector2(0, -gravity);
-                if (Input.GetKey("right") || Input.GetKey("d"))
+
+
+                rb.velocity += new Vector2(runSpeed * walkInput, 0);
+
+                if (walkInput != 0)
                 {
-                    rb.velocity += new Vector2(runSpeed, 0);
-                    facingRight = true;
+                    facingRight = walkInput > 0;
                     aniMode = "walk";
                 }
-                if (Input.GetKey("left") || Input.GetKey("a"))
+
+                if (aniMode != "walk")
                 {
-                    rb.velocity += new Vector2(-runSpeed, 0);
-                    facingRight = false;
-                    aniMode = "walk";
-                }
-                if (Input.GetKey("up") || Input.GetKey("w"))
-                {
-                    if (aniMode != "walk")
+                    if (lookInput != 0)
                     {
-                        aniMode = "lookUp";
+                        aniMode = lookInput > 0 ? "lookUp" : "lookDown";
                     }
-                    camHeight += ((camCenter + camRange) - camHeight) * 0.25f;
-                }
-                else if (Input.GetKey("down") || Input.GetKey("s"))
-                {
-                    if (aniMode != "walk")
-                    {
-                        aniMode = "lookDown";
-                    }
-                    camHeight += ((camCenter - camRange) - camHeight) * 0.25f;
-                }
-                else
-                {
-                    camHeight += ((camCenter) - camHeight) * 0.25f;
                 }
 
                 if (aniMode == "idle")
@@ -185,88 +150,38 @@ public class player : MonoBehaviour
                     }
                 }
 
-                if (kiDOWN == 1&&!inChair)
+                for (int i = 0; i < platformQueueu.Count; i++)
                 {
-                    RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(0, -1), 0.6f, LayerMask.GetMask("Default"));
-                    if (hit != null)
+                    EdgeCollider2D platform = platformQueueu[i];
+                    Transform platShape = platform.gameObject.GetComponent<Transform>();
+                    Vector2 pA = (new Vector2(platShape.position.x, platShape.position.y) + (platform.points[0] * new Vector2(platShape.lossyScale.x, platShape.lossyScale.y)));
+                    Vector2 pB = (new Vector2(platShape.position.x, platShape.position.y) + (platform.points[1] * new Vector2(platShape.lossyScale.x, platShape.lossyScale.y)));
+                    if (Mathf.Abs(trans.position.x - (pA.x + pB.x) / 2f) > Mathf.Abs(pA.x - pB.x) / 2f)
                     {
-                        Collider2D platform = hit.collider;
-                        //EdgeCollider2D platform = targetPlatform;
-                        //Debug.Log(platform.GetType());
-                        if (platform.GetType() == typeof(EdgeCollider2D))
-                        {
-                            if (platform.gameObject.GetComponent<PlatformEffector2D>() != null)
-                            {
-                                Physics2D.IgnoreCollision(collider, platform, true);
-                                platformQueueu.Add((EdgeCollider2D)platform);
-                                //Debug.Log("through");
-                            }
-                        }
-
+                        Physics2D.IgnoreCollision(collider, platform, false);
+                        //Debug.Log("out");
+                        platformQueueu.RemoveAt(i);
+                        i--;
                     }
                     else
                     {
-                        //Debug.Log("none");
-                    }
-                }
-                else
-                {
-                    for (int i = 0; i < platformQueueu.Count; i++)
-                    {
-                        EdgeCollider2D platform = platformQueueu[i];
-                        Transform platShape = platform.gameObject.GetComponent<Transform>();
-                        Vector2 pA = (new Vector2(platShape.position.x, platShape.position.y) + (platform.points[0] * new Vector2(platShape.lossyScale.x, platShape.lossyScale.y)));
-                        Vector2 pB = (new Vector2(platShape.position.x, platShape.position.y) + (platform.points[1] * new Vector2(platShape.lossyScale.x, platShape.lossyScale.y)));
-                        if (Mathf.Abs(trans.position.x - (pA.x + pB.x) / 2f) > Mathf.Abs(pA.x - pB.x) / 2f)
+                        float m = (pA.y - pB.y) / (pA.x - pB.x);
+                        float b = pA.y - (m * pA.x);
+                        if (trans.position.y - ((trans.position.x * m) + b) < -0.5f)
                         {
                             Physics2D.IgnoreCollision(collider, platform, false);
-                            //Debug.Log("out");
+                            //Debug.Log("under");
                             platformQueueu.RemoveAt(i);
                             i--;
                         }
-                        else
-                        {
-                            float m = (pA.y - pB.y) / (pA.x - pB.x);
-                            float b = pA.y - (m * pA.x);
-                            if (trans.position.y - ((trans.position.x * m) + b) < -0.5f)
-                            {
-                                Physics2D.IgnoreCollision(collider, platform, false);
-                                //Debug.Log("under");
-                                platformQueueu.RemoveAt(i);
-                                i--;
-                            }
-                        }
                     }
-
-                }
-
-
-                //Debug.Log("balloon range!");
-                if (kiSPACE == 1)
-                {
-                    if (swap)
-                    {
-                        if (!balloon.lockEntry && Vector3.Distance(trans.position, balloonTrans.position + new Vector3(0, 0, (trans.position.z - balloonTrans.position.z))) < 3.5f || Vector3.Distance(trans.position, anchorTrans.position + new Vector3(0, 0, (trans.position.z - anchorTrans.position.z))) < 1f)
-
-                        {
-                            if (Vector3.Distance(trans.position, balloonTrans.position + new Vector3(0, 0, (trans.position.z - balloonTrans.position.z))) < 3.5f || Vector3.Distance(trans.position, anchorTrans.position + new Vector3(0, 0, (trans.position.z - anchorTrans.position.z))) < 1f)
-                            {
-                                //Debug.Log("embark");
-                                inBalloon = true;
-                                swap = false;
-                            }
-                        }
-                    }
-
-                }
-                else
-                {
-                    swap = true;
                 }
             }
         }
 
-        
+        if (inBalloon != prevInBalloon) {
+            prevInBalloon = inBalloon;
+        }
 
         if (inBalloon)
         {
@@ -279,16 +194,18 @@ public class player : MonoBehaviour
                 aniMode = "idle";
                 rb.velocity *= 0;
                 collider.enabled = false;
-                trans.position = new Vector3(chair.position.x, chair.position.y-0.5f, trans.position.z);
+                trans.position = new Vector3(chair.position.x, chair.position.y, chair.position.z)+chairOff;
                 if (kiSPACE == 1 || kiDOWN == 1)
                 {
                     inChair = false;
                     chair = null;
                     Debug.Log("chair out");
+                    //sfx_disembark.Play(0); //TODO: Sound should play when player gets out of char
                 }
             } else
             {
                 collider.enabled = true;
+                trans.position = new Vector3(trans.position.x,trans.position.y, 0);
             }
         }
 
@@ -333,44 +250,108 @@ public class player : MonoBehaviour
         }
     }
 
-    void UIUpdate()
+    void OnMove(InputValue input)
     {
-        if (Input.GetKey("down") || Input.GetKey("s"))
-        {
-            if (kiDOWN == 0)
-            {
-                kiDOWN = 1;
-            }
-            else
-            {
-                kiDOWN = 2;
+        walkInput = input.Get<float>();
+    }
+
+    void OnLook(InputValue input)
+    {
+        lookInput = input.Get<Vector2>().y;
+    }
+
+    void OnInterract()
+    {
+        // Find closest gameobject to implement the Interractable class
+        var inters = GameObject.FindObjectsOfType<Interractable>();
+        float closestDist = INTERRACT_MAX_DISTANCE;
+        Interractable closest = null;
+        for (int i = 0; i < inters.Length; i++) {
+            var inter = inters[i];
+            var go = inter.gameObject;
+            var dist = Vector2.Distance(new Vector2(go.transform.position.x, go.transform.position.y),
+                new Vector2(gameObject.transform.position.x, gameObject.transform.position.y));
+
+            if (inter.CanPlayerInterract()) {
+                if (currentConversation != null && inter is Conversation)
+                {
+                    if (currentConversation == (Conversation) inter && ((Conversation) inter).InterractionSearchPriority())
+                    {
+                        closest = inter;
+                        break;
+                    } else
+                    {
+                        if (!currentConversation.AllowConcurrentConversations())
+                        {
+                            continue;
+                        }
+                    }
+                }
+
+                if (dist <= closestDist)
+                {
+                    closestDist = dist;
+                    closest = inter;
+                }
             }
         }
-        else
-        {
-            kiDOWN = 0;
-        }
-        if (Input.GetKey("space"))
-        {
-            if (kiSPACE == 0)
-            {
-                kiSPACE = 1;
-            }
-            else
-            {
-                kiSPACE = 2;
-            }
-        }
-        else
-        {
-            kiSPACE = 0;
+        if (closest != null) {
+            closest.OnPlayerInterract();
         }
     }
 
+    void OnPlatformDrop()
+    {
+        if (!inChair)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(0, -1), 0.6f, LayerMask.GetMask("Default"));
+            if (hit != null)
+            {
+                Collider2D platform = hit.collider;
+                //EdgeCollider2D platform = targetPlatform;
+                //Debug.Log(platform.GetType());
+                if (platform.GetType() == typeof(EdgeCollider2D))
+                {
+                    if (platform.gameObject.GetComponent<PlatformEffector2D>() != null)
+                    {
+                        Physics2D.IgnoreCollision(collider, platform, true);
+                        platformQueueu.Add((EdgeCollider2D)platform);
+                        //Debug.Log("through");
+                    }
+                }
+
+            }
+        }
+    }
+    
     public void ToggleInBalloon() {
         var ps = GameObject.Find("player").GetComponent<player>();
         ps.inBalloon = !ps.inBalloon;
         Debug.Log("Toggled inBalloon state to " + ps.inBalloon);
+    }
+
+    public void loadTextures()
+    {
+        aniIdle = new Sprite[8];
+        for (int i = 0; i < 8; i++)
+        {
+            aniIdle[i] = Resources.Load<Sprite>("textures/Player/player_idle/player_idle_" + i);
+        }
+        aniWait = new Sprite[20];
+        for (int i = 0; i < 20; i++)
+        {
+            aniWait[i] = Resources.Load<Sprite>("textures/Player/player_wait/player_wait_" + i);
+        }
+        aniWalk = new Sprite[18];
+        for (int i = 0; i < 18; i++)
+        {
+            aniWalk[i] = Resources.Load<Sprite>("textures/Player/player_walk/player_walk_" + i);
+        }
+        aniLookUp = new Sprite[1];
+        aniLookUp[0] = Resources.Load<Sprite>("textures/Player/player_up");
+
+        aniLookDown = new Sprite[1];
+        aniLookDown[0] = Resources.Load<Sprite>("textures/Player/player_down");
     }
 
 }
