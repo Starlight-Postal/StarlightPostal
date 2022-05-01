@@ -11,8 +11,11 @@
                 <ui:Slider picking-mode="Ignore" label="Music" value="0" high-value="1" name="vol-music" low-value="0" />
                 <ui:Slider picking-mode="Ignore" label="Environment" value="0" high-value="1" name="vol-env" />
             </ui:VisualElement>
+            <ui:VisualElement style="height: 20px;" />
+            <ui:TextField picking-mode="Ignore" label="Save File" value="null" name="savefile-name" style="-unity-font: url(&apos;Library/unity default resources&apos;);" />
             <ui:VisualElement style="height: 50px;" />
             <ui:Button text="Credits" display-tooltip-when-elided="true" name="credits-button" style="background-color: rgba(38, 38, 38, 0.69); border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px;" />
+            <ui:Button text="Erase Save File" display-tooltip-when-elided="true" name="erase-button" style="background-color: rgba(38, 38, 38, 0.69); border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px;" />
             <ui:Button text="Help &amp; Support" display-tooltip-when-elided="true" name="help-button" style="background-color: rgba(38, 38, 38, 0.69); border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px; border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px;" />
         </ui:VisualElement>
     </ui:VisualElement>

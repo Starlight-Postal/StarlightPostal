@@ -14,14 +14,18 @@ public class OptionsMenuBehaviour : MonoBehaviour
 	private VisualElement container;
 	private Button closeButton;
 	private Button creditsButton;
+	private Button eraseButton;
 	private Button helpButton;
 	private Slider sfxSlider;
 	private Slider musicSlider;
 	private Slider envSlider;
+	private TextField saveFileName;
 
 	public AudioMixer musicMixer;
 	public AudioMixer sfxMixer;
 	public AudioMixer envMixer;
+
+	private SaveFileManager save;
 
 	private void OnEnable()
 	{
@@ -31,6 +35,7 @@ public class OptionsMenuBehaviour : MonoBehaviour
 
 		closeButton = rve.Q<Button>("close-button");
 		creditsButton = rve.Q<Button>("credits-button");
+		eraseButton = rve.Q<Button>("erase-button");
 		helpButton = rve.Q<Button>("help-button");
 		sfxSlider = rve.Q<Slider>("vol-sfx");
 		musicSlider = rve.Q<Slider>("vol-music");
@@ -40,29 +45,36 @@ public class OptionsMenuBehaviour : MonoBehaviour
 		
 		closeButton.RegisterCallback<ClickEvent>(ev => { OnCloseButtonClick(); });
 		creditsButton.RegisterCallback<ClickEvent>(ev => { OnCreditsButtonClick(); });
+		eraseButton.RegisterCallback<ClickEvent>(ev => { OnEraseButtonClick(); });
 		helpButton.RegisterCallback<ClickEvent>(ev => { OnHelpButtonClick(); });
 		sfxSlider.RegisterValueChangedCallback(vals => { OnSfxSliderChange(vals.previousValue, vals.newValue); }); //Why are these different lmao??
 		musicSlider.RegisterValueChangedCallback(vals => { OnMusicSliderChange(vals.previousValue, vals.newValue); });
 		envSlider.RegisterValueChangedCallback(vals => { OnEnvSliderChange(vals.previousValue, vals.newValue); });
+		saveFileName.RegisterValueChangedCallback(vals => { OnSaveFileNameChange(vals.previousValue, vals.newValue); });
 
+		save = GameObject.FindObjectOfType<SaveFileManager>();
+		
+		save.LoadPreferences();
+		sfxMixer.SetFloat("MasterVol", save.preferences.volSfx);
+		musicMixer.SetFloat("MasterVol", save.preferences.volMusic);
+		envMixer.SetFloat("MasterVol", save.preferences.volEnv);
+		
 		rve.visible = false;
 	}
 
 	public void ShowMenu()
 	{
-		float volSfx, volMusic, volEnv;
-		sfxMixer.GetFloat("MasterVol", out volSfx);
-		musicMixer.GetFloat("MasterVol", out volMusic);
-		envMixer.GetFloat("MasterVol", out volEnv);
-		sfxSlider.value = Mathf.Pow(10f, volSfx / 20f);
-		musicSlider.value = Mathf.Pow(10f, volMusic / 20f);
-		envSlider.value = Mathf.Pow(10f, volEnv / 20f);
+		save.LoadPreferences();
+		sfxSlider.value = Mathf.Pow(10f, save.preferences.volSfx / 20f);
+		musicSlider.value = Mathf.Pow(10f, save.preferences.volMusic / 20f);
+		envSlider.value = Mathf.Pow(10f, save.preferences.volEnv / 20f);
 		
 		rve.visible = true;
 	}
 
 	private void OnCloseButtonClick()
 	{
+		save.SavePreferences();
 		rve.visible = false;
 	}
 
@@ -70,6 +82,10 @@ public class OptionsMenuBehaviour : MonoBehaviour
 	{
 		GameObject.FindObjectOfType<global_data>().creditsBackToMenu = true;
 		SceneManager.LoadScene("Credits");
+	}
+	
+	private void OnEraseButtonClick()
+	{
 	}
 
 	private void OnHelpButtonClick()
@@ -91,17 +107,25 @@ public class OptionsMenuBehaviour : MonoBehaviour
 
 	private void OnSfxSliderChange(float oldVal, float newVal)
 	{
+		save.preferences.volSfx = Sl2Db(newVal);
 		sfxMixer.SetFloat("MasterVol", Sl2Db(newVal));
 	}
 
 	private void OnMusicSliderChange(float oldVal, float newVal)
 	{
+		save.preferences.volMusic = Sl2Db(newVal);
 		musicMixer.SetFloat("MasterVol", Sl2Db(newVal));
 	}
 
 	private void OnEnvSliderChange(float oldVal, float newVal)
 	{
+		save.preferences.volEnv = Sl2Db(newVal);
 		envMixer.SetFloat("MasterVol", Sl2Db(newVal));
+	}
+
+	private void OnSaveFileNameChange(string oldVal, string newVal)
+	{
+		save.preferences.saveFileName = newVal;
 	}
 	
 	private void Rescale() {

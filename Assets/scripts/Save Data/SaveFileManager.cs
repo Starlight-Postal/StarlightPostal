@@ -25,18 +25,19 @@ public class SaveFileManager : MonoBehaviour
     [Serializable]
     public class Preferences
     {
-
+        public string saveFileName = "savedata";
+        public float volSfx = 0.0f;
+        public float volMusic = 0.0f;
+        public float volEnv = 0.0f;
     }
 
     public SaveData saveData;
     public Preferences preferences;
 
-    private string saveFileName = "savedata";
-
     public void SaveSaveData()
     {
         var form = new BinaryFormatter();
-        var path = Application.persistentDataPath + "/" + saveFileName + ".dat";
+        var path = Application.persistentDataPath + "/" + preferences.saveFileName + ".dat";
         var fs = new FileStream(path, FileMode.Create);
 
         form.Serialize(fs, saveData);
@@ -45,7 +46,7 @@ public class SaveFileManager : MonoBehaviour
 
     public void LoadSaveData()
     {
-        var path = Application.persistentDataPath + "/" + saveFileName + ".dat";
+        var path = Application.persistentDataPath + "/" + preferences.saveFileName + ".dat";
 
         if (File.Exists(path))
         {
@@ -62,7 +63,7 @@ public class SaveFileManager : MonoBehaviour
 
     public bool SaveDataExists()
     {
-        var path = Application.persistentDataPath + "/" + saveFileName + ".dat";
+        var path = Application.persistentDataPath + "/" + preferences.saveFileName + ".dat";
         return File.Exists(path);
     }
 
