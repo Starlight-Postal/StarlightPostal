@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using IngameDebugConsole;
+using UnityEngine.SceneManagement;
 
 public class balloon : MonoBehaviour
 {
@@ -95,13 +96,13 @@ public class balloon : MonoBehaviour
         sprite = gameObject.GetComponent<SpriteRenderer>();
         sprite.sprite = gdata.skins[saveData.saveData.equippedBalloon];
         
-        float capdata = gdata.getHeightCap();
+        float capdata = getHeightCap();
         if (capdata > heightCap)
         {
             heightCap = capdata;
         } else
         {
-            gdata.setHeightCap(heightCap);
+            setHeightCap(heightCap);
         }
 
         lean = 0;
@@ -227,10 +228,44 @@ public class balloon : MonoBehaviour
         //sprite.sprite = gdata.skins[gdata.balloonSkin];
         saveData.saveData.equippedBalloon = gdata.getSkin(sprite.sprite);
         
-        float capdata = gdata.getHeightCap();
+        float capdata = getHeightCap();
         if (capdata < heightCap)
         {
-            gdata.setHeightCap(heightCap);
+            setHeightCap(heightCap);
+        }
+    }
+    
+    
+
+    public float getHeightCap()
+    {
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "level 1":
+                return saveData.saveData.heightCaps[0];
+            case "level 2":
+                return saveData.saveData.heightCaps[1];
+            case "level 3":
+                return saveData.saveData.heightCaps[2];
+            default:
+                return 0;
+        }
+    }
+    public void setHeightCap(float cap)
+    {
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "level 1":
+                saveData.saveData.heightCaps[0] = cap;
+                return;
+            case "level 2":
+                saveData.saveData.heightCaps[1] = cap;
+                return;
+            case "level 3":
+                saveData.saveData.heightCaps[2] = cap;
+                return;
+            default:
+                return;
         }
     }
 
@@ -457,10 +492,10 @@ public class balloon : MonoBehaviour
     public void SetHeightCap(float newHeightCap) {
         heightCap = newHeightCap;
         GetHeightCap();
-        float capdata = gdata.getHeightCap();
+        float capdata = getHeightCap();
         if (capdata < heightCap)
         {
-            gdata.setHeightCap(heightCap);
+            setHeightCap(heightCap);
         }
     }
 

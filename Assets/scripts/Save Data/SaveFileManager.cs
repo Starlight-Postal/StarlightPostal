@@ -19,6 +19,7 @@ public class SaveFileManager : MonoBehaviour
         public int stage = 0;
         public int equippedBalloon = 0;
         public bool[] balloonUnlock = {true, false, false, false, false, false, false, false, false, false, false};
+        public float[] heightCaps = {60, 215, 180};
     }
 
     [Serializable]
