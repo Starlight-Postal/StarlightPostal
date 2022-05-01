@@ -5899,6 +5899,8 @@ MonoBehaviour:
   airLoop: {fileID: 8300000, guid: cb9f542d6e0247941a7ce1acc7259470, type: 3}
   beatLoop: {fileID: 8300000, guid: 6262fb5e841ef244e8c385f1302b663a, type: 3}
   offset: 2.25
+  beatSourceA: {fileID: 0}
+  beatSourceB: {fileID: 0}
   musicVolume: 1
   polarity: 0
   beatPower: 1
@@ -24155,6 +24157,10 @@ PrefabInstance:
       propertyPath: range
       value: 
       objectReference: {fileID: 134675219}
+    - target: {fileID: 7877017493165684241, guid: 77a048e6e88068b419a0f270c755df7a, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77a048e6e88068b419a0f270c755df7a, type: 3}
 --- !u!4 &761224596 stripped
@@ -44718,6 +44724,10 @@ PrefabInstance:
     - target: {fileID: 184119191185985904, guid: 713ed90b78c08e44293b70fb370dd5a8, type: 3}
       propertyPath: m_Name
       value: UnityDontKillMePls
+      objectReference: {fileID: 0}
+    - target: {fileID: 532984024881529931, guid: 713ed90b78c08e44293b70fb370dd5a8, type: 3}
+      propertyPath: heightCaps.Array.data[2]
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 5275151608571913142, guid: 713ed90b78c08e44293b70fb370dd5a8, type: 3}
       propertyPath: m_RootOrder
