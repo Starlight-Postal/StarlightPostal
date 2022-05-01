@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 162381801362673943}
   - component: {fileID: 1953064191254240200}
   m_Layer: 0
-  m_Name: Coin Save Data
+  m_Name: Global Static Data
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -152,10 +152,62 @@ MonoBehaviour:
   balloon10: 0
   balloonSkin: 0
   stage: 1
-  skins: []
-  burnColors: []
-  baseColors: []
-  ventColors: []
+  skins:
+  - {fileID: 21300000, guid: a3cdc51cc286ab04a82f6a474c7a144e, type: 3}
+  - {fileID: 21300000, guid: 29eb418d1e6b47a4282abf2837d16edc, type: 3}
+  - {fileID: 21300000, guid: bd6aca38d3137274d902eaa975545c01, type: 3}
+  - {fileID: 21300000, guid: 9f0f198ef5840c340b6a039ae6558523, type: 3}
+  - {fileID: 21300000, guid: d99b39b80b1d14646a13b1f88231f94e, type: 3}
+  - {fileID: 21300000, guid: c3e08ec8a34e17c409f1e9844a14c79a, type: 3}
+  - {fileID: 21300000, guid: 5ffa0050cb41e4d4781d45696d807f18, type: 3}
+  - {fileID: 21300000, guid: 5e77e0847d909394982ad7007847bc6e, type: 3}
+  - {fileID: 21300000, guid: 723934f750698dc4495edac569c7266d, type: 3}
+  - {fileID: 21300000, guid: 8ddeddea0b55ccc40aeb8497a0a6514e, type: 3}
+  - {fileID: 21300000, guid: c38eb1571802f5b459663531104153ed, type: 3}
+  - {fileID: 21300000, guid: 58d340e52fb994c4ba5bdca7577f3b05, type: 3}
+  - {fileID: 21300000, guid: e74b0f55c37687e4a83ab4886aebcaca, type: 3}
+  burnColors:
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  baseColors:
+  - {r: 1, g: 0.9019608, b: 0.9019608, a: 1}
+  - {r: 1, g: 0.9019608, b: 0.9019608, a: 1}
+  - {r: 0.99028015, g: 0.9019608, b: 1, a: 1}
+  - {r: 1, g: 0.74509805, b: 0.88235295, a: 1}
+  - {r: 0.8627451, g: 0.9411765, b: 1, a: 1}
+  - {r: 0.8627451, g: 0.9411765, b: 1, a: 1}
+  - {r: 0.9019608, g: 0.9019608, b: 1, a: 1}
+  - {r: 0.78431374, g: 0.9411765, b: 1, a: 1}
+  - {r: 0.9019608, g: 0.9411765, b: 1, a: 1}
+  - {r: 1, g: 0.9019608, b: 0.9607843, a: 1}
+  - {r: 1, g: 0.9019608, b: 0.9019608, a: 1}
+  - {r: 0.9019608, g: 0.9019608, b: 1, a: 1}
+  - {r: 1, g: 0.93991935, b: 0.8836478, a: 1}
+  ventColors:
+  - {r: 1, g: 0.78431374, b: 0.78431374, a: 1}
+  - {r: 1, g: 0.78431374, b: 0.78431374, a: 1}
+  - {r: 0.9799886, g: 0.78431374, b: 1, a: 1}
+  - {r: 1, g: 0.49019608, b: 0.5882353, a: 1}
+  - {r: 0.76100624, g: 0.88235295, b: 1, a: 1}
+  - {r: 0.70440245, g: 0.8627451, b: 1, a: 1}
+  - {r: 0.78431374, g: 0.78431374, b: 1, a: 1}
+  - {r: 0.5882353, g: 0.9019608, b: 1, a: 1}
+  - {r: 0.78431374, g: 0.9019608, b: 1, a: 1}
+  - {r: 1, g: 0.78431374, b: 0.9607843, a: 1}
+  - {r: 1, g: 0.78431374, b: 0.78431374, a: 1}
+  - {r: 0.78431374, g: 0.78431374, b: 1, a: 1}
+  - {r: 1, g: 0.7977401, b: 0.6949685, a: 1}
   introScene: 1
 --- !u!1 &9023487762022538025
 GameObject:
