@@ -92,6 +92,14 @@ public class balloon : MonoBehaviour
         //trans = gameObject.GetComponent<Transform>();
         sprite = gameObject.GetComponent<SpriteRenderer>();
         sprite.sprite = gdata.skins[gdata.balloonSkin];
+        float capdata = gdata.getHeightCap();
+        if (capdata > heightCap)
+        {
+            heightCap = capdata;
+        } else
+        {
+            gdata.setHeightCap(heightCap);
+        }
 
         lean = 0;
         fr = fillRate;
@@ -215,6 +223,11 @@ public class balloon : MonoBehaviour
 
         //sprite.sprite = gdata.skins[gdata.balloonSkin];
         gdata.balloonSkin = gdata.getSkin(sprite.sprite);
+        float capdata = gdata.getHeightCap();
+        if (capdata < heightCap)
+        {
+            gdata.setHeightCap(heightCap);
+        }
     }
 
 
@@ -440,6 +453,11 @@ public class balloon : MonoBehaviour
     public void SetHeightCap(float newHeightCap) {
         heightCap = newHeightCap;
         GetHeightCap();
+        float capdata = gdata.getHeightCap();
+        if (capdata < heightCap)
+        {
+            gdata.setHeightCap(heightCap);
+        }
     }
 
     public void GetHeightFloor() {
