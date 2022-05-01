@@ -31,13 +31,13 @@ public class ShopNPC : Interractable
 
     [SerializeField] private VisualElement rve;
 
-    public global_data gdata;
+    private SaveFileManager save;
 
     private void Start()
     {
         playerInRange = false;
         visualCue.SetActive(false);
-        gdata = GameObject.Find("Coin Global Data").GetComponent<global_data>();
+        save = GameObject.FindObjectOfType<SaveFileManager>();
         updateShop();
     }
 
@@ -76,60 +76,60 @@ public class ShopNPC : Interractable
 
         Button1.RegisterCallback<ClickEvent>(ev =>
         {
-            if (gdata.coins >= 150 && !(gdata.balloon1 == 1) && stage == 1)
+            if (save.saveData.coins >= 150 && !(save.saveData.balloonUnlock[1]) && stage == 1)
             {
-                gdata.coins = gdata.coins - 150;
-                gdata.balloon1 = 1;
+                save.saveData.coins = save.saveData.coins - 150;
+                save.saveData.balloonUnlock[1] = true;
             }
-            else if (gdata.coins >= 150 && !(gdata.balloon4 == 1) && stage == 2)
+            else if (save.saveData.coins >= 150 && !(save.saveData.balloonUnlock[4]) && stage == 2)
             {
-                gdata.coins = gdata.coins - 150;
-                gdata.balloon4 = 1;
+                save.saveData.coins = save.saveData.coins - 150;
+                save.saveData.balloonUnlock[4] = true;
             }
-            else if (gdata.coins >= 150 && !(gdata.balloon7 == 1) && stage == 3)
+            else if (save.saveData.coins >= 150 && !(save.saveData.balloonUnlock[7]) && stage == 3)
             {
-                gdata.coins = gdata.coins - 150;
-                gdata.balloon7 = 1;
+                save.saveData.coins = save.saveData.coins - 150;
+                save.saveData.balloonUnlock[7] = true;
             }
         });
         Button2.RegisterCallback<ClickEvent>(ev =>
         {
             Debug.Log("end set up");
 
-            if (gdata.coins >= 200 && !(gdata.balloon2 == 1) && stage == 1)
+            if (save.saveData.coins >= 200 && !(save.saveData.balloonUnlock[2]) && stage == 1)
             {
-                gdata.coins = gdata.coins - 200;
-                gdata.balloon2 = 1;
+                save.saveData.coins = save.saveData.coins - 200;
+                save.saveData.balloonUnlock[2] = true;
             }
-            else if (gdata.coins >= 200 && !(gdata.balloon5 == 1) && stage == 2)
+            else if (save.saveData.coins >= 200 && !(save.saveData.balloonUnlock[5]) && stage == 2)
             {
-                gdata.coins = gdata.coins - 200;
-                gdata.balloon5 = 1;
+                save.saveData.coins = save.saveData.coins - 200;
+                save.saveData.balloonUnlock[5] = true;
             }
-            else if (gdata.coins >= 200 && !(gdata.balloon8 == 1) && stage == 3)
+            else if (save.saveData.coins >= 200 && !(save.saveData.balloonUnlock[8]) && stage == 3)
             {
-                gdata.coins = gdata.coins - 200;
-                gdata.balloon8 = 1;
+                save.saveData.coins = save.saveData.coins - 200;
+                save.saveData.balloonUnlock[8] = true;
             }
         });
         Button3.RegisterCallback<ClickEvent>(ev =>
         {
             Debug.Log("end set up");
 
-            if (gdata.coins >= 250 && !(gdata.balloon3 == 1) && stage == 1)
+            if (save.saveData.coins >= 250 && !(save.saveData.balloonUnlock[3]) && stage == 1)
             {
-                gdata.coins = gdata.coins - 250;
-                gdata.balloon3 = 1;
+                save.saveData.coins = save.saveData.coins - 250;
+                save.saveData.balloonUnlock[3] = true;
             }
-            else if (gdata.coins >= 350 && !(gdata.balloon6 == 1) && stage == 2)
+            else if (save.saveData.coins >= 350 && !(save.saveData.balloonUnlock[6]) && stage == 2)
             {
-                gdata.coins = gdata.coins - 250;
-                gdata.balloon6 = 1;
+                save.saveData.coins = save.saveData.coins - 250;
+                save.saveData.balloonUnlock[6] = true;
             }
-            else if (gdata.coins >= 450 && !(gdata.balloon9 == 1) && stage == 3)
+            else if (save.saveData.coins >= 450 && !(save.saveData.balloonUnlock[9]) && stage == 3)
             {
-                gdata.coins = gdata.coins - 250;
-                gdata.balloon9 = 1;
+                save.saveData.coins = save.saveData.coins - 250;
+                save.saveData.balloonUnlock[9] = true;
             }
         });
 
@@ -143,29 +143,29 @@ public class ShopNPC : Interractable
     {
         if (stage == 1)
         {
-            if (gdata.balloon1 == 1) { Button1.text = "Owned"; }
+            if (save.saveData.balloonUnlock[1]) { Button1.text = "Owned"; }
             else { Button1.text = "Costs 150 stars"; }
-            if (gdata.balloon2 == 1) { Button2.text = "Owned"; }
+            if (save.saveData.balloonUnlock[2]) { Button2.text = "Owned"; }
             else { Button2.text = "Costs 200 stars"; }
-            if (gdata.balloon3 == 1) { Button3.text = "Owned"; }
+            if (save.saveData.balloonUnlock[3]) { Button3.text = "Owned"; }
             else { Button3.text = "Costs 250 stars"; }
         }
         if (stage == 2)
         {
-            if (gdata.balloon4 == 1) { Button1.text = "Owned"; }
+            if (save.saveData.balloonUnlock[4]) { Button1.text = "Owned"; }
             else { Button1.text = "Costs 150 stars"; }
-            if (gdata.balloon5 == 1) { Button2.text = "Owned"; }
+            if (save.saveData.balloonUnlock[5]) { Button2.text = "Owned"; }
             else { Button2.text = "Costs 200 stars"; }
-            if (gdata.balloon6 == 1) { Button3.text = "Owned"; }
+            if (save.saveData.balloonUnlock[6]) { Button3.text = "Owned"; }
             else { Button3.text = "Costs 250 stars"; }
         }
         if (stage == 3)
         {
-            if (gdata.balloon7 == 1) { Button1.text = "Owned"; }
+            if (save.saveData.balloonUnlock[7]) { Button1.text = "Owned"; }
             else { Button1.text = "Costs 150 stars"; }
-            if (gdata.balloon8 == 1) { Button2.text = "Owned"; }
+            if (save.saveData.balloonUnlock[8]) { Button2.text = "Owned"; }
             else { Button2.text = "Costs 200 stars"; }
-            if (gdata.balloon9 == 1) { Button3.text = "Owned"; }
+            if (save.saveData.balloonUnlock[9]) { Button3.text = "Owned"; }
             else { Button3.text = "Costs 250 stars"; }
         }
     }
@@ -203,9 +203,9 @@ public class ShopNPC : Interractable
 
     private void updateStage()
     {
-        if (stage > gdata.stage)
+        if (stage > save.saveData.stage)
         {
-        gdata.stage = stage;
+            save.saveData.stage = stage;
         }
         turnoffimage();
         Displayimage();
