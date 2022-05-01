@@ -293,6 +293,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   noPop: 0
   mixer: {fileID: -349929039076099721, guid: 3c1affec8217990a19f91b94113e5de3, type: 2}
+  cam: {fileID: 0}
+  fade: {fileID: 0}
 --- !u!114 &6918549419597992549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3324,7 +3326,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3348,6 +3350,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fade: 1
   fadeOut: 0.025
+  death: 0
 --- !u!1 &3968976079174973330
 GameObject:
   m_ObjectHideFlags: 0

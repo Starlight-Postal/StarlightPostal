@@ -4537,7 +4537,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6820744319566139920, guid: b2af3dcb8c2e809b29ba4ae1440bd7b3, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6820744319566139920, guid: b2af3dcb8c2e809b29ba4ae1440bd7b3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7386,7 +7386,7 @@ Transform:
   - {fileID: 1549367262}
   - {fileID: 2117128953}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &173058057
 GameObject:
@@ -18496,7 +18496,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1458409696639708307, guid: eb646bb755b2c3a26b42ab86a0f6be35, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1458409696639708307, guid: eb646bb755b2c3a26b42ab86a0f6be35, type: 3}
       propertyPath: m_LocalPosition.x
@@ -30808,9 +30808,13 @@ MonoBehaviour:
   mixerGroup: {fileID: 1624889087248227609, guid: 0595063c55839bfb4a2a376f912d72c8, type: 2}
   groundLoop: {fileID: 8300000, guid: c1091a8c6808ede46a83fddce58ca39a, type: 3}
   airLoop: {fileID: 8300000, guid: a7d58bcaa421c0f8cb124287b8c9f367, type: 3}
+  beatLoop: {fileID: 0}
   offset: 5.6470625
+  beatSourceA: {fileID: 0}
+  beatSourceB: {fileID: 0}
   musicVolume: 1
   polarity: 0
+  beatPower: 1
 --- !u!4 &657813274
 Transform:
   m_ObjectHideFlags: 0
@@ -36059,6 +36063,10 @@ PrefabInstance:
       propertyPath: range
       value: 
       objectReference: {fileID: 1875146049}
+    - target: {fileID: 7877017493165684241, guid: 77a048e6e88068b419a0f270c755df7a, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77a048e6e88068b419a0f270c755df7a, type: 3}
 --- !u!1 &735729551
@@ -86668,7 +86676,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5275151608571913142, guid: 713ed90b78c08e44293b70fb370dd5a8, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5275151608571913142, guid: 713ed90b78c08e44293b70fb370dd5a8, type: 3}
       propertyPath: m_LocalPosition.x
