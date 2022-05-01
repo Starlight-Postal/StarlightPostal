@@ -208,16 +208,27 @@ public class BalloonEquipter : Interractable
 
     private void updateShop()
     {
-        if (gdata.balloon0 == 1 && !(gdata.balloon == 0)) { Label0.text = "Can Equip"; }
-        if (gdata.balloon1 == 1 && !(gdata.balloon == 1)) { Label1.text = "Can Equip"; }
-        if (gdata.balloon2 == 1 && !(gdata.balloon == 2)) { Label2.text = "Can Equip"; }
-        if (gdata.balloon3 == 1 && !(gdata.balloon == 3)) { Label3.text = "Can Equip"; }
-        if (gdata.balloon4 == 1 && !(gdata.balloon == 4)) { Label4.text = "Can Equip"; }
-        if (gdata.balloon5 == 1 && !(gdata.balloon == 5)) { Label5.text = "Can Equip"; }
-        if (gdata.balloon6 == 1 && !(gdata.balloon == 6)) { Label6.text = "Can Equip"; }
-        if (gdata.balloon7 == 1 && !(gdata.balloon == 7)) { Label7.text = "Can Equip"; }
-        if (gdata.balloon8 == 1 && !(gdata.balloon == 8)) { Label8.text = "Can Equip"; }
-        if (gdata.balloon9 == 1 && !(gdata.balloon == 9)) { Label9.text = "Can Equip"; }
+        if (gdata.balloon0 == 1 && !(gdata.balloon == 0)) { Label0.text = "Unlocked"; }
+        if (gdata.balloon1 == 1 && !(gdata.balloon == 1)) { Label1.text = "Unlocked"; }
+        if (gdata.balloon2 == 1 && !(gdata.balloon == 2)) { Label2.text = "Unlocked"; }
+        if (gdata.balloon3 == 1 && !(gdata.balloon == 3)) { Label3.text = "Unlocked"; }
+        if (gdata.balloon4 == 1 && !(gdata.balloon == 4)) { Label4.text = "Unlocked"; }
+        if (gdata.balloon5 == 1 && !(gdata.balloon == 5)) { Label5.text = "Unlocked"; }
+        if (gdata.balloon6 == 1 && !(gdata.balloon == 6)) { Label6.text = "Unlocked"; }
+        if (gdata.balloon7 == 1 && !(gdata.balloon == 7)) { Label7.text = "Unlocked"; }
+        if (gdata.balloon8 == 1 && !(gdata.balloon == 8)) { Label8.text = "Unlocked"; }
+        if (gdata.balloon9 == 1 && !(gdata.balloon == 9)) { Label9.text = "Unlocked"; }
+
+        if (gdata.balloonSkin == 0) { Label0.text = "Equipped"; }
+        if (gdata.balloonSkin == 1) { Label1.text = "Equipped"; }
+        if (gdata.balloonSkin == 2) { Label2.text = "Equipped"; }
+        if (gdata.balloonSkin == 3) { Label3.text = "Equipped"; }
+        if (gdata.balloonSkin == 4) { Label4.text = "Equipped"; }
+        if (gdata.balloonSkin == 5) { Label5.text = "Equipped"; }
+        if (gdata.balloonSkin == 6) { Label6.text = "Equipped"; }
+        if (gdata.balloonSkin == 7) { Label7.text = "Equipped"; }
+        if (gdata.balloonSkin == 8) { Label8.text = "Equipped"; }
+        if (gdata.balloonSkin == 9) { Label9.text = "Equipped"; }
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
