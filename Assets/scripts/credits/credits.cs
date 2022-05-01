@@ -55,7 +55,7 @@ public class credits : MonoBehaviour
             if (glob.creditsBackToMenu)
             {
                 SceneManager.LoadScene("Main Menu");
-                gdata.creditsBackToMenu = false;
+                glob.creditsBackToMenu = false;
             }
             else
             {
