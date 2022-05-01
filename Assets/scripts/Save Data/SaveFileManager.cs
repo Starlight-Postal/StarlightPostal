@@ -95,7 +95,7 @@ public class SaveFileManager : MonoBehaviour
             fs.Close();
         } else
         {
-            Debug.LogError("No save file found");
+            Debug.LogError("No prefs file found");
         }
     }
     
