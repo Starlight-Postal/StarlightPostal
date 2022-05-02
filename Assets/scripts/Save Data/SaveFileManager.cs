@@ -5,6 +5,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using UnityEngine;
 using IngameDebugConsole;
+using Random = System.Random;
 
 public class SaveFileManager : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class SaveFileManager : MonoBehaviour
     public class Preferences
     {
         public string saveFileName = "savedata";
+        public int devId = GenerateDeviceId();
         public float volSfx = 0.0f;
         public float volMusic = 0.0f;
         public float volEnv = 0.0f;
@@ -151,6 +153,25 @@ public class SaveFileManager : MonoBehaviour
         var save = GameObject.FindObjectOfType<SaveFileManager>();
         save.saveData.coins = newCoinValue;
         GetCoins();
+    }
+    
+    private static int GenerateDeviceId()
+    {
+        int hash = 0;
+        var deviceId = SystemInfo.deviceUniqueIdentifier;
+        if (deviceId == SystemInfo.unsupportedIdentifier)
+        {
+            hash = new Random().Next();
+        }
+        else
+        {
+            for (int i = 0; i < deviceId.Length; i++)
+            {
+                hash += deviceId[i];
+            }
+        }
+
+        return hash;
     }
 
 }

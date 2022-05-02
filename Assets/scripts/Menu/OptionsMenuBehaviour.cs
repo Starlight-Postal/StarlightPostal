@@ -77,21 +77,9 @@ public class OptionsMenuBehaviour : MonoBehaviour
 		envSlider.value = Mathf.Pow(10f, save.preferences.volEnv / 20f);
 		saveFileName.value = save.preferences.saveFileName;
 
-		helpButton.text = GenerateMemeLabel();
+		helpButton.text = rickrollLabels[save.preferences.devId % rickrollLabels.Length];
 		
 		rve.visible = true;
-	}
-
-	private string GenerateMemeLabel()
-	{
-		var deviceId = SystemInfo.deviceUniqueIdentifier;
-		int hash = 0;
-		for (int i = 0; i < deviceId.Length; i++)
-		{
-			hash += deviceId[i];
-		}
-
-		return rickrollLabels[hash % rickrollLabels.Length];
 	}
 
 	private void OnCloseButtonClick()
