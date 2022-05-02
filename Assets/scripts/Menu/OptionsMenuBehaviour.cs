@@ -7,9 +7,9 @@ using UnityEngine.UIElements;
 
 public class OptionsMenuBehaviour : MonoBehaviour
 {
-
+	
 	private const float CONT_APSPECT_RATIO = 1.0f;
-
+	
 	private VisualElement rve;
 	private VisualElement container;
 	private Button closeButton;
@@ -27,12 +27,6 @@ public class OptionsMenuBehaviour : MonoBehaviour
 
 	private SaveFileManager save;
 
-	private string[] rickrollLabels = {
-		"Enable VR Support",
-		"Enable RTX Support",
-		"Starlight Postal NFT"
-	};
-	
 	private void OnEnable()
 	{
 		rve = GetComponent<UIDocument>().rootVisualElement;
@@ -76,22 +70,8 @@ public class OptionsMenuBehaviour : MonoBehaviour
 		musicSlider.value = Mathf.Pow(10f, save.preferences.volMusic / 20f);
 		envSlider.value = Mathf.Pow(10f, save.preferences.volEnv / 20f);
 		saveFileName.value = save.preferences.saveFileName;
-
-		helpButton.text = GenerateMemeLabel();
 		
 		rve.visible = true;
-	}
-
-	private string GenerateMemeLabel()
-	{
-		var deviceId = SystemInfo.deviceUniqueIdentifier;
-		int hash = 0;
-		for (int i = 0; i < deviceId.Length; i++)
-		{
-			hash += deviceId[i];
-		}
-
-		return rickrollLabels[hash % rickrollLabels.Length];
 	}
 
 	private void OnCloseButtonClick()
