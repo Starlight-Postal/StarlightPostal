@@ -17,12 +17,13 @@ class PostOfficeClerk : Conversation
 
     public MailPhase phase;
 
-    
+    private SaveFileManager save;
 
     private void Start()
     {
         base.Start();
         phase = MailPhase.MAILDROP;
+        save = GameObject.FindObjectOfType<SaveFileManager>();
     }
 
     public override void OnConversationStart()
@@ -56,7 +57,7 @@ class PostOfficeClerk : Conversation
                 TutorialNPC captain = GameObject.FindObjectsOfType<TutorialNPC>()[0];
                 if (captain != null)
                 {
-                    captain.phase = TutorialPhase.POSTOFFICEDELIVERY;
+                    save.saveData.tutorialPhase = TutorialPhase.POSTOFFICEDELIVERY;
                 }
                 //GameObject.FindObjectsOfType<TutorialNPC>()[0].phase = TutorialPhase.POSTOFFICEDELIVERY;
                 break;
