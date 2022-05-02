@@ -21,8 +21,13 @@ else
 fi
 
 if [ -d "StarlightPostal-macos" ]; then
+	echo "Changing permissions for MacOS build"
+	rm -r /tmp/starlightbuild
+	mkdir /tmp/starlightbuild
+	cp -r ./StarlightPostal-macos/ /tmp/starlightbuild/
+	chmod 755 "/tmp/starlightbuild/StarlightPostal-macos/StarlightPostal.app/Contents/MacOS/Starlight Postal"
 	echo "Packaging MacOS build"
-	genisoimage -quiet -V StarlightPostal -D -R -apple -no-pad -o $packagefolder/StarlightPostal-macos-uncompressed.dmg StarlightPostal-macos
+	genisoimage -quiet -V StarlightPostal -D -R -apple -no-pad -o $packagefolder/StarlightPostal-macos-uncompressed.dmg /tmp/starlightbuild/StarlightPostal-macos
 	echo "Compressing MacOS image"
 	dmg $packagefolder/StarlightPostal-macos-uncompressed.dmg $packagefolder/StarlightPostal-macos.dmg
 	echo "Removing uncompressed MacOS image"
