@@ -14,14 +14,22 @@ public class FontSizifier : MonoBehaviour {
         rve.RegisterCallback<GeometryChangedEvent>(ev => { Rescale(); });
 
         Rescale();
-        
-        #if PLATFORM_ANDROID
+
+    #if PLATFORM_ANDROID
         fontSizePercent /= 2;
         if ((float) Screen.width / (float) Screen.height >= 2)
         {
             fontSizePercent /= 2;
         }
-        #endif
+    #endif
+
+    #if UNITY_STANDALONE_OSX
+        fontSizePercent /= 2;
+        if ((float) Screen.width / (float) Screen.height >= 2)
+        {
+            fontSizePercent /= 2;
+        }
+    #endif
     }
 
     private void Rescale() {
