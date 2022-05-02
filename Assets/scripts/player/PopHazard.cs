@@ -48,6 +48,11 @@ public class PopHazard : MonoBehaviour {
         if (noPop) { return; }
         if (other.gameObject.CompareTag("hazard")) {
             Debug.Log("Balloon has hit a hazard!");
+            var ball = GameObject.FindObjectOfType<balloon>();
+            ball.anchored = false;
+            ball.anchorObj.SetActive(false);
+            ball.anchor.stuck = false;
+            ball.anchor.landed = false;
             CheckpointManager.Respawn();
             //cam.snapToTarget();
             dying = true;
