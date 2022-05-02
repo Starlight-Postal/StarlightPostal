@@ -4,7 +4,7 @@
         <ui:VisualElement name="options-menu-container" style="left: -50%; top: -50%; width: 500px; height: 500px; border-top-left-radius: 10%; border-bottom-left-radius: 10%; border-top-right-radius: 10%; border-bottom-right-radius: 10%; background-color: rgba(0, 0, 0, 0.59); justify-content: center; padding-left: 50px; padding-right: 50px; padding-top: 50px; padding-bottom: 50px; align-items: stretch; -unity-font: url(&apos;/Assets/UI/AutourOne-Regular.ttf&apos;); -unity-text-align: upper-left; color: rgb(255, 255, 255); -unity-font-style: bold; font-size: 15px;">
             <ui:Button text="X" display-tooltip-when-elided="true" name="close-button" style="position: absolute; top: 0; right: 0; width: 25px; height: 25px; flex-basis: initial; border-top-left-radius: 25px; border-bottom-left-radius: 25px; border-top-right-radius: 25px; border-bottom-right-radius: 25px; background-color: rgba(38, 38, 38, 0.87);" />
             <ui:VisualElement style="background-image: resource(&apos;textures/UI Text/OptionsNormal&apos;); width: 100%; height: 20%; -unity-background-scale-mode: scale-to-fit;" />
-            <ui:VisualElement style="height: 50px;" />
+            <ui:VisualElement style="height: 50px; flex-direction: column-reverse; flex-basis: initial;" />
             <ui:VisualElement>
                 <ui:Label text="Audio Volume" display-tooltip-when-elided="true" style="-unity-text-align: upper-center;" />
                 <ui:Slider picking-mode="Ignore" label="SFX" value="0" high-value="1" name="vol-sfx" low-value="0" />
@@ -13,7 +13,7 @@
             </ui:VisualElement>
             <ui:VisualElement style="height: 20px;" />
             <ui:TextField picking-mode="Ignore" label="Save File" value="null" name="savefile-name" style="-unity-font: url(&apos;Library/unity default resources&apos;);" />
-            <ui:VisualElement style="height: 50px;" />
+            <ui:VisualElement style="height: 50px; flex-basis: initial; flex-direction: column-reverse;" />
             <ui:Button text="Credits" display-tooltip-when-elided="true" name="credits-button" style="background-color: rgba(38, 38, 38, 0.69); border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px;" />
             <ui:Button text="Erase Save File" display-tooltip-when-elided="true" name="erase-button" style="background-color: rgba(38, 38, 38, 0.69); border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px;" />
             <ui:Button text="Help &amp; Support" display-tooltip-when-elided="true" name="help-button" style="background-color: rgba(38, 38, 38, 0.69); border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px; border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px;" />

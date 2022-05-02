@@ -40,6 +40,7 @@ public class OptionsMenuBehaviour : MonoBehaviour
 		sfxSlider = rve.Q<Slider>("vol-sfx");
 		musicSlider = rve.Q<Slider>("vol-music");
 		envSlider = rve.Q<Slider>("vol-env");
+		saveFileName = rve.Q<TextField>("savefile-name");
 		
 		rve.RegisterCallback<GeometryChangedEvent>(ev => { Rescale(); });
 		
@@ -68,6 +69,7 @@ public class OptionsMenuBehaviour : MonoBehaviour
 		sfxSlider.value = Mathf.Pow(10f, save.preferences.volSfx / 20f);
 		musicSlider.value = Mathf.Pow(10f, save.preferences.volMusic / 20f);
 		envSlider.value = Mathf.Pow(10f, save.preferences.volEnv / 20f);
+		saveFileName.value = save.preferences.saveFileName;
 		
 		rve.visible = true;
 	}
