@@ -5,6 +5,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using UnityEngine;
 using IngameDebugConsole;
+using Random = System.Random;
 
 public class SaveFileManager : MonoBehaviour
 {
@@ -25,18 +26,28 @@ public class SaveFileManager : MonoBehaviour
     [Serializable]
     public class Preferences
     {
-
+        public string saveFileName = "savedata";
+        public int devId = GenerateDeviceId();
+        public float volSfx = 0.0f;
+        public float volMusic = 0.0f;
+        public float volEnv = 0.0f;
     }
 
     public SaveData saveData;
     public Preferences preferences;
 
-    private string saveFileName = "savedata";
+    private static string deviceId;
+
+    private void Start()
+    {
+        deviceId = SystemInfo.deviceUniqueIdentifier;
+        preferences = new Preferences();
+    }
 
     public void SaveSaveData()
     {
         var form = new BinaryFormatter();
-        var path = Application.persistentDataPath + "/" + saveFileName + ".dat";
+        var path = Application.persistentDataPath + "/" + preferences.saveFileName + ".dat";
         var fs = new FileStream(path, FileMode.Create);
 
         form.Serialize(fs, saveData);
@@ -45,7 +56,7 @@ public class SaveFileManager : MonoBehaviour
 
     public void LoadSaveData()
     {
-        var path = Application.persistentDataPath + "/" + saveFileName + ".dat";
+        var path = Application.persistentDataPath + "/" + preferences.saveFileName + ".dat";
 
         if (File.Exists(path))
         {
@@ -62,8 +73,15 @@ public class SaveFileManager : MonoBehaviour
 
     public bool SaveDataExists()
     {
-        var path = Application.persistentDataPath + "/" + saveFileName + ".dat";
+        var path = Application.persistentDataPath + "/" + preferences.saveFileName + ".dat";
         return File.Exists(path);
+    }
+
+    public void DeleteSave()
+    {
+        var path = Application.persistentDataPath + "/" + preferences.saveFileName + ".dat";
+        File.Delete(path);
+        saveData = new SaveData();
     }
 
     public void SavePreferences()
@@ -97,6 +115,13 @@ public class SaveFileManager : MonoBehaviour
     {
         var path = Application.persistentDataPath + "/playerprefs.dat";
         return File.Exists(path);
+    }
+
+    public void DeletePrefs()
+    {
+        var path = Application.persistentDataPath + "/playerprefs.dat";
+        File.Delete(path);
+        preferences = new Preferences();
     }
 
     [ConsoleMethod("file.save", "")]
@@ -136,6 +161,25 @@ public class SaveFileManager : MonoBehaviour
         var save = GameObject.FindObjectOfType<SaveFileManager>();
         save.saveData.coins = newCoinValue;
         GetCoins();
+    }
+    
+    private static int GenerateDeviceId()
+    {
+        int hash = 0;
+        Debug.Log("ID:" + deviceId);
+        if (deviceId == SystemInfo.unsupportedIdentifier)
+        {
+            hash = new Random().Next();
+        }
+        else
+        {
+            for (int i = 0; i < deviceId.Length; i++)
+            {
+                hash += deviceId[i];
+            }
+        }
+
+        return hash;
     }
 
 }
