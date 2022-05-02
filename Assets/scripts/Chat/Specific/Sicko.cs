@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum SickoPhase
+{
+    HELP,
+    HELP_LOOP,
+    THANKS,
+    THANKS_LOOP
+}
+
 public class Sicko : Conversation
 {
     public string[] helpScript;
@@ -12,9 +20,12 @@ public class Sicko : Conversation
     public GameObject soup;
     public AudioSource sfx_place;
     public int dropLine;
+
+    private SickoPhase phase;
     // Start is called before the first frame update
     void Start()
     {
+        phase = SickoPhase.HELP;
         script = helpScript;
     }
     void Update()
@@ -25,26 +36,46 @@ public class Sicko : Conversation
         }
         if (neighbor.encountered)
         {
-            if (script == helpScript || script == helpLoopScript)
+            if (phase == SickoPhase.HELP || phase == SickoPhase.HELP_LOOP)
             {
-                script = thanksScript;
+                phase = SickoPhase.THANKS;
             }
         }
     }
+
+    public override void OnConversationStart()
+    {
+        switch (phase)
+        {
+            case SickoPhase.HELP_LOOP:
+                script = helpLoopScript;
+                break;
+            case SickoPhase.THANKS:
+                script = thanksScript;
+                break;
+            case SickoPhase.THANKS_LOOP:
+                script = thanksLoopScript;
+                break;
+            default:
+                script = helpScript;
+                break;
+        }
+    }
+    
     public override void OnConversationEnd()
     {
-        if (script == helpScript)
+        if (phase == SickoPhase.HELP)
         {
-            script = helpLoopScript;
+            phase = SickoPhase.HELP_LOOP;
         }
-        if (script == thanksScript)
+        if (phase == SickoPhase.THANKS)
         {
-            script = thanksLoopScript;
+            phase = SickoPhase.THANKS_LOOP;
         }
     }
     public override void OnConversationLineUpdate(int index)
     {
-        if (script == thanksScript)
+        if (phase == SickoPhase.THANKS)
         {
             if (index == dropLine)
             {
