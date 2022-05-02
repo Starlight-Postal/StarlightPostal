@@ -41,13 +41,12 @@ public class BalloonEquipter : Interractable
 
     [SerializeField] private VisualElement rve;
 
-    public global_data gdata;
+    private SaveFileManager save;
 
     private void Start()
     {
         playerInRange = false;
         visualCue.SetActive(false);
-        gdata = GameObject.Find("Coin Global Data").GetComponent<global_data>();
         updateShop();
     }
 
@@ -66,6 +65,7 @@ public class BalloonEquipter : Interractable
 
     private void OnEnable()
     {
+        save = GameObject.FindObjectOfType<SaveFileManager>();
         rve = GetComponent<UIDocument>().rootVisualElement;
 
         Shop = rve.Q<Label>("Shop");
@@ -95,111 +95,111 @@ public class BalloonEquipter : Interractable
 
         Button0.RegisterCallback<ClickEvent>(ev =>
         {
-            if (gdata.balloon0 == 1 && !(gdata.balloon == 0))
+            if (save.saveData.balloonUnlock[0] && !(save.saveData.equippedBalloon == 0))
             {
                 Label0.text = "Equipped";
                 balloon.ChangeBalloonSkin("stripes-1");
-                gdata.balloon = 0;
+                save.saveData.equippedBalloon = 0;
             }
         });
         Button1.RegisterCallback<ClickEvent>(ev =>
         {
-            if (gdata.balloon1 == 1 && !(gdata.balloon == 1))
+            if (save.saveData.balloonUnlock[1] && !(save.saveData.equippedBalloon == 1))
             {
                 Label1.text = "Equipped";
                 balloon.ChangeBalloonSkin("Skin_pattern_01");
-                gdata.balloon = 1;
+                save.saveData.equippedBalloon = 1;
             }
         });
         Button2.RegisterCallback<ClickEvent>(ev =>
         {
-            if (gdata.balloon2 == 1 && !(gdata.balloon == 2))
+            if (save.saveData.balloonUnlock[2] && !(save.saveData.equippedBalloon == 2))
             {
                 Label2.text = "Equipped";
                 balloon.ChangeBalloonSkin("skin_image_01");
-                gdata.balloon = 2;
+                save.saveData.equippedBalloon = 2;
             }
         });
         Button3.RegisterCallback<ClickEvent>(ev =>
         {
-            if (gdata.balloon3 == 1 && !(gdata.balloon == 3))
+            if (save.saveData.balloonUnlock[3] && !(save.saveData.equippedBalloon == 3))
             {
                 Label3.text = "Equipped";
                 balloon.ChangeBalloonSkin("skin_shape_01");
-                gdata.balloon = 3;
+                save.saveData.equippedBalloon = 3;
             }
         });
         Button4.RegisterCallback<ClickEvent>(ev =>
         {
-            if (gdata.balloon4 == 1 && !(gdata.balloon == 4))
+            if (save.saveData.balloonUnlock[4] && !(save.saveData.equippedBalloon == 4))
             {
                 Label4.text = "Equipped";
                 balloon.ChangeBalloonSkin("Skin_pattern_02");
-                gdata.balloon = 4;
+                save.saveData.equippedBalloon = 4;
             }
         });
         Button5.RegisterCallback<ClickEvent>(ev =>
         {
-            if (gdata.balloon5 == 1 && !(gdata.balloon == 5))
+            if (save.saveData.balloonUnlock[5] && !(save.saveData.equippedBalloon == 5))
             {
                 Label5.text = "Equipped";
                 balloon.ChangeBalloonSkin("skin_image_02");
-                gdata.balloon = 5;
+                save.saveData.equippedBalloon = 5;
             }
         });
         Button6.RegisterCallback<ClickEvent>(ev =>
         {
-            if (gdata.balloon6 == 1 && !(gdata.balloon == 6))
+            if (save.saveData.balloonUnlock[6] && !(save.saveData.equippedBalloon == 6))
             {
                 Label6.text = "Equipped";
                 balloon.ChangeBalloonSkin("skin_shape_02");
-                gdata.balloon = 6;
+                save.saveData.equippedBalloon = 6;
             }
         });
         Button7.RegisterCallback<ClickEvent>(ev =>
         {
-            if (gdata.balloon7 == 1 && !(gdata.balloon == 7))
+            if (save.saveData.balloonUnlock[7] && !(save.saveData.equippedBalloon == 7))
             {
                 Label7.text = "Equipped";
                 balloon.ChangeBalloonSkin("Skin_pattern_03");
-                gdata.balloon = 7;
+                save.saveData.equippedBalloon = 7;
             }
         });
         Button8.RegisterCallback<ClickEvent>(ev =>
         {
-            if (gdata.balloon8 == 1 && !(gdata.balloon == 8))
+            if (save.saveData.balloonUnlock[8] && !(save.saveData.equippedBalloon == 8))
             {
                 Label8.text = "Equipped";
                 balloon.ChangeBalloonSkin("skin_image_03");
-                gdata.balloon = 8;
+                save.saveData.equippedBalloon = 8;
             }
         });
         Button9.RegisterCallback<ClickEvent>(ev =>
         {
         
-            if (gdata.balloon9 == 1 && !(gdata.balloon == 9))
+            if (save.saveData.balloonUnlock[9] && !(save.saveData.equippedBalloon == 9))
             {
                 Label9.text = "Equipped";
                 balloon.ChangeBalloonSkin("skin_shape_03");
-                gdata.balloon = 9;
+                save.saveData.equippedBalloon = 9;
             }
         });
         Button10.RegisterCallback<ClickEvent>(ev =>
         {
-            if (gdata.balloon == 10)
+            if (save.saveData.equippedBalloon == 10)
             {
                 balloon.ChangeBalloonSkin("logo-1");
-                gdata.balloon = 11;
+                save.saveData.equippedBalloon = 11;
             }
-            else if(gdata.balloon == 11)
+            else if(save.saveData.equippedBalloon == 11)
             {
                 balloon.ChangeBalloonSkin("Cool_Balloonie");
-                gdata.balloon = 12;
+                save.saveData.equippedBalloon = 12;
             }
             else
             {
                 balloon.ChangeBalloonSkin("epic");
-                gdata.balloon = 10;
+                save.saveData.equippedBalloon = 10;
             }
         });
        
@@ -208,27 +208,27 @@ public class BalloonEquipter : Interractable
 
     private void updateShop()
     {
-        if (gdata.balloon0 == 1 && !(gdata.balloon == 0)) { Label0.text = "Unlocked"; }
-        if (gdata.balloon1 == 1 && !(gdata.balloon == 1)) { Label1.text = "Unlocked"; }
-        if (gdata.balloon2 == 1 && !(gdata.balloon == 2)) { Label2.text = "Unlocked"; }
-        if (gdata.balloon3 == 1 && !(gdata.balloon == 3)) { Label3.text = "Unlocked"; }
-        if (gdata.balloon4 == 1 && !(gdata.balloon == 4)) { Label4.text = "Unlocked"; }
-        if (gdata.balloon5 == 1 && !(gdata.balloon == 5)) { Label5.text = "Unlocked"; }
-        if (gdata.balloon6 == 1 && !(gdata.balloon == 6)) { Label6.text = "Unlocked"; }
-        if (gdata.balloon7 == 1 && !(gdata.balloon == 7)) { Label7.text = "Unlocked"; }
-        if (gdata.balloon8 == 1 && !(gdata.balloon == 8)) { Label8.text = "Unlocked"; }
-        if (gdata.balloon9 == 1 && !(gdata.balloon == 9)) { Label9.text = "Unlocked"; }
+        if (save.saveData.balloonUnlock[0] && !(save.saveData.equippedBalloon == 0)) { Label0.text = "Unlocked"; }
+        if (save.saveData.balloonUnlock[1] && !(save.saveData.equippedBalloon == 1)) { Label1.text = "Unlocked"; }
+        if (save.saveData.balloonUnlock[2] && !(save.saveData.equippedBalloon == 2)) { Label2.text = "Unlocked"; }
+        if (save.saveData.balloonUnlock[3] && !(save.saveData.equippedBalloon == 3)) { Label3.text = "Unlocked"; }
+        if (save.saveData.balloonUnlock[4] && !(save.saveData.equippedBalloon == 4)) { Label4.text = "Unlocked"; }
+        if (save.saveData.balloonUnlock[5] && !(save.saveData.equippedBalloon == 5)) { Label5.text = "Unlocked"; }
+        if (save.saveData.balloonUnlock[6] && !(save.saveData.equippedBalloon == 6)) { Label6.text = "Unlocked"; }
+        if (save.saveData.balloonUnlock[7] && !(save.saveData.equippedBalloon == 7)) { Label7.text = "Unlocked"; }
+        if (save.saveData.balloonUnlock[8] && !(save.saveData.equippedBalloon == 8)) { Label8.text = "Unlocked"; }
+        if (save.saveData.balloonUnlock[9] && !(save.saveData.equippedBalloon == 9)) { Label9.text = "Unlocked"; }
 
-        if (gdata.balloonSkin == 0) { Label0.text = "Equipped"; }
-        if (gdata.balloonSkin == 1) { Label1.text = "Equipped"; }
-        if (gdata.balloonSkin == 2) { Label2.text = "Equipped"; }
-        if (gdata.balloonSkin == 3) { Label3.text = "Equipped"; }
-        if (gdata.balloonSkin == 4) { Label4.text = "Equipped"; }
-        if (gdata.balloonSkin == 5) { Label5.text = "Equipped"; }
-        if (gdata.balloonSkin == 6) { Label6.text = "Equipped"; }
-        if (gdata.balloonSkin == 7) { Label7.text = "Equipped"; }
-        if (gdata.balloonSkin == 8) { Label8.text = "Equipped"; }
-        if (gdata.balloonSkin == 9) { Label9.text = "Equipped"; }
+        if (save.saveData.equippedBalloon == 0) { Label0.text = "Equipped"; }
+        if (save.saveData.equippedBalloon == 1) { Label1.text = "Equipped"; }
+        if (save.saveData.equippedBalloon == 2) { Label2.text = "Equipped"; }
+        if (save.saveData.equippedBalloon == 3) { Label3.text = "Equipped"; }
+        if (save.saveData.equippedBalloon == 4) { Label4.text = "Equipped"; }
+        if (save.saveData.equippedBalloon == 5) { Label5.text = "Equipped"; }
+        if (save.saveData.equippedBalloon == 6) { Label6.text = "Equipped"; }
+        if (save.saveData.equippedBalloon == 7) { Label7.text = "Equipped"; }
+        if (save.saveData.equippedBalloon == 8) { Label8.text = "Equipped"; }
+        if (save.saveData.equippedBalloon == 9) { Label9.text = "Equipped"; }
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
@@ -266,19 +266,19 @@ public class BalloonEquipter : Interractable
 
     private void updateButtons()
     {
-        if (gdata.stage >= 1)
+        if (save.saveData.stage >= 1)
         {
             Button1.text = "Sunset";
             Button2.text = "Sycamore";
             Button3.text = "Steamtrain";
         }
-        if (gdata.stage >= 2)
+        if (save.saveData.stage >= 2)
         {
             Button4.text = "Spelunker";
             Button5.text = "Toadstool";
             Button6.text = "Vesper";
         }
-        if (gdata.stage == 3)
+        if (save.saveData.stage == 3)
         {
             Button7.text = "Aurora";
             Button8.text = "Blizzard";

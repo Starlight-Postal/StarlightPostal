@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using IngameDebugConsole;
+using UnityEngine.SceneManagement;
 
 public class balloon : MonoBehaviour
 {
@@ -68,7 +69,8 @@ public class balloon : MonoBehaviour
 
     public bool lockEntry = false;
 
-    global_data gdata;
+    private global_data gdata;
+    private SaveFileManager saveData;
 
     public GameObject dropCoin;
 
@@ -87,18 +89,20 @@ public class balloon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gdata = GameObject.Find("Coin Global Data").GetComponent<global_data>();
+        gdata = GameObject.FindObjectsOfType<global_data>()[0];
+        saveData = GameObject.FindObjectOfType<SaveFileManager>();
         //rb = gameObject.GetComponent<Rigidbody2D>();
         //trans = gameObject.GetComponent<Transform>();
         sprite = gameObject.GetComponent<SpriteRenderer>();
-        sprite.sprite = gdata.skins[gdata.balloonSkin];
-        float capdata = gdata.getHeightCap();
+        sprite.sprite = gdata.skins[saveData.saveData.equippedBalloon];
+        
+        float capdata = getHeightCap();
         if (capdata > heightCap)
         {
             heightCap = capdata;
         } else
         {
-            gdata.setHeightCap(heightCap);
+            setHeightCap(heightCap);
         }
 
         lean = 0;
@@ -222,11 +226,46 @@ public class balloon : MonoBehaviour
         }
 
         //sprite.sprite = gdata.skins[gdata.balloonSkin];
-        gdata.balloonSkin = gdata.getSkin(sprite.sprite);
-        float capdata = gdata.getHeightCap();
+        saveData.saveData.equippedBalloon = gdata.getSkin(sprite.sprite);
+        
+        float capdata = getHeightCap();
         if (capdata < heightCap)
         {
-            gdata.setHeightCap(heightCap);
+            setHeightCap(heightCap);
+        }
+    }
+    
+    
+
+    public float getHeightCap()
+    {
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "level 1":
+                return saveData.saveData.heightCaps[0];
+            case "level 2":
+                return saveData.saveData.heightCaps[1];
+            case "level 3":
+                return saveData.saveData.heightCaps[2];
+            default:
+                return 0;
+        }
+    }
+    public void setHeightCap(float cap)
+    {
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "level 1":
+                saveData.saveData.heightCaps[0] = cap;
+                return;
+            case "level 2":
+                saveData.saveData.heightCaps[1] = cap;
+                return;
+            case "level 3":
+                saveData.saveData.heightCaps[2] = cap;
+                return;
+            default:
+                return;
         }
     }
 
@@ -363,14 +402,14 @@ public class balloon : MonoBehaviour
     void dropCoins(int n)
     {
         //Debug.Log(n);
-        if (n > gdata.coins)
+        if (n > saveData.saveData.coins)
         {
-            n = gdata.coins;
+            n = saveData.saveData.coins;
         }
 
         bonk.CoinsDropped(n);
 
-        gdata.coins -= n;
+        saveData.saveData.coins -= n;
         for(int i = 0;i < n;i++)
         {
             Instantiate(dropCoin, basketTrans.position, Quaternion.identity);
@@ -453,10 +492,10 @@ public class balloon : MonoBehaviour
     public void SetHeightCap(float newHeightCap) {
         heightCap = newHeightCap;
         GetHeightCap();
-        float capdata = gdata.getHeightCap();
+        float capdata = getHeightCap();
         if (capdata < heightCap)
         {
-            gdata.setHeightCap(heightCap);
+            setHeightCap(heightCap);
         }
     }
 

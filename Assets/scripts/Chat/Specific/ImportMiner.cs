@@ -16,13 +16,19 @@ public class ImportMiner : Conversation
     public int dropLine;
     public int payLine;
     public int pay;
-    public global_data gdata;
+
+    private SaveFileManager save;
     // Start is called before the first frame update
     void Start()
     {
         script = helpScript;
         //scriptIndex = 0;
-        gdata = GameObject.Find("Coin Global Data").GetComponent<global_data>();
+    }
+
+    private void OnEnable()
+    {
+        base.OnEnable();
+        save = GameObject.FindObjectOfType<SaveFileManager>();
     }
 
     // Update is called once per frame
@@ -63,7 +69,7 @@ public class ImportMiner : Conversation
             }
             if (index == payLine)
             {
-                gdata.coins += pay;
+                save.saveData.coins += pay;
                 sfx_pay.Play(0);
             }
         }

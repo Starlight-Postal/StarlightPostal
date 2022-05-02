@@ -13,12 +13,18 @@ public class credits : MonoBehaviour
     public int fadeLength = 3;
     public SpriteRenderer fade;
     public string nextLevel;
-    global_data gdata;
+    SaveFileManager gdata;
+    global_data glob;
     // Start is called before the first frame update
     void Start()
     {
         TICK = 0;
-        gdata = GameObject.Find("Coin Global Data").GetComponent<global_data>();
+    }
+
+    private void OnEnable()
+    {
+        gdata = GameObject.FindObjectOfType<SaveFileManager>();
+        glob = GameObject.FindObjectOfType<global_data>();
     }
 
     // Update is called once per frame
@@ -46,14 +52,14 @@ public class credits : MonoBehaviour
         TICK++;
         if (TICK > end * fps)
         {
-            if (gdata.creditsBackToMenu)
+            if (glob.creditsBackToMenu)
             {
                 SceneManager.LoadScene("Main Menu");
-                gdata.creditsBackToMenu = false;
+                glob.creditsBackToMenu = false;
             }
             else
             {
-                gdata.introScene = false;
+                gdata.saveData.introScene = false;
                 CheckpointManager.GotoCheckpoint(-2, "level 1");
             }
         }

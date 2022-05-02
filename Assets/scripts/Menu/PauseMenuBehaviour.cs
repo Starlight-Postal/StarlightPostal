@@ -76,11 +76,13 @@ public class PauseMenuBehaviour : NavigatableMenu {
     }
 
     private void LoadMainMenu() {
+        GameObject.FindObjectsOfType<SaveFileManager>()[0].SaveSaveData();
         Time.timeScale = 1;
         SceneManager.LoadScene("Main Menu");
     }
 
     private void QuitGame() {
+        GameObject.FindObjectsOfType<SaveFileManager>()[0].SaveSaveData();
         Application.Quit();
     }
 

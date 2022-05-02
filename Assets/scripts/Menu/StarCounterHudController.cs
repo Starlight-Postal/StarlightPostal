@@ -8,16 +8,16 @@ public class StarCounterHudController : MonoBehaviour {
     private VisualElement rve;
     private Label label;
 
-    private global_data gd;
+    private SaveFileManager gd;
 
     private void OnEnable() {
         rve = GetComponent<UIDocument>().rootVisualElement;
         label = rve.Q<Label>("star-counter-label");
-        gd = GameObject.Find("Coin Global Data").GetComponent<global_data>();
+        gd = GameObject.FindObjectsOfType<SaveFileManager>()[0];
     }
 
     private void FixedUpdate() {
-        label.text = gd.coins.ToString();
+        label.text = gd.saveData.coins.ToString();
     }
 
 }

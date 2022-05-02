@@ -52,13 +52,24 @@ public class MainMenuBehaviour : NavigatableMenu {
         }
     }
 
-    private void ContinueGame() {
-        StartNewGame();
+    private void ContinueGame()
+    {
+        var save = GameObject.FindObjectOfType<SaveFileManager>();
+        save.LoadSaveData();
+
+        if (save.saveData.introScene)
+        {
+            StartNewGame();
+        }
+        else
+        {
+            CheckpointManager.Respawn();
+        }
     }
 
     private void StartNewGame()
     {
-        GameObject.FindObjectOfType<global_data>().introScene = true;
+        GameObject.FindObjectOfType<SaveFileManager>().saveData.introScene = true;
         SceneManager.LoadScene("level 1");
     }
 
