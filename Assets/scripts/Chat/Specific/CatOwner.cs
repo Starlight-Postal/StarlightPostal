@@ -26,6 +26,8 @@ public class CatOwner : Conversation
     public Sprite sad;
 
     private CatOwnerPhase phase;
+
+    private SaveFileManager save;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +35,7 @@ public class CatOwner : Conversation
         //scriptIndex = 0;
         sprite.sprite = sad;
         phase = CatOwnerPhase.HELP;
+        save = GameObject.FindObjectOfType<SaveFileManager>();
     }
 
     // Update is called once per frame
@@ -42,7 +45,7 @@ public class CatOwner : Conversation
         {
             player = GameObject.FindObjectsOfType<player>()[0];
         }
-        if (tree.found)
+        if (save.saveData.treeCatFound)
         {
             if (script == helpScript || script == helpLoopScript)
             {
@@ -64,7 +67,7 @@ public class CatOwner : Conversation
     }
     public override void OnConversationStart()
     {
-        if (tree.found)
+        if (save.saveData.treeCatFound)
         {
             sprite.sprite = happy;
         }
