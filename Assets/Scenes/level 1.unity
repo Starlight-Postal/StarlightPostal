@@ -4964,6 +4964,11 @@ PrefabInstance:
       propertyPath: recipient
       value: 
       objectReference: {fileID: 216653753}
+    - target: {fileID: 304300000617169906, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
+      propertyPath: scriptBalloon.Array.data[18]
+      value: Nice job! Now lower the balloon closer to the ground. Then we can press
+        SPACE again to hop out.
+      objectReference: {fileID: 0}
     - target: {fileID: 907948254344770873, guid: 82740704e2bdffe43b38546f553bb41a, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.25
