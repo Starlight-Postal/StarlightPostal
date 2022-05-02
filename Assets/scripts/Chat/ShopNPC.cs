@@ -121,12 +121,12 @@ public class ShopNPC : Interractable
                 save.saveData.coins = save.saveData.coins - 250;
                 save.saveData.balloonUnlock[3] = true;
             }
-            else if (save.saveData.coins >= 350 && !(save.saveData.balloonUnlock[6]) && stage == 2)
+            else if (save.saveData.coins >= 250 && !(save.saveData.balloonUnlock[6]) && stage == 2)
             {
                 save.saveData.coins = save.saveData.coins - 250;
                 save.saveData.balloonUnlock[6] = true;
             }
-            else if (save.saveData.coins >= 450 && !(save.saveData.balloonUnlock[9]) && stage == 3)
+            else if (save.saveData.coins >= 250 && !(save.saveData.balloonUnlock[9]) && stage == 3)
             {
                 save.saveData.coins = save.saveData.coins - 250;
                 save.saveData.balloonUnlock[9] = true;
