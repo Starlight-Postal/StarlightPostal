@@ -84,7 +84,7 @@ class PostOfficeClerk : Conversation
 
 }
 
-enum MailPhase
+public enum MailPhase
 {
     MAILDROP,
     DELIVERY,
