@@ -36,6 +36,14 @@ public class SaveFileManager : MonoBehaviour
     public SaveData saveData;
     public Preferences preferences;
 
+    private static string deviceId;
+
+    private void Start()
+    {
+        deviceId = SystemInfo.deviceUniqueIdentifier;
+        preferences = new Preferences();
+    }
+
     public void SaveSaveData()
     {
         var form = new BinaryFormatter();
@@ -158,7 +166,7 @@ public class SaveFileManager : MonoBehaviour
     private static int GenerateDeviceId()
     {
         int hash = 0;
-        var deviceId = SystemInfo.deviceUniqueIdentifier;
+        Debug.Log("ID:" + deviceId);
         if (deviceId == SystemInfo.unsupportedIdentifier)
         {
             hash = new Random().Next();
