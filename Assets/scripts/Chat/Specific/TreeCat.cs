@@ -64,7 +64,7 @@ public class TreeCat : Conversation
         }
     }
 
-    public override void OnConversationEnd()
+    public override void OnConversationStart()
     {
         Debug.Log("hello mario");
         if (found)
