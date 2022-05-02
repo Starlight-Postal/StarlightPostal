@@ -98,7 +98,7 @@ public class MainMenuBehaviour : NavigatableMenu {
         
         Debug.Log("w/h" + Screen.width + " " + Screen.height);
 
-        #if PLATFORM_ANDROID
+#if PLATFORM_ANDROID
         contHeight /= 2;
         contWidth /= 2;
         if ((float) Screen.width / (float) Screen.height >= 2)
@@ -106,9 +106,18 @@ public class MainMenuBehaviour : NavigatableMenu {
             contHeight /= 2;
             contWidth /= 2;
         }
-        #endif
-        
-        
+#endif
+#if UNITY_STANDALONE_OSX
+        contHeight /= 2;
+        contWidth /= 2;
+        if ((float) Screen.width / (float) Screen.height >= 2)
+        {
+            contHeight /= 2;
+            contWidth /= 2;
+        }
+#endif
+
+
         Debug.Log("w/h" + contWidth + " " + contHeight);
         container.style.height = contHeight;
         container.style.width = contWidth;

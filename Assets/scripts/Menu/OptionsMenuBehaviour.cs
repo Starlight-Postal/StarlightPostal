@@ -162,7 +162,16 @@ public class OptionsMenuBehaviour : MonoBehaviour
             contWidth /= 2;
         }
 #endif
-            
+#if UNITY_STANDALONE_OSX
+        contHeight /= 2;
+        contWidth /= 2;
+        if ((float) Screen.width / (float) Screen.height >= 2)
+        {
+            contHeight /= 2;
+            contWidth /= 2;
+        }
+#endif
+
 		container.style.height = contHeight;
 		container.style.width = contWidth;
 	}

@@ -104,7 +104,7 @@ public class PauseMenuBehaviour : NavigatableMenu {
             contWidth = contHeight * CONT_APSPECT_RATIO;
         }
 
-        #if PLATFORM_ANDROID
+#if PLATFORM_ANDROID
         contHeight /= 2;
         contWidth /= 2;
         if ((float) Screen.width / (float) Screen.height >= 2)
@@ -112,8 +112,17 @@ public class PauseMenuBehaviour : NavigatableMenu {
             contHeight /= 2;
             contWidth /= 2;
         }
-        #endif
-            
+#endif
+#if UNITY_STANDALONE_OSX
+        contHeight /= 2;
+        contWidth /= 2;
+        if ((float) Screen.width / (float) Screen.height >= 2)
+        {
+            contHeight /= 2;
+            contWidth /= 2;
+        }
+#endif
+
         container.style.height = contHeight;
         container.style.width = contWidth;
     }
