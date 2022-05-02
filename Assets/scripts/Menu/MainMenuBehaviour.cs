@@ -69,7 +69,9 @@ public class MainMenuBehaviour : NavigatableMenu {
 
     private void StartNewGame()
     {
-        GameObject.FindObjectOfType<SaveFileManager>().saveData.introScene = true;
+        var save = GameObject.FindObjectOfType<SaveFileManager>();
+        save.saveData = new SaveFileManager.SaveData();
+        save.saveData.introScene = true;
         SceneManager.LoadScene("level 1");
     }
 
