@@ -21,12 +21,12 @@ public class Sicko : Conversation
     public AudioSource sfx_place;
     public int dropLine;
 
-    private SickoPhase phase;
+    private SaveFileManager save;
     // Start is called before the first frame update
     void Start()
     {
-        phase = SickoPhase.HELP;
         script = helpScript;
+        save = GameObject.FindObjectOfType<SaveFileManager>();
     }
     void Update()
     {
@@ -36,16 +36,16 @@ public class Sicko : Conversation
         }
         if (neighbor.encountered)
         {
-            if (phase == SickoPhase.HELP || phase == SickoPhase.HELP_LOOP)
+            if (save.saveData.sickoSnowmanPhase == SickoPhase.HELP || save.saveData.sickoSnowmanPhase == SickoPhase.HELP_LOOP)
             {
-                phase = SickoPhase.THANKS;
+                save.saveData.sickoSnowmanPhase = SickoPhase.THANKS;
             }
         }
     }
 
     public override void OnConversationStart()
     {
-        switch (phase)
+        switch (save.saveData.sickoSnowmanPhase)
         {
             case SickoPhase.HELP_LOOP:
                 script = helpLoopScript;
@@ -64,18 +64,18 @@ public class Sicko : Conversation
     
     public override void OnConversationEnd()
     {
-        if (phase == SickoPhase.HELP)
+        if (save.saveData.sickoSnowmanPhase == SickoPhase.HELP)
         {
-            phase = SickoPhase.HELP_LOOP;
+            save.saveData.sickoSnowmanPhase = SickoPhase.HELP_LOOP;
         }
-        if (phase == SickoPhase.THANKS)
+        if (save.saveData.sickoSnowmanPhase == SickoPhase.THANKS)
         {
-            phase = SickoPhase.THANKS_LOOP;
+            save.saveData.sickoSnowmanPhase = SickoPhase.THANKS_LOOP;
         }
     }
     public override void OnConversationLineUpdate(int index)
     {
-        if (phase == SickoPhase.THANKS)
+        if (save.saveData.sickoSnowmanPhase == SickoPhase.THANKS)
         {
             if (index == dropLine)
             {
