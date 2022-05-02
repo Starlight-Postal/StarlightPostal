@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class RecieveSkin : LoopingConversation
 {
-    public bool deliveredTo = false;
     public Sprite oldSkin;
     public Sprite newSkin;
     public SpriteRenderer skin;
@@ -12,10 +11,12 @@ public class RecieveSkin : LoopingConversation
 
 
     public int dropLine;
+
+    private SaveFileManager save;
     // Start is called before the first frame update
     void Start()
     {
-        
+        save = GameObject.FindObjectOfType<SaveFileManager>();
     }
 
     // Update is called once per frame
@@ -35,7 +36,7 @@ public class RecieveSkin : LoopingConversation
             {
                 skin.sprite = newSkin;
                 sound.Play();
-                deliveredTo = true;
+                save.saveData.skinRecieved = true;
             }
         }
     }

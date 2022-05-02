@@ -11,11 +11,18 @@ public class EncounterNPC : LoopingConversation
 
     public int dropLine;
 
+    private SaveFileManager save;
+
+    void Start()
+    {
+        save = GameObject.FindObjectOfType<SaveFileManager>();
+    }
+
     public override void OnConversationEnd()
     {
         base.OnConversationEnd();
         deliveredTo = true;
-        GameObject.FindObjectsOfType<PostOfficeClerk>()[0].phase = MailPhase.DELIVERED;
+        save.saveData.postOfficeClerkPhases[GameObject.FindObjectsOfType<PostOfficeClerk>()[0].level] = MailPhase.DELIVERED;
         //GameObject.FindObjectsOfType<TutorialNPC>()[0].phase = TutorialPhase.DELIVERED;
     }
 

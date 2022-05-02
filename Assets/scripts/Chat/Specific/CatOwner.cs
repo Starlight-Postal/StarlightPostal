@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum CatOwnerPhase
+{
+    HELP,
+    HELP_LOOP,
+    THANKS,
+    THANKS_LOOP
+}
+
 public class CatOwner : Conversation
 {
     public string[] helpScript;
@@ -16,12 +24,18 @@ public class CatOwner : Conversation
     public SpriteRenderer sprite;
     public Sprite happy;
     public Sprite sad;
+
+    private CatOwnerPhase phase;
+
+    private SaveFileManager save;
     // Start is called before the first frame update
     void Start()
     {
         script = helpScript;
         //scriptIndex = 0;
         sprite.sprite = sad;
+        phase = CatOwnerPhase.HELP;
+        save = GameObject.FindObjectOfType<SaveFileManager>();
     }
 
     // Update is called once per frame
@@ -31,7 +45,7 @@ public class CatOwner : Conversation
         {
             player = GameObject.FindObjectsOfType<player>()[0];
         }
-        if (tree.found)
+        if (save.saveData.treeCatFound)
         {
             if (script == helpScript || script == helpLoopScript)
             {
@@ -39,27 +53,43 @@ public class CatOwner : Conversation
             }
         }
     }
+    
     public override void OnConversationEnd()
     {
-        if (script == helpScript)
+        if (phase == CatOwnerPhase.HELP)
         {
-            script = helpLoopScript;
+            phase = CatOwnerPhase.HELP_LOOP;
         }
-        if (script == thanksScript)
+        if (phase == CatOwnerPhase.THANKS)
         {
-            script = thanksLoopScript;
+            phase = CatOwnerPhase.THANKS_LOOP;
         }
     }
     public override void OnConversationStart()
     {
-        if (tree.found)
+        if (save.saveData.treeCatFound)
         {
             sprite.sprite = happy;
+        }
+        switch (phase)
+        {
+            case CatOwnerPhase.HELP_LOOP:
+                script = helpLoopScript;
+                break;
+            case CatOwnerPhase.THANKS:
+                script = thanksScript;
+                break;
+            case CatOwnerPhase.THANKS_LOOP:
+                script = thanksLoopScript;
+                break;
+            default:
+                script = helpScript;
+                break;
         }
     }
     public override void OnConversationLineUpdate(int index)
     {
-        if (script == thanksScript)
+        if (phase == CatOwnerPhase.THANKS)
         {
             if (index == dropLine)
             {

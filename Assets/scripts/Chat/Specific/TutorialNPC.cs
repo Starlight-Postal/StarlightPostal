@@ -35,8 +35,8 @@ public class TutorialNPC : Conversation
 
     private float prevTH;
 
-    public TutorialPhase phase = TutorialPhase.INTRO;
     private int subphase;
+    private SaveFileManager save;
 
     private FacePlayer face;
 
@@ -59,6 +59,7 @@ public class TutorialNPC : Conversation
         balloonScript = GameObject.Find("balloon").GetComponent<balloon>();
         playerScript = GameObject.Find("player").GetComponent<player>();
         face = GetComponent<FacePlayer>();
+        save = GameObject.FindObjectOfType<SaveFileManager>();
     }
 
     private void AnimationStart()
@@ -83,7 +84,7 @@ public class TutorialNPC : Conversation
 
     private void FixedUpdate()
     {
-        if (phase == TutorialPhase.BALLOON && !playerScript.inBalloon && balloonTrans.position.x >= 550)
+        if (save.saveData.tutorialPhase == TutorialPhase.BALLOON && !playerScript.inBalloon && balloonTrans.position.x >= 550)
         {
             EndConversation();
         }
@@ -223,15 +224,15 @@ public class TutorialNPC : Conversation
         }*/
         if (recipient.deliveredTo)
         {
-            if (phase == TutorialPhase.POSTOFFICE)
+            if (save.saveData.tutorialPhase == TutorialPhase.POSTOFFICE)
             {
-                phase = TutorialPhase.POSTOFFICEDELIVERY;
-            } else if(phase == TutorialPhase.BAR)
+                save.saveData.tutorialPhase = TutorialPhase.POSTOFFICEDELIVERY;
+            } else if(save.saveData.tutorialPhase == TutorialPhase.BAR)
             {
-                phase = TutorialPhase.DELIVERED;
+                save.saveData.tutorialPhase = TutorialPhase.DELIVERED;
             }
         }
-        switch (phase)
+        switch (save.saveData.tutorialPhase)
         {
             default:
             case TutorialPhase.INTRO:
@@ -267,22 +268,22 @@ public class TutorialNPC : Conversation
 
     public override void OnConversationEnd()
     {
-        switch (phase)
+        switch (save.saveData.tutorialPhase)
         {
             case TutorialPhase.INTRO:
-                phase = TutorialPhase.BALLOON;
+                save.saveData.tutorialPhase = TutorialPhase.BALLOON;
                 break;
             case TutorialPhase.BALLOON:
-                phase = TutorialPhase.LANDED;
+                save.saveData.tutorialPhase = TutorialPhase.LANDED;
                 trans.position = new Vector3(578.0f, 39.42f, 0);
                 body.SetActive(true);
                 balloonScript.captainIsWith = false;
                 break;
             case TutorialPhase.LANDED:
-                phase = TutorialPhase.POSTOFFICE;
+                save.saveData.tutorialPhase = TutorialPhase.POSTOFFICE;
                 break;
             case TutorialPhase.POSTOFFICEDELIVERY:
-                phase = TutorialPhase.BAR;
+                save.saveData.tutorialPhase = TutorialPhase.BAR;
                 break;
         }
         scriptIndex = 0;
@@ -290,12 +291,12 @@ public class TutorialNPC : Conversation
 
     public override void OnConversationLineUpdate(int index)
     {
-        if (phase == TutorialPhase.BALLOON && index == 4)
+        if (save.saveData.tutorialPhase == TutorialPhase.BALLOON && index == 4)
         {
             body.SetActive(false);
             balloonScript.captainIsWith = true;
         }
-        if (phase == TutorialPhase.BALLOON && index == 8)
+        if (save.saveData.tutorialPhase == TutorialPhase.BALLOON && index == 8)
         {
             prevTH = balloonScript.th;
         }
@@ -304,7 +305,7 @@ public class TutorialNPC : Conversation
     // For when we want the player to be able to advance to the next line
     public override bool CanPlayerContinue(int index)
     {
-        if (phase == TutorialPhase.BALLOON)
+        if (save.saveData.tutorialPhase == TutorialPhase.BALLOON)
         {
             switch (index)
             {
@@ -324,7 +325,7 @@ public class TutorialNPC : Conversation
     // For when we want to automatically advance to the next line
     public override bool AutoAdvanceConditionMet(int index)
     {
-        switch (phase)
+        switch (save.saveData.tutorialPhase)
         {
             case TutorialPhase.INTRO:
                 return index == 6;
@@ -366,7 +367,7 @@ public class TutorialNPC : Conversation
     public override bool ReadyToAdvanceTo(int index)
     {
         //Debug.Log(phase);
-        switch (phase)
+        switch (save.saveData.tutorialPhase)
         {
             case TutorialPhase.INTRO:
                 if (index == 6)
@@ -415,7 +416,7 @@ public class TutorialNPC : Conversation
     // allowing the interract event to go to the balloon even when the tutorial npc is closer
     public override bool CanPlayerInterract()
     {
-        if (phase == TutorialPhase.BALLOON && scriptIndex >= 3)
+        if (save.saveData.tutorialPhase == TutorialPhase.BALLOON && scriptIndex >= 3)
         {
             return false;
         }

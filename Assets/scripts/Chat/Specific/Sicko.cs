@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum SickoPhase
+{
+    HELP,
+    HELP_LOOP,
+    THANKS,
+    THANKS_LOOP
+}
+
 public class Sicko : Conversation
 {
     public string[] helpScript;
@@ -12,10 +20,13 @@ public class Sicko : Conversation
     public GameObject soup;
     public AudioSource sfx_place;
     public int dropLine;
+
+    private SaveFileManager save;
     // Start is called before the first frame update
     void Start()
     {
         script = helpScript;
+        save = GameObject.FindObjectOfType<SaveFileManager>();
     }
     void Update()
     {
@@ -25,26 +36,46 @@ public class Sicko : Conversation
         }
         if (neighbor.encountered)
         {
-            if (script == helpScript || script == helpLoopScript)
+            if (save.saveData.sickoSnowmanPhase == SickoPhase.HELP || save.saveData.sickoSnowmanPhase == SickoPhase.HELP_LOOP)
             {
-                script = thanksScript;
+                save.saveData.sickoSnowmanPhase = SickoPhase.THANKS;
             }
         }
     }
+
+    public override void OnConversationStart()
+    {
+        switch (save.saveData.sickoSnowmanPhase)
+        {
+            case SickoPhase.HELP_LOOP:
+                script = helpLoopScript;
+                break;
+            case SickoPhase.THANKS:
+                script = thanksScript;
+                break;
+            case SickoPhase.THANKS_LOOP:
+                script = thanksLoopScript;
+                break;
+            default:
+                script = helpScript;
+                break;
+        }
+    }
+    
     public override void OnConversationEnd()
     {
-        if (script == helpScript)
+        if (save.saveData.sickoSnowmanPhase == SickoPhase.HELP)
         {
-            script = helpLoopScript;
+            save.saveData.sickoSnowmanPhase = SickoPhase.HELP_LOOP;
         }
-        if (script == thanksScript)
+        if (save.saveData.sickoSnowmanPhase == SickoPhase.THANKS)
         {
-            script = thanksLoopScript;
+            save.saveData.sickoSnowmanPhase = SickoPhase.THANKS_LOOP;
         }
     }
     public override void OnConversationLineUpdate(int index)
     {
-        if (script == thanksScript)
+        if (save.saveData.sickoSnowmanPhase == SickoPhase.THANKS)
         {
             if (index == dropLine)
             {

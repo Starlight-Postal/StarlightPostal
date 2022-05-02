@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ImportMinerPhase
+{
+    HELP,
+    HELP_LOOP,
+    THANKS,
+    THANKS_LOOP
+}
+
 public class ImportMiner : Conversation
 {
     public string[] helpScript;
@@ -17,10 +25,12 @@ public class ImportMiner : Conversation
     public int payLine;
     public int pay;
 
+    private ImportMinerPhase phase;
     private SaveFileManager save;
     // Start is called before the first frame update
     void Start()
     {
+        phase = ImportMinerPhase.HELP;
         script = helpScript;
         //scriptIndex = 0;
     }
@@ -40,26 +50,46 @@ public class ImportMiner : Conversation
         }
         if (supplier.encountered)
         {
-            if (script == helpScript || script == helpLoopScript)
+            if (phase == ImportMinerPhase.HELP || phase == ImportMinerPhase.HELP_LOOP)
             {
-                script = thanksScript;
+                phase = ImportMinerPhase.THANKS;
             }
         }
     }
+    
+    public override void OnConversationStart()
+    {
+        switch (phase)
+        {
+            case ImportMinerPhase.HELP_LOOP:
+                script = helpLoopScript;
+                break;
+            case ImportMinerPhase.THANKS:
+                script = thanksScript;
+                break;
+            case ImportMinerPhase.THANKS_LOOP:
+                script = thanksLoopScript;
+                break;
+            default:
+                script = helpScript;
+                break;
+        }
+    }
+    
     public override void OnConversationEnd()
     {
-        if (script == helpScript)
+        if (phase == ImportMinerPhase.HELP)
         {
-            script = helpLoopScript;
+            phase = ImportMinerPhase.HELP_LOOP;
         }
-        if (script == thanksScript)
+        if (phase == ImportMinerPhase.THANKS)
         {
-            script = thanksLoopScript;
+            phase = ImportMinerPhase.THANKS_LOOP;
         }
     }
     public override void OnConversationLineUpdate(int index)
     {
-        if (script == thanksScript)
+        if (phase == ImportMinerPhase.THANKS)
         {
             if (index == dropLine)
             {

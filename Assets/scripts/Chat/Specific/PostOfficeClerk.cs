@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 class PostOfficeClerk : Conversation
 {
@@ -15,20 +16,31 @@ class PostOfficeClerk : Conversation
     public string[] script_delivered;
     public string[] script_done;
 
-    public MailPhase phase;
-
-    
+    private SaveFileManager save;
+    public int level = 0;
 
     private void Start()
     {
         base.Start();
-        phase = MailPhase.MAILDROP;
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "level 1":
+                level = 0;
+                break;
+            case "level 2":
+                level = 1;
+                break;
+            case "level 3":
+                level = 2;
+                break;
+        }
+        save = GameObject.FindObjectOfType<SaveFileManager>();
     }
 
     public override void OnConversationStart()
     {
         GameObject.FindObjectsOfType<balloon>()[0].heightCap = DELIVERED_HEIGHT_CAP; //failsafe
-        switch (phase)
+        switch (save.saveData.postOfficeClerkPhases[level])
         {
             case MailPhase.MAILDROP:
                 script = script_maildrop;
@@ -48,22 +60,22 @@ class PostOfficeClerk : Conversation
 
     public override void OnConversationEnd()
     {
-        switch (phase)
+        switch (save.saveData.postOfficeClerkPhases[level])
         {
             case MailPhase.MAILDROP:
-                phase = MailPhase.DELIVERY;
+                save.saveData.postOfficeClerkPhases[level] = MailPhase.DELIVERY;
                 GameObject.FindObjectsOfType<balloon>()[0].heightCap = DELIVERED_HEIGHT_CAP; //package optional
                 TutorialNPC captain = GameObject.FindObjectsOfType<TutorialNPC>()[0];
                 if (captain != null)
                 {
-                    captain.phase = TutorialPhase.POSTOFFICEDELIVERY;
+                    save.saveData.tutorialPhase = TutorialPhase.POSTOFFICEDELIVERY;
                 }
                 //GameObject.FindObjectsOfType<TutorialNPC>()[0].phase = TutorialPhase.POSTOFFICEDELIVERY;
                 break;
             case MailPhase.DELIVERY:
                 break;
             case MailPhase.DELIVERED:
-                phase = MailPhase.DONE;
+                save.saveData.postOfficeClerkPhases[level] = MailPhase.DONE;
                 //GameObject.FindObjectsOfType<balloon>()[0].heightCap = DELIVERED_HEIGHT_CAP; //package mandatory, but we should move this to the recipient instead if we want to do this
                 break;
             case MailPhase.DONE:
@@ -75,7 +87,7 @@ class PostOfficeClerk : Conversation
     public override void OnConversationLineUpdate(int index)
     {
         //Debug.Log(phase + " , " + index);
-        if (phase == MailPhase.MAILDROP && index == dropLine)
+        if (save.saveData.postOfficeClerkPhases[level] == MailPhase.MAILDROP && index == dropLine)
         {
             sound.Play(0);
             //Debug.Log("SOUND");
@@ -84,7 +96,7 @@ class PostOfficeClerk : Conversation
 
 }
 
-enum MailPhase
+public enum MailPhase
 {
     MAILDROP,
     DELIVERY,

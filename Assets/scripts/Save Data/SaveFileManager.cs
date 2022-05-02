@@ -21,6 +21,19 @@ public class SaveFileManager : MonoBehaviour
         public int equippedBalloon = 0;
         public bool[] balloonUnlock = {true, false, false, false, false, false, false, false, false, false, false};
         public float[] heightCaps = {60, 215, 180};
+        
+        //NPC State
+        public TutorialPhase tutorialPhase = TutorialPhase.INTRO;
+        public bool treeCatFound = false;
+        public SickoPhase sickoSnowmanPhase = SickoPhase.HELP;
+        public bool skinRecieved = false;
+        public MailPhase[] postOfficeClerkPhases = {MailPhase.MAILDROP, MailPhase.MAILDROP, MailPhase.MAILDROP};
+        public ImportMinerPhase importMinerPhase = ImportMinerPhase.HELP;
+        public bool[] encounterNPCDelivered = {false, false, false};
+        public bool decoratorDelivered = false;
+        public CatOwnerPhase CatOwnerPhase = CatOwnerPhase.HELP;
+        public bool basketNoteEncountered = false;
+        public bool astronomerDelivered = false;
     }
 
     [Serializable]
