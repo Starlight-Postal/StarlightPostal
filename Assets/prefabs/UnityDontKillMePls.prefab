@@ -31,6 +31,7 @@ Transform:
   - {fileID: 1478616930840912143}
   - {fileID: 939701932260803437}
   - {fileID: 162381801362673943}
+  - {fileID: 5226761678780766247}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -94,6 +95,62 @@ MonoBehaviour:
     checkpointId: 0
     checkpointScene: 
     introScene: 1
+    stage: 0
+    equippedBalloon: 0
+    balloonUnlock: 0100000000000000000000
+    heightCaps:
+    - 60
+    - 215
+    - 180
+  preferences:
+    saveFileName: savedata
+    devId: 0
+    volSfx: 0
+    volMusic: 0
+    volEnv: 0
+--- !u!1 &3763345765069084501
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5226761678780766247}
+  - component: {fileID: 675730866678301429}
+  m_Layer: 0
+  m_Name: Integration
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5226761678780766247
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3763345765069084501}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5275151608571913142}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &675730866678301429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3763345765069084501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2249dc104b0dcea43b11be3fdeef029a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5481001760513066390
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,21 +194,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aed30e2e2f2c77217bce6079b9b6b92f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coins: 0
-  balloon: 0
-  balloon0: 1
-  balloon1: 0
-  balloon2: 0
-  balloon3: 0
-  balloon4: 0
-  balloon5: 0
-  balloon6: 0
-  balloon7: 0
-  balloon8: 0
-  balloon9: 0
-  balloon10: 0
-  balloonSkin: 0
-  stage: 1
   skins:
   - {fileID: 21300000, guid: a3cdc51cc286ab04a82f6a474c7a144e, type: 3}
   - {fileID: 21300000, guid: 29eb418d1e6b47a4282abf2837d16edc, type: 3}
@@ -208,11 +250,7 @@ MonoBehaviour:
   - {r: 1, g: 0.78431374, b: 0.78431374, a: 1}
   - {r: 0.78431374, g: 0.78431374, b: 1, a: 1}
   - {r: 1, g: 0.7977401, b: 0.6949685, a: 1}
-  introScene: 1
-  heightCaps:
-  - 60
-  - 215
-  - 180
+  creditsBackToMenu: 0
 --- !u!1 &9023487762022538025
 GameObject:
   m_ObjectHideFlags: 0
