@@ -136,6 +136,10 @@ public class DiscordRichPrescence : MonoBehaviour
                 smallImage = "snow";
                 smallImageText = "Level 3";
                 break;
+            case "Main Menu":
+                smallImage = null;
+                smallImageText = null;
+                break;
             default:
                 smallImage = "logo";
                 smallImageText = "Starlight Postal";
