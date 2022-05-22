@@ -27,10 +27,15 @@ public class SaveFileManager : MonoBehaviour
     public class Preferences
     {
         public string saveFileName = "savedata";
-        public int devId = GenerateDeviceId();
+        public int devId = 0;
         public float volSfx = 0.0f;
         public float volMusic = 0.0f;
         public float volEnv = 0.0f;
+
+        public Preferences()
+        {
+            devId = GenerateDeviceId();
+        }
     }
 
     public SaveData saveData;
@@ -167,7 +172,7 @@ public class SaveFileManager : MonoBehaviour
     {
         int hash = 0;
         Debug.Log("ID:" + deviceId);
-        if (deviceId == SystemInfo.unsupportedIdentifier)
+        if (deviceId == null || deviceId == SystemInfo.unsupportedIdentifier)
         {
             hash = new Random().Next();
         }
