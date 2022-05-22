@@ -20,7 +20,7 @@ public class DiscordRichPrescence : MonoBehaviour
     {
         SceneManager.sceneLoaded += OnSceneLoad;
         Debug.Log("Discord starting");
-        discord = new Discord.Discord(974531282597969981, (UInt64)Discord.CreateFlags.Default);
+        discord = new Discord.Discord(974531282597969981, (UInt64)Discord.CreateFlags.NoRequireDiscord);
         var activityManager = discord.GetActivityManager();
         var activity = new Discord.Activity
         {
