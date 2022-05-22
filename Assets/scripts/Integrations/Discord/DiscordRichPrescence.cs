@@ -1,3 +1,6 @@
+#if !PLATFORM_WEBGL
+#if !PLATFORM_ANDROID
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -171,3 +174,6 @@ public class DiscordRichPrescence : MonoBehaviour
     }
     
 }
+
+#endif
+#endif
