@@ -11,6 +11,7 @@ public class DiscordRichPrescence : MonoBehaviour
 
     private bool prevInBalloon;
     private string prevSceneName;
+    private int prevCoins;
 
     private player player;
 
@@ -45,6 +46,13 @@ public class DiscordRichPrescence : MonoBehaviour
         {
             player = GameObject.FindObjectOfType<player>();
             return;
+        }
+
+        if (GameObject.FindObjectOfType<SaveFileManager>().saveData.coins != prevCoins)
+        {
+            prevCoins = GameObject.FindObjectOfType<SaveFileManager>().saveData.coins;
+            
+            UpdateRpi();
         }
 
         if (player.inBalloon != prevInBalloon || SceneManager.GetActiveScene().name != prevSceneName)
@@ -96,12 +104,27 @@ public class DiscordRichPrescence : MonoBehaviour
                 state = "Has broken the game :)";
                 break;
         }
+
+        string details;
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "level 1":
+            case "level 2":
+            case "level 3":
+                //details should be coins
+                var coins = GameObject.FindObjectOfType<SaveFileManager>().saveData.coins;
+                details = "Collected " + coins + " stars";
+                break;
+            default:
+                details = null;
+                break;
+        }
         
         var activityManager = discord.GetActivityManager();
         var activity = new Discord.Activity
         {
             State = state,
-            Details = "Out for delivery",
+            Details = details,
             Assets = new ActivityAssets
             {
                 LargeImage = "starlight_logo",
