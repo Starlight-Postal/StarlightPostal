@@ -27,7 +27,7 @@ public class DiscordRichPrescence : MonoBehaviour
             State = "Navigating Menus",
             Assets = new ActivityAssets
             {
-                LargeImage = "starlight_logo",
+                LargeImage = "pilottrans",
                 LargeText = "Starlight Postal"
             }
         };
@@ -119,6 +119,28 @@ public class DiscordRichPrescence : MonoBehaviour
                 details = null;
                 break;
         }
+
+        string smallImage;
+        string smallImageText;
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "level 1":
+                smallImage = "leaf";
+                smallImageText = "Level 1";
+                break;
+            case "level 2":
+                smallImage = "sparkle";
+                smallImageText = "Level 2";
+                break;
+            case "level 3":
+                smallImage = "snow";
+                smallImageText = "Level 3";
+                break;
+            default:
+                smallImage = "logo";
+                smallImageText = "Starlight Postal";
+                break;
+        }
         
         var activityManager = discord.GetActivityManager();
         var activity = new Discord.Activity
@@ -127,8 +149,10 @@ public class DiscordRichPrescence : MonoBehaviour
             Details = details,
             Assets = new ActivityAssets
             {
-                LargeImage = "starlight_logo",
-                LargeText = "Starlight Postal"
+                LargeImage = "pilottrans",
+                LargeText = "Starlight Postal",
+                SmallImage = smallImage,
+                SmallText = smallImageText
             }
         };
         activityManager.UpdateActivity(activity, (res) =>
