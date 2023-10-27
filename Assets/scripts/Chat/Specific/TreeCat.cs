@@ -5,7 +5,6 @@ using UnityEngine;
 public class TreeCat : Conversation
 {
     public string[] loopScript;
-    public bool found = false;
     public AudioSource sfx_place;
     public bool showCat = false;
     public bool shake = true;
@@ -16,10 +15,13 @@ public class TreeCat : Conversation
     public float power = 1;
     public float amp = 0;
     public GameObject cat;
+
+    private SaveFileManager save;
     // Start is called before the first frame update
     void Start()
     {
         treePos = tree.position;
+        save = GameObject.FindObjectOfType<SaveFileManager>();
     }
     void FixedUpdate()
     {
@@ -48,7 +50,7 @@ public class TreeCat : Conversation
     public override void OnConversationLineUpdate(int index)
     {
         shake = false;
-        found = true;
+        save.saveData.treeCatFound = true;
         if (script!=loopScript)
         {
             if (index == 4)
@@ -64,10 +66,10 @@ public class TreeCat : Conversation
         }
     }
 
-    public override void OnConversationEnd()
+    public override void OnConversationStart()
     {
         Debug.Log("hello mario");
-        if (found)
+        if (save.saveData.treeCatFound)
         {
             script = loopScript;
         }
