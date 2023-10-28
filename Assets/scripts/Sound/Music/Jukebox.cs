@@ -132,7 +132,7 @@ public class Jukebox : MonoBehaviour
             }
         }
 
-        if (play.inBalloon)
+        if (play && play.inBalloon)
         {
             polarity += (1 - polarity) * FADE_RATE;
         }

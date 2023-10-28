@@ -255,6 +255,11 @@ public class player : MonoBehaviour
         walkInput = input.Get<float>();
     }
 
+    void OnMove(float input)
+    {
+        walkInput = input;
+    }
+
     void OnLook(InputValue input)
     {
         lookInput = input.Get<Vector2>().y;

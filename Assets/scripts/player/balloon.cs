@@ -342,9 +342,19 @@ public class balloon : MonoBehaviour
         burnVentInput = value.Get<float>();
     }
 
+    void OnBurnVent(float value)
+    {
+        burnVentInput = value;
+    }
+
     void OnLean(InputValue value)
     {
         leanInput = value.Get<float>();
+    }
+
+    void OnLean(float value)
+    {
+        leanInput = value;
     }
 
     void OnAnchor()
@@ -385,6 +395,11 @@ public class balloon : MonoBehaviour
     void OnReel(InputValue value)
     {
         reelInput = value.Get<float>();
+    }
+
+    void OnReel(float value)
+    {
+        reelInput = value;
     }
 
     public void centerHit()

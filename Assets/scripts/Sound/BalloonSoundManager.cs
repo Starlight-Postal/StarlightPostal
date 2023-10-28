@@ -24,14 +24,19 @@ public class BalloonSoundManager : MonoBehaviour {
 
     void OnBurnVent(InputValue value) {
         var v = value.Get<float>();
+        OnBurnVent(v);
+    }
+
+    void OnBurnVent(float v)
+    {
         if (invertAxis) { v *= -1; }
         if (v > 0) {
             if (!sustaining) {
                 sustaining = true;
                 sources[0].Play();
-                #if !UNITY_WEBGL
+#if !UNITY_WEBGL
                 sources[1].PlayScheduled(AudioSettings.dspTime + clips[0].length);
-                #endif
+#endif
             }
 
             for (int i = 0; i < 3; i++) {
