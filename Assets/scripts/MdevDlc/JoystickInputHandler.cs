@@ -39,17 +39,12 @@ public class JoystickInputHandler : MonoBehaviour
         }
         else
         {
-            if (!m_player)
-            {
-                Debug.LogError("Player script invalid!");
-            }
-
             if (horz != prevHorz)
             {
                 gameObject.BroadcastMessage(m_player.inBalloon ? "OnLean" : "OnMove", horz);
             }
 
-            if (m_player.inBalloon && vert != prevVert)
+            if (m_player && m_player.inBalloon && vert != prevVert)
             {
                 gameObject.BroadcastMessage("OnBurnVent", vert);
             }
@@ -80,19 +75,22 @@ public class JoystickInputHandler : MonoBehaviour
                     gameObject.BroadcastMessage("OnAnchor");
                 }
             }
-
-            if (Input.GetKeyDown(KeyCode.JoystickButton4))
-            {
-            }
         }
 
-        if (Input.GetKeyDown(KeyCode.JoystickButton0))
+        if (Input.GetKeyDown(coinButton))
         {
+            gameObject.BroadcastMessage("OnCreditInsert", 1);
         }
         
         if (Input.GetKeyDown(pauseButton))
         {
             gameObject.BroadcastMessage("OnPauseGame");
+        }
+
+        if (Input.GetKeyDown(pauseButton) || Input.GetKeyDown(interactButton) ||
+            Input.GetKeyDown(anchorButton) || Input.GetKeyDown(reelButton))
+        {
+            gameObject.BroadcastMessage("OnAnyJoystickButtonDown");
         }
 
         prevHorz = horz;

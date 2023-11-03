@@ -44,6 +44,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "CreditInsert",
+                    "type": "Button",
+                    "id": "d123fc20-ac3e-45f1-a326-1627590301b1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -253,6 +261,17 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "PlatformDrop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "155d835a-341d-49a4-b61e-51d89cdf6657",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CreditInsert",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -632,6 +651,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Tap"
+                },
+                {
+                    "name": "CreditInsert",
+                    "type": "Button",
+                    "id": "ea5927b9-93c7-492d-8e1b-9131c71e7aa4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Tap"
                 }
             ],
             "bindings": [
@@ -764,6 +791,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "NavigateDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "446aaa73-77b4-4393-9605-9562b76f42f6",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CreditInsert",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
