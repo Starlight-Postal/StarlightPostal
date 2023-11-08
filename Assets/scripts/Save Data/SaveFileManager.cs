@@ -14,6 +14,7 @@ public class SaveFileManager : MonoBehaviour
     public class SaveData
     {
         public int coins = 0;
+        public int score = 0;
         public int checkpointId = 0;
         public string checkpointScene = "level 1";
         public bool introScene = true;

@@ -36,6 +36,9 @@ public class RecieveSkin : LoopingConversation
                 skin.sprite = newSkin;
                 sound.Play();
                 deliveredTo = true;
+                
+                // Award points for package delivery
+                FindObjectOfType<SaveFileManager>().saveData.score += 2000;
             }
         }
     }

@@ -50,6 +50,9 @@ public class Astronomer : LoopingConversation
                 skin.sprite = newSkin;
                 sound.Play();
                 deliveredTo = true;
+                
+                // Award points for package delivery
+                FindObjectOfType<SaveFileManager>().saveData.score += 2000;
             }
         }
         if (index == photoLine)

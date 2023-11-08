@@ -42,6 +42,9 @@ public class Decorator : LoopingConversation
                 
                 sound.Play();
                 deliveredTo = true;
+                
+                // Award points for package delivery
+                FindObjectOfType<SaveFileManager>().saveData.score += 2000;
             }
         }
     }

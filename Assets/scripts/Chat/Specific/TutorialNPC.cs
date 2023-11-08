@@ -283,6 +283,9 @@ public class TutorialNPC : Conversation
                 break;
             case TutorialPhase.POSTOFFICEDELIVERY:
                 phase = TutorialPhase.BAR;
+                
+                // Award points for tutorial completion
+                FindObjectOfType<SaveFileManager>().saveData.score += 5000;
                 break;
         }
         scriptIndex = 0;

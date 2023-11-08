@@ -121,9 +121,12 @@ public class Conversation : Interractable
         scriptIndex = 0;
         TurnOnDisplay();
         isTalking = true;
-        player.currentConversation = this;
+        player.currentConversation = this;  
         visualCue.SetActive(false);
-	}
+        
+        // Award 500 points for talking to people
+        FindObjectOfType<SaveFileManager>().saveData.score += 500;
+    }
 
     protected void AdvanceScript()
     {

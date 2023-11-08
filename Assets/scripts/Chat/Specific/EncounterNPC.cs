@@ -17,6 +17,9 @@ public class EncounterNPC : LoopingConversation
         deliveredTo = true;
         GameObject.FindObjectsOfType<PostOfficeClerk>()[0].phase = MailPhase.DELIVERED;
         //GameObject.FindObjectsOfType<TutorialNPC>()[0].phase = TutorialPhase.DELIVERED;
+                
+        // Award points for package delivery
+        FindObjectOfType<SaveFileManager>().saveData.score += 2000;
     }
 
     public override void OnConversationLineUpdate(int index)

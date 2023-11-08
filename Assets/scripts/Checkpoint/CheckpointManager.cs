@@ -47,7 +47,10 @@ public class CheckpointManager : MonoBehaviour {
                     return false;
                 }
             }
-        }        
+        }
+
+        // Award 1,000 points for reaching a new checkpoint
+        FindObjectOfType<SaveFileManager>().saveData.score += 1000;
 
         savemgr.saveData.checkpointId = pad.padId;
         savemgr.saveData.checkpointScene = pad.scene;

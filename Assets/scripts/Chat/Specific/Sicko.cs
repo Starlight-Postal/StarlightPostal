@@ -50,6 +50,9 @@ public class Sicko : Conversation
             {
                 soup.SetActive(true);
                 sfx_place.Play(0);
+                
+                // Award points for delivering the soup
+                FindObjectOfType<SaveFileManager>().saveData.score += 2000;
             }
         }
     }

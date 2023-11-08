@@ -41,6 +41,7 @@ public class coin : MonoBehaviour
             if (!get)
             {
                 gdata.saveData.coins++;
+                gdata.saveData.score += 10;
             }
             get = true;
         }

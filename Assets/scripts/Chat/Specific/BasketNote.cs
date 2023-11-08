@@ -35,5 +35,8 @@ public class BasketNote : Conversation
     public override void OnConversationEnd()
     {
         this.gameObject.SetActive(false);
+                
+        // Award points for reading the note
+        FindObjectOfType<SaveFileManager>().saveData.score += 100;
     }
 }

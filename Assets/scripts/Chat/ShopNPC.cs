@@ -80,16 +80,25 @@ public class ShopNPC : Interractable
             {
                 save.saveData.coins = save.saveData.coins - 150;
                 save.saveData.balloonUnlock[1] = true;
+                
+                // Award points for purchase
+                save.saveData.score += 1500;
             }
             else if (save.saveData.coins >= 150 && !(save.saveData.balloonUnlock[4]) && stage == 2)
             {
                 save.saveData.coins = save.saveData.coins - 150;
                 save.saveData.balloonUnlock[4] = true;
+                
+                // Award points for purchase
+                save.saveData.score += 1500;
             }
             else if (save.saveData.coins >= 150 && !(save.saveData.balloonUnlock[7]) && stage == 3)
             {
                 save.saveData.coins = save.saveData.coins - 150;
                 save.saveData.balloonUnlock[7] = true;
+                
+                // Award points for purchase
+                save.saveData.score += 1500;
             }
         });
         Button2.RegisterCallback<ClickEvent>(ev =>
@@ -100,16 +109,25 @@ public class ShopNPC : Interractable
             {
                 save.saveData.coins = save.saveData.coins - 200;
                 save.saveData.balloonUnlock[2] = true;
+                
+                // Award points for purchase
+                FindObjectOfType<SaveFileManager>().saveData.score += 2000;
             }
             else if (save.saveData.coins >= 200 && !(save.saveData.balloonUnlock[5]) && stage == 2)
             {
                 save.saveData.coins = save.saveData.coins - 200;
                 save.saveData.balloonUnlock[5] = true;
+                
+                // Award points for purchase
+                FindObjectOfType<SaveFileManager>().saveData.score += 2000;
             }
             else if (save.saveData.coins >= 200 && !(save.saveData.balloonUnlock[8]) && stage == 3)
             {
                 save.saveData.coins = save.saveData.coins - 200;
                 save.saveData.balloonUnlock[8] = true;
+                
+                // Award points for purchase
+                FindObjectOfType<SaveFileManager>().saveData.score += 2000;
             }
         });
         Button3.RegisterCallback<ClickEvent>(ev =>
@@ -120,16 +138,25 @@ public class ShopNPC : Interractable
             {
                 save.saveData.coins = save.saveData.coins - 250;
                 save.saveData.balloonUnlock[3] = true;
+                
+                // Award points for purchase
+                FindObjectOfType<SaveFileManager>().saveData.score += 2500;
             }
             else if (save.saveData.coins >= 250 && !(save.saveData.balloonUnlock[6]) && stage == 2)
             {
                 save.saveData.coins = save.saveData.coins - 250;
                 save.saveData.balloonUnlock[6] = true;
+                
+                // Award points for purchase
+                FindObjectOfType<SaveFileManager>().saveData.score += 2500;
             }
             else if (save.saveData.coins >= 250 && !(save.saveData.balloonUnlock[9]) && stage == 3)
             {
                 save.saveData.coins = save.saveData.coins - 250;
                 save.saveData.balloonUnlock[9] = true;
+                
+                // Award points for purchase
+                FindObjectOfType<SaveFileManager>().saveData.score += 2500;
             }
         });
 

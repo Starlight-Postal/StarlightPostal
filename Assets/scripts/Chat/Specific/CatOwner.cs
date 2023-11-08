@@ -65,6 +65,9 @@ public class CatOwner : Conversation
             {
                 cat.SetActive(true);
                 sfx_place.Play(0);
+                
+                // Award points for package delivery
+                FindObjectOfType<SaveFileManager>().saveData.score += 2000;
             }
         }
     }

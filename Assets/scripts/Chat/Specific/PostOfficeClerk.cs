@@ -79,6 +79,9 @@ class PostOfficeClerk : Conversation
         {
             sound.Play(0);
             //Debug.Log("SOUND");
+            
+            // Award a score of 1500 for delivering mail
+            FindObjectOfType<SaveFileManager>().saveData.score += 1500;
         }
     }
 

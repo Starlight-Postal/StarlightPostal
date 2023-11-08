@@ -66,11 +66,17 @@ public class ImportMiner : Conversation
                 import.SetActive(true);
                 empty.SetActive(false);
                 sfx_place.Play(0);
+                
+                // Award points for package delivery
+                FindObjectOfType<SaveFileManager>().saveData.score += 2000;
             }
             if (index == payLine)
             {
                 save.saveData.coins += pay;
                 sfx_pay.Play(0);
+                
+                // Award points for sidequest
+                FindObjectOfType<SaveFileManager>().saveData.score += 5000;
             }
         }
     }

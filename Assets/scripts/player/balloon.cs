@@ -416,6 +416,9 @@ public class balloon : MonoBehaviour
 
     void dropCoins(int n)
     {
+        // Add 20 points for each coin dropped
+        saveData.saveData.score += 20 * n;
+        
         //Debug.Log(n);
         if (n > saveData.saveData.coins)
         {
