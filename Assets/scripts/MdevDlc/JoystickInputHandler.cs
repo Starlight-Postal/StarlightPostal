@@ -5,11 +5,11 @@ using UnityEngine.InputSystem;
 
 public class JoystickInputHandler : MonoBehaviour
 {
-    [SerializeField] private KeyCode coinButton = KeyCode.JoystickButton6;
-    [SerializeField] private KeyCode interactButton = KeyCode.JoystickButton4;
-    [SerializeField] private KeyCode anchorButton = KeyCode.JoystickButton5;
-    [SerializeField] private KeyCode pauseButton = KeyCode.JoystickButton7;
-    [SerializeField] private KeyCode reelButton = KeyCode.JoystickButton0;
+    [SerializeField] private KeyCode coinButton = KeyCode.JoystickButton9;
+    [SerializeField] private KeyCode interactButton = KeyCode.JoystickButton0;
+    [SerializeField] private KeyCode anchorButton = KeyCode.JoystickButton2;
+    [SerializeField] private KeyCode pauseButton = KeyCode.JoystickButton8;
+    [SerializeField] private KeyCode reelButton = KeyCode.JoystickButton3;
 
     private player m_player;
     private PauseMenuBehaviour m_pause;
