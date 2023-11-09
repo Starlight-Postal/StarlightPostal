@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using UnityEngine;
 
@@ -10,7 +11,17 @@ public class LeaderboardManager : MonoBehaviour
     {
         var data = FindObjectOfType<LeaderboardDataHandler>();
         int score = FindObjectOfType<SaveFileManager>().saveData.score;
-        if (score > data.GetTopLeaderboardEntriesSorted(10).Max(e => e.score))
+        int maxScore;
+        try
+        {
+            maxScore = data.GetTopLeaderboardEntriesSorted(10).Max(e => e.score);
+        }
+        catch (Exception e)
+        {
+            maxScore = 0;
+        }
+        
+        if (score > maxScore)
         {
             nameEntry.SetActive(true);
             leaderboard.SetActive(false);

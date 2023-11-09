@@ -35,8 +35,14 @@ public class LeaderboardDataHandler : MonoBehaviour
     {
         if (leaderboard != null)
             return leaderboard;
-        
-        LoadLeaderboard();
+        try
+        {
+            LoadLeaderboard();
+        }
+        catch (Exception e)
+        {
+            return new List<LeaderboardEntry>();
+        }
 
         return leaderboard;
     }
