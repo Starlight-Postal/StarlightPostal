@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 137367091}
   - component: {fileID: 137367092}
   - component: {fileID: 137367093}
+  - component: {fileID: 137367094}
   m_Layer: 5
   m_Name: MainMenuDocument
   m_TagString: Untagged
@@ -273,6 +274,19 @@ MonoBehaviour:
   anchorButton: 332
   pauseButton: 338
   reelButton: 333
+--- !u!114 &137367094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137367085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd054750fffe1c4080f9276e159ebf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 4137ac79df45e77d1b0508267582f141, type: 3}
 --- !u!1001 &217724101
 PrefabInstance:
   m_ObjectHideFlags: 0
