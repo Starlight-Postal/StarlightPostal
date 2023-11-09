@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using PlasticPipe.PlasticProtocol.Messages;
 using UnityEngine;
 using UnityEngine.UIElements;
 
