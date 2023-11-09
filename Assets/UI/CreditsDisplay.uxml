@@ -1,7 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement style="left: 0; right: 0; top: auto; bottom: 10px; position: absolute;">
+    <ui:VisualElement style="left: 0; right: 0; top: auto; bottom: 20px; position: absolute;">
         <ui:VisualElement name="credit-counter" style="height: 64px; justify-content: flex-end;">
-            <ui:Label text="Credits: 000" display-tooltip-when-elided="true" name="credit-counter-label" class="hud-text" style="-unity-text-align: middle-center; color: rgb(255, 255, 255); font-size: 30%; -unity-font-style: bold; -unity-font-definition: url(&apos;/Assets/UI/AutourOne-Regular SDF.asset&apos;);" />
+            <ui:Label text="Credits: 000" display-tooltip-when-elided="true" name="credit-counter-label" class="hud-text" style="-unity-text-align: middle-center; color: rgb(255, 255, 255); font-size: 30%; -unity-font-style: bold; -unity-font-definition: url(&apos;/Assets/UI/PressStart2P-Regular SDF.asset&apos;);" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
