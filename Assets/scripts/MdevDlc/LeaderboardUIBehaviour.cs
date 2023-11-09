@@ -29,6 +29,11 @@ public class LeaderboardUIBehaviour : MonoBehaviour
         StartCoroutine(LeaderboardTimeoutCorroutine());
     }
 
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+    }
+
     public void OnAnyJoystickButtonDown()
     {
         if (minimumTimeInputLockoutPassed)

@@ -156,8 +156,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbdd3a2e010fa5f4da4a2a49ec1374c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameEntryDoc: {fileID: 1905869174}
-  leaderboardDoc: {fileID: 1248580533}
+  nameEntry: {fileID: 1905869166}
+  leaderboard: {fileID: 1248580530}
 --- !u!4 &137367087
 Transform:
   m_ObjectHideFlags: 0
@@ -1050,7 +1050,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1248580531
 Transform:
   m_ObjectHideFlags: 0
@@ -1078,6 +1078,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entryAsset: {fileID: 9197481963319205126, guid: 7fd2f9a825ad06c468a2bd5ec627709a, type: 3}
+  minimumVisibleTime: 2
   leaderboardTimeoutTime: 10
 --- !u!114 &1248580533
 MonoBehaviour:
@@ -1727,7 +1728,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1905869167
 MonoBehaviour:
   m_ObjectHideFlags: 0

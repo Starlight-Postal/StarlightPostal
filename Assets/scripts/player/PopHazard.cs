@@ -15,6 +15,7 @@ public class PopHazard : MonoBehaviour {
 
     public camera cam;
     public cam_fade fade;
+    private SaveFileManager save;
 
     bool dying = false;
 
@@ -29,6 +30,7 @@ public class PopHazard : MonoBehaviour {
 
         // Register instance commands
         DebugLogConsole.AddCommandInstance("balloon.nopop", "Toggles the nopop cheat", "ToggleNopop", this);
+        save = FindObjectOfType<SaveFileManager>();
     }
 
     void Update()
@@ -37,6 +39,11 @@ public class PopHazard : MonoBehaviour {
             if (fade.death == 2)
             {
                 CheckpointManager.Respawn();
+                save.saveData.lives--;
+                if (save.saveData.lives <= 0)
+                {
+                    GameOver.GameOverFromPop();
+                }
                 cam.snapToTarget();
                 cam.follow = true;
                 dying = false;

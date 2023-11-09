@@ -1,8 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class LeaderboardManager : MonoBehaviour
 {
@@ -11,8 +8,19 @@ public class LeaderboardManager : MonoBehaviour
     
     private void Start()
     {
-        nameEntry.SetActive(true);
-        leaderboard.SetActive(false);
+        var data = FindObjectOfType<LeaderboardDataHandler>();
+        int score = FindObjectOfType<SaveFileManager>().saveData.score;
+        if (score > data.GetTopLeaderboardEntriesSorted(10).Max(e => e.score))
+        {
+            nameEntry.SetActive(true);
+            leaderboard.SetActive(false);
+        }
+        else
+        {
+            nameEntry.SetActive(false);
+            leaderboard.SetActive(true);
+        }
+        
     }
 
     public void ConfirmName()
