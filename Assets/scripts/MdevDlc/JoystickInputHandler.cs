@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class JoystickInputHandler : MonoBehaviour
 {
@@ -14,6 +16,7 @@ public class JoystickInputHandler : MonoBehaviour
     private PauseMenuBehaviour m_pause;
     private bool inMenu = false;
     private Coroutine pauseButtonHoldRoutine;
+    private Coroutine coinButtonHoldRoutine;
 
     private float prevHorz, prevVert;
     private bool prevReel = false;
@@ -112,12 +115,17 @@ public class JoystickInputHandler : MonoBehaviour
         if (Input.GetKeyDown(coinButton))
         {
             gameObject.BroadcastMessage("OnCreditInsert", 1);
+            coinButtonHoldRoutine = StartCoroutine(HandleButtonHold(coinButton, pauseButtonHoldTime, Application.Quit));
+        }
+        else if (Input.GetKeyUp(coinButton) && coinButtonHoldRoutine != null)
+        {
+            StopCoroutine(coinButtonHoldRoutine);
         }
         
         if (Input.GetKeyDown(pauseButton))
         {
             gameObject.BroadcastMessage("OnPauseGame");
-            pauseButtonHoldRoutine = StartCoroutine(HandlePauseButtonHold());
+            pauseButtonHoldRoutine = StartCoroutine(HandleButtonHold(pauseButton, pauseButtonHoldTime, ResetGame));
         }
         else if (Input.GetKeyUp(pauseButton) && pauseButtonHoldRoutine != null)
         {
@@ -134,12 +142,18 @@ public class JoystickInputHandler : MonoBehaviour
         prevVert = vert;
     }
 
-    private IEnumerator HandlePauseButtonHold()
+    private void ResetGame()
     {
-        yield return new WaitForSecondsRealtime(pauseButtonHoldTime);
-        if (Input.GetKey(pauseButton))
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Main Menu");
+    }
+
+    private IEnumerator HandleButtonHold(KeyCode button, float time, Action action)
+    {
+        yield return new WaitForSecondsRealtime(time);
+        if (Input.GetKey(button))
         {
-            Application.Quit();
+            action();
         }
     }
 }
