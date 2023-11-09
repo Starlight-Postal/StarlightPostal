@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -25,6 +22,6 @@ public class ScoreCounterBehaviour : MonoBehaviour
     private void Update()
     {
         int score = save.saveData.score;
-        scoreLabel.text = $"Score: {score:0000000}";
+        scoreLabel.text = $"{score:0000000}";
     }
 }

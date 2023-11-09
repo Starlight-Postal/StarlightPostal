@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CreditInsertHandler : MonoBehaviour
@@ -21,7 +18,8 @@ public class CreditInsertHandler : MonoBehaviour
     {
         if (!creditAccumulator)
             return;
-        
+
+        CoinSoundEffect.CoinCollect();
         creditAccumulator.AddCredit(credits);
     }
 }
