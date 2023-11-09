@@ -102,30 +102,7 @@ public class LeaderboardDataHandler : MonoBehaviour
 
     public List<LeaderboardEntry> GetTopLeaderboardEntriesSorted(int num)
     {
-        var topEntries = Enumerable.Range(0, num).Select(x => new LeaderboardEntry("", Int32.MinValue)).ToList();
-
-        int spotsClaimed = 0;
-
-        foreach (var entry in GetLeaderboardEntries())
-        {
-            if (spotsClaimed == 0)
-            {
-                topEntries[0] = entry;
-                spotsClaimed++;
-                continue;
-            }
-            
-            for (int i = 0; i < Math.Min(topEntries.Count, spotsClaimed); i++)
-            {
-                if (entry.score >= topEntries[i].score)
-                {
-                    topEntries[i] = entry;
-                    spotsClaimed++;
-                    break;
-                }
-            }
-        }
-
-        return topEntries.OrderByDescending(e => e.score).ToList();
+        var ordered = GetLeaderboardEntries().OrderByDescending(e => e.score).ToList();
+        return ordered.GetRange(0, Math.Min(num, ordered.Count));
     }
 }

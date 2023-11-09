@@ -107,11 +107,11 @@ public class LeaderboardNameEntryBehaviour : MonoBehaviour
             {
                 prev = 'Z';
             }
-            letters[i].Q<Label>("letter-label-up").text = $"{prev}";
+            letters[i].Q<Label>("letter-label-down").text = $"{prev}";
             
             // Update next letter
             char next = (char)((selectedLetters[i] - 'A' + 1) % ('Z' - 'A' + 1) + 'A');
-            letters[i].Q<Label>("letter-label-down").text = $"{next}";
+            letters[i].Q<Label>("letter-label-up").text = $"{next}";
         }
     }
 }
