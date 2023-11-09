@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CreditAccumulator : MonoBehaviour
 {
@@ -10,6 +9,7 @@ public class CreditAccumulator : MonoBehaviour
 
     public void AddCredit(int credits)
     {
+        Debug.Log($"Adding {credits} credits to {mCredits}");
         if (credits < 0) return;
         
         mCredits += credits;
@@ -18,6 +18,7 @@ public class CreditAccumulator : MonoBehaviour
 
     public bool TakeCredit(int credits)
     {
+        Debug.Log($"Taking {credits} credits from {mCredits}");
         if (credits < 0) return false;
         
         if (mCredits >= credits)

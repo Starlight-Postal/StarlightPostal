@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class JoystickInputHandler : MonoBehaviour
 {
@@ -39,7 +36,7 @@ public class JoystickInputHandler : MonoBehaviour
         }
         else
         {
-            if (horz != prevHorz)
+            if (m_player && horz != prevHorz)
             {
                 gameObject.BroadcastMessage(m_player.inBalloon ? "OnLean" : "OnMove", horz);
             }
@@ -63,14 +60,14 @@ public class JoystickInputHandler : MonoBehaviour
             }
             prevReel = reel;
 
-            if (Input.GetKeyDown(interactButton))
+            if (m_player && Input.GetKeyDown(interactButton))
             {
                 gameObject.BroadcastMessage(m_player.inBalloon ? "OnLeaveBalloon" : "OnInterract");
             }
 
             if (Input.GetKeyDown(anchorButton))
             {
-                if (m_player.inBalloon)
+                if (m_player && m_player.inBalloon)
                 {
                     gameObject.BroadcastMessage("OnAnchor");
                 }
