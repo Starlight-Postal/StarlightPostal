@@ -97,7 +97,14 @@ public class LeaderboardDataHandler : MonoBehaviour
     public void ClearLeaderboard()
     {
         leaderboard = new List<LeaderboardEntry>();
-        onLeaderboardUpdated();
+        try
+        {
+            onLeaderboardUpdated();
+        }
+        catch (Exception e)
+        {
+            Debug.Log("Error sending leaderboard update");
+        }
     }
 
     public List<LeaderboardEntry> GetTopLeaderboardEntriesSorted(int num)
