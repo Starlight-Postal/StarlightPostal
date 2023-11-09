@@ -25,6 +25,6 @@ public class ScoreCounterBehaviour : MonoBehaviour
     private void Update()
     {
         int score = save.saveData.score;
-        scoreLabel.text = $"SCORE: {score:0000000}";
+        scoreLabel.text = $"Score: {score:0000000}";
     }
 }
