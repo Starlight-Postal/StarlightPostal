@@ -8,11 +8,13 @@ using UnityEngine.UIElements;
 public class LeaderboardUIBehaviour : MonoBehaviour
 {
     [SerializeField] private VisualTreeAsset entryAsset;
+    [SerializeField] private float minimumVisibleTime = 2.0f;
     [SerializeField] private float leaderboardTimeoutTime = 10.0f;
 
     
     private VisualElement entryList;
     private LeaderboardDataHandler data;
+    private bool minimumTimeInputLockoutPassed = false;
 
     private void OnEnable()
     {
@@ -29,7 +31,8 @@ public class LeaderboardUIBehaviour : MonoBehaviour
 
     public void OnAnyJoystickButtonDown()
     {
-        ProceedToMainMenu();
+        if (minimumTimeInputLockoutPassed)
+            ProceedToMainMenu();
     }
 
     public void ProceedToMainMenu()
@@ -40,7 +43,9 @@ public class LeaderboardUIBehaviour : MonoBehaviour
 
     private IEnumerator LeaderboardTimeoutCorroutine()
     {
-        yield return new WaitForSecondsRealtime(leaderboardTimeoutTime);
+        yield return new WaitForSecondsRealtime(minimumVisibleTime);
+        minimumTimeInputLockoutPassed = true;
+        yield return new WaitForSecondsRealtime(leaderboardTimeoutTime - minimumVisibleTime);
         ProceedToMainMenu();
     }
 

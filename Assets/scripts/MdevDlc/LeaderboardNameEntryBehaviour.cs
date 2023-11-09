@@ -83,9 +83,10 @@ public class LeaderboardNameEntryBehaviour : MonoBehaviour
     private void ConfirmName()
     {
         Debug.Log($"Entered name is {GetEnteredName()}");
+        FindObjectOfType<LeaderboardManager>().ConfirmName();
     }
 
-    private string GetEnteredName()
+    public string GetEnteredName()
     {
         return new string(selectedLetters);
     }
