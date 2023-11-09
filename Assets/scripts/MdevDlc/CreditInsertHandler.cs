@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class CreditInsertHandler : MonoBehaviour
@@ -18,8 +19,16 @@ public class CreditInsertHandler : MonoBehaviour
     {
         if (!creditAccumulator)
             return;
-
-        CoinSoundEffect.CoinCollect();
+        
         creditAccumulator.AddCredit(credits);
+        
+        try
+        {
+            CoinSoundEffect.CoinCollect();
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Exception while playing sound: {e}");
+        }
     }
 }
