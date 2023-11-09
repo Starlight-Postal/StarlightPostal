@@ -1,7 +1,9 @@
+using System.Collections;
 using UnityEngine;
 
 public class JoystickInputHandler : MonoBehaviour
 {
+    [SerializeField] private float pauseButtonHoldTime = 5.0f;
     [SerializeField] private KeyCode coinButton = KeyCode.JoystickButton9;
     [SerializeField] private KeyCode interactButton = KeyCode.JoystickButton0;
     [SerializeField] private KeyCode anchorButton = KeyCode.JoystickButton2;
@@ -11,6 +13,7 @@ public class JoystickInputHandler : MonoBehaviour
     private player m_player;
     private PauseMenuBehaviour m_pause;
     private bool inMenu = false;
+    private Coroutine pauseButtonHoldRoutine;
 
     private float prevHorz, prevVert;
     private bool prevReel = false;
@@ -114,6 +117,11 @@ public class JoystickInputHandler : MonoBehaviour
         if (Input.GetKeyDown(pauseButton))
         {
             gameObject.BroadcastMessage("OnPauseGame");
+            pauseButtonHoldRoutine = StartCoroutine(HandlePauseButtonHold());
+        }
+        else if (Input.GetKeyUp(pauseButton) && pauseButtonHoldRoutine != null)
+        {
+            StopCoroutine(pauseButtonHoldRoutine);
         }
 
         if (Input.GetKeyDown(pauseButton) || Input.GetKeyDown(interactButton) ||
@@ -124,5 +132,14 @@ public class JoystickInputHandler : MonoBehaviour
 
         prevHorz = horz;
         prevVert = vert;
+    }
+
+    private IEnumerator HandlePauseButtonHold()
+    {
+        yield return new WaitForSecondsRealtime(pauseButtonHoldTime);
+        if (Input.GetKey(pauseButton))
+        {
+            Application.Quit();
+        }
     }
 }
