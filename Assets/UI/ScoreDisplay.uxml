@@ -1,5 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement style="left: 10px; right: 0; top: 10px; bottom: auto; position: absolute; align-items: flex-start;">
+    <ui:VisualElement style="left: 20px; right: 0; top: 20px; bottom: auto; position: absolute; align-items: flex-start;">
         <ui:VisualElement name="score-counter" style="height: 75px; justify-content: center; background-color: rgba(0, 0, 0, 0.31); padding-left: 10px; padding-right: 10px; padding-top: 8px; padding-bottom: 8px; border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px;">
             <ui:Label text="Score: 0000000" display-tooltip-when-elided="true" name="score-counter-label" class="hud-text" style="-unity-text-align: middle-center; color: rgb(255, 255, 255); font-size: 48px; -unity-font-style: bold; -unity-font-definition: url(&apos;/Assets/UI/AutourOne-Regular SDF.asset&apos;);" />
         </ui:VisualElement>
