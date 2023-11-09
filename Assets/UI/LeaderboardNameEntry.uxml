@@ -1,0 +1,28 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="left: 25%; right: 25%; position: absolute; top: 15%; justify-content: center;">
+        <ui:VisualElement style="align-items: center;">
+            <ui:Label text="New High Score!" display-tooltip-when-elided="true" name="leaderboard-title-label" style="-unity-text-align: upper-center; -unity-font-definition: url(&apos;/Assets/UI/PressStart2P-Regular SDF.asset&apos;); font-size: 96px; color: rgb(255, 255, 255);" />
+            <ui:VisualElement style="height: 100px;" />
+            <ui:VisualElement name="leaderboard-keyboard" style="width: 420px; height: 200px;">
+                <ui:VisualElement name="keyboard-letter-0" style="position: absolute; left: 0; top: 0; right: 280px; bottom: 0; justify-content: center; align-items: center;">
+                    <ui:Label text="A" display-tooltip-when-elided="true" name="letter-label-up" style="-unity-font-definition: url(&apos;/Assets/UI/PressStart2P-Regular SDF.asset&apos;); font-size: 32px; -unity-text-align: upper-center; color: rgba(210, 210, 210, 255);" />
+                    <ui:Label text="B" display-tooltip-when-elided="true" name="letter-label" style="-unity-font-definition: url(&apos;/Assets/UI/PressStart2P-Regular SDF.asset&apos;); font-size: 64px; -unity-text-align: upper-center; color: rgba(210, 210, 210, 255);" />
+                    <ui:Label text="C" display-tooltip-when-elided="true" name="letter-label-down" style="-unity-font-definition: url(&apos;/Assets/UI/PressStart2P-Regular SDF.asset&apos;); font-size: 32px; -unity-text-align: upper-center; color: rgba(210, 210, 210, 255);" />
+                    <ui:VisualElement name="letter-selector" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-left-width: 10px; border-right-width: 10px; border-top-width: 10px; border-bottom-width: 10px;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="keyboard-letter-1" style="position: absolute; left: 140px; top: 0; right: 140px; bottom: 0; align-items: center; justify-content: center;">
+                    <ui:Label text="A" display-tooltip-when-elided="true" name="letter-label-up" style="-unity-font-definition: url(&apos;/Assets/UI/PressStart2P-Regular SDF.asset&apos;); font-size: 32px; -unity-text-align: upper-center; color: rgba(210, 210, 210, 255);" />
+                    <ui:Label text="B" display-tooltip-when-elided="true" name="letter-label" style="-unity-font-definition: url(&apos;/Assets/UI/PressStart2P-Regular SDF.asset&apos;); font-size: 64px; -unity-text-align: upper-center; color: rgba(210, 210, 210, 255);" />
+                    <ui:Label text="C" display-tooltip-when-elided="true" name="letter-label-down" style="-unity-font-definition: url(&apos;/Assets/UI/PressStart2P-Regular SDF.asset&apos;); font-size: 32px; -unity-text-align: upper-center; color: rgba(210, 210, 210, 255);" />
+                    <ui:VisualElement name="letter-selector" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-left-width: 10px; border-right-width: 10px; border-top-width: 10px; border-bottom-width: 10px;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="keyboard-letter-2" style="left: 280px; top: 0; right: 0; bottom: 0; position: absolute; align-items: center; justify-content: center;">
+                    <ui:Label text="A" display-tooltip-when-elided="true" name="letter-label-up" style="-unity-font-definition: url(&apos;/Assets/UI/PressStart2P-Regular SDF.asset&apos;); font-size: 32px; -unity-text-align: upper-center; color: rgba(210, 210, 210, 255);" />
+                    <ui:Label text="B" display-tooltip-when-elided="true" name="letter-label" style="-unity-font-definition: url(&apos;/Assets/UI/PressStart2P-Regular SDF.asset&apos;); font-size: 64px; -unity-text-align: upper-center; color: rgba(210, 210, 210, 255);" />
+                    <ui:Label text="C" display-tooltip-when-elided="true" name="letter-label-down" style="-unity-font-definition: url(&apos;/Assets/UI/PressStart2P-Regular SDF.asset&apos;); font-size: 32px; -unity-text-align: upper-center; color: rgba(210, 210, 210, 255);" />
+                    <ui:VisualElement name="letter-selector" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-left-width: 10px; border-right-width: 10px; border-top-width: 10px; border-bottom-width: 10px;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -10,9 +10,15 @@ public class JoystickInputHandler : MonoBehaviour
 
     private player m_player;
     private PauseMenuBehaviour m_pause;
+    private bool inMenu = false;
 
     private float prevHorz, prevVert;
     private bool prevReel = false;
+
+    public void SetInMenu(bool inMenu)
+    {
+        this.inMenu = inMenu;
+    }
     
     // Start is called before the first frame update
     void Start()
@@ -30,9 +36,35 @@ public class JoystickInputHandler : MonoBehaviour
         float horz = Input.GetAxis("Horizontal");
         float vert = Input.GetAxis("Vertical");
 
-        if (m_pause && m_pause.inMenu)
+        if (inMenu || (m_pause && m_pause.inMenu))
         {
-            
+            if (horz > 0.5 && prevHorz <= 0.5)
+            {
+                gameObject.BroadcastMessage("OnUiRight");
+            }
+            else if (horz < -0.5 && prevHorz >= -0.5)
+            {
+                gameObject.BroadcastMessage("OnUiLeft");
+            }
+
+            if (vert > 0.5 && prevVert <= 0.5)
+            {
+                gameObject.BroadcastMessage("OnUiUp");
+            }
+            else if (vert < -0.5 && prevVert >= -0.5)
+            {
+                gameObject.BroadcastMessage("OnUiDown");
+            }
+
+            if (Input.GetKeyDown(interactButton))
+            {
+                gameObject.BroadcastMessage("OnUiSelect");
+            }
+
+            if (Input.GetKeyDown(anchorButton))
+            {
+                gameObject.BroadcastMessage("OnUiBack");
+            }
         }
         else
         {
