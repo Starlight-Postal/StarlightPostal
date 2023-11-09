@@ -2,15 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class LeaderboardUIBehaviour : MonoBehaviour
 {
     [SerializeField] private VisualTreeAsset entryAsset;
+    [SerializeField] private float leaderboardTimeoutTime = 10.0f;
+
     
     private VisualElement entryList;
     private LeaderboardDataHandler data;
-    
+
     private void OnEnable()
     {
         var rve = GetComponent<UIDocument>().rootVisualElement;
@@ -21,6 +24,24 @@ public class LeaderboardUIBehaviour : MonoBehaviour
         data.onLeaderboardUpdated += RepopulateLeaderboard;
 
         RepopulateLeaderboard();
+        StartCoroutine(LeaderboardTimeoutCorroutine());
+    }
+
+    public void OnAnyJoystickButtonDown()
+    {
+        ProceedToMainMenu();
+    }
+
+    public void ProceedToMainMenu()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Main Menu");
+    }
+
+    private IEnumerator LeaderboardTimeoutCorroutine()
+    {
+        yield return new WaitForSecondsRealtime(leaderboardTimeoutTime);
+        ProceedToMainMenu();
     }
 
     private void RepopulateLeaderboard()
@@ -31,6 +52,9 @@ public class LeaderboardUIBehaviour : MonoBehaviour
 
         for (int i = 0; i < Math.Min(entries.Count, 10); i++)
         {
+            if (entries[i].score < 0)
+                continue;
+            
             VisualElement entry = entryAsset.Instantiate();
             entryList.Add(entry);
 

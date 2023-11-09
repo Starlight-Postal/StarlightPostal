@@ -1,12 +1,12 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
+[Serializable]
 public struct LeaderboardEntry
 {
     public string name;
@@ -26,16 +26,9 @@ public class LeaderboardDataHandler : MonoBehaviour
     
     private List<LeaderboardEntry> leaderboard;
 
-    private void Start()
+    private void OnDestroy()
     {
-        ClearLeaderboard();
-
-        for (int i = 0; i < 100; i++)
-        {
-            AddLeaderboardEntry(new LeaderboardEntry($"{i}th", (int) Random.Range(10, 9999999)));
-        }
-
-        onLeaderboardUpdated();
+        SaveLeaderboard();
     }
 
     public List<LeaderboardEntry> GetLeaderboardEntries()
@@ -55,6 +48,12 @@ public class LeaderboardDataHandler : MonoBehaviour
 
     public void SaveLeaderboard()
     {
+        if (leaderboard == null)
+        {
+            Debug.LogError("Cannot save a null leaderboard!");
+            return;
+        }
+        
         var formatter = new BinaryFormatter();
         string path = $"{Application.persistentDataPath}/leaderboard.dat";
         var stream = new FileStream(path, FileMode.Create);
@@ -72,8 +71,19 @@ public class LeaderboardDataHandler : MonoBehaviour
             var formatter = new BinaryFormatter();
             var stream = new FileStream(path, FileMode.Open);
 
-            leaderboard = formatter.Deserialize(stream) as List<LeaderboardEntry>;
-            stream.Close();
+            try
+            {
+                leaderboard = formatter.Deserialize(stream) as List<LeaderboardEntry>;
+            }
+            catch (SerializationException e)
+            {
+                Debug.LogError($"Error deserializing leaderboard: {e}");
+                ClearLeaderboard();
+            }
+            finally
+            {
+                stream.Close();
+            }
         }
         else
         {
